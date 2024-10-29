@@ -1,0 +1,43 @@
+@import "./styGeneral.css";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.logo {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.logo > h1 {
+  font-size: 1.5rem;
+}
+
+.logo > img {
+  width: 50px;
+  height: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links li a {
+  color: var(--background-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: var(--secondary-color);
+}
