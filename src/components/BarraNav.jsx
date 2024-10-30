@@ -1,5 +1,5 @@
 import React from "react";
-import "../estilos/styBarraNav.css";
+import "../styles/styBarraNav.css";
 import { logoNomadas } from "../imgs/ArchivoImgs";
 
 const BarraNav = () => {

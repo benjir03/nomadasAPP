@@ -1,12 +1,12 @@
 import "./App.css";
-import BarraNav from "./componentes/BarraNav";
-import Button from "./componentes/Button";
+import BarraNav from "./components/BarraNav";
+import Home from "./views/home";
 
 function App() {
   return (
     <div className="App">
       <BarraNav />
-      <Button />
+      <Home />
     </div>
   );
 }

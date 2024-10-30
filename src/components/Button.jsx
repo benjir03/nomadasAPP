@@ -1,5 +1,5 @@
 import React from "react";
-import "../estilos/styGenBut.css";
+import "../styles/styGenBut.css";
 
 const Button = () => {
     return (
