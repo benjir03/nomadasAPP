@@ -18,7 +18,7 @@ const BarraNav = () => {
             <a href="#about">Itinerarios</a>
           </li>
           <li>
-            <a href="#services">Historias</a>
+            <a href="#services">hoaaaal</a>
           </li>
           <li>
             <a href="#contact">Contacto</a>
