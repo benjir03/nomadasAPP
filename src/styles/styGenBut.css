@@ -1,7 +1,9 @@
 @import "./styGeneral.css";
 
 .GenBut{
+    font-family: Helvetica, sans-serif;
     padding: 2rem;
+    width: auto;
 }
 
 .button {
@@ -9,8 +11,8 @@
     color: var(--background-color);
     border-radius: 7px;
     font-size: 1rem;
-    width: 5%;
-    height: 30px;
+    width: auto;
+    height: auto;
 }
 
 .button:hover{

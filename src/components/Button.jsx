@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/styGenBut.css";
 
-const Button = () => {
+const Button = ({text, url}) => {
     return (
         <div className="GenBut">
-            <button className="button">
-                Boton
+            <button className="button" onClick={() => window.location.href = url}>
+                {text}
             </button>
         </div>
     );
