@@ -12,16 +12,18 @@ const BarraNav = () => {
       <nav>
         <ul className="nav-links">
           <li>
-            <a href="#home">Nómadas</a>
+            <a href="#home">Busca un plan</a>
           </li>
           <li>
             <a href="#about">Itinerarios</a>
           </li>
           <li>
-            <a href="#services">Historias</a>
+            <a href="#services">Servicios</a>
           </li>
           <li>
-            <a href="#contact">Contacto</a>
+            <a className="botonAccion" href="#login">
+              Ingresa
+            </a>
           </li>
         </ul>
       </nav>
