@@ -21,7 +21,7 @@ const BarraNav = () => {
             <a href="#services">Historias</a>
           </li>
           <li>
-            <a href="#contact">Contacto</a>
+            <a href="#contact">Contactooooooooo</a>
           </li>
         </ul>
       </nav>
