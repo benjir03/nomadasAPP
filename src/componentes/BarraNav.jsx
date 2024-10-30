@@ -12,7 +12,7 @@ const BarraNav = () => {
       <nav>
         <ul className="nav-links">
           <li>
-            <a href="#home">Nómadas</a>
+            <a href="#home">NómadasUwU</a>
           </li>
           <li>
             <a href="#about">Itinerarios</a>
