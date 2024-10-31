@@ -21,7 +21,7 @@ const BarraNav = () => {
             <a href="#services">Servicios</a>
           </li>
           <li>
-            <a className="botonAccion" href="#login">
+            <a className="botonAccion" href="../views/Buscador.jsx">
               Ingresa
             </a>
           </li>
