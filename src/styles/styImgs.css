@@ -1,10 +1,9 @@
 @import "./styGeneral.css";
 
-.Imagen{
-    padding: 10%;
-    size: 350px;
-}
 
 .Imagen img{
     border-radius: 15%;
+    padding: 5%;
+    margin: auto;
+    width: 70%;
 }

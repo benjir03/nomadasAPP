@@ -1,11 +1,15 @@
 import React from 'react';
 import Button from "../components/Button";
 import Img from '../components/Imgs';
+import imagen from "../imgs/LogoNoP.jpeg";
+import historia from "../imgs/Historia.jpg";
+import food from "../imgs/food.jpg";
+import art from "../imgs/art.jpg";
 import "../styles/styHome.css";
 
 export default function home () {
     return (
-        <div>
+        <div className='General'>
             <div className='Home'>
                 <div className='ContHome'>
                     <h1>Nónamadas</h1>
@@ -16,7 +20,13 @@ export default function home () {
                 </div>
             </div>
             <div className='Categories'>
-                <Img Direccion="../imgs/homebanner.jpg" />
+                <h1>¡Explora lugares fuera de lo común!</h1>
+                <h3>Historia, comida, arte y mucho mas</h3>
+                <div className='Lugares'>
+                    <Img Direccion={historia}/>
+                    <Img Direccion={food}/>
+                    <Img Direccion={art}/>
+                </div>
             </div>
         </div>
     );
