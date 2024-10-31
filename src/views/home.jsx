@@ -1,4 +1,6 @@
 import React from 'react';
+import BarraNav from "../components/BarraNav";
+import Footer from "../components/Footer";
 import Button from "../components/Button";
 import Img from '../components/Imgs';
 import logo from "../imgs/LogoNoP.jpeg";
@@ -8,6 +10,7 @@ import art from "../imgs/art.jpg";
 import "../styles/styHome.css";
 
 export default function home () {
+    <BarraNav />
     return (
         <div className='General'>
             <div className='Home'>
@@ -40,4 +43,5 @@ export default function home () {
             </div>
         </div>
     );
+    <Footer />
 };
