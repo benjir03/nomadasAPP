@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from "../components/Button";
 import Img from '../components/Imgs';
-import imagen from "../imgs/LogoNoP.jpeg";
+import logo from "../imgs/LogoNoP.jpeg";
 import historia from "../imgs/Historia.jpg";
 import food from "../imgs/food.jpg";
 import art from "../imgs/art.jpg";
@@ -22,11 +22,21 @@ export default function home () {
             <div className='Categories'>
                 <h1>¡Explora lugares fuera de lo común!</h1>
                 <h3>Historia, comida, arte y mucho mas</h3>
-                <div className='Lugares'>
+                <div className='CatImg'>
                     <Img Direccion={historia}/>
                     <Img Direccion={food}/>
                     <Img Direccion={art}/>
                 </div>
+                <h4>Más categorias...</h4>
+            </div>
+            <div className='Opiniones'>
+                <h1>Comparte tu siguiente aventura</h1>
+                <div className='CatImg'>
+                    <Img Direccion={logo}/>
+                    <Img Direccion={logo}/>
+                    <Img Direccion={logo}/>
+                </div>
+                <h4>Más historias...</h4>
             </div>
         </div>
     );
