@@ -1,0 +1,103 @@
+@import "./styGeneral.css";
+
+footer {
+    background-color: var(--background-color);
+    color: var(--background-color);
+    padding: 3rem 0;
+    margin-top: auto;
+}
+
+footer h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+footer p {
+    color: var(--background-color);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+footer ul li {
+    padding: 0.5rem 0;
+    color: var(--background-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+footer ul li:hover {
+    color: var(--secondary-color);
+}
+
+footer i {
+    margin-right: 10px;
+    width: 16px;
+}
+
+.text-center {
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid var(--background-color);
+    margin-top: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    footer {
+        padding: 2rem 0;
+    }
+    
+    .col-md-4,
+    .col-md-3,
+    .col-md-2 {
+        margin: 2rem;
+    }
+}
+
+/* Container utility classes if not using Bootstrap */
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1140px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/* Add these classes if not using Bootstrap */
+.mb-3 {
+    margin: 1rem;
+}
+
+.mb-4 {
+    margin: 1.5rem;
+}
+
+.py-5 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.bg-dark {
+    background-color: var(--primary-color);
+}
+
+.text-light {
+    color: var(--background-color);
+}

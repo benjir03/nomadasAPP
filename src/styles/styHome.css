@@ -1,6 +1,6 @@
 @import "./styGeneral.css";
 
-.home{
+.Home{
     background-image: url("../imgs/homebanner.jpg");
     background-size: cover;
     background-position: center; /* Centra la imagen */
@@ -12,7 +12,7 @@
 
 .ContHome{
     align-content: center;
-    padding-top: 7%;
+    padding-top: 30%;
 }
 
 .ContHome h1{
@@ -24,5 +24,5 @@
 .ContHome p{
     text-align: center;
     font-size: 2rem;
-    color: var(--extra-color);
+    color: var(--primary-color);
 }
