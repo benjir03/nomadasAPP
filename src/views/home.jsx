@@ -1,6 +1,4 @@
 import React from 'react';
-import BarraNav from "../components/BarraNav";
-import Footer from "../components/Footer";
 import Button from "../components/Button";
 import Img from '../components/Imgs';
 import logo from "../imgs/LogoNoP.jpeg";
@@ -10,7 +8,6 @@ import art from "../imgs/art.jpg";
 import "../styles/styHome.css";
 
 export default function home () {
-    <BarraNav />
     return (
         <div className='General'>
             <div className='Home'>
@@ -30,7 +27,6 @@ export default function home () {
                     <Img Direccion={food}/>
                     <Img Direccion={art}/>
                 </div>
-                <h4>Más categorias...</h4>
             </div>
             <div className='Opiniones'>
                 <h1>Comparte tu siguiente aventura</h1>
@@ -39,9 +35,7 @@ export default function home () {
                     <Img Direccion={logo}/>
                     <Img Direccion={logo}/>
                 </div>
-                <h4>Más historias...</h4>
             </div>
         </div>
     );
-    <Footer />
 };

@@ -3,6 +3,7 @@
 .General{
     font-family: Helvetica, sans-serif;
 }
+
 .Home{
     position: relative;
     width: 100%;
@@ -33,6 +34,10 @@
     color: var(--background-color);
 }
 
+
+.Categories{
+    width: 100%;
+}
 .Categories h1,h3{
     display: flex;
     position: relative;

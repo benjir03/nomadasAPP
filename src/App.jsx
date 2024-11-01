@@ -1,10 +1,13 @@
-import Home from "./views/prueba";
-
+import Carousel from "./views/carousel";
+import BarraNav from "./components/BarraNav";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <BarraNav />
+      <Carousel />
+      <Footer />
     </div>
   );
 }
