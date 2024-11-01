@@ -49,8 +49,10 @@ const Carousel = ({ images }) => {
 
             {isOpen && (
                 <div className="modal" onClick={closeModal}>
-                    <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-                    <p>{images[currentIndex].info}</p>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
+                        <p>{images[currentIndex].info}</p>
+                    </div>
                 </div>
             )}
         </div>

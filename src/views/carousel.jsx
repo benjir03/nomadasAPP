@@ -1,11 +1,15 @@
-import React from 'react';
 import Carousel from '../components/Carousel';
-import logo from "../imgs/LogoNoP.jpeg";
+/*
+si se desea utilizar imagenes de la carptera de imgs
+se deben importar y usar en src de la siguiente manera.
 
+import imagen1 from '../imgs/imagen1.jpg';
+src: imagen1
+*/
 const App = () => {
     const images = [
         {
-            src:logo,
+            src: 'https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg',
             alt: 'Imagen 1',
             info: 'Descripción de la imagen 1'
         },
