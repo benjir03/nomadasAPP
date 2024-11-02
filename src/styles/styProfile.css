@@ -1,0 +1,53 @@
+@import "./styGeneral.css";
+/* Contenedor principal */
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Menú lateral */
+  .profile-sidebar {
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-sidebar h3 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  
+  /* Lista de menú */
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-item {
+    cursor: pointer;
+    padding: 10px 0;
+    font-weight: bold;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    color: var(--secondary-color); /* Cambia de color al pasar el ratón */
+  }
+  
+  /* Contenido de la sección seleccionada */
+  .profile-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .profile-content h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+  

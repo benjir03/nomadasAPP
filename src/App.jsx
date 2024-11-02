@@ -1,4 +1,4 @@
-import Carousel from "./views/carousel";
+import Carousel from "./views/perfil";
 import BarraNav from "./components/BarraNav";
 import Footer from "./components/Footer";
 
