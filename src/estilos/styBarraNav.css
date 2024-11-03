@@ -1,5 +1,3 @@
-@import "./styGeneral.css";
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -10,19 +8,28 @@
 }
 
 .logo {
-  gap: 1rem;
   display: flex;
   align-items: center;
+  gap: 1rem;
   white-space: nowrap;
+}
+
+.logo > a {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Remueve el subrayado */
+  color: inherit; /* Hereda el color del contenedor */
 }
 
 .logo > h1 {
   font-size: 1.5rem;
+  margin: 0;
 }
 
-.logo > img {
-  width: 50px;
+.logo > a > img {
+  width: 50px; /* Ajusta a un tamaño adecuado */
   height: auto;
+  display: block;
 }
 
 .nav-links {

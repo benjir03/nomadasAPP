@@ -1,0 +1,18 @@
+@import "./styGeneral.css";
+
+.GenBut{
+    padding: 2rem;
+}
+
+.button {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-radius: 7px;
+    font-size: 1rem;
+    width: 5%;
+    height: 30px;
+}
+
+.button:hover{
+    color: var(--secondary-color);
+}
