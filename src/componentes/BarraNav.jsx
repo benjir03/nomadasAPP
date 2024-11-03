@@ -7,7 +7,7 @@ const BarraNav = () => {
     <header className="header">
       <div className="logo">
         <img src={logoNomadas} alt="Logo de la página" />
-        <h1>Nómadas app</h1>
+        <h1>Nómadas uuuuuu</h1>
       </div>
       <nav>
         <ul className="nav-links">
