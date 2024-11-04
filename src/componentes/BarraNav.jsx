@@ -1,4 +1,5 @@
 import React from "react";
+//import { Link } from "react-router-dom";
 import "../estilos/styBarraNav.css";
 import { logoNomadas } from "../imgs/ArchivoImgs";
 
@@ -6,22 +7,31 @@ const BarraNav = () => {
   return (
     <header className="header">
       <div className="logo">
-        <img src={logoNomadas} alt="Logo de la página" />
-        <h1>Nómadas app</h1>
+        <Link to="/HomePage">
+          <img src={logoNomadas} alt="Logo de la página" />
+          <h1>Nómadas</h1>
+        </Link>
       </div>
       <nav>
         <ul className="nav-links">
           <li>
-            <a href="#home">Nómadas</a>
+            <Link to="/Destino">Itinerarios</Link>
           </li>
           <li>
-            <a href="#about">Itinerarios</a>
+            <Link to="/Destino">Lugares</Link>
           </li>
           <li>
-            <a href="#services">Historias</a>
+            <Link to="/Destino">Historias</Link>
           </li>
           <li>
-            <a href="#contact">Contacto</a>
+            <Link className="botonAccion" to="/Registro">
+              Registrarse
+            </Link>
+          </li>
+          <li>
+            <Link className="botonAccion" to="/InicioSesion">
+              Iniciar sesión
+            </Link>
           </li>
         </ul>
       </nav>

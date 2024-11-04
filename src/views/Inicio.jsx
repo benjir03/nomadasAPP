@@ -2,7 +2,6 @@ import React from "react";
 import BarraNav from "../componentes/BarraNav";
 import { Link } from "react-router-dom";
 import "../estilos/styInicio.css";
-
 import {
   historiaImage,
   gastronomiaImage,
@@ -16,6 +15,8 @@ import {
 function Inicio() {
   return (
     <div className="home">
+      <BarraNav />
+
       {/* Sección de bienvenida */}
       <section className="welcome-section">
         <div className="welcome-content">
@@ -24,10 +25,9 @@ function Inicio() {
             Nos encargamos de diseñar y personalizar una experiencia de viaje
             con base a tus gustos e intereses.
           </p>
-          <a href="/Register" className="create-itinerary-button">
-            Crear un itinerario
-          </a>{" "}
-          {/* Enlace al itinerario */}
+          <Link to="/Destino" className="create-itinerary-button">
+            Comienza a crear un itinerario
+          </Link>
         </div>
       </section>
 
@@ -35,70 +35,56 @@ function Inicio() {
       <section className="categories-section">
         <h2>¡Explora lugares fuera de lo común!</h2>
         <div className="categories">
-          <a href="/Lugares/Historia" className="category-card">
-            {" "}
-            {/* Enlace a la categoría Historia */}
+          <Link to="/Lugares/Historia" className="category-card">
             <img
               src={historiaImage}
               alt="Historia"
               className="category-image"
             />
             <p className="category-text">Historia</p>
-          </a>
-          <a href="Lugares/Gastronomia" className="category-card">
-            {" "}
-            {/* Enlace a la categoría Gastronomía */}
+          </Link>
+          <Link to="/Lugares/Gastronomia" className="category-card">
             <img
               src={gastronomiaImage}
               alt="Gastronomía"
               className="category-image"
             />
             <p className="category-text">Gastronomía</p>
-          </a>
-          <a href="Lugares/Arte" className="category-card">
-            {" "}
-            {/* Enlace a la categoría Arte */}
+          </Link>
+          <Link to="/Lugares/Arte" className="category-card">
             <img src={arteImage} alt="Arte" className="category-image" />
             <p className="category-text">Arte</p>
-          </a>
+          </Link>
         </div>
-        <a href="/Lugares" className="more-categories-link">
+        <Link to="/Lugares" className="more-categories-link">
           Más categorías...
-        </a>
+        </Link>
       </section>
 
       {/* Sección de historias de usuarios */}
       <section className="user-stories-section">
         <h2>Comparte tu siguiente aventura.</h2>
         <div className="user-stories">
-          <a href="/Historias/user1" className="user-story">
-            {" "}
-            {/* Enlace a la historia de User 1 */}
+          <Link to="/Historias/user1" className="user-story">
             <img src={user1Image} alt="User 1" className="user-image" />
             <p>@User 1</p>
-          </a>
-          <a href="/Historias/user2" className="user-story">
-            {" "}
-            {/* Enlace a la historia de User 2 */}
+          </Link>
+          <Link to="/Historias/user2" className="user-story">
             <img src={user2Image} alt="User 2" className="user-image" />
             <p>@User 2</p>
-          </a>
-          <a href="/Historias/user3" className="user-story">
-            {" "}
-            {/* Enlace a la historia de User 3 */}
+          </Link>
+          <Link to="/Historias/user3" className="user-story">
             <img src={user3Image} alt="User 3" className="user-image" />
             <p>@User 3</p>
-          </a>
-          <a href="/Historias/user4" className="user-story">
-            {" "}
-            {/* Enlace a la historia de User 4 */}
+          </Link>
+          <Link to="/Historias/user4" className="user-story">
             <img src={user4Image} alt="User 4" className="user-image" />
             <p>@User 4</p>
-          </a>
+          </Link>
         </div>
-        <a href="/Historias" className="more-stories-link">
+        <Link to="/Historias" className="more-stories-link">
           Más historias...
-        </a>
+        </Link>
       </section>
     </div>
   );
