@@ -1,50 +1,53 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import backgroundImage from '../imgs/fondoRegistrarse.jpg';
+import '../estilos/styRegistro.css'; 
 
 export default function Registro() {
   return (
-    <div className="d-flex flex-column align-items-center" style={{ marginTop: '50px' }}>
+    <div
+      className="registro-container"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
+    >
       
       {/* Título */}
-      <h1>El mundo no se va a conquistar solo</h1>
+      <h1 className="registro-title">El mundo no se va a conquistar solo</h1>
       
       {/* Subtítulo */}
-      <p style={{ fontSize: 'smaller' }}>Regístrate</p>
+      <p className="registro-subtitle">Regístrate</p>
       
       {/* Formulario de registro */}
-      <div style={{ width: '300px', textAlign: 'left' }}>
+      <div className="registro-form">
         
         {/* Campo de correo */}
         <input
           type="email"
           placeholder="Ingresa un correo"
-          className="form-control mb-3"
-          style={{ fontSize: 'large' }}
+          className="registro-input"
         />
         
         {/* Campo de contraseña */}
         <input
           type="password"
           placeholder="Ingresa una contraseña"
-          className="form-control mb-3"
-          style={{ fontSize: 'large' }}
+          className="registro-input"
         />
         
         {/* Campo de confirmación de contraseña */}
         <input
           type="password"
           placeholder="Confirma tu contraseña"
-          className="form-control mb-3"
-          style={{ fontSize: 'large' }}
+          className="registro-input"
         />
         
         {/* Botón de registrarse */}
-        <button className="btn btn-primary w-100 mb-3">¡Quiero ser un Nomada!</button>
+        <button className="registro-button">¡Quiero ser un Nómada!</button>
         
         {/* Enlace de inicio de sesión */}
-        <p style={{ fontSize: 'smaller' }}>
+        <p className="registro-link">
           ¿Ya eres un nómada?{' '}
-          <span style={{ color: 'blue', cursor: 'pointer' }}>
+          <span className="registro-login-link">
             <u>Ingresa aquí</u>
           </span>
         </p>

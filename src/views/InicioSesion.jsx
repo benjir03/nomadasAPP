@@ -1,59 +1,57 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import backgroundImage from '../imgs/inicioSesion.jpg'; 
+import '../estilos/styInicioSesion.css'; 
 
 export default function InicioSesion() {
   return (
-    <div className="d-flex flex-column align-items-center" style={{ marginTop: '50px' }}>
+    <div
+      className="inicio-sesion-container"
+      style={{
+        backgroundImage: `url(${backgroundImage})`, // Imagen de fondo
+      }}
+    >
       
       {/* Título */}
-      <h1>¿Listo para crear el plan perfecto?</h1>
+      <h1 className="inicio-sesion-title">¿Listo para crear el plan perfecto?</h1>
       
       {/* Subtítulo */}
-      <p style={{ fontSize: 'smaller' }}>Iniciar sesión</p>
+      <p className="inicio-sesion-subtitle">Iniciar sesión</p>
       
       {/* Formulario de inicio de sesión */}
-      <div style={{ width: '300px', textAlign: 'left' }}>
+      <div className="inicio-sesion-form">
         
         {/* Campo de correo */}
         <input
           type="email"
           placeholder="Ingresa tu correo"
-          className="form-control mb-3"
-          style={{ fontSize: 'large' }}
+          className="inicio-sesion-input"
         />
         
         {/* Campo de contraseña */}
         <input
           type="password"
           placeholder="Ingresa tu contraseña"
-          className="form-control mb-3"
-          style={{ fontSize: 'large' }}
+          className="inicio-sesion-input"
         />
         
         {/* Botón de entrar */}
-        <button className="btn btn-primary w-100 mb-3">¡ENTRA!</button>
+        <button className="inicio-sesion-button">¡ENTRA!</button>
         
         {/* Checkbox de mantener sesión iniciada */}
-        <div className="form-check mb-3">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="mantenerSesion"
-          />
-          <label className="form-check-label" htmlFor="mantenerSesion">
-            Mantener sesión iniciada
-          </label>
+        <div className="inicio-sesion-checkbox">
+          <input type="checkbox" id="mantenerSesion" />
+          <label htmlFor="mantenerSesion">Mantener sesión iniciada</label>
         </div>
         
         {/* Enlace de olvido de contraseña */}
-        <p style={{ fontSize: 'smaller', color: 'blue', cursor: 'pointer' }}>
+        <p className="inicio-sesion-link">
           <u>¿Olvidaste tu contraseña?</u>
         </p>
         
         {/* Enlace de registro */}
-        <p style={{ fontSize: 'smaller' }}>
+        <p className="inicio-sesion-link">
           ¿No eres un nómada?{' '}
-          <span style={{ color: 'blue', cursor: 'pointer' }}>
+          <span className="registro-link">
             <u>Regístrate aquí</u>
           </span>
         </p>
