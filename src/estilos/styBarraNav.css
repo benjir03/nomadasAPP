@@ -21,8 +21,8 @@
 }
 
 .logo > img {
-  width: 50px;
-  height: auto;
+  width: 12px !important;
+  height: auto !important;
 }
 
 .nav-links {
