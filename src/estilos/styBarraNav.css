@@ -28,6 +28,8 @@
   margin: 0;
 }
 
+.logo > img {
+  width: 100px;
 .logo > a > img {
   width: 50px; /* Ajusta a un tamaño adecuado */
   height: auto;
