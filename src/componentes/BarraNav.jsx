@@ -15,21 +15,21 @@ const BarraNav = () => {
       <nav>
         <ul className="nav-links">
           <li>
-            <Link to="/itinerarios">Itinerarios</Link>
+            <Link to="/Datosdelusuario">Itinerarios</Link>
           </li>
           <li>
-            <Link to="/lugares">Lugares</Link>
+            <Link to="/Lugares">Lugares</Link>
           </li>
           <li>
-            <Link to="/historias">Historias</Link>
+            <Link to="/Historias">Historias</Link>
           </li>
           <li>
-            <Link className="botonAccion" to="/register">
+            <Link className="botonAccion" to="/Register">
               Registrarse
             </Link>
           </li>
           <li>
-            <Link className="botonAccion" to="/login">
+            <Link className="botonAccion" to="/Login">
               Iniciar sesión
             </Link>
           </li>

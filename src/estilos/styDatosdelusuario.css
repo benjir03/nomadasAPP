@@ -1,0 +1,265 @@
+.user-data {
+    text-align: center;
+}
+
+/* Estilo para el header */
+.user-welcome-section {
+    position: relative;
+    height: 400px;
+    /* Ajusta la altura para el tamaño del header */
+    background-image: url('../imgs/travel03.jpg');
+    /* Ruta de la imagen de fondo */
+    background-size: cover;
+    /* Hace que la imagen cubra todo el contenedor */
+    background-position: center;
+    /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.user-welcome-content {
+    position: relative;
+    z-index: 1;
+}
+
+.user-welcome-content h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.user-welcome-content p {
+    font-size: 1.2em;
+    color: #f0f0f0;
+    margin-top: 10px;
+}
+
+/* Estilo para el formulario */
+.search-form {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #ffffff;
+    border: 1px solid #cfcfcf;
+    padding: 5px 20px;
+    border-radius: 8px;
+    width: 220px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    font-size: 0.75em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    font-size: 1.2em;
+    color: #2c3e50;
+}
+
+.select-location,
+.date-input,
+.guests-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.9em;
+    color: #333;
+    background: transparent;
+}
+
+.select-location .css-1okebmr-indicatorSeparator {
+    display: none;
+}
+
+.date-input {
+    padding: 5px;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.guests-input {
+    padding: 5px;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Estilo para las nuevas preguntas */
+.additional-info-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.additional-info-section h2 {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.budget-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    /* Para que .budget-value se posicione correctamente */
+    padding-top: 30px;
+}
+
+.budget-slider {
+    -webkit-appearance: none;
+    /* Quita el estilo predeterminado en navegadores WebKit */
+    appearance: none;
+    width: 200px;
+    height: 6px;
+    /* Ajusta el grosor de la barra */
+    background: #ddd;
+    /* Color de la pista (la línea de fondo) */
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+/* Color de la pista activa (valor actual) en navegadores WebKit */
+.budget-slider::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #004d40, #4CAF50);
+    /* Degradado de la pista activa */
+    height: 6px;
+    border-radius: 5px;
+}
+
+/* Estilo del pulgar (control deslizante) en navegadores WebKit */
+.budget-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    /* Tamaño del pulgar */
+    height: 15px;
+    background-color: #004d40;
+    /* Color del pulgar */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.budget-slider::-webkit-slider-thumb:hover {
+    background-color: #4CAF50;
+    /* Color del pulgar al pasar el cursor */
+}
+
+/* Estilos para navegadores Firefox */
+.budget-slider::-moz-range-track {
+    background: #ddd;
+    height: 6px;
+    border-radius: 5px;
+}
+
+.budget-slider::-moz-range-progress {
+    background: linear-gradient(to right, #006d77, #006d77);
+    /* Color degradado de la pista activa en Firefox */
+    height: 6px;
+    border-radius: 5px;
+}
+
+.budget-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background-color: #006d77;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.budget-value {
+    position: absolute;
+    top: -10px;
+    /* Ajusta la distancia para colocarlo encima de la barra */
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: normal;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.category-selection {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s;
+}
+
+.category-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-item span {
+    margin-top: -25px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.category-item.selected {
+    transform: scale(1.1);
+    border: 2px solid #4CAF50;
+}
+
+/* Estilos para el boton generar itinerario */
+.generate-itinerary-button {
+    margin-top: 30px;
+    padding: 12px 24px;
+    background-color: #45a049;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.generate-itinerary-button:hover {
+    background-color: #347437;
+}

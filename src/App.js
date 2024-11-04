@@ -4,9 +4,10 @@ import "./App.css";
 import BarraNav from "./componentes/BarraNav";
 import Footer from "./componentes/Footer";
 import Button from "./componentes/Button";
-import Cambiodecontraseña from './componentes/Cambiodecontraseña';
+import RecuperarContraseña from './componentes/RecuperarContraseña';
 import Lugares from './componentes/Lugares';
 import HomePage from './componentes/HomePage';
+import Datosdelusuario from './componentes/Datosdelusuario';
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
       <div className="App">
         <BarraNav />
         <Routes>
-          <Route path="/cambio-de-contraseña" element={<Cambiodecontraseña />} />
+          <Route path="/RecuperarContraseña" element={<RecuperarContraseña />} />
           <Route path="/HomePage" element={<HomePage />} />
           <Route path="/lugares" element={<Lugares />} />
+          <Route path="/Datosdelusuario" element={<Datosdelusuario />} />
         </Routes>
         <Footer />
       </div>
