@@ -1,23 +1,23 @@
-import React from 'react';
-import backgroundImage from '../imgs/backgroundlobby.jpg';
-import imgVilla from '../imgs/Imgvilla.jpg';
-import imgApartamento from '../imgs/apartamento.jpg';
-import imgResort from '../imgs/resort.jpg';
-import imgCiudad from '../imgs/ciudad.jpg';
-import '../estilos/styHospedaje.css'; 
+import React from "react";
+import backgroundImage from "../imgs/viajero.jpg";
+import imgVilla from "../imgs/Imgvilla.jpg";
+import imgApartamento from "../imgs/apartamento.jpg";
+import imgResort from "../imgs/resort.jpg";
+import imgCiudad from "../imgs/ciudad.jpg";
+import "../estilos/styArmarPlan.css";
 
-export default function Destino() {
+export default function ArmarPlan() {
   return (
-    <div>
+    <div className="armarPlan">
       {/* Contenedor con imagen de fondo solo para la sección principal */}
       <div
-        className="background-section"
+        className="contenedorImagen"
         style={{
           backgroundImage: `url(${backgroundImage})`,
         }}
       >
         <div className="container">
-          
+          <h1>¡Busquemos actividades!</h1>
           {/* Selector principal con fondo azul claro */}
           <div className="selector-principal">
             <div className="selector-row">
@@ -63,7 +63,11 @@ export default function Destino() {
             <div className="card-body">
               <h5 className="card-title">Villas</h5>
               <p className="card-text">12,000 disponibles</p>
-              <p className="card-text"><small className="text-secondary">Última actualización hace 3 minutos</small></p>
+              <p className="card-text">
+                <small className="text-secondary">
+                  Última actualización hace 3 minutos
+                </small>
+              </p>
             </div>
             <img src={imgVilla} className="card-img" alt="Villa" />
           </div>
@@ -72,7 +76,11 @@ export default function Destino() {
             <div className="card-body">
               <h5 className="card-title">Apartamentos</h5>
               <p className="card-text">3,700 disponibles</p>
-              <p className="card-text"><small className="text-secondary">Última actualización hace 5 minutos</small></p>
+              <p className="card-text">
+                <small className="text-secondary">
+                  Última actualización hace 5 minutos
+                </small>
+              </p>
             </div>
             <img src={imgApartamento} className="card-img" alt="Apartamento" />
           </div>
@@ -81,7 +89,11 @@ export default function Destino() {
             <div className="card-body">
               <h5 className="card-title">Resorts</h5>
               <p className="card-text">1,700 disponibles</p>
-              <p className="card-text"><small className="text-secondary">Última actualización hace 10 minutos</small></p>
+              <p className="card-text">
+                <small className="text-secondary">
+                  Última actualización hace 10 minutos
+                </small>
+              </p>
             </div>
             <img src={imgResort} className="card-img" alt="Resort" />
           </div>
@@ -90,7 +102,11 @@ export default function Destino() {
             <div className="card-body">
               <h5 className="card-title">Ciudades</h5>
               <p className="card-text">57 disponibles</p>
-              <p className="card-text"><small className="text-secondary">Última actualización hace 15 minutos</small></p>
+              <p className="card-text">
+                <small className="text-secondary">
+                  Última actualización hace 15 minutos
+                </small>
+              </p>
             </div>
             <img src={imgCiudad} className="card-img" alt="Ciudad" />
           </div>

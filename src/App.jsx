@@ -4,9 +4,8 @@ import Footer from "./componentes/Footer"
 import Inicio from "./views/Inicio";
 import Registro from "./views/Registro";
 import InicioSesion from "./views/InicioSesion";
-import Destino from "./views/Destino";
-import { BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
-import CompShowBlogs from "./queries/mostrar";
+import ArmarPlan from "./views/ArmarPlan";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -17,7 +16,7 @@ function App() {
           <Route path="/Inicio" element={<Inicio />} />
           <Route path="/Registro" element={<Registro />} />
           <Route path="/InicioSesion" element={<InicioSesion />} />
-          <Route path="/Destino" element={<Destino />} />
+          <Route path="/ArmarPlan" element={<ArmarPlan />} />
         </Routes>
       </Router>
       <Footer />

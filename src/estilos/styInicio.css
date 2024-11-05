@@ -1,58 +1,18 @@
+@import "./styGeneral.css";
+
 .home {
   text-align: center;
-}
-
-/* Estilo para la sección de bienvenida */
-.welcome-section {
-  position: relative;
-  height: 600px; /* Ajusta la altura para el tamaño del header */
-  background-image: url("../imgs/travel05.jpg"); /* Ruta de la imagen de fondo */
-  background-size: cover; /* Hace que la imagen cubra todo el contenedor */
-  background-position: center; /* Centra la imagen en el contenedor */
-  background-repeat: no-repeat;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.welcome-content {
-  position: relative;
-  z-index: 1;
-}
-
-.welcome-content h1 {
-  font-size: 2.5em;
-  margin: 0;
-}
-
-.welcome-content p {
-  font-size: 1.2em;
-  color: #f0f0f0;
-  margin-top: 10px;
-}
-
-.create-itinerary-button {
-  padding: 15px 25px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 15px; /* Ajusta el tamaño del texto aquí */
-  text-decoration: none; /* Quita el subrayado */
-  display: inline-block; /* Asegura que se comporte como un botón */
-}
-
-.create-itinerary-button:hover {
-  background-color: #45a049;
+  padding: 0rem 2%;
+  background-color: var(--background-color);
 }
 
 /* Estilo para la sección de categorías */
 .categories-section {
   padding: 20px;
+}
+
+.contenedorImagen {
+  height: 88vh;
 }
 
 .categories {

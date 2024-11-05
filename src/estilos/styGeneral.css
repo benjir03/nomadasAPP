@@ -4,3 +4,70 @@
   --secondary-color: #e19577;
   --support-color: #83c5be;
 }
+
+.botonAccion {
+  background-color: var(--primary-color);
+  padding: 0rem;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.botonAccion:hover {
+  color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.contenedorImagen {
+  position: relative;
+  height: 600px; /* Ajusta la altura para el tamaño del header */
+  background-image: url("../imgs/travel05.jpg"); /* Ruta de la imagen de fondo */
+  background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+  background-position: center; /* Centra la imagen en el contenedor */
+  background-repeat: no-repeat;
+  color: var(--background-color);
+  display: flex;
+
+  justify-content: flex-start;
+  border-radius: 50px;
+}
+
+.contenidoImagen {
+  text-align: left;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  margin: 10px;
+  z-index: 1;
+}
+
+.contenidoImagen h1 {
+  font-size: 3.5em;
+  margin: 0;
+}
+
+.contenidoImagen p {
+  font-size: 1.5em;
+  color: var(--background-color);
+  margin-top: 10px;
+}
+
+.botonAccion2 {
+  padding: 15px 20px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  font-size: 1.25rem; /* Ajusta el tamaño del texto aquí */
+
+  text-decoration: none; /* Quita el subrayado */
+  display: inline-block; /* Asegura que se comporte como un botón */
+  font-weight: bold;
+}
+
+.botonAccion2:hover {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+}
