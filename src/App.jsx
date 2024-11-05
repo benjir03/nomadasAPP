@@ -1,10 +1,13 @@
 import "./App.css";
 import BarraNav from "./componentes/BarraNav";
+import Footer from "./componentes/Footer"
 import Inicio from "./views/Inicio";
 import Registro from "./views/Registro";
 import InicioSesion from "./views/InicioSesion";
 import Destino from "./views/Destino";
 import { BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
+import CompShowBlogs from "./queries/mostrar";
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +20,7 @@ function App() {
           <Route path="/Destino" element={<Destino />} />
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 }
