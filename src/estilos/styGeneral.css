@@ -4,3 +4,13 @@
   --secondary-color: #e19577;
   --support-color: #83c5be;
 }
+
+.botonAccion {
+  background-color: var(--primary-color);
+  padding: 0.4rem;
+  border-radius: 50px;
+}
+
+.botonAccion li a:hover {
+  color: var(--primary-color);
+}
