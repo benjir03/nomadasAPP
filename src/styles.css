@@ -1,0 +1,71 @@
+/* styles/styles.css */
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9f1f1;
+  }
+  .navbar, .footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .navbar a, .footer a {
+    text-decoration: none;
+    color: #1D4B5E;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+  .navbar a.active, .footer a:hover {
+    background-color: #D8EFFF;
+  }
+  .perfil {
+    display: flex;
+    align-items: center;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+  }
+  .left, .right {
+    width: 48%;
+  }
+  .right {
+    background-color: #2a7b72;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+  }
+  .calendar, .expenses, .activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .activity-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  .activity-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    margin-right: 15px;
+  }
+  .map {
+    margin-top: 20px;
+    color: #e0f2f1;
+  }
+  .map a {
+    color: #80cbc4;
+    text-decoration: none;
+  }
+  
