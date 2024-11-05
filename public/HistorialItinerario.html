@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Itinerarios Guardados</title>
+    <style>
+        /* Reset y configuración inicial */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('fondo.jpg'); /* Imagen de fondo */
+            background-size: cover;
+            color: #1D4B5E;
+        }
+
+        /* Estilos del encabezado */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar div {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #1D4B5E;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+
+        .navbar a.active {
+            background-color: #D8EFFF;
+            color: #1D4B5E;
+        }
+
+        .navbar .perfil img {
+            width: 30px;
+            height: 30px;
+            margin-right: 0.5rem;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
+
+        /* Estilos de los itinerarios */
+        .itinerary {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+
+        .itinerary img {
+            width: 250px; /* Tamaño más grande para la imagen */
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 1.5rem; /* Espacio entre la imagen y el texto */
+        }
+
+        .details {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        .details h3 {
+            margin: 0;
+            color: #1D4B5E;
+        }
+
+        .details p {
+            margin: 0.3rem 0;
+        }
+
+        .details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0;
+        }
+
+        .details ul li {
+            margin: 0.2rem 0;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 1.5rem; /* Espacio entre los detalles y los botones */
+        }
+
+        .actions button {
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 2px solid #1D4B5E;
+            border-radius: 10px;
+            background: none;
+            color: #1D4B5E;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .actions button:hover {
+            background-color: #D8EFFF;
+        }
+
+        /* Estilos del pie de página */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer p {
+            margin: 0;
+            font-weight: bold;
+            color: #1D4B5E;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #1D4B5E;
+            margin-top: 0.3rem;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .image-blur {
+            filter: blur(5px); /* Ajusta el valor en px según el grado de desenfoque deseado */
+        }
+    </style>    
+
+</head>
+<body>
+
+    <div class="navbar">
+        <div>
+            <a href="#">Nómadas</a>
+            <a href="#" class="active">Itinerario</a>
+            <a href="#">Lugares</a>
+            <a href="#">Historias</a>
+        </div>
+        <div class="perfil">
+            <img src="avatar.png" alt="Icono de perfil">
+            <a href="#">Mi perfil</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Historial de Itinerarios Guardados</h2>
+        
+        <div class="itinerary">
+            <div class="details">
+                <h3>Playa del Carmen, México</h3>
+                <p>Inicio: 12/12/2024</p>
+                <p>Fin: 20/12/2024</p>
+                <p>Presupuesto: $18,000 MXN</p>
+                <h3>Actividades</h3>
+                <ul>
+                    <li>Visita a cenotes</li>
+                    <li>Buceo en arrecifes</li>
+                    <li>Excursión a Tulum</li>
+                </ul>
+                <h3>Hotel</h3>
+                <p>Hotel Playa Palms, Calle 8 Norte, Playa del Carmen</p>
+            </div>
+            <img src="playa_del_carmen.jpeg" alt="Imagen de Playa del Carmen">
+            <div class="actions">
+                <button>Consultar</button>
+                <button>Imprimir</button>
+            </div>
+        </div>
+
+        <div class="itinerary">
+            <div class="details">
+                <h3>París, Francia</h3>
+                <p>Inicio: 05/04/2024</p>
+                <p>Fin: 12/04/2024</p>
+                <p>Presupuesto: €3,000 EUR</p>
+                <h3>Actividades</h3>
+                <ul>
+                    <li>Tour en la Torre Eiffel</li>
+                    <li>Visita al Museo del Louvre</li>
+                    <li>Paseo en barco por el Sena</li>
+                </ul>
+                <h3>Hotel</h3>
+                <p>Hotel Le Meurice, Rue de Rivoli, París</p>
+            </div>
+            <img src="paris.jpg" alt="Imagen de París">
+            <div class="actions">
+                <button>Consultar</button>
+                <button>Imprimir</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <div>
+            <p>Acerca de nosotros</p>
+            <a href="#">Equipo</a>
+        </div>
+        <div>
+            <p>Síguenos</p>
+            <a href="#">Instagram</a>
+            <a href="#">Youtube</a>
+        </div>
+        <div>
+            <p>¿Necesitas ayuda?</p>
+            <a href="#">Contáctanos</a>
+        </div>
+      </div>
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+/* Reset y configuración inicial */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #F3F3F3;
+    color: #1D4B5E;
+}
+
+/* Estilos del historial de itinerarios guardados */
+body {
+    background-image: url('fondo.jpg'); /* Imagen de fondo */
+    background-size: cover;
+    margin: 0;
+    color: #1D4B5E;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar a {
+    text-decoration: none;
+    color: #1D4B5E;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+.navbar a.active {
+    background-color: #D8EFFF;
+    color: #1D4B5E;
+}
+.navbar .perfil {
+    display: flex;
+    align-items: center;
+}
+.perfil img {
+    width: 30px;
+    margin-right: 0.5rem;
+}
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #13567F;
+}
+.itinerary {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+.itinerary img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.details {
+    flex: 1;
+    padding: 0 1rem;
+}
+.details h3 {
+    margin: 0;
+    color: #1D4B5E;
+}
+.details p {
+    margin: 0.3rem 0;
+}
+.details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+.details ul li {
+    margin: 0.2rem 0;
+}
+.actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.actions button {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 2px solid #1D4B5E;
+    border-radius: 10px;
+    background: none;
+    color: #1D4B5E;
+    cursor: pointer;
+    font-weight: bold;
+}
+.actions button:hover {
+    background-color: #D8EFFF;
+}
+
+/* Estilos de la barra de navegación y el pie de página */
+.navbar, .footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.bellasartes-image {
+    width: 800px;
+    height: 400px;
+    object-fit: cover; /* Para asegurar que la imagen se ajuste bien dentro del contenedor */
+    border-radius: 10px; /* Opcional, para darle bordes redondeados */
+}
+.bellasartes-imagetwo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* Esto asegura que la imagen se adapte al espacio sin deformarse */
+    border-radius: 10px; /* Opcional, para darle bordes redondeados */
+}
+.imagess {
+    width: 100px;
+    height: 230px;
+    object-fit: cover; /* Esto asegura que la imagen se adapte al espacio sin deformarse */
+    border-radius: 10px; /* Opcional, para darle bordes redondeados */
+}
+.navbar a, .footer a {
+    text-decoration: none;
+    color: #1D4B5E;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+.navbar a.active, .footer a:hover {
+    background-color: #D8EFFF;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.sidebar, .main {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+/* Sección principal */
+.main-section {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Sección de imágenes */
+.image-section {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.image-overlay h1 {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+/* Contenido descriptivo y mapa */
+.content {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.description {
+    flex: 3;
+    background-color: #e6f2f2;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1em; /* Aumenta el tamaño de la fuente */
+    line-height: 1.6; /* Mejora la legibilidad con un espacio de línea más amplio */
+    font-family: "Georgia", serif; /* Cambia a una fuente serif para un estilo más formal */
+    color: #333; /* Ajusta el color a un tono más oscuro para mejor contraste */
+}
+
+.map {
+    flex: 2;
+    background-color: #004D4D;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.map img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.map-info p {
+    margin-bottom: 5px;
+}
+
+.map-info a {
+    color: #B3FFFF;
+    text-decoration: none;
+}
+
+.map-info a:hover {
+    text-decoration: underline;
+}
+
+/* Sección de lugares recomendados */
+.top-places {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.top-places h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.places {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.place {
+    text-align: center;
+    background-color: white;
+    width: 23%;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.place img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.place p {
+    margin: 5px 0;
+}
+
+.place a {
+    color: #009999;
+    text-decoration: none;
+}
+
+.place a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos para la pantalla de itinerarios */
+input[type="date"], 
+input[type="text"], 
+input[type="number"], 
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #B0BEC5;
+    border-radius: 5px;
+}
+
+button {
+    padding: 0.5rem;
+    background-color: #1D4B5E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1976D2;
+}
+
+/* Actividades y Comidas */
+.activities, .meals {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.activities input[type="checkbox"],
+.meals input[type="checkbox"] {
+    margin-right: 10px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    background-color: #008080;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    cursor: pointer;
+}
+
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.calendar {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.date {
+    background-color: #005f5f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    width: 60px;
+}
+
+.cost-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.activities {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.activity {
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.activity img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.description {
+    padding: 10px;
+}
+
+.map {
+    background-color: #008080;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
