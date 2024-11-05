@@ -15,9 +15,10 @@ import {
 function Inicio() {
   return (
     <div className="home">
+      {/* <BarraNav /> */}
       {/* Sección de bienvenida */}
-      <section className="welcome-section">
-        <div className="welcome-content">
+      <section className="contenedorImagen">
+        <div className="contenidoImagen">
           <h1>Nómadas</h1>
           <p>
             Nos encargamos de diseñar y personalizar una experiencia de viaje
