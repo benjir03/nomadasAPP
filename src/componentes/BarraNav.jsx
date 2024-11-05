@@ -1,30 +1,37 @@
 import React from "react";
 //import { Link } from "react-router-dom";
 import "../estilos/styBarraNav.css";
-import {logoNomadas} from "../imgs/ArchivoImgs";
+import { logoNomadas } from "../imgs/ArchivoImgs";
 
 const BarraNav = () => {
   return (
     <header className="header">
       <div className="logo">
-          <img src = {logoNomadas} alt="Logo de la página" />
+        <Link to="/HomePage">
+          <img src={logoNomadas} alt="Logo de la página" />
+          <h1>Nómadas</h1>
+        </Link>
       </div>
       <nav>
         <ul className="nav-links">
           <li>
-            Itinerarios
+            <Link to="/Destino">Itinerarios</Link>
           </li>
           <li>
-            Lugares
+            <Link to="/Destino">Lugares</Link>
           </li>
           <li>
-            Historias
+            <Link to="/Destino">Historias</Link>
           </li>
           <li>
+            <Link className="botonAccion" to="/Registro">
               Registrarse
+            </Link>
           </li>
           <li>
+            <Link className="botonAccion" to="/InicioSesion">
               Iniciar sesión
+            </Link>
           </li>
         </ul>
       </nav>
