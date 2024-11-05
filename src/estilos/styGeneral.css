@@ -7,12 +7,14 @@
 
 .botonAccion {
   background-color: var(--primary-color);
-  padding: 0.4rem;
+  padding: 0rem;
   border-radius: 50px;
+  font-weight: bold;
 }
 
 .botonAccion:hover {
   color: var(--primary-color);
+  color: var(--background-color);
 }
 
 .contenedorImagen {
@@ -27,8 +29,6 @@
 
   justify-content: flex-start;
   border-radius: 50px;
-
-  height: 88vh;
 }
 
 .contenidoImagen {
@@ -41,12 +41,33 @@
 }
 
 .contenidoImagen h1 {
-  font-size: 2.5em;
+  font-size: 3.5em;
   margin: 0;
 }
 
 .contenidoImagen p {
-  font-size: 1.2em;
+  font-size: 1.5em;
   color: var(--background-color);
   margin-top: 10px;
+}
+
+.botonAccion2 {
+  padding: 15px 20px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  font-size: 1.25rem; /* Ajusta el tamaño del texto aquí */
+
+  text-decoration: none; /* Quita el subrayado */
+  display: inline-block; /* Asegura que se comporte como un botón */
+  font-weight: bold;
+}
+
+.botonAccion2:hover {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
 }

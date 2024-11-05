@@ -22,10 +22,10 @@ function Inicio() {
           <h1>Nómadas</h1>
           <p>
             Nos encargamos de diseñar y personalizar una experiencia de viaje
-            con base a tus gustos e intereses.
+            como a ti te gusta.
           </p>
-          <Link to="/ArmarPlan" className="create-itinerary-button botonAccion">
-            Comienza a crear un itinerario
+          <Link to="/ArmarPlan" className="botonAccion2">
+            Comienza a crear un plan
           </Link>
         </div>
       </section>

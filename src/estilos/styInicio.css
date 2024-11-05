@@ -6,27 +6,13 @@
   background-color: var(--background-color);
 }
 
-.create-itinerary-button {
-  padding: 15px 25px;
-  background-color: var(--primary-color);
-  color: var(--background-color);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 15px; /* Ajusta el tamaño del texto aquí */
-  text-decoration: none; /* Quita el subrayado */
-  display: inline-block; /* Asegura que se comporte como un botón */
-}
-
-.create-itinerary-button:hover {
-  background-color: var(--secondary-color);
-  color: var(--background-color);
-}
-
 /* Estilo para la sección de categorías */
 .categories-section {
   padding: 20px;
+}
+
+.contenedorImagen {
+  height: 88vh;
 }
 
 .categories {

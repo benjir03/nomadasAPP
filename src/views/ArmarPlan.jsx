@@ -1,5 +1,5 @@
 import React from "react";
-import backgroundImage from "../imgs/backgroundlobby.jpg";
+import backgroundImage from "../imgs/viajero.jpg";
 import imgVilla from "../imgs/Imgvilla.jpg";
 import imgApartamento from "../imgs/apartamento.jpg";
 import imgResort from "../imgs/resort.jpg";
@@ -8,15 +8,16 @@ import "../estilos/styArmarPlan.css";
 
 export default function ArmarPlan() {
   return (
-    <div>
+    <div className="armarPlan">
       {/* Contenedor con imagen de fondo solo para la sección principal */}
       <div
-        className="background-section"
+        className="contenedorImagen"
         style={{
           backgroundImage: `url(${backgroundImage})`,
         }}
       >
         <div className="container">
+          <h1>¡Busquemos actividades!</h1>
           {/* Selector principal con fondo azul claro */}
           <div className="selector-principal">
             <div className="selector-row">

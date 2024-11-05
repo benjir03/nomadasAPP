@@ -6,11 +6,19 @@
   background-color: var(--background-color);
 }
 
+.contenedorImagen {
+  height: 88vh;
+}
+
 /* Contenedor principal */
 .container {
   width: 90%;
   margin: auto;
   max-width: 1200px;
+}
+
+.container h1 {
+  font-size: 3.5rem;
 }
 
 /* Selector principal */
