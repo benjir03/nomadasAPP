@@ -4,7 +4,7 @@ import imgVilla from "../imgs/Imgvilla.jpg";
 import imgApartamento from "../imgs/apartamento.jpg";
 import imgResort from "../imgs/resort.jpg";
 import imgCiudad from "../imgs/ciudad.jpg";
-import "../estilos/styHospedaje.css";
+import "../estilos/styArmarPlan.css";
 
 export default function ArmarPlan() {
   return (
