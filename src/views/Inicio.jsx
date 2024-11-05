@@ -1,5 +1,4 @@
 import React from "react";
-import BarraNav from "../componentes/BarraNav";
 import { Link } from "react-router-dom";
 import "../estilos/styInicio.css";
 import {
@@ -15,7 +14,6 @@ import {
 function Inicio() {
   return (
     <div className="home">
-      {/* <BarraNav /> */}
       {/* Sección de bienvenida */}
       <section className="contenedorImagen">
         <div className="contenidoImagen">
