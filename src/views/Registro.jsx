@@ -1,25 +1,6 @@
 import React, { useState } from 'react';
 import backgroundImage from '../imgs/fondoRegistrarse.jpg';
 import '../estilos/styRegistro.css'; 
-<<<<<<< HEAD
-import axios from 'axios';
-
-const URI = 'http:://localhost/8000/'
-
-export default function Registro() {
-  const [nombre, setnombre] = useState('')
-  const [fecha_nacimeinto, setfecha_nacimeinto] = useState('')
-  const [correo, setcorreo] = useState('')
-  const [contraseña, setcontraseña] = useState('')
-  const [genero, setgenero] = useState('')
-  const [telefono, settelefono] = useState('')
-  const [verificado, setverificado] = useState('')
-  const store = (e) => {
-    e.preventDefault()
-    axios.post(URI, {})
-  }
-  
-=======
 import { validarCorreo, validarContrasena, confirmarContrasena } from '../validaciones/validacionesRegistro';
 
 export default function Registro() {
@@ -57,7 +38,6 @@ export default function Registro() {
     }
   };
 
->>>>>>> 511b859dbdd773050442ba6bf8a34778d8f39bf5
   return (
     <div
       className="registro-container"
@@ -65,13 +45,6 @@ export default function Registro() {
         backgroundImage: `url(${backgroundImage})`,
       }}
     >
-<<<<<<< HEAD
-      <form action={store}>
-        
-      </form>
-      {/* Título */}
-=======
->>>>>>> 511b859dbdd773050442ba6bf8a34778d8f39bf5
       <h1 className="registro-title">El mundo no se va a conquistar solo</h1>
       <p className="registro-subtitle">Regístrate</p>
       
