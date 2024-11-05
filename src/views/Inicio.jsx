@@ -15,7 +15,6 @@ import {
 function Inicio() {
   return (
     <div className="home">
-
       {/* Sección de bienvenida */}
       <section className="welcome-section">
         <div className="welcome-content">
@@ -24,7 +23,7 @@ function Inicio() {
             Nos encargamos de diseñar y personalizar una experiencia de viaje
             con base a tus gustos e intereses.
           </p>
-          <Link to="../Destino" className="create-itinerary-button">
+          <Link to="../Destino" className="create-itinerary-button botonAccion">
             Comienza a crear un itinerario
           </Link>
         </div>
