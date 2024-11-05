@@ -1,5 +1,9 @@
+@import "./styGeneral.css";
+
 .home {
   text-align: center;
+  padding: 0rem 3rem;
+  background-color: var(--background-color);
 }
 
 /* Estilo para la sección de bienvenida */
@@ -10,11 +14,12 @@
   background-size: cover; /* Hace que la imagen cubra todo el contenedor */
   background-position: center; /* Centra la imagen en el contenedor */
   background-repeat: no-repeat;
-  color: #fff;
+  color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  border-radius: 50px;
 }
 
 .welcome-content {

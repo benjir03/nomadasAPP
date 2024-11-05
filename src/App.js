@@ -4,7 +4,7 @@ import Inicio from "./views/Inicio";
 import Registro from "./views/Registro";
 import InicioSesion from "./views/InicioSesion";
 import Destino from "./views/Destino";
-import { BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
