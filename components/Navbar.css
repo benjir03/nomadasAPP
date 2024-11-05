@@ -1,0 +1,28 @@
+/* src/components/Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #1D4B5E;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.navbar a.active {
+  background-color: #D8EFFF;
+  color: #1D4B5E;
+}
+
+.navbar .perfil img {
+  width: 30px;
+  height: 30px;
+  margin-right: 0.5rem;
+}
