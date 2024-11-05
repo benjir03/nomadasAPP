@@ -42,8 +42,8 @@
 
 .create-itinerary-button {
   padding: 15px 25px;
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--background-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -54,7 +54,7 @@
 }
 
 .create-itinerary-button:hover {
-  background-color: #45a049;
+  background-color: var(--secondary-color);
 }
 
 /* Estilo para la sección de categorías */

@@ -47,7 +47,7 @@
   transition: color 0.3s;
 }
 
-.nav-links li a:hover {
+.nav-links li .normal:hover {
   color: var(--secondary-color);
 }
 
@@ -56,5 +56,6 @@
 }
 
 .nav-links li .botonAccion:hover {
-  color: var(--support-color);
+  transition: background-color 0.3s;
+  background-color: var(--secondary-color);
 }

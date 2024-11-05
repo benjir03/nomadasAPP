@@ -21,13 +21,19 @@ const BarraNav = () => {
       <nav>
         <ul className="nav-links">
           <li>
-            <Link to="/Destino">Itinerarios</Link>
+            <Link className="normal" to="/Destino">
+              Itinerarios
+            </Link>
           </li>
           <li>
-            <Link to="/Destino">Lugares</Link>
+            <Link className="normal" to="/Destino">
+              Lugares
+            </Link>
           </li>
           <li>
-            <Link to="/Destino">Historias</Link>
+            <Link className="normal" to="/Destino">
+              Historias
+            </Link>
           </li>
           <li>
             <Link className="botonAccion" to="/Registro">
