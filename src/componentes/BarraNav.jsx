@@ -15,23 +15,23 @@ const BarraNav = () => {
           />
         </Link>
         <Link to="/Inicio">
-          <h1>Nómadas</h1>
+          <h1>NómadasAPP</h1>
         </Link>
       </div>
       <nav>
         <ul className="nav-links">
           <li>
-            <Link className="normal" to="/Destino">
+            <Link className="normal" to="/ArmarPlan">
               Arma tu plan
             </Link>
           </li>
           <li>
-            <Link className="normal" to="/Destino">
+            <Link className="normal" to="/ArmarPlan">
               Recomendaciones
             </Link>
           </li>
           <li>
-            <Link className="normal" to="/Destino">
+            <Link className="normal" to="/ArmarPlan">
               Experiencias
             </Link>
           </li>
