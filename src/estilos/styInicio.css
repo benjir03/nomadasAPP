@@ -12,6 +12,7 @@
 }
 
 .contenedorImagen {
+  background-image: url("../imgs/travel05.jpg"); /* Ruta de la imagen de fondo */
   height: 88vh;
 }
 

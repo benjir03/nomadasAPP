@@ -16,40 +16,34 @@ export default function ArmarPlan() {
           backgroundImage: `url(${backgroundImage})`,
         }}
       >
-        <div className="container">
-          <h1>¡Busquemos actividades!</h1>
-          {/* Selector principal con fondo azul claro */}
-          <div className="selector-principal">
-            <div className="selector-row">
-              <div className="selector-item">
-                <label>Destino</label>
-                <button className="find-destination">Encontrar destino</button>
-              </div>
-              <div className="selector-item">
-                <label>Tiempo estimado de estancia</label>
-                <select className="select-field">
-                  <option>Medio día</option>
-                  <option>1 día</option>
-                  <option>Fin de semana</option>
-                </select>
-              </div>
-              <div className="selector-item">
-                <label>Acompañantes</label>
-                <select className="select-field">
-                  <option>Voy solo</option>
-                  <option>Con amigos</option>
-                  <option>Familia</option>
-                </select>
-              </div>
-              <div className="selector-item">
-                <label>Presupuesto</label>
-                <input type="range" className="range-field" />
-              </div>
-            </div>
-            <div className="button-container">
-              <button className="search-button">BUSCAR AVENTURAS</button>
-            </div>
+        <div className="contenidoImagenPlan">
+          <h1>Busquemos algo increíble</h1>
+          <div className="selector-item">
+            <label>Destino</label>
+            <button className="find-destination">Encontrar destino</button>
           </div>
+          <div className="selector-item">
+            <label>Tiempo estimado de estancia</label>
+            <select className="select-field">
+              <option>Medio día</option>
+              <option>1 día</option>
+              <option>Fin de semana</option>
+            </select>
+          </div>
+          <div className="selector-item">
+            <label>Acompañantes</label>
+            <select className="select-field">
+              <option>Voy solo</option>
+              <option>Con amigos</option>
+              <option>Familia</option>
+            </select>
+          </div>
+          <div className="selector-item">
+            <label>Presupuesto</label>
+            <input type="range" className="range-field" />
+          </div>
+          <button className="search-button">Explora actividades</button>
+          <div className="button-container"></div>
         </div>
       </div>
 
