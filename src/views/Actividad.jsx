@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../estilos/styActividad.css";
 
-// Importación directa de imágenes
-import imgChapultepec from "../imgs/chapultepec.jpeg";
-import imgBiblioteca from "../imgs/Biblioteca.jpg";
-import imgBellasArtes from "../imgs/ImgBellasArtes.jpeg";
-import imgMonuRevolucion from "../imgs/ImgMonuRevolucion.jpeg";
-import fondiActividad from "../imgs/ImgIslaMuñecas.jpg";
+// Importación cartas dinamicas
 import FichaCategoria from "../componentes/FichaCategoria";
+// Importación directa de imágenes
+import {
+  chapultepec,
+  biblioteca,
+  bellasartes,
+  monumentorevolucion,
+  islamuñecas,
+} from "../imgs/ArchivoImgs";
 
 function Actividad() {
   return (
@@ -17,7 +20,7 @@ function Actividad() {
       <section
         className="contenedorUno"
         style={{
-          backgroundImage: `url(${fondiActividad})`,
+          backgroundImage: `url(${islamuñecas})`,
           height: `88vh`,
           backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
           backgroundPosition: "center", // Centra la imagen,
@@ -65,22 +68,22 @@ function Actividad() {
         <div className="listaLugares">
           <FichaCategoria />
           <div className="lugar">
-            <img src={imgChapultepec} alt="Lugar 1" />
+            <img src={chapultepec} alt="Lugar 1" />
             <p>Lorem ipsum.</p>
             <Link to="#">Más...</Link>
           </div>
           <div className="lugar">
-            <img src={imgBiblioteca} alt="Lugar 2" />
+            <img src={biblioteca} alt="Lugar 2" />
             <p>Lorem ipsum.</p>
             <Link to="#">Más...</Link>
           </div>
           <div className="lugar">
-            <img src={imgBellasArtes} alt="Lugar 3" />
+            <img src={bellasartes} alt="Lugar 3" />
             <p>Lorem ipsum.</p>
             <Link to="#">Más...</Link>
           </div>
           <div className="lugar">
-            <img src={imgMonuRevolucion} alt="Lugar 4" />
+            <img src={monumentorevolucion} alt="Lugar 4" />
             <p>Lorem ipsum.</p>
             <Link to="#">Más...</Link>
           </div>

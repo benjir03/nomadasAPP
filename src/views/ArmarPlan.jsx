@@ -6,6 +6,13 @@ import imgApartamento from "../imgs/apartamento.jpg";
 import imgResort from "../imgs/resort.jpg";
 import imgCiudad from "../imgs/ciudad.jpg";
 import "../estilos/styArmarPlan.css";
+import {
+  chapultepec,
+  biblioteca,
+  bellasartes,
+  monumentorevolucion,
+  islamuñecas,
+} from "../imgs/ArchivoImgs";
 
 export default function ArmarPlan() {
   return (
