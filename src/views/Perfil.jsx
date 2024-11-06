@@ -75,7 +75,6 @@ const Perfil = () => {
             >
               <div className="contenedorDos">
                 <h1>Hola {usuario.nombre}</h1>
-                <p>Encuentra tus datos que quieras consultar o editar.</p>
               </div>
             </div>
             <div>
@@ -98,7 +97,8 @@ const Perfil = () => {
               <Link className="botonAccion" to="/Modificar">
                 Modificar
               </Link>
-              <button onClick={handleDelete} className="btn-eliminar">
+              <br /><br /><br />
+              <button onClick={handleDelete} className="botonAccion">
                 Eliminar cuenta
               </button>
             </div>
@@ -121,7 +121,7 @@ const Perfil = () => {
   return (
     <div className="perfil-container">
       <aside className="sidebar">
-        <h2 className="perfil-nombre">{`Bienvenido, ${usuario.nombre}`}</h2>
+        <h2 className="perfil-nombre">{`Bienvenido ${usuario.nombre}`}</h2>
         <ul>
           <li
             className={activeSection === "info" ? "active" : ""}

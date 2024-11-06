@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../estilos/estiloInicio.css";
 import fondiInicio from "../imgs/fondoInicio.jpg";
-
 import FichaCategoria from "../componentes/FichaCategoria";
 
 import {
@@ -44,9 +43,9 @@ function Inicio() {
       <section className="categoriasSec">
         <h2>¡Explora lugares fuera de lo común!</h2>
         <div className="categorias">
-          <FichaCategoria />
-          <FichaCategoria />
-          <FichaCategoria />
+          <FichaCategoria titulo="Historia" contenido="Algo bonito" imagen = {historiaImage}/>
+          <FichaCategoria titulo="Benji" contenido="Scrum master" imagen = {arteImage}/>
+          <FichaCategoria titulo="Uriel" contenido="Scrum master" imagen = {gastronomiaImage}/>
           {/* <Link to="/Lugares/Historia" className="category-card">
             <img
               src={historiaImage}

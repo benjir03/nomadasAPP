@@ -41,3 +41,13 @@
   padding: 20px;
   flex-grow: 1;
 }
+
+.botonAccion {
+  width: auto;
+  padding: auto;
+}
+
+.contenedorVista button{
+  width: auto;
+  margin: auto;
+}

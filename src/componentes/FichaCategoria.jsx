@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import "../estilos/estiloFichaCategoria.css";
 import fondiCategorias from "../imgs/Biblioteca.jpg";
+import {
+  historiaImage,
+  gastronomiaImage,
+  arteImage
+} from "../imgs/ArchivoImgs";
 
-const FichaCategoria = () => {
+const FichaCategoria = ({titulo, contenido, imagen}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
       className="contenedorFicha"
       style={{
-        backgroundImage: `url(${fondiCategorias})`,
+        backgroundImage: `url(${imagen})`,
         height: "40vh",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -21,6 +26,19 @@ const FichaCategoria = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <div
+        className="gradienteSuperpuesto"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "linear-gradient(to top, #006d77, transparent)",
+          opacity: isHovered ? 0 : 1, // Cambia la opacidad para la transición
+          transition: "opacity 0.3s ease", // Transición suave de la opacidad
+        }}
+      ></div>
       {/* Capa del Gradiente */}
       <div
         className="gradienteSuperpuesto"
@@ -37,8 +55,8 @@ const FichaCategoria = () => {
       ></div>
 
       <div className="contenedorContendioFichas">
-        <h1>Nombre chido</h1>
-        <p>Info importante del lugar.</p>
+        <h1>{titulo}</h1>
+        <p>{contenido}</p>
       </div>
     </div>
   );
