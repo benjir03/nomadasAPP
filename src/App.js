@@ -7,6 +7,7 @@ import Registro from "./views/Registro";
 import InicioSesion from "./views/InicioSesion";
 import ArmarPlan from "./views/ArmarPlan";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Verificacion from './componentes/Verificacion';
 
 function App() {
   return (
@@ -20,6 +21,17 @@ function App() {
           <Route path="/ArmarPlan" element={<ArmarPlan />} />
           <Route path="/Lugares" element={<Registro />} />
           <Route path="/Perfil" element={<Perfil />} />
+          {/*Rutas protegidas para verificacion*/}
+          <Route path="/login" element={<InicioSesion />} />
+                <Route path="/registro" element={<Registro />} />
+                
+                {/* Rutas protegidas */}
+                <Route element={<Verificacion />}>
+                    <Route path="/perfil" element={<Perfil />} />
+                </Route>
+
+                {/* Ruta de inicio */}
+                <Route path="/" element={<InicioSesion />} />
         </Routes>
       </Router>
       <Footer />

@@ -30,9 +30,21 @@ const Perfil = () => {
   const handleLogout = async () => {
     try {
       await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true });
-      navigate('/Inicio'); // Redirige a la página de inicio de sesión después de cerrar sesión
+      navigate('/Inicio');
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
+    }
+  };
+
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar tu cuenta?");
+    if (confirmDelete) {
+      try {
+        await axios.delete('http://localhost:3001/auth/eliminar', { withCredentials: true });
+        navigate('/Inicio'); // Redirige después de eliminar la cuenta
+      } catch (error) {
+        console.error('Error al eliminar la cuenta:', error);
+      }
     }
   };
 
@@ -47,25 +59,18 @@ const Perfil = () => {
             <p><strong>Correo Electrónico:</strong> {usuario.correo}</p>
             <p><strong>Género:</strong> {usuario.genero}</p>
             <p><strong>Teléfono:</strong> {usuario.telefono}</p>
+            <button onClick={() => navigate('/ModificarPerfil')} className="btn-modificar">Modificar</button>
+            <button onClick={handleDelete} className="btn-eliminar">Eliminar cuenta</button>
           </div>
         );
       case 'settings':
-        return (
-          <div>
-            <h3>Información Personal</h3>
-            <p><strong>Nombre:</strong> {usuario.nombre}</p>
-            <p><strong>Fecha de Nacimiento:</strong> {usuario.fecha_nacimiento}</p>
-            <p><strong>Correo Electrónico:</strong> {usuario.correo}</p>
-            <p><strong>Género:</strong> {usuario.genero}</p>
-            <p><strong>Teléfono:</strong> {usuario.telefono}</p>
-          </div>
-        );
+        return <div>Configuración de cuenta</div>;
       case 'security':
         return <div>Seguridad</div>;
       case 'notifications':
         return <div>Notificaciones</div>;
       case 'logout':
-        handleLogout(); // Llama a handleLogout al seleccionar "Cerrar sesión"
+        handleLogout();
         return null;
       default:
         return <div>Selecciona una opción</div>;

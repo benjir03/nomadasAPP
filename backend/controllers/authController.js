@@ -37,11 +37,43 @@ exports.getPerfil = (req, res) => {
     const userId = req.userId;
 
     // Obtiene todos los campos del usuario
-    pool.query('SELECT nombre, fecha_nacimiento, correo, genero, telefono FROM Usuario WHERE id_usuario = ?', [userId], (err, results) => {
+    pool.query('SELECT id_usuario, nombre, fecha_nacimiento, correo, genero, telefono FROM Usuario WHERE id_usuario = ?', [userId], (err, results) => {
         if (err || results.length === 0) {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
 
         res.json(results[0]); // Envía todos los campos de la base de datos
     });
+};
+
+exports.eliminarCuenta = (req, res) => {
+    const userId = req.userId;
+
+    pool.query('DELETE FROM Usuario WHERE id_usuario = ?', [userId], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error al eliminar la cuenta' });
+        }
+        res.clearCookie('sessionToken'); // Elimina la cookie de sesión
+        res.json({ message: 'Cuenta eliminada exitosamente' });
+    });
+};
+
+// Función para modificar el perfil del usuario
+exports.modificarPerfil = (req, res) => {
+    const userId = req.userId; // ID del usuario obtenido del token de sesión
+    const { nombre, fecha_nacimiento, correo, genero, telefono } = req.body;
+
+    // Actualiza el perfil del usuario en la base de datos
+    pool.query(
+        'UPDATE Usuario SET nombre = ?, fecha_nacimiento = ?, correo = ?, genero = ?, telefono = ? WHERE id_usuario = ?',
+        [nombre, fecha_nacimiento, correo, genero, telefono, userId],
+        (err, results) => {
+            if (err) {
+                console.error('Error al actualizar el perfil:', err);
+                return res.status(500).json({ error: 'Error al actualizar el perfil' });
+            }
+
+            res.json({ message: 'Perfil actualizado exitosamente' });
+        }
+    );
 };

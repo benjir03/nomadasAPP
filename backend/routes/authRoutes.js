@@ -10,8 +10,13 @@ router.post('/login', authController.login);
 // Ruta para cerrar sesión (logout)
 router.post('/logout', authController.logout);
 
-// Ruta para obtener el perfil del usuario autenticado
+// Ruta para obtener información del perfil (protegida)
 router.get('/perfil', verifyToken, authController.getPerfil);
 
-module.exports = router;
+// Ruta para eliminar cuenta (protegida)
+router.delete('/eliminar', verifyToken, authController.eliminarCuenta);
 
+// Ruta para modificar el perfil del usuario (protegida)
+router.put('/modificar', verifyToken, authController.modificarPerfil);
+
+module.exports = router;
