@@ -26,7 +26,7 @@ const BarraNav = () => {
             </Link>
           </li>
           <li>
-            <Link className="normal" to="/ArmarPlan">
+            <Link className="normal" to="/Actividad">
               Recomendaciones
             </Link>
           </li>

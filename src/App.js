@@ -7,6 +7,7 @@ import Registro from "./views/Registro";
 import InicioSesion from "./views/InicioSesion";
 import Modificar from "./views/ModificarPerfil";
 import ArmarPlan from "./views/ArmarPlan";
+import Actividad from "./views/Actividad";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from './componentes/Verificacion';
 
@@ -20,7 +21,7 @@ function App() {
           <Route path="/Registro" element={<Registro />} />
           <Route path="/InicioSesion" element={<InicioSesion />} />
           <Route path="/ArmarPlan" element={<ArmarPlan />} />
-          <Route path="/Lugares" element={<Registro />} />
+          <Route path="/Actividad" element={<Actividad />} />
           <Route path="/Perfil" element={<Perfil />} />
           <Route path="/Modificar" element={<Modificar />} />
           {/*Rutas protegidas para verificacion*/}
