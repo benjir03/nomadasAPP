@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../estilos/styInicio.css";
+import "../estilos/estiloInicio.css";
+import fondiInicio from "../imgs/fondoInicio.jpg";
 
 import {
   historiaImage,
@@ -20,7 +21,7 @@ function Inicio() {
       <section
         className="contenedorUno"
         style={{
-          backgroundImage: { fondoInicio },
+          backgroundImage: `url(${fondiInicio})`,
           height: `88vh`,
           backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
           backgroundPosition: "center", // Centra la imagen,

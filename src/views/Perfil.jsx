@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../estilos/styPerfil.css";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import fondiPerfil from "../imgs/fondoPerfil.jpg";
 
 const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
@@ -63,7 +64,15 @@ const Perfil = () => {
       case "info":
         return (
           <div className="contenedorVista">
-            <div className="contenedorUno">
+            <div
+              className="contenedorUno"
+              style={{
+                backgroundImage: `url(${fondiPerfil})`, // Asegúrate de usar la interpolación correcta
+                height: "88vh", // Usa comillas para las unidades
+                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+                backgroundPosition: "center", // Centra la imagen
+              }}
+            >
               <div className="contenedorDos">
                 <h1>Hola {usuario.nombre}</h1>
                 <p>Encuentra tus datos que quieras consultar o editar.</p>
