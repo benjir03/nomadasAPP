@@ -4,3 +4,7 @@
   background-image: url("../imgs/fondoInicio.jpg");
   height: 88vh;
 }
+
+.contenedorVista {
+  background-color: var(--background-color);
+}

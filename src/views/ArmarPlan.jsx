@@ -4,18 +4,13 @@ import imgVilla from "../imgs/Imgvilla.jpg";
 import imgApartamento from "../imgs/apartamento.jpg";
 import imgResort from "../imgs/resort.jpg";
 import imgCiudad from "../imgs/ciudad.jpg";
-import "../estilos/styArmarPlan.css";
+import "../estilos/estiloArmarPlan.css";
 
 export default function ArmarPlan() {
   return (
-    <div className="armarPlan">
+    <div className="contenedorVista">
       {/* Contenedor con imagen de fondo solo para la sección principal */}
-      <div
-        className="contenedorImagen"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}
-      >
+      <div className="contenedorUno">
         <div className="contenidoImagenPlan">
           <h1>Busquemos algo increíble</h1>
           <div className="selector-item">

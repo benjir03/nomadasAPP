@@ -4,12 +4,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0rem 1rem;
   background-color: var(--background-color);
   color: var(--primary-color);
 }
 
 .logo {
+  /* Elementos del logo (izquierda) */
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -17,36 +18,38 @@
 }
 
 .logo > a {
+  /* Elementos dentro del link .logo */
   display: flex;
   align-items: center;
   text-decoration: none; /* Remueve el subrayado */
   color: inherit; /* Hereda el color del contenedor */
 }
 
-.logo > h1 {
-  font-size: 1.5rem;
-  margin: 0;
-}
-
 .logo > a > img {
-  width: 50px; /* Ajusta a un tamaño adecuado */
-  height: auto;
-  display: block;
+  /* Accede a la imagen del logo */
+  width: 50px;
+}
+.logo > a > h1 {
+  /* Accede al texto del logo */
+  font-size: 2rem;
 }
 
 .nav-links {
+  /* Todos los textos del NavBar (derecha) */
   list-style: none;
   display: flex;
   gap: 1rem;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
-.nav-links li a {
+.nav-links .normal {
+  /* Elementos sin botón */
   color: var(--primary-color);
   text-decoration: none;
-  font-weight: bold;
+  transition: color 0.3s;
 }
 
-.nav-links li .normal:hover {
+.normal:hover {
   color: var(--secondary-color);
-  transition: 0.3s;
 }
