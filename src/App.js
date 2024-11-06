@@ -6,6 +6,7 @@ import Perfil from "./views/Perfil";
 import Registro from "./views/Registro";
 import InicioSesion from "./views/InicioSesion";
 import ArmarPlan from "./views/ArmarPlan";
+import Actividad from "./views/Actividad";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
           <Route path="/Registro" element={<Registro />} />
           <Route path="/InicioSesion" element={<InicioSesion />} />
           <Route path="/ArmarPlan" element={<ArmarPlan />} />
-          <Route path="/Lugares" element={<Registro />} />
+          <Route path="/Actividad" element={<Actividad />} />
           <Route path="/Perfil" element={<Perfil />} />
         </Routes>
       </Router>
