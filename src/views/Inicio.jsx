@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../estilos/styInicio.css";
+import "../estilos/estiloInicio.css";
 
 import {
   historiaImage,
@@ -14,10 +14,10 @@ import {
 
 function Inicio() {
   return (
-    <div className="home">
+    <div className="contenedorVista">
       {/* Sección de bienvenida */}
-      <section className="contenedorImagen">
-        <div className="contenidoImagen">
+      <section className="contenedorUno">
+        <div className="contenedorDos">
           <h1>Nómadas</h1>
           <p>
             Nos encargamos de diseñar y personalizar una experiencia de viaje

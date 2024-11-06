@@ -1,5 +1,5 @@
 import React from "react";
-import backgroundImage from "../imgs/viajero.jpg";
+import backgroundImage from "../imgs/fondoArmarPlan.jpg";
 import imgVilla from "../imgs/Imgvilla.jpg";
 import imgApartamento from "../imgs/apartamento.jpg";
 import imgResort from "../imgs/resort.jpg";
