@@ -45,6 +45,11 @@ const BarraNav = () => {
               Iniciar sesión
             </Link>
           </li>
+          <li>
+            <Link className="botonAccion" to="/Perfil">
+              Perfil
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
