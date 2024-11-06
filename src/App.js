@@ -5,7 +5,7 @@ import Inicio from "./views/Inicio";
 import Perfil from "./views/Perfil";
 import Registro from "./views/Registro";
 import InicioSesion from "./views/InicioSesion";
-import Carousel from "./componentes/Carousel";
+import Experiencias from "./views/Expeciencias";
 import Modificar from "./views/ModificarPerfil";
 import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";
@@ -23,6 +23,7 @@ function App() {
           <Route path="/InicioSesion" element={<InicioSesion />} />
           <Route path="/ArmarPlan" element={<ArmarPlan />} />
           <Route path="/Actividad" element={<Actividad />} />
+          <Route path="/Experiencias" element={<Experiencias />} />
           <Route path="/Perfil" element={<Perfil />} />
           <Route path="/Modificar" element={<Modificar />} />
           {/*Rutas protegidas para verificacion*/}
