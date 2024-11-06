@@ -8,7 +8,7 @@
 .contenedorVista {
   text-align: center;
   padding: 0rem 2%;
-  background-color: var(--secondary-color);
+  background-color: var(--background-color);
 }
 
 .botonAccion {
@@ -77,4 +77,25 @@
 .botonAccion2:hover {
   background-color: var(--secondary-color);
   color: var(--background-color);
+}
+.botonAccion3 {
+  padding: 15px 20px;
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  font-size: 1.25rem; /* Ajusta el tamaño del texto aquí */
+
+  text-decoration: none; /* Quita el subrayado */
+  display: inline-block; /* Asegura que se comporte como un botón */
+  font-weight: bold;
+}
+
+.botonAccion3:hover {
+  background-color: var(--background-color);
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
 }

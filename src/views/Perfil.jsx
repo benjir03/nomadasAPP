@@ -65,6 +65,7 @@ const Perfil = () => {
       case "info":
         return (
           <div className="contenedorVista">
+                        
             <div
               className="contenedorUno"
               style={{
@@ -74,37 +75,58 @@ const Perfil = () => {
                 backgroundPosition: "center", // Centra la imagen
               }}
             >
+                            
               <div className="contenedorDos">
-                <h1>Hola {usuario.nombre}</h1>
+                                <h1>Hola {usuario.nombre}</h1>
+                              
               </div>
+                          
             </div>
+                        
             <div>
-              <h2>Información general</h2>
+                            <h2>Información general</h2>
+                            
               <p>
-                <strong>Nombre:</strong> {usuario.nombre}
+                                <strong>Nombre:</strong> {usuario.nombre}
+                              
               </p>
+                            
               <p>
-                <strong>Fecha de Nacimiento:</strong> {usuario.fecha_nacimiento}
+                                <strong>Fecha de Nacimiento:</strong>{" "}
+                {usuario.fecha_nacimiento}
+                              
               </p>
+                            
               <p>
-                <strong>Género:</strong> {usuario.genero}
+                                <strong>Género:</strong> {usuario.genero}
+                              
               </p>
+                            
               <p>
-                <strong>Teléfono:</strong> {usuario.telefono}
+                                <strong>Teléfono:</strong> {usuario.telefono}
+                              
               </p>
+                            
               <Link className="botonAccion" to="/Modificar">
-                Modificar
+                                Modificar               
               </Link>
-              <br /><br /><br />
+                            
+              <br />
+              <br />
+              <br />
+                            
               <button onClick={handleDelete} className="botonAccion">
-                Eliminar cuenta
+                                Eliminar cuenta               
               </button>
+                          
             </div>
+                      
           </div>
         );
       case "settings":
         return (
           <div className="contenedorVista">
+                        
             <div
               className="contenedorUno"
               style={{
@@ -114,30 +136,48 @@ const Perfil = () => {
                 backgroundPosition: "center", // Centra la imagen
               }}
             >
+                            
               <div className="contenedorDos">
-                <h1>Hola {usuario.nombre}</h1>
+                                <h1>Hola {usuario.nombre}</h1>
+                              
               </div>
+                          
             </div>
+                        
             <div>
-              <h2>Información de cuenta</h2>
+                            <h2>Información de cuenta</h2>
+                            
               <p>
-                <strong>Nombre:</strong> {usuario.correo}
+                                <strong>Nombre:</strong> {usuario.correo}
+                              
               </p>
+                            
               <p>
-                <strong>Correo</strong> {usuario.correo}
+                                <strong>Correo</strong> {usuario.correo}
+                              
               </p>
+                            
               <p>
-                <strong>Teléfono:</strong> {usuario.telefono}
+                                <strong>Teléfono:</strong> {usuario.telefono}
+                              
               </p>
+                            
               <br />
+                            
               <Link className="botonAccion" to="/Modificar">
-                Modificar
+                                Modificar               
               </Link>
-              <br /><br /><br />
-              <button onClick={handleDelete} className="botonAccion">
-                Eliminar cuenta
+                            
+              <br />
+              <br />
+              <br />
+                            
+              <button onClick={handleDelete} className="botonAccion3">
+                                Eliminar cuenta               
               </button>
+                          
             </div>
+                      
           </div>
         );
       case "security":
@@ -156,6 +196,7 @@ const Perfil = () => {
     <div className="perfil-container">
       <aside className="sidebar">
         <h2 className="perfil-nombre">{`Bienvenido ${usuario.nombre}`}</h2>
+
         <ul>
           <li
             className={activeSection === "info" ? "active" : ""}
@@ -163,24 +204,28 @@ const Perfil = () => {
           >
             Información personal
           </li>
+
           <li
             className={activeSection === "settings" ? "active" : ""}
             onClick={() => setActiveSection("settings")}
           >
             Configuración de cuenta
           </li>
+
           <li
             className={activeSection === "security" ? "active" : ""}
             onClick={() => setActiveSection("security")}
           >
             Seguridad
           </li>
+
           <li
             className={activeSection === "notifications" ? "active" : ""}
             onClick={() => setActiveSection("notifications")}
           >
             Notificaciones
           </li>
+
           <li
             className={activeSection === "logout" ? "active" : ""}
             onClick={() => setActiveSection("logout")}
