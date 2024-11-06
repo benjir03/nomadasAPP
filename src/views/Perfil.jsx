@@ -3,6 +3,7 @@ import "../estilos/styPerfil.css";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import fondiPerfil from "../imgs/fondoPerfil.jpg";
+import fondiConfig from "../imgs/ciudad.jpg";
 
 const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
@@ -86,9 +87,6 @@ const Perfil = () => {
                 <strong>Fecha de Nacimiento:</strong> {usuario.fecha_nacimiento}
               </p>
               <p>
-                <strong>Correo Electrónico:</strong> {usuario.correo}
-              </p>
-              <p>
                 <strong>Género:</strong> {usuario.genero}
               </p>
               <p>
@@ -105,7 +103,43 @@ const Perfil = () => {
           </div>
         );
       case "settings":
-        return <div>Configuración de cuenta</div>;
+        return (
+          <div className="contenedorVista">
+            <div
+              className="contenedorUno"
+              style={{
+                backgroundImage: `url(${fondiConfig})`, // Asegúrate de usar la interpolación correcta
+                height: "50vh", // Usa comillas para las unidades
+                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+                backgroundPosition: "center", // Centra la imagen
+              }}
+            >
+              <div className="contenedorDos">
+                <h1>Hola {usuario.nombre}</h1>
+              </div>
+            </div>
+            <div>
+              <h2>Información de cuenta</h2>
+              <p>
+                <strong>Nombre:</strong> {usuario.correo}
+              </p>
+              <p>
+                <strong>Correo</strong> {usuario.correo}
+              </p>
+              <p>
+                <strong>Teléfono:</strong> {usuario.telefono}
+              </p>
+              <br />
+              <Link className="botonAccion" to="/Modificar">
+                Modificar
+              </Link>
+              <br /><br /><br />
+              <button onClick={handleDelete} className="botonAccion">
+                Eliminar cuenta
+              </button>
+            </div>
+          </div>
+        );
       case "security":
         return <div>Seguridad</div>;
       case "notifications":

@@ -22,7 +22,7 @@ function Inicio() {
         className="contenedorUno"
         style={{
           backgroundImage: `url(${fondiInicio})`,
-          height: `88vh`,
+          height: `90vh`,
           backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
           backgroundPosition: "center", // Centra la imagen,
         }}
