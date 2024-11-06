@@ -64,10 +64,13 @@ const Perfil = () => {
         return (
           <div className="contenedorVista">
             <div className="contenedorUno">
-              <div className="contenedorDos"></div>
+              <div className="contenedorDos">
+                <h1>Hola {usuario.nombre}</h1>
+                <p>Encuentra tus datos que quieras consultar o editar.</p>
+              </div>
             </div>
             <div>
-              <h3>Información</h3>
+              <h2>Información general</h2>
               <p>
                 <strong>Nombre:</strong> {usuario.nombre}
               </p>

@@ -12,6 +12,9 @@ import user2Image from "./arte.JPG";
 import user3Image from "./arte.JPG";
 import user4Image from "./arte.JPG";
 
+// Inicio
+import fondoInicio from "./fondoInicio.jpg";
+
 // Expórtala para ser usada
 export {
   logoNomadas,
@@ -22,4 +25,5 @@ export {
   user2Image,
   user3Image,
   user4Image,
+  fondoInicio,
 };

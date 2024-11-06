@@ -10,13 +10,23 @@ import {
   user2Image,
   user3Image,
   user4Image,
+  fondoInicio,
 } from "../imgs/ArchivoImgs";
 
 function Inicio() {
   return (
     <div className="contenedorVista">
       {/* Sección de bienvenida */}
-      <section className="contenedorUno">
+      <section
+        className="contenedorUno"
+        style={{
+          backgroundImage: { fondoInicio },
+          height: `88vh`,
+          backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+          backgroundPosition: "center", // Centra la imagen,
+          backgroundColor: "lightgray",
+        }}
+      >
         <div className="contenedorDos">
           <h1>Nómadas</h1>
           <p>
