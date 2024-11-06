@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import backgroundImage from '../imgs/inicioSesion.jpg'; 
 import '../estilos/styInicioSesion.css'; 
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { validarCorreo, validarContrasena } from '../validaciones/validacionesInicioSesion';
 
 export default function InicioSesion() {
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [errores, setErrores] = useState({});
+  const navigate = useNavigate();
 
-  const manejarEnvio = (e) => {
+  const manejarEnvio = async (e) => {
     e.preventDefault();
     const nuevosErrores = {};
 
@@ -18,7 +21,7 @@ export default function InicioSesion() {
       nuevosErrores.correo = errorCorreo;
     }
 
-    // Validación de la contraseña con mensajes detallados
+    // Validación de la contraseña
     const erroresContrasena = validarContrasena(contrasena);
     if (erroresContrasena.length > 0) {
       nuevosErrores.contrasena = erroresContrasena;
@@ -26,8 +29,20 @@ export default function InicioSesion() {
 
     setErrores(nuevosErrores);
 
+    // Si no hay errores, envía la solicitud de inicio de sesión
     if (Object.keys(nuevosErrores).length === 0) {
-      console.log("Formulario de inicio de sesión enviado");
+      try {
+        const response = await axios.post('http://localhost:3001/auth/login', {
+          correo,
+          contraseña: contrasena
+        }, { withCredentials: true });
+
+        console.log(response.data.message); // Mensaje de éxito
+        navigate('/Perfil'); // Redirige a Perfil
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error.response?.data || error.message);
+        alert('Hubo un problema con el inicio de sesión.');
+      }
     }
   };
 

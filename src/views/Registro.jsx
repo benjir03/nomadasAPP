@@ -9,7 +9,7 @@ const URI = "http://localhost:3001/usuario/insertar"; // URL correcta
 
 const Registro = () => {
     const [correo, setCorreo] = useState('');
-    const [contraseña, setContraseña] = useState(''); // Usamos 'contraseña' en lugar de 'contrasena'
+    const [contraseña, setContraseña] = useState('');
     const [confirmacion, setConfirmacion] = useState('');
     const [nombre, setNombre] = useState('');
     const [fechaNacimiento, setFechaNacimiento] = useState('');
@@ -41,7 +41,7 @@ const Registro = () => {
                   genero,
                   telefono,
               });
-              navigate('/Perfil.jsx');
+              navigate('/Perfil');
           } catch (error) {
             console.error('Error al registrar usuario:', error);
               alert('Hubo un problema con el registro. Inténtalo de nuevo.');

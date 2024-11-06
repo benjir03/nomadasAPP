@@ -20,9 +20,6 @@ export function validarCorreo(correo) {
     if (!/[0-9]/.test(contrasena)) {
       erroresContrasena.push('La contraseña debe incluir al menos un número.');
     }
-    if (!/[!@#$%^&*]/.test(contrasena)) {
-      erroresContrasena.push('La contraseña debe incluir al menos un carácter especial.');
-    }
   
     return erroresContrasena.length > 0 ? erroresContrasena : '';
   }

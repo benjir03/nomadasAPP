@@ -1,8 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../estilos/styPerfil.css';
+import axios from 'axios';
 
 const Perfil = () => {
   const [activeSection, setActiveSection] = useState('info');
+  const [nombreUsuario, setNombreUsuario] = useState('');
+
+  useEffect(() => {
+    const fetchPerfil = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/auth/perfil', { withCredentials: true });
+        setNombreUsuario(response.data.nombre);
+      } catch (error) {
+        console.error('Error al obtener el perfil del usuario:', error);
+      }
+    };
+
+    fetchPerfil();
+  }, []);
 
   const renderContent = () => {
     switch (activeSection) {
@@ -24,6 +39,7 @@ const Perfil = () => {
   return (
     <div className="perfil-container">
       <aside className="sidebar">
+        <h2 className="perfil-nombre">{`Bienvenido, ${nombreUsuario}`}</h2>
         <ul>
           <li
             className={activeSection === 'info' ? 'active' : ''}
