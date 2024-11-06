@@ -1,0 +1,12 @@
+@import "./styGeneral.css";
+@import "./styPerfil.css";
+
+.modificarPerfil {
+  color: var(--primary-color);
+  align-items: center;
+}
+
+label {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
