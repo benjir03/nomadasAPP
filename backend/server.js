@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser'); // Importa el paquete COOKIE PARS
 const app = express();
 const usuarioRoutes = require('./routes/usuarioRoutes'); //Rutas de usuario
 const authRoutes = require('./routes/authRoutes'); // Rutas de autenticación
+require('dotenv').config();
 
 // Middleware para manejar JSON
 app.use(express.json());

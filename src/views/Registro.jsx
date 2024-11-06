@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { validarCorreo, validarContrasena, confirmarContrasena, validarNombre, validarFechaNacimiento, validarGenero, validarTelefono } from '../validaciones/validacionesRegistro';
 import { GoogleLogin } from '@react-oauth/google';
+import {jwtDecode} from 'jwt-decode';
 
 const URI = "http://localhost:3001/usuario/insertar"; // URL correcta
 
@@ -17,22 +18,27 @@ const Registro = () => {
     const [genero, setGenero] = useState('');
     const [telefono, setTelefono] = useState('');
     const [errores, setErrores] = useState({});
+    const [googleData, setGoogleData] = useState(null); // Estado para los datos de Google
     const navigate = useNavigate();
     
-    const store = async(e) => {
+    const store = async (e) => {
       e.preventDefault();
       manejarEnvio(e);
-  
+
       if (Object.keys(errores).length === 0) {
         try {
-            const response = await axios.post(URI, {
-                nombre,
+            const requestData = {
+                nombre: googleData?.name || nombre,
                 fecha_nacimiento: fechaNacimiento,
-                correo,
+                correo: googleData?.email || correo,
                 contraseña,
                 genero,
                 telefono,
-            }, { withCredentials: true }); // Envío de cookies
+                google_id: googleData?.sub,
+                picture: googleData?.picture,
+            };
+            
+            const response = await axios.post(URI, requestData, { withCredentials: true }); // Envío de cookies
 
             console.log(response.data.message); // Muestra mensaje de éxito
             navigate('/Perfil'); // Redirige al perfil
@@ -41,8 +47,8 @@ const Registro = () => {
             alert('Hubo un problema con el registro. Inténtalo de nuevo.');
         }
       }
-    };  
-    
+    };
+
     const manejarEnvio = (e) => {
       e.preventDefault();
       const nuevosErrores = {};
@@ -70,6 +76,12 @@ const Registro = () => {
       if (errorTelefono) nuevosErrores.telefono = errorTelefono;
       setErrores(nuevosErrores);
     };
+
+    const handleGoogleSuccess = (credentialResponse) => {
+      const decoded = jwtDecode(credentialResponse.credential);
+      console.log(decoded); // Verifica que los datos están bien
+      setGoogleData(decoded); // Almacena los datos de Google en el estado
+    };
     
     return (
       <div
@@ -88,6 +100,7 @@ const Registro = () => {
             className="registro-input"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
+            disabled={!!googleData} // Desactiva si viene de Google
           />
           {errores.nombre && <p className="error">{errores.nombre}</p>}
           
@@ -139,6 +152,7 @@ const Registro = () => {
             className="registro-input"
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
+            disabled={!!googleData} // Desactiva si viene de Google
           />
           {errores.correo && <p className="error">{errores.correo}</p>}
           
@@ -164,9 +178,7 @@ const Registro = () => {
           <button type="submit" className="registro-button">¡Quiero ser un Nómada!</button>
           <div className='btn'>
             <GoogleLogin
-              onSuccess={(CredentialResponse) =>{
-                console.log(CredentialResponse);
-              }}
+              onSuccess={handleGoogleSuccess}
               onError={() =>{
                 console.log('Inicio fallido');
               }}

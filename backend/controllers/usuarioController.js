@@ -5,7 +5,6 @@ const pool = require('../db/connection');
 exports.insertarUsuario = (req, res) => {
     const { nombre, fecha_nacimiento, correo, contraseña, genero, telefono } = req.body;
 
-    // Insertar nuevo usuario en la base de datos
     pool.query(
         'INSERT INTO Usuario (nombre, fecha_nacimiento, correo, contraseña, genero, telefono) VALUES (?, ?, ?, ?, ?, ?)',
         [nombre, fecha_nacimiento, correo, contraseña, genero, telefono],
@@ -15,18 +14,17 @@ exports.insertarUsuario = (req, res) => {
                 return res.status(500).json({ error: 'Error en la inserción' });
             }
 
-            // Genera el token de sesión
             const userId = results.insertId;
             const token = jwt.sign({ id_usuario: userId }, 'tu_secreto', { expiresIn: '1h' });
 
-            // Establece la cookie con el token
+            // Envía el token en una cookie y en la respuesta JSON
             res.cookie('sessionToken', token, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
                 maxAge: 3600000 // 1 hora
             });
 
-            res.json({ message: 'Usuario registrado y autenticado', id: userId });
+            res.json({ message: 'Usuario registrado y autenticado', id: userId, token });
         }
     );
 };
