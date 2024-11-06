@@ -4,6 +4,7 @@ import '../estilos/styRegistro.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { validarCorreo, validarContrasena, confirmarContrasena, validarNombre, validarFechaNacimiento, validarGenero, validarTelefono } from '../validaciones/validacionesRegistro';
+import { GoogleLogin } from '@react-oauth/google';
 
 const URI = "http://localhost:3001/usuario/insertar"; // URL correcta
 
@@ -41,36 +42,35 @@ const Registro = () => {
         }
       }
     };  
-
+    
     const manejarEnvio = (e) => {
       e.preventDefault();
       const nuevosErrores = {};
-
+      
       // Validaciones
       const errorCorreo = validarCorreo(correo);
       if (errorCorreo) nuevosErrores.correo = errorCorreo;
-
+      
       const erroresContrasena = validarContrasena(contraseña);
       if (erroresContrasena.length > 0) nuevosErrores.contraseña = erroresContrasena;
-
+      
       const errorConfirmacion = confirmarContrasena(contraseña, confirmacion);
       if (errorConfirmacion) nuevosErrores.confirmacion = errorConfirmacion;
-
+      
       const errorNombre = validarNombre(nombre);
       if (errorNombre) nuevosErrores.nombre = errorNombre;
-
+      
       const errorFechaNacimiento = validarFechaNacimiento(fechaNacimiento);
       if (errorFechaNacimiento) nuevosErrores.fechaNacimiento = errorFechaNacimiento;
-
+      
       const errorGenero = validarGenero(genero);
       if (errorGenero) nuevosErrores.genero = errorGenero;
-
+      
       const errorTelefono = validarTelefono(telefono);
       if (errorTelefono) nuevosErrores.telefono = errorTelefono;
-
       setErrores(nuevosErrores);
     };
-
+    
     return (
       <div
         className="registro-container"
@@ -161,9 +161,18 @@ const Registro = () => {
             onChange={(e) => setConfirmacion(e.target.value)}
           />
           {errores.confirmacion && <p className="error">{errores.confirmacion}</p>}
-
           <button type="submit" className="registro-button">¡Quiero ser un Nómada!</button>
-
+          <div className='btn'>
+            <GoogleLogin
+              onSuccess={(CredentialResponse) =>{
+                console.log(CredentialResponse);
+              }}
+              onError={() =>{
+                console.log('Inicio fallido');
+              }}
+              cookiePolicy={"single_host_policy"}
+            />
+          </div>
           <p className="registro-link">
             ¿Ya eres un nómada?{' '}
             <span className="registro-login-link">
