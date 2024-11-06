@@ -50,7 +50,16 @@ const Perfil = () => {
           </div>
         );
       case 'settings':
-        return <div>Configuración de cuenta</div>;
+        return (
+          <div>
+            <h3>Información Personal</h3>
+            <p><strong>Nombre:</strong> {usuario.nombre}</p>
+            <p><strong>Fecha de Nacimiento:</strong> {usuario.fecha_nacimiento}</p>
+            <p><strong>Correo Electrónico:</strong> {usuario.correo}</p>
+            <p><strong>Género:</strong> {usuario.genero}</p>
+            <p><strong>Teléfono:</strong> {usuario.telefono}</p>
+          </div>
+        );
       case 'security':
         return <div>Seguridad</div>;
       case 'notifications':
