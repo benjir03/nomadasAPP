@@ -1,35 +1,41 @@
+@import "./styGeneral.css";
+
+.contenedorUno {
+  background-image: url("../imgs/fondoInicio.jpg");
+  height: 88vh;
+}
+
 .perfil-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .sidebar {
-    width: 250px;
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-right: 1px solid #ddd;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    padding: 10px;
-    cursor: pointer;
-    color: #333;
-    font-weight: 500;
-  }
-  
-  .sidebar li:hover,
-  .sidebar li.active {
-    background-color: #ddd;
-    color: #000;
-  }
-  
-  .content {
-    padding: 20px;
-    flex-grow: 1;
-  }
-  
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+  background-color: #ddd;
+  color: #000;
+}
+
+.content {
+  padding: 20px;
+  flex-grow: 1;
+}
