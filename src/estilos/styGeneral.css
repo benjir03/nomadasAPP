@@ -5,6 +5,12 @@
   --support-color: #83c5be;
 }
 
+.contenedorVista {
+  text-align: center;
+  padding: 0rem 2%;
+  background-color: var(--secondary-color);
+}
+
 .botonAccion {
   background-color: var(--primary-color);
   padding: 0rem;
@@ -17,7 +23,7 @@
   color: var(--background-color);
 }
 
-.contenedorImagen {
+.contenedorUno {
   position: relative;
   height: 600px; /* Ajusta la altura para el tamaño del header */
   background-size: cover; /* Hace que la imagen cubra todo el contenedor */
@@ -30,7 +36,7 @@
   border-radius: 50px;
 }
 
-.contenidoImagen {
+.contenedorDos {
   text-align: left;
   position: absolute;
   bottom: 1rem;
@@ -39,12 +45,12 @@
   z-index: 1;
 }
 
-.contenidoImagen h1 {
+.contenedorDos h1 {
   font-size: 3.5em;
   margin: 0;
 }
 
-.contenidoImagen p {
+.contenedorDos p {
   font-size: 1.5em;
   color: var(--background-color);
   margin-top: 10px;
