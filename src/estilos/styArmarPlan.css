@@ -6,13 +6,9 @@
   background-color: var(--background-color);
 }
 
-.contenedorImagen {
-  height: 88vh;
-}
-
 .contenidoImagenPlan {
   text-align: left;
-  position: absolute;
+  position: relative;
   color: var(--primary-color);
   background-color: var(--background-color);
   padding: 1rem;

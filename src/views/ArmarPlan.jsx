@@ -15,39 +15,41 @@ export default function ArmarPlan() {
         className="contenedorUno"
         style={{
           backgroundImage: `url(${fondiArmarPlan})`,
-          height: `88vh`,
+          height: `60vh`,
           backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
           backgroundPosition: "center", // Centra la imagen,
         }}
       >
-        <h1>Busquemos algo increíble</h1>
-        <div className="contenidoImagenPlan">
-          <div className="selector-item">
-            <label>Destino</label>
-            <button className="find-destination">Encontrar destino</button>
+        <div className="contenedorDosDos">
+          <div className="contenidoImagenPlan">
+            <h1>Busquemos algo increíble</h1>
+            <div className="selector-item">
+              <label>Destino</label>
+              <button className="find-destination">Encontrar destino</button>
+            </div>
+            <div className="selector-item">
+              <label>Tiempo estimado de estancia</label>
+              <select className="select-field">
+                <option>Medio día</option>
+                <option>1 día</option>
+                <option>Fin de semana</option>
+              </select>
+            </div>
+            <div className="selector-item">
+              <label>Acompañantes</label>
+              <select className="select-field">
+                <option>Voy solo</option>
+                <option>Con amigos</option>
+                <option>Familia</option>
+              </select>
+            </div>
+            <div className="selector-item">
+              <label>Presupuesto</label>
+              <input type="range" className="range-field" />
+            </div>
+            <button className="search-button">Explora actividades</button>
+            <div className="button-container"></div>
           </div>
-          <div className="selector-item">
-            <label>Tiempo estimado de estancia</label>
-            <select className="select-field">
-              <option>Medio día</option>
-              <option>1 día</option>
-              <option>Fin de semana</option>
-            </select>
-          </div>
-          <div className="selector-item">
-            <label>Acompañantes</label>
-            <select className="select-field">
-              <option>Voy solo</option>
-              <option>Con amigos</option>
-              <option>Familia</option>
-            </select>
-          </div>
-          <div className="selector-item">
-            <label>Presupuesto</label>
-            <input type="range" className="range-field" />
-          </div>
-          <button className="search-button">Explora actividades</button>
-          <div className="button-container"></div>
         </div>
       </div>
 
