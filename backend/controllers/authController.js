@@ -32,15 +32,16 @@ exports.logout = (req, res) => {
     res.json({ message: 'Sesión cerrada exitosamente' });
 };
 
-// Función para obtener perfil de usuario
+// Función para obtener el perfil de usuario completo
 exports.getPerfil = (req, res) => {
-    const userId = req.userId; // Obtenido del middleware `verifyToken`
-    
-    pool.query('SELECT nombre FROM Usuario WHERE id_usuario = ?', [userId], (err, results) => {
+    const userId = req.userId;
+
+    // Obtiene todos los campos del usuario
+    pool.query('SELECT nombre, fecha_nacimiento, correo, genero, telefono FROM Usuario WHERE id_usuario = ?', [userId], (err, results) => {
         if (err || results.length === 0) {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
 
-        res.json({ nombre: results[0].nombre });
+        res.json(results[0]); // Envía todos los campos de la base de datos
     });
 };
