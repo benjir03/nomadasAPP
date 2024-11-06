@@ -1,13 +1,11 @@
 export function validarCorreo(correo) {
   const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!correo) return "El correo es obligatorio.";
   if (!regexCorreo.test(correo)) return "El correo no es válido.";
   return null;
 }
 
 export function validarContrasena(contrasena) {
   const errores = [];
-  if (!contrasena) errores.push("La contraseña es obligatoria.");
   if (contrasena.length < 6) errores.push("La contraseña debe tener al menos 6 caracteres.");
   if (!/[A-Z]/.test(contrasena)) errores.push("La contraseña debe contener al menos una letra mayúscula.");
   if (!/[0-9]/.test(contrasena)) errores.push("La contraseña debe contener al menos un número.");

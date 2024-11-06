@@ -3,7 +3,7 @@ import backgroundImage from '../imgs/fondoRegistrarse.jpg';
 import '../estilos/styRegistro.css'; 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { validarCorreo, validarContrasena, confirmarContrasena, validarNombre, validarFechaNacimiento, validarGenero, validarTelefono } from '../validaciones/validacionesRegistro';
+import { validarCorreo, validarContrasena, validarNombre } from '../validaciones/validacionesRegistro';
 import { GoogleLogin } from '@react-oauth/google';
 import {jwtDecode} from 'jwt-decode';
 
@@ -14,9 +14,6 @@ const Registro = () => {
     const [contraseña, setContraseña] = useState('');
     const [confirmacion, setConfirmacion] = useState('');
     const [nombre, setNombre] = useState('');
-    const [fechaNacimiento, setFechaNacimiento] = useState('');
-    const [genero, setGenero] = useState('');
-    const [telefono, setTelefono] = useState('');
     const [errores, setErrores] = useState({});
     const [googleData, setGoogleData] = useState(null); // Estado para los datos de Google
     const navigate = useNavigate();
@@ -29,11 +26,8 @@ const Registro = () => {
         try {
             const requestData = {
                 nombre: googleData?.name || nombre,
-                fecha_nacimiento: fechaNacimiento,
                 correo: googleData?.email || correo,
                 contraseña,
-                genero,
-                telefono,
                 google_id: googleData?.sub,
                 picture: googleData?.picture,
             };
@@ -54,27 +48,15 @@ const Registro = () => {
       const nuevosErrores = {};
       
       // Validaciones
+      const errorNombre = validarNombre(nombre);
+      if (errorNombre) nuevosErrores.nombre = errorNombre;
+
+
       const errorCorreo = validarCorreo(correo);
       if (errorCorreo) nuevosErrores.correo = errorCorreo;
       
       const erroresContrasena = validarContrasena(contraseña);
       if (erroresContrasena.length > 0) nuevosErrores.contraseña = erroresContrasena;
-      
-      const errorConfirmacion = confirmarContrasena(contraseña, confirmacion);
-      if (errorConfirmacion) nuevosErrores.confirmacion = errorConfirmacion;
-      
-      const errorNombre = validarNombre(nombre);
-      if (errorNombre) nuevosErrores.nombre = errorNombre;
-      
-      const errorFechaNacimiento = validarFechaNacimiento(fechaNacimiento);
-      if (errorFechaNacimiento) nuevosErrores.fechaNacimiento = errorFechaNacimiento;
-      
-      const errorGenero = validarGenero(genero);
-      if (errorGenero) nuevosErrores.genero = errorGenero;
-      
-      const errorTelefono = validarTelefono(telefono);
-      if (errorTelefono) nuevosErrores.telefono = errorTelefono;
-      setErrores(nuevosErrores);
     };
 
     const handleGoogleSuccess = (credentialResponse) => {
@@ -103,48 +85,6 @@ const Registro = () => {
             disabled={!!googleData} // Desactiva si viene de Google
           />
           {errores.nombre && <p className="error">{errores.nombre}</p>}
-          
-          <input
-            type="date"
-            placeholder="Fecha de nacimiento"
-            className="registro-input"
-            value={fechaNacimiento}
-            onChange={(e) => setFechaNacimiento(e.target.value)}
-          />
-          {errores.fechaNacimiento && <p className="error">{errores.fechaNacimiento}</p>}
-          
-          <div className="registro-input">
-            <label>
-              <input
-                type="radio"
-                name="genero"
-                value="M"
-                checked={genero === "M"}
-                onChange={(e) => setGenero(e.target.value)}
-              />
-              Masculino
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="genero"
-                value="F"
-                checked={genero === "F"}
-                onChange={(e) => setGenero(e.target.value)}
-              />
-              Femenino
-            </label>
-          </div>
-          {errores.genero && <p className="error">{errores.genero}</p>}
-          
-          <input
-            type="tel"
-            placeholder="Ingresa tu teléfono"
-            className="registro-input"
-            value={telefono}
-            onChange={(e) => setTelefono(e.target.value)}
-          />
-          {errores.telefono && <p className="error">{errores.telefono}</p>}
           
           <input
             type="email"
