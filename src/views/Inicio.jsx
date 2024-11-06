@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "../estilos/estiloInicio.css";
 import fondiInicio from "../imgs/fondoInicio.jpg";
 
+import FichaCategoria from "../componentes/FichaCategoria";
+
 import {
   historiaImage,
   gastronomiaImage,
@@ -39,10 +41,13 @@ function Inicio() {
       </section>
 
       {/* Sección de categorías */}
-      <section className="categories-section">
+      <section className="categoriasSec">
         <h2>¡Explora lugares fuera de lo común!</h2>
-        <div className="categories">
-          <Link to="/Lugares/Historia" className="category-card">
+        <div className="categorias">
+          <FichaCategoria />
+          <FichaCategoria />
+          <FichaCategoria />
+          {/* <Link to="/Lugares/Historia" className="category-card">
             <img
               src={historiaImage}
               alt="Historia"
@@ -61,7 +66,7 @@ function Inicio() {
           <Link to="/Lugares/Arte" className="category-card">
             <img src={arteImage} alt="Arte" className="category-image" />
             <p className="category-text">Arte</p>
-          </Link>
+          </Link> */}
         </div>
         <Link to="/Lugares" className="more-categories-link">
           Más categorías...

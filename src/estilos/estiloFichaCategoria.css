@@ -1,0 +1,37 @@
+@import "./styGeneral.css";
+
+.contenedorFicha {
+  position: relative;
+  background-color: var(--primary-color);
+  border-radius: 25px;
+  height: 10rem;
+  width: 30rem;
+  justify-content: flex-start;
+  display: flex;
+
+  background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+  background-position: center; /* Centra la imagen en el contenedor */
+  background-repeat: no-repeat;
+}
+
+.contenedorContendioFichas {
+  position: absolute; /* Permite posicionar el elemento con respecto a su contenedor padre */
+  bottom: 1rem; /* Ubica el contenido 10px desde la parte inferior */
+  left: 1rem; /* Ubica el contenido 10px desde la izquierda */
+  margin: 0; /* Elimina el margen si no es necesario */
+  z-index: 1; /* Asegura que el contenido esté por encima de otros elementos si es necesario */
+  width: max-content; /* Ajusta el ancho al contenido */
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.contenedorContendioFichas h1 {
+  color: var(--background-color);
+  font-size: 3em;
+  margin: 0;
+}
+
+.contenedorContendioFichas p {
+  font-size: 1.5em;
+  color: var(--background-color);
+  margin-top: 10px;
+}

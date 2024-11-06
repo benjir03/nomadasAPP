@@ -1,5 +1,6 @@
 import React from "react";
-import backgroundImage from "../imgs/fondoArmarPlan.jpg";
+import fondiArmarPlan from "../imgs/fondoArmarPlan.jpg";
+
 import imgVilla from "../imgs/Imgvilla.jpg";
 import imgApartamento from "../imgs/apartamento.jpg";
 import imgResort from "../imgs/resort.jpg";
@@ -10,9 +11,17 @@ export default function ArmarPlan() {
   return (
     <div className="contenedorVista">
       {/* Contenedor con imagen de fondo solo para la sección principal */}
-      <div className="contenedorUno">
+      <div
+        className="contenedorUno"
+        style={{
+          backgroundImage: `url(${fondiArmarPlan})`,
+          height: `88vh`,
+          backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+          backgroundPosition: "center", // Centra la imagen,
+        }}
+      >
+        <h1>Busquemos algo increíble</h1>
         <div className="contenidoImagenPlan">
-          <h1>Busquemos algo increíble</h1>
           <div className="selector-item">
             <label>Destino</label>
             <button className="find-destination">Encontrar destino</button>
