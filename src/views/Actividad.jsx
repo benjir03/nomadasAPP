@@ -16,7 +16,7 @@ function Actividad() {
         <div className="contenidoImagen">
           <h1>Isla de las muñecas</h1>
           <p>
-             Una isla llena de cientos de muñecos colgados, en descomposición y decapitados. 
+            Una isla llena de cientos de muñecos colgados, en descomposición y decapitados. 
           </p>
         </div>
       </section>
