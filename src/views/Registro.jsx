@@ -35,7 +35,7 @@ const Registro = () => {
             const response = await axios.post(URI, requestData, { withCredentials: true }); // Envío de cookies
 
             console.log(response.data.message); // Muestra mensaje de éxito
-            navigate('/Perfil'); // Redirige al perfil
+            navigate('/Completar'); // Redirige al perfil
         } catch (error) {
             console.error('Error al registrar usuario:', error);
             alert('Hubo un problema con el registro. Inténtalo de nuevo.');

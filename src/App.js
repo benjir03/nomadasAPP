@@ -11,6 +11,7 @@ import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from './componentes/Verificacion';
+import CompletarPerfil from "./views/CompletarPerfil";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Actividad" element={<Actividad />} />
           <Route path="/Experiencias" element={<Experiencias />} />
           <Route path="/Perfil" element={<Perfil />} />
+          <Route path="/Completar" element={<CompletarPerfil />} />
           <Route path="/Modificar" element={<Modificar />} />
           {/*Rutas protegidas para verificacion*/}
           <Route path="/login" element={<InicioSesion />} />
