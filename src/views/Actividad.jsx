@@ -7,17 +7,29 @@ import imgChapultepec from "../imgs/chapultepec.jpeg";
 import imgBiblioteca from "../imgs/Biblioteca.jpg";
 import imgBellasArtes from "../imgs/ImgBellasArtes.jpeg";
 import imgMonuRevolucion from "../imgs/ImgMonuRevolucion.jpeg";
+import fondiActividad from "../imgs/ImgIslaMuñecas.jpg";
+import FichaCategoria from "../componentes/FichaCategoria";
 
 function Actividad() {
   return (
     <div className="Actividad">
       {/* Sección de bienvenida */}
-      <section className="contenedorImagen">
-        <div className="contenidoImagen">
+      <section
+        className="contenedorUno"
+        style={{
+          backgroundImage: `url(${fondiActividad})`,
+          height: `88vh`,
+          backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+          backgroundPosition: "center", // Centra la imagen,
+        }}
+      >
+        <div className="contenedorDos">
           <h1>Isla de las muñecas</h1>
           <p>
-            Una isla llena de cientos de muñecos colgados, en descomposición y decapitados. 
+            Una isla llena de cientos de muñecos colgados, en descomposición y
+            decapitados.
           </p>
+          <Link className="botonAccion2">Agregar al plan</Link>
         </div>
       </section>
 
@@ -25,9 +37,10 @@ function Actividad() {
       <section className="actividadInfo">
         <div className="descripcion">
           <h2>La Isla de las Muñecas</h2>
-          <p>México City, Mexico</p>
+          <p>Precio $$ Duración 3-5 hr</p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac lacus non augue auctor imperdiet sit amet nec metus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac
+            lacus non augue auctor imperdiet sit amet nec metus.
           </p>
         </div>
         <div className="mapa">
@@ -48,8 +61,9 @@ function Actividad() {
 
       {/* Sección de lugares destacados */}
       <section className="lugaresDestacados">
-        <h3>Top places in Mexico City</h3>
+        <h3>Otras recomendaciones en Ciudad de México</h3>
         <div className="listaLugares">
+          <FichaCategoria />
           <div className="lugar">
             <img src={imgChapultepec} alt="Lugar 1" />
             <p>Lorem ipsum.</p>
