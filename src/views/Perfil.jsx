@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../estilos/styPerfil.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Perfil = () => {
   const [activeSection, setActiveSection] = useState('info');
@@ -59,7 +59,9 @@ const Perfil = () => {
             <p><strong>Correo Electrónico:</strong> {usuario.correo}</p>
             <p><strong>Género:</strong> {usuario.genero}</p>
             <p><strong>Teléfono:</strong> {usuario.telefono}</p>
-            <button onClick={() => navigate('/ModificarPerfil')} className="btn-modificar">Modificar</button>
+            <Link className="botonAccion" to="/Modificar">
+              Modificar
+            </Link>
             <button onClick={handleDelete} className="btn-eliminar">Eliminar cuenta</button>
           </div>
         );

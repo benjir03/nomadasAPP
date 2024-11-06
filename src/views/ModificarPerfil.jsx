@@ -16,7 +16,12 @@ const ModificarPerfil = () => {
     const fetchPerfil = async () => {
       try {
         const response = await axios.get('http://localhost:3001/auth/perfil', { withCredentials: true });
-        setUsuario(response.data); // Carga los datos del usuario en el estado
+        const userData = response.data;
+
+        // Formatear la fecha de nacimiento al formato YYYY-MM-DD
+        const formattedDate = userData.fecha_nacimiento ? userData.fecha_nacimiento.split('T')[0] : '';
+        
+        setUsuario({ ...userData, fecha_nacimiento: formattedDate });
       } catch (error) {
         console.error('Error al obtener el perfil del usuario:', error);
       }
