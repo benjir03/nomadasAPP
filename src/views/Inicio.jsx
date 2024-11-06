@@ -11,7 +11,6 @@ import {
   user2Image,
   user3Image,
   user4Image,
-  fondoInicio,
 } from "../imgs/ArchivoImgs";
 
 function Inicio() {
@@ -25,7 +24,6 @@ function Inicio() {
           height: `88vh`,
           backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
           backgroundPosition: "center", // Centra la imagen,
-          backgroundColor: "lightgray",
         }}
       >
         <div className="contenedorDos">

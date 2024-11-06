@@ -68,7 +68,7 @@ const Perfil = () => {
               className="contenedorUno"
               style={{
                 backgroundImage: `url(${fondiPerfil})`, // Asegúrate de usar la interpolación correcta
-                height: "88vh", // Usa comillas para las unidades
+                height: "50vh", // Usa comillas para las unidades
                 backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
                 backgroundPosition: "center", // Centra la imagen
               }}
