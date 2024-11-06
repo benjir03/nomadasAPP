@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../estilos/estiloInicio.css";
+import "../estilos/styInicio.css";
 
 import {
   historiaImage,

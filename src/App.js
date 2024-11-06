@@ -5,6 +5,7 @@ import Inicio from "./views/Inicio";
 import Perfil from "./views/Perfil";
 import Registro from "./views/Registro";
 import InicioSesion from "./views/InicioSesion";
+import Carousel from "./componentes/Carousel";
 import Modificar from "./views/ModificarPerfil";
 import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";

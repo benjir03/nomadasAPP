@@ -11,10 +11,15 @@
   padding: 20px;
 }
 
-.contenedorImagen {
-  background-image: url("../imgs/travel05.jpg"); /* Ruta de la imagen de fondo */
+.contenedorUno {
+  background-image: url("../imgs/fondoInicio.jpg");
   height: 88vh;
 }
+
+.contenedorVista {
+  background-color: var(--background-color);
+}
+
 
 .categories {
   display: flex;
