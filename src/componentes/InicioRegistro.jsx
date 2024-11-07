@@ -7,28 +7,26 @@ import { GoogleLogin } from '@react-oauth/google';
 import {jwtDecode} from 'jwt-decode';
 import { validarCorreo, validarContrasena, } from "../validaciones/validacionesInicioSesion";
 
-const InicioRegistro = ({ruta, accion, boton}) => {
+const InicioRegistro = ({accion, boton, mensaje}) => {
+    
     const [correo, setCorreo] = useState("");
-    const [contrasena, setContrasena] = useState("");
+    const [contraseña, setContrasena] = useState("");
     const [errores, setErrores] = useState({});
+    const [googleData, setGoogleData] = useState(null);
     const navigate = useNavigate();
     
-    const manejarEnvio = async (e) => {
-    e.preventDefault();
-    const nuevosErrores = {};
-    // Validación del correo
-    const errorCorreo = validarCorreo(correo);
-    if (errorCorreo) {
-        nuevosErrores.correo = errorCorreo;
-    }
-    // Validación de la contraseña
-    const erroresContrasena = validarContrasena(contrasena);
-    if (erroresContrasena.length > 0) {
-        nuevosErrores.contrasena = erroresContrasena;
-    }
-    setErrores(nuevosErrores);
+    const manejarEnvio = (e) => {
+        e.preventDefault();
+        const nuevosErrores = {};
+        setErrores(nuevosErrores);
+        
+        const errorCorreo = validarCorreo(correo);
+        if (errorCorreo) nuevosErrores.correo = errorCorreo;
+        
+        const erroresContrasena = validarContrasena(contraseña);
+        if (erroresContrasena.length > 0) nuevosErrores.contraseña = erroresContrasena;
     };
-    //Google
+    
     const handleGoogleSuccess = (credentialResponse) => {
         const decoded = jwtDecode(credentialResponse?.credential);
         console.log(decoded); // Verifica que los datos están bien
@@ -39,13 +37,13 @@ const InicioRegistro = ({ruta, accion, boton}) => {
         e.preventDefault();
         manejarEnvio(e);
         
-        if (Object.keys(nuevosErrores).length === 0) {
+        if (Object.keys(errores).length === 0) {
             try {
             const response = await axios.post(
-                ruta,
+                "http://localhost:3001/auth/login",
                 {
                 correo,
-                contraseña: contrasena,
+                contraseña: contraseña,
                 },
                 { withCredentials: true }
             );
@@ -68,6 +66,7 @@ const InicioRegistro = ({ruta, accion, boton}) => {
         
         if (Object.keys(errores).length === 0) {
             try {
+                const URI = "http://localhost:3001/usuario/insertar";
                     const requestData = {
                         nombre: googleData?.name,
                         correo: googleData?.email || correo,
@@ -75,7 +74,7 @@ const InicioRegistro = ({ruta, accion, boton}) => {
                         google_id: googleData?.sub,
                         picture: googleData?.picture,
                     };
-                  const response = await axios.post(ruta, requestData, { withCredentials: true }); // Envío de cookies
+                  const response = await axios.post(URI, requestData, { withCredentials: true }); // Envío de cookies
                   console.log(response.data.message); // Muestra mensaje de éxito
                   navigate('/Completar'); // Redirige al perfil
                 } catch (error) {
@@ -87,8 +86,8 @@ const InicioRegistro = ({ruta, accion, boton}) => {
     
     return (
         <div className="login-container">
-            <h1 className="login-title">Iniciar Sesión</h1>
-        <form className="login-form" onSubmit={accion}>
+            <h1 className="login-title">{mensaje}</h1>
+        <form className="login-form" a onSubmit={accion === "store" ? store : enviar}>
             <input
                 type="email"
                 placeholder="Ingresa tu correo"
@@ -103,7 +102,7 @@ const InicioRegistro = ({ruta, accion, boton}) => {
                 type="password"
                 placeholder="Ingresa tu contraseña"
                 className="input-field"
-                value={contrasena}
+                value={contraseña}
                 onChange={(e) => setContrasena(e.target.value)}
             />
             {errores.contrasena &&
@@ -128,5 +127,4 @@ const InicioRegistro = ({ruta, accion, boton}) => {
         </div>
     );
 }
-
 export default InicioRegistro;
