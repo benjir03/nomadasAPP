@@ -14,7 +14,7 @@ const Registro = () => {
     const [contraseña, setContraseña] = useState('');
     const [confirmacion, setConfirmacion] = useState('');
     const [nombre, setNombre] = useState('');
-    const [errores] = useState({});
+    const [errores, setErrores] = useState({});
     const [googleData, setGoogleData] = useState(null); // Estado para los datos de Google
     const navigate = useNavigate();
     
@@ -46,6 +46,7 @@ const Registro = () => {
     const manejarEnvio = (e) => {
       e.preventDefault();
       const nuevosErrores = {};
+      setErrores(nuevosErrores);
       
       // Validaciones
       const errorNombre = validarNombre(nombre);
@@ -60,7 +61,7 @@ const Registro = () => {
     };
 
     const handleGoogleSuccess = (credentialResponse) => {
-      const decoded = jwtDecode(credentialResponse.credential);
+      const decoded = jwtDecode(credentialResponse?.credential);
       console.log(decoded); // Verifica que los datos están bien
       setGoogleData(decoded); // Almacena los datos de Google en el estado
     };
