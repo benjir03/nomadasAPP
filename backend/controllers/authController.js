@@ -7,7 +7,7 @@ exports.login = (req, res) => {
     const { correo, contraseña } = req.body;
 
     // Verifica credenciales en la base de datos
-    pool.query('SELECT * FROM Usuario WHERE correo = ? AND contraseña = ?', [correo, contraseña], (err, results) => {
+    pool.query('SELECT * FROM Usuario WHERE email = ? AND password_user = ?', [correo, contraseña], (err, results) => {
         if (err || results.length === 0) {
             return res.status(401).json({ error: 'Credenciales incorrectas' });
         }
@@ -37,7 +37,7 @@ exports.getPerfil = (req, res) => {
     const userId = req.userId;
 
     // Obtiene todos los campos del usuario
-    pool.query('SELECT id_usuario, nombre, fecha_nacimiento, correo, genero, telefono FROM Usuario WHERE id_usuario = ?', [userId], (err, results) => {
+    pool.query('SELECT ID_user, nombre, fecha_nacimiento, email, genero, telefono FROM Usuario WHERE ID_user = ?', [userId], (err, results) => {
         if (err || results.length === 0) {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
@@ -49,7 +49,7 @@ exports.getPerfil = (req, res) => {
 exports.eliminarCuenta = (req, res) => {
     const userId = req.userId;
 
-    pool.query('DELETE FROM Usuario WHERE id_usuario = ?', [userId], (err, results) => {
+    pool.query('DELETE FROM Usuario WHERE ID_user = ?', [userId], (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Error al eliminar la cuenta' });
         }
@@ -65,7 +65,7 @@ exports.modificarPerfil = (req, res) => {
 
     // Actualiza el perfil del usuario en la base de datos
     pool.query(
-        'UPDATE Usuario SET nombre = ?, fecha_nacimiento = ?, correo = ?, telefono = ? WHERE id_usuario = ?',
+        'UPDATE Usuario SET nombre = ?, fecha_nacimiento = ?, email = ?, telefono = ? WHERE ID_user = ?',
         [nombre, fecha_nacimiento, correo, telefono, userId],
         (err, results) => {
             if (err) {
