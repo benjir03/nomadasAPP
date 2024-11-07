@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../estilos/styInicioSesion.css";
+import "../estilos/styInicioRegistro.css";
 import '../estilos/styGeneral.css'; // Import your general styles
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -85,10 +85,6 @@ export default function InicioSesion() {
 
         <button type="submit" className="login-button">Ingresar</button>
       </form>
-      <p className="inicio-sesion-link">
-          ¿No eres un nómada?{" "}
-          <a href="/Registro" className="signup-link">Crear una cuenta</a>
-        </p>
       <a href="/forgot-password" className="forgot-password">¿Olvidaste tu contraseña?</a>
     </div>
   );
