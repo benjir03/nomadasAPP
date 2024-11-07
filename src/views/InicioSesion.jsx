@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../estilos/styInicioSesion.css";
+import '../estilos/styGeneral.css'; // Import your general styles
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
   validarCorreo,
   validarContrasena,
 } from "../validaciones/validacionesInicioSesion";
-import { BackInicioSesion } from "../imgs/ArchivoImgs";
 
 export default function InicioSesion() {
   const [correo, setCorreo] = useState("");
@@ -57,22 +57,13 @@ export default function InicioSesion() {
   };
 
   return (
-    <div
-      className="inicio-sesion-container"
-      style={{
-        backgroundImage: `url(${BackInicioSesion})`,
-      }}
-    >
-      <h1 className="inicio-sesion-title">
-        ¿Listo para crear el plan perfecto?
-      </h1>
-      <p className="inicio-sesion-subtitle">Iniciar sesión</p>
-
-      <form className="inicio-sesion-form" onSubmit={manejarEnvio}>
+    <div className="login-container">
+      <h1 className="login-title">Iniciar Sesión</h1>
+      <form className="login-form" onSubmit={manejarEnvio}>
         <input
           type="email"
           placeholder="Ingresa tu correo"
-          className="inicio-sesion-input"
+          className="input-field"
           value={correo}
           onChange={(e) => setCorreo(e.target.value)}
         />
@@ -81,7 +72,7 @@ export default function InicioSesion() {
         <input
           type="password"
           placeholder="Ingresa tu contraseña"
-          className="inicio-sesion-input"
+          className="input-field"
           value={contrasena}
           onChange={(e) => setContrasena(e.target.value)}
         />
@@ -92,26 +83,13 @@ export default function InicioSesion() {
             </p>
           ))}
 
-        <button type="submit" className="inicio-sesion-button">
-          ¡ENTRA!
-        </button>
-
-        <div className="inicio-sesion-checkbox">
-          <input type="checkbox" id="mantenerSesion" />
-          <label htmlFor="mantenerSesion">Mantener sesión iniciada</label>
-        </div>
-
-        <p className="inicio-sesion-link">
-          <u>¿Olvidaste tu contraseña?</u>
-        </p>
-
-        <p className="inicio-sesion-link">
-          ¿No eres un nómada?{" "}
-          <span className="registro-link">
-            <u>Regístrate aquí</u>
-          </span>
-        </p>
+        <button type="submit" className="login-button">Ingresar</button>
       </form>
+      <p className="inicio-sesion-link">
+          ¿No eres un nómada?{" "}
+          <a href="/Registro" className="signup-link">Crear una cuenta</a>
+        </p>
+      <a href="/forgot-password" className="forgot-password">¿Olvidaste tu contraseña?</a>
     </div>
   );
 }
