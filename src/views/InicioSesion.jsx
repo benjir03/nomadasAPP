@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import backgroundImage from "../imgs/inicioSesion.jpg";
 import "../estilos/styInicioSesion.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +6,7 @@ import {
   validarCorreo,
   validarContrasena,
 } from "../validaciones/validacionesInicioSesion";
+import { BackInicioSesion } from "../imgs/ArchivoImgs";
 
 export default function InicioSesion() {
   const [correo, setCorreo] = useState("");
@@ -60,7 +60,7 @@ export default function InicioSesion() {
     <div
       className="inicio-sesion-container"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url(${BackInicioSesion})`,
       }}
     >
       <h1 className="inicio-sesion-title">

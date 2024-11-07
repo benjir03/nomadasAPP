@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../estilos/styPerfil.css";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import fondiPerfil from "../imgs/fondoPerfil.jpg";
-import fondiConfig from "../imgs/ciudad.jpg";
+import { BackPerfil, ciudad } from "../imgs/ArchivoImgs";
+
 
 const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
@@ -65,119 +65,81 @@ const Perfil = () => {
       case "info":
         return (
           <div className="contenedorVista">
-                        
             <div
               className="contenedorUno"
               style={{
-                backgroundImage: `url(${fondiPerfil})`, // Asegúrate de usar la interpolación correcta
+                backgroundImage: {BackPerfil}, // Asegúrate de usar la interpolación correcta
                 height: "50vh", // Usa comillas para las unidades
                 backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
                 backgroundPosition: "center", // Centra la imagen
               }}
             >
-                            
               <div className="contenedorDos">
-                                <h1>Hola {usuario.nombre}</h1>
-                              
+                <h1>Hola {usuario.nombre}</h1>
               </div>
-                          
             </div>
-                        
             <div>
-                            <h2>Información general</h2>
-                            
-              <p>
-                                <strong>Nombre:</strong> {usuario.nombre}
-                              
+              <h2>Información general</h2>
+              <p><strong>Nombre:</strong> {usuario.nombre}
               </p>
-                            
               <p>
-                                <strong>Fecha de Nacimiento:</strong>{" "}
+                <strong>Fecha de Nacimiento:</strong>{" "}
                 {usuario.fecha_nacimiento}
-                              
               </p>
-                            
               <p>
-                                <strong>Género:</strong> {usuario.genero}
-                              
+                <strong>Género:</strong> {usuario.genero}
               </p>
-                            
               <p>
-                                <strong>Teléfono:</strong> {usuario.telefono}
-                              
+                <strong>Teléfono:</strong> {usuario.telefono}
               </p>
-                            
               <Link className="botonAccion" to="/Modificar">
-                                Modificar               
+                Modificar 
               </Link>
-                            
               <br />
               <br />
               <br />
-                            
               <button onClick={handleDelete} className="botonAccion">
-                                Eliminar cuenta               
+                Eliminar cuenta
               </button>
-                          
             </div>
-                      
           </div>
         );
       case "settings":
         return (
           <div className="contenedorVista">
-                        
             <div
               className="contenedorUno"
               style={{
-                backgroundImage: `url(${fondiConfig})`, // Asegúrate de usar la interpolación correcta
+                backgroundImage: {ciudad}, // Asegúrate de usar la interpolación correcta
                 height: "50vh", // Usa comillas para las unidades
                 backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
                 backgroundPosition: "center", // Centra la imagen
               }}
             >
-                            
-              <div className="contenedorDos">
-                                <h1>Hola {usuario.nombre}</h1>
-                              
+              <div className="contenedorDos"><h1>Hola {usuario.nombre}</h1>
               </div>
-                          
             </div>
-                        
             <div>
-                            <h2>Información de cuenta</h2>
-                            
+              <h2>Información de cuenta</h2>
               <p>
-                                <strong>Nombre:</strong> {usuario.correo}
-                              
+                <strong>Nombre:</strong> {usuario.correo}
               </p>
-                            
               <p>
-                                <strong>Correo</strong> {usuario.correo}
-                              
+                <strong>Correo</strong> {usuario.correo}
               </p>
-                            
               <p>
-                                <strong>Teléfono:</strong> {usuario.telefono}
-                              
+                <strong>Teléfono:</strong> {usuario.telefono}
               </p>
-                            
               <br />
-                            
-              <Link className="botonAccion" to="/Modificar">
-                                Modificar               
+              <Link className="botonAccion" to="/Modificar">Modificar
               </Link>
-                            
               <br />
               <br />
               <br />
-                            
               <button onClick={handleDelete} className="botonAccion3">
-                                Eliminar cuenta               
+                Eliminar cuenta
               </button>
-                          
             </div>
-                      
           </div>
         );
       case "security":

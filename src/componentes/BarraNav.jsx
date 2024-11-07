@@ -33,6 +33,11 @@ const BarraNav = () => {
             </Link>
           </li>
           <li>
+            <Link className="botonAccion" to="/Lugares">
+              Lugares
+            </Link>
+          </li>
+          <li>
             <Link className="botonAccion" to="/Registro">
               Registrarse
             </Link>

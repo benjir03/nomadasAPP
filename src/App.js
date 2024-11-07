@@ -9,6 +9,7 @@ import Experiencias from "./views/Expeciencias";
 import Modificar from "./views/ModificarPerfil";
 import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";
+import Lugares from "./views/Lugares";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from './componentes/Verificacion';
 import CompletarPerfil from "./views/CompletarPerfil";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Perfil" element={<Perfil />} />
           <Route path="/Completar" element={<CompletarPerfil />} />
           <Route path="/Modificar" element={<Modificar />} />
+          <Route path="/Lugares" element={<Lugares />} />
           {/*Rutas protegidas para verificacion*/}
           <Route path="/login" element={<InicioSesion />} />
                 <Route path="/registro" element={<Registro />} />

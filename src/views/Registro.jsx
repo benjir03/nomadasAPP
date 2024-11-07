@@ -14,7 +14,7 @@ const Registro = () => {
     const [contraseña, setContraseña] = useState('');
     const [confirmacion, setConfirmacion] = useState('');
     const [nombre, setNombre] = useState('');
-    const [errores, setErrores] = useState({});
+    const [errores] = useState({});
     const [googleData, setGoogleData] = useState(null); // Estado para los datos de Google
     const navigate = useNavigate();
     

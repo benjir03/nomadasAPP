@@ -1,18 +1,8 @@
 import React from "react";
 import fondiArmarPlan from "../imgs/fondoArmarPlan.jpg";
-
-import imgVilla from "../imgs/Imgvilla.jpg";
-import imgApartamento from "../imgs/apartamento.jpg";
-import imgResort from "../imgs/resort.jpg";
-import imgCiudad from "../imgs/ciudad.jpg";
 import "../estilos/styArmarPlan.css";
-import {
-  chapultepec,
-  biblioteca,
-  bellasartes,
-  monumentorevolucion,
-  islamuñecas,
-} from "../imgs/ArchivoImgs";
+
+import { villa, apartamento, resort, ciudad, } from "../imgs/ArchivoImgs";
 
 export default function ArmarPlan() {
   return (
@@ -76,7 +66,7 @@ export default function ArmarPlan() {
                 </small>
               </p>
             </div>
-            <img src={imgVilla} className="card-img" alt="Villa" />
+            <img src={villa} className="card-img" alt="Villa" />
           </div>
 
           <div className="card">
@@ -89,7 +79,7 @@ export default function ArmarPlan() {
                 </small>
               </p>
             </div>
-            <img src={imgApartamento} className="card-img" alt="Apartamento" />
+            <img src={apartamento} className="card-img" alt="Apartamento" />
           </div>
 
           <div className="card">
@@ -102,7 +92,7 @@ export default function ArmarPlan() {
                 </small>
               </p>
             </div>
-            <img src={imgResort} className="card-img" alt="Resort" />
+            <img src={resort} className="card-img" alt="Resort" />
           </div>
 
           <div className="card">
@@ -115,7 +105,7 @@ export default function ArmarPlan() {
                 </small>
               </p>
             </div>
-            <img src={imgCiudad} className="card-img" alt="Ciudad" />
+            <img src={ciudad} className="card-img" alt="Ciudad" />
           </div>
         </div>
       </div>

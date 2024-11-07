@@ -4,10 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaMapMarkerAlt, FaCalendarAlt, FaUser } from "react-icons/fa";
 import "../estilos/styDatosdelusuario.css";
-import historiaImg from '../imgs/historia.jpg';
-import gastronomiaImg from '../imgs/gastronomia.webp';
-import arteImg from '../imgs/arte.JPG';
-import naturalezaImg from '../imgs/naturaleza.jpg';
+import { historiaImage,gastronomiaImage,arteImage, naturalezaImg, } from "../imgs/ArchivoImgs";
 
 function Datos() {
     const [location, setLocation] = useState(null);
@@ -26,9 +23,9 @@ function Datos() {
     ];
 
     const categories = [
-        { id: 1, name: "Historia", image: historiaImg },
-        { id: 2, name: "Gastronomía", image: gastronomiaImg },
-        { id: 3, name: "Arte", image: arteImg },
+        { id: 1, name: "Historia", image: historiaImage },
+        { id: 2, name: "Gastronomía", image: gastronomiaImage },
+        { id: 3, name: "Arte", image: arteImage },
         { id: 4, name: "Naturaleza", image: naturalezaImg },
     ];
 

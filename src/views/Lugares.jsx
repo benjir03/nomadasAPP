@@ -1,34 +1,35 @@
 import React from 'react';
+import { historiaImage, islamuñecas, bellasartes } from "../imgs/ArchivoImgs";
 
 const placesData = [
   {
     name: 'La Isla de las Muñecas',
-    imageUrl: 'https://example.com/isla-munecas.jpg', // Cambia esto por la URL real de la imagen
+    imageUrl: islamuñecas, // Cambia esto por la URL real de la imagen
     category: 'Lugares recomendados',
   },
   {
     name: 'Prismas basálticos',
-    imageUrl: 'https://example.com/prismas-basalticos.jpg', // Cambia esto por la URL real de la imagen
+    imageUrl: historiaImage, // Cambia esto por la URL real de la imagen
     category: 'Lugares recomendados',
   },
   {
     name: 'Islas Marietas',
-    imageUrl: 'https://example.com/islas-marietas.jpg', // Cambia esto por la URL real de la imagen
+    imageUrl: islamuñecas, // Cambia esto por la URL real de la imagen
     category: 'Lugares recomendados',
   },
   {
     name: 'Riviera Maya',
-    imageUrl: 'https://example.com/riviera-maya.jpg', // Cambia esto por la URL real de la imagen
+    imageUrl: historiaImage, // Cambia esto por la URL real de la imagen
     category: 'Más visitados',
   },
   {
     name: 'Palenque',
-    imageUrl: 'https://example.com/palenque.jpg', // Cambia esto por la URL real de la imagen
+    imageUrl: historiaImage, // Cambia esto por la URL real de la imagen
     category: 'Más visitados',
   },
   {
     name: 'Bellas Artes',
-    imageUrl: 'https://example.com/bellas-artes.jpg', // Cambia esto por la URL real de la imagen
+    imageUrl: bellasartes, // Cambia esto por la URL real de la imagen
     category: 'Más visitados',
   },
 ];
