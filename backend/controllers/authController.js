@@ -62,7 +62,6 @@ exports.eliminarCuenta = (req, res) => {
 exports.modificarPerfil = (req, res) => {
     const userId = req.userId; // ID del usuario obtenido del token de sesión
     const { nombre, fecha_nacimiento, correo, telefono } = req.body;
-
     // Actualiza el perfil del usuario en la base de datos
     pool.query(
         'UPDATE Usuario SET nombre = ?, fecha_nacimiento = ?, email = ?, telefono = ? WHERE ID_user = ?',
@@ -74,6 +73,23 @@ exports.modificarPerfil = (req, res) => {
             }
 
             res.json({ message: 'Perfil actualizado exitosamente' });
+        }
+    );
+};
+
+exports.verificar = (req, res) => {
+    const userId = req.userId; // ID del usuario obtenido del token de sesión
+    const { verificado} = req.body;
+    // Actualiza el verificado del usuario en la base de datos
+    pool.query(
+        'UPDATE Usuario SET verificado = ? WHERE ID_user = ?',
+        [verificado, userId],
+        (err, results) => {
+            if (err) {
+                console.error('Error al verificado el perfil:', err);
+                return res.status(500).json({ error: 'Error al verificado el perfil' });
+            }
+            res.json({ message: 'Perfil verificado exitosamente' });
         }
     );
 };

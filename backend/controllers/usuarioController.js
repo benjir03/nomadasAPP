@@ -1,13 +1,16 @@
 // controllers/usuarioController.js
 const jwt = require('jsonwebtoken');
 const pool = require('../db/connection');
+const { Resend } = require('resend');
+//API Resend (correo)
+const resend = new Resend('re_5QN9cfnr_KE9jvjvkwRQdJ9FYxUy4hvsJ');
 
 exports.insertarUsuario = (req, res) => {
-    const { nombre, fecha_nacimiento, correo, contraseña, genero, telefono } = req.body;
+    const { nombre, apellido, fecha_nacimiento, correo, contraseña, genero, telefono } = req.body;
 
     pool.query(
-        'INSERT INTO Usuario (nombre, fecha_nacimiento, email, password_user, genero, telefono) VALUES (?, ?, ?, ?, ?, ?)',
-        [nombre, fecha_nacimiento, correo, contraseña, genero, telefono],
+        'INSERT INTO Usuario (nombre, apellido, fecha_nacimiento, email, password_user, genero, telefono, verificado) VALUES (?, ?, ?, ?, ?, ?, 0)',
+        [nombre, apellido,fecha_nacimiento, correo, contraseña, genero, telefono],
         (err, results) => {
             if (err) {
                 console.error('Error en la inserción:', err);
@@ -23,7 +26,20 @@ exports.insertarUsuario = (req, res) => {
                 secure: process.env.NODE_ENV === 'production',
                 maxAge: 3600000 // 1 hora
             });
-
+            //Funcion envio de correo
+            (async function () {
+                const { data, error } = await resend.emails.send({
+                    from: 'NomadasApp <nomadland.app>',
+                    to: correo,
+                    subject: 'Registro',
+                    react: 'Holaaaaaaaaa',
+                });
+                if (error) {
+                    return console.error({ error });
+                }
+                console.log({ data });
+            })();
+            
             res.json({ message: 'Usuario registrado y autenticado', id: userId, token });
         }
     );
