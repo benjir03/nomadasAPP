@@ -1,0 +1,109 @@
+.carousel-options-container {
+    padding: 20px;
+    text-align: center;
+  }
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+  }
+  .package-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    text-align: center
+  }
+  
+  .package-image {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .package-info {
+    padding: 15px;
+  }
+  
+  .package-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .package-info p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .discount {
+    display: inline-block;
+    color: #fff;
+    background-color: #28a745;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+  }
+  
+  .price {
+    font-size: 1.2rem;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  .view-all-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+  }  
+
+  .slick-prev:before,
+.slick-next:before {
+  color: black; /* Cambia el color de la flecha */
+  font-size: 24px; /* Ajusta el tamaño de la flecha */
+}
+
+.slick-prev {
+  left: -30px; /* Ajusta la posición de la flecha izquierda */
+}
+
+.slick-next {
+  right: -30px; /* Ajusta la posición de la flecha derecha */
+} 
+
+.discounted-price {
+  text-decoration: line-through;
+  color: red;
+}
+
+/* Botón "Ver más" */
+.view-more-btn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.carousel-box {
+  width: 100%;
+  max-width: 1000px;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo traslúcido */
+  border-radius: 15px; /* Bordes redondeados */
+  padding: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
