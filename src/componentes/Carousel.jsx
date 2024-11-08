@@ -1,49 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import '../estilos/styCarousel.css'; // Ensure your CSS file supports slide transitions
+import '../estilos/styCarousel.css';
 
 const ImageCarousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isSliding, setIsSliding] = useState(false); // To control the sliding effect
-  const [isPaused, setIsPaused] = useState(false); // To handle pausing on click
-  const [isModalOpen, setIsModalOpen] = useState(false); // To handle modal visibility
+  const [isSliding, setIsSliding] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Function to move to the next image
+  
   const handleNext = () => {
-    setIsSliding(true); // Start sliding effect
+    setIsSliding(true); 
     setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-      setIsSliding(false); // End sliding effect
-    }, 500); // Duration of the slide effect
+      setIsSliding(false);
+    }, 500);
   };
 
   const handlePrev = () => {
-    setIsSliding(true); // Start sliding effect
+    setIsSliding(true);
     setTimeout(() => {
       setCurrentIndex(
         (prevIndex) => (prevIndex - 1 + images.length) % images.length
       );
-      setIsSliding(false); // End sliding effect
-    }, 500); // Duration of the slide effect
+      setIsSliding(false);
+    }, 500); 
   };
 
-  // Automatically switch images
+  
   useEffect(() => {
     if (!isPaused) {
-      const interval = setInterval(handleNext, 3000); // Change image every 3 seconds
-      return () => clearInterval(interval); // Cleanup interval on component unmount
+      const interval = setInterval(handleNext, 3000); 
+      return () => clearInterval(interval);
     }
   }, [isPaused, images.length]);
 
-  // Function to toggle modal
+  
   const toggleModal = () => {
-    setIsPaused(!isModalOpen); // Pause when opening, resume when closing
+    setIsPaused(!isModalOpen);
     setIsModalOpen(!isModalOpen);
   };
 
-  // Pause the carousel on image click and open modal
   const handleImageClick = () => {
-    setIsPaused(true); // Pause the carousel
-    toggleModal(); // Open modal
+    setIsPaused(true);
+    toggleModal(); 
   };
 
   return (
@@ -53,7 +52,7 @@ const ImageCarousel = ({ images }) => {
           src={images[currentIndex].src}
           alt={images[currentIndex].alt}
           className="carousel-image"
-          onClick={handleImageClick} // Pause on click and open modal
+          onClick={handleImageClick}
         />
       </div>
 

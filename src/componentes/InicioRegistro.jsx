@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../estilos/styInicioRegistro.css";
-import '../estilos/styGeneral.css'; // Import your general styles
+import '../estilos/styGeneral.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from '@react-oauth/google';
