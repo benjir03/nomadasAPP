@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../estilos/styPerfil.css";
+import "../estilos/styInicioRegistro.css";
+import '../estilos/styGeneral.css';
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { BackPerfil, ciudad } from "../imgs/ArchivoImgs";
@@ -9,6 +10,7 @@ const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
   const [usuario, setUsuario] = useState({
     nombre: "",
+    apellido:"",
     fecha_nacimiento: "",
     correo: "",
     genero: "",
@@ -78,18 +80,18 @@ const Perfil = () => {
                 <h1>Hola {usuario.nombre}</h1>
               </div>
             </div>
-            <div>
-              <h2>Información general</h2>
-              <p><strong>Nombre:</strong> {usuario.nombre}
+            <div className="login-container">
+              <h2 className="login-title">Información general</h2>
+              <p className="input-field"><strong>Nombre:</strong> {usuario.nombre}
               </p>
-              <p>
+              <p className="input-field">
                 <strong>Fecha de Nacimiento:</strong>{" "}
                 {usuario.fecha_nacimiento}
               </p>
-              <p>
+              <p className="input-field">
                 <strong>Género:</strong> {usuario.genero}
               </p>
-              <p>
+              <p className="input-field">
                 <strong>Teléfono:</strong> {usuario.telefono}
               </p>
               <Link className="botonAccion" to="/Modificar">

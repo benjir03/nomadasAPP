@@ -9,7 +9,7 @@ exports.insertarUsuario = (req, res) => {
     const { nombre, apellido, fecha_nacimiento, correo, contraseña, genero, telefono } = req.body;
 
     pool.query(
-        'INSERT INTO Usuario (nombre, apellido, fecha_nacimiento, email, password_user, genero, telefono, verificado) VALUES (?, ?, ?, ?, ?, ?, 0)',
+        'INSERT INTO USUARIO (nombre, apellido, fecha_nacimiento, email, password_user, genero, telefono, verificado) VALUES (?, ?, ?, ?, ?, ?, ?, 0)',
         [nombre, apellido,fecha_nacimiento, correo, contraseña, genero, telefono],
         (err, results) => {
             if (err) {
@@ -29,7 +29,7 @@ exports.insertarUsuario = (req, res) => {
             //Funcion envio de correo
             (async function () {
                 const { data, error } = await resend.emails.send({
-                    from: 'NomadasApp <nomadland.app>',
+                    from: 'NomadasApp <onboarding@resend.dev>',
                     to: correo,
                     subject: 'Registro',
                     react: 'Holaaaaaaaaa',

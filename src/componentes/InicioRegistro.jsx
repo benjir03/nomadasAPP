@@ -77,7 +77,7 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
                 const response = await axios.post(URI, requestData, { withCredentials: true });
                 
                 console.log(response.data.message);
-                navigate('/Completar');
+                navigate('/Verificar');
                 
                 } catch (error) {
                     console.error('Error al registrar usuario:', error);

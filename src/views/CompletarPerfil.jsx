@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../estilos/styModificarPerfil.css";
+import "../estilos/styInicioRegistro.css";
+import '../estilos/styGeneral.css';
 
 const CompletarPerfil = () => {
   const [usuario, setUsuario] = useState({
     nombre: "",
+    apellido:"",
     fecha_nacimiento: "",
-    correo: "",
+    correo:"",
     genero: "",
     telefono: "",
   });
@@ -51,22 +53,36 @@ const CompletarPerfil = () => {
   };
 
   return (
-    <div className="modificarPerfil">
-      <h2>Modificar Perfil</h2>
-      <form onSubmit={handleUpdate}>
+    <div className="login-container">
+      <h1 className="login-title">Completar Perfil</h1>
+      <form className="login-form" onSubmit={handleUpdate}>
         <label>Nombre:</label>
         <input
           type="text"
           name="nombre"
+          className="input-field"
           value={usuario.nombre}
           onChange={handleInputChange}
           placeholder="Nombre"
         />
         <br />
+        
+        <label>Apellido:</label>
+        <input
+          type="text"
+          name="apellido"
+          className="input-field"
+          value={usuario.apellido}
+          onChange={handleInputChange}
+          placeholder="Apellido"
+        />
+        <br />
+        
         <label>Fecha de nacimiento:</label>
         <input
           type="date"
           name="fecha_nacimiento"
+          className="input-field"
           value={usuario.fecha_nacimiento}
           onChange={handleInputChange}
         />
@@ -75,6 +91,7 @@ const CompletarPerfil = () => {
         <input
           type="email"
           name="correo"
+          className="input-field"
           value={usuario.email}
           onChange={handleInputChange}
           placeholder="Correo"
@@ -84,6 +101,7 @@ const CompletarPerfil = () => {
         <input
           type="text"
           name="genero"
+          className="input-field"
           value={usuario.genero}
           onChange={handleInputChange}
           placeholder="Género"
@@ -93,6 +111,7 @@ const CompletarPerfil = () => {
         <input
           type="tel"
           name="telefono"
+          className="input-field"
           value={usuario.telefono}
           onChange={handleInputChange}
           placeholder="Teléfono"
