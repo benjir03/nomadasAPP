@@ -7,7 +7,7 @@ const pool = mysql.createPool({
     user: 'root',
     password: '',
 <<<<<<< HEAD
-    database: 'nomadland',
+    database: 'Nomadland',
 //  port: 3308
     port: 3306
 =======
