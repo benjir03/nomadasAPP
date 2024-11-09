@@ -75,7 +75,7 @@ const CompletarPerfil = () => {
         <input
           type="email"
           name="correo"
-          value={usuario.correo}
+          value={usuario.email}
           onChange={handleInputChange}
           placeholder="Correo"
         />

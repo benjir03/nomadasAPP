@@ -62,7 +62,6 @@ exports.eliminarCuenta = (req, res) => {
 exports.modificarPerfil = (req, res) => {
     const userId = req.userId; // ID del usuario obtenido del token de sesión
     const { nombre, fecha_nacimiento, correo, telefono } = req.body;
-
     // Actualiza el perfil del usuario en la base de datos
     pool.query(
         'UPDATE Usuario SET nombre = ?, fecha_nacimiento = ?, email = ?, telefono = ? WHERE ID_user = ?',
@@ -78,6 +77,7 @@ exports.modificarPerfil = (req, res) => {
     );
 };
 
+<<<<<<< HEAD
 
 //Función para restingit el acceso de usuario no registrado
 const verificarToken = require('../middlewares/authMiddleware');
@@ -98,3 +98,21 @@ exports.getPerfil = [verificarToken, (req, res) => {
         }
     );
 }];
+=======
+exports.verificar = (req, res) => {
+    const userId = req.userId; // ID del usuario obtenido del token de sesión
+    const { verificado} = req.body;
+    // Actualiza el verificado del usuario en la base de datos
+    pool.query(
+        'UPDATE Usuario SET verificado = ? WHERE ID_user = ?',
+        [verificado, userId],
+        (err, results) => {
+            if (err) {
+                console.error('Error al verificado el perfil:', err);
+                return res.status(500).json({ error: 'Error al verificado el perfil' });
+            }
+            res.json({ message: 'Perfil verificado exitosamente' });
+        }
+    );
+};
+>>>>>>> 59009992d6552b2161e998b58dbf46ed90ff7d3b
