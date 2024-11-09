@@ -1,5 +1,5 @@
 import React from 'react';
-import InicioRegistro,{store} from '../componentes/InicioRegistro';
+import InicioRegistro from '../componentes/InicioRegistro';
 
 const Registro = () => {
     return (

@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser'); // Importa el paquete COOKIE PARS
 const app = express();
 const usuarioRoutes = require('./routes/usuarioRoutes'); //Rutas de usuario
 const authRoutes = require('./routes/authRoutes'); // Rutas de autenticación
-require('dotenv').config();
+const carouselRoutes = require('./routes/carouselRoutes'); // Rutas de autenticación
 
 // Middleware para manejar JSON
 app.use(express.json());
@@ -29,6 +29,8 @@ app.use('/usuario', usuarioRoutes);
 // Rutas de autenticación
 app.use('/auth', authRoutes);
 
+// Rutas de carousel
+app.use('/carousel', carouselRoutes);
 // Configuración del puerto
 app.listen(3001, () => {
     console.log('Servidor corriendo en el puerto 3001');
