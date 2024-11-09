@@ -1,0 +1,79 @@
+/* Import general styles */
+@import "./styGeneral.css";
+
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid var(--support-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 5px var(--secondary-color);
+}
+
+.login-button {
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.forgot-password {
+  text-align: center;
+  color: var(--support-color);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.forgot-password:hover {
+  color: var(--secondary-color);
+}
+
+.signup-link {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.signup-link:hover {
+  color: var(--secondary-color);
+}

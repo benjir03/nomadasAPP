@@ -1,42 +1,59 @@
-// ImageCarousel.js
-import React, { useState } from 'react';
-import '../estilos/styCarousel.css'; // Archivo CSS opcional para estilos
+import React, { useState, useEffect } from 'react';
+import '../estilos/styCarousel.css';
 
 const ImageCarousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isSliding, setIsSliding] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Función para cambiar la imagen
+  
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setIsSliding(true); 
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setIsSliding(false);
+    }, 500);
   };
 
   const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+    setIsSliding(true);
+    setTimeout(() => {
+      setCurrentIndex(
+        (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      );
+      setIsSliding(false);
+    }, 500); 
   };
 
-  // Función para abrir y cerrar el modal
+  
+  useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(handleNext, 3000); 
+      return () => clearInterval(interval);
+    }
+  }, [isPaused, images.length]);
+
+  
   const toggleModal = () => {
+    setIsPaused(!isModalOpen);
     setIsModalOpen(!isModalOpen);
+  };
+
+  const handleImageClick = () => {
+    setIsPaused(true);
+    toggleModal(); 
   };
 
   return (
     <div className="carousel-container">
-      <div className="carousel">
-        <button onClick={handlePrev} className="carousel-button">
-          ‹
-        </button>
+      <div className={`carousel ${isSliding ? 'sliding' : ''}`}>
         <img
           src={images[currentIndex].src}
           alt={images[currentIndex].alt}
           className="carousel-image"
-          onClick={toggleModal}
+          onClick={handleImageClick}
         />
-        <button onClick={handleNext} className="carousel-button">
-          ›
-        </button>
       </div>
 
       {isModalOpen && (

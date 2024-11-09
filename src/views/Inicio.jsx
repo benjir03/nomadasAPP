@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import "../estilos/estiloInicio.css";
 import fondiInicio from "../imgs/fondoInicio.jpg";
 import FichaCategoria from "../componentes/FichaCategoria";
+import ImageCarousel from "../componentes/Carousel";
 
 import {
   historiaImage,
+  BackInicio,
   gastronomiaImage,
   arteImage,
   user1Image,
@@ -14,6 +16,11 @@ import {
   user4Image,
 } from "../imgs/ArchivoImgs";
 
+const images = [
+  { src: BackInicio, alt: 'Imagen 1', info: 'Información de la imagen 1' },
+  { src: gastronomiaImage, alt: 'Imagen 2', info: 'Información de la imagen 2' },
+  { src: arteImage, alt: 'Imagen 3', info: 'Información de la imagen 3' },
+];
 function Inicio() {
   return (
     <div className="contenedorVista">
@@ -97,7 +104,11 @@ function Inicio() {
           Más historias...
         </Link>
       </section>
+      <div className="App">
+      <ImageCarousel images={images} />
     </div>
+    </div>
+    
   );
 }
 

@@ -7,8 +7,10 @@
   }
   
   .carousel {
+    position: relative;
     display: flex;
     align-items: center;
+    overflow: hidden;
   }
   
   .carousel-image {
@@ -16,13 +18,21 @@
     height: 300px;
     object-fit: cover;
     cursor: pointer;
+    border-radius: 20px;
+    transition: transform 0.5s ease-in-out;
   }
   
+  .sliding .carousel-image {
+    transform: translateX(-100%); /* Slide effect */
+  }
+
   .carousel-button {
-    background-color: transparent;
+    background: none;
     border: none;
     font-size: 2rem;
+    color: #fff;
     cursor: pointer;
+    z-index: 10;
   }
   
   .modal {
@@ -31,10 +41,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
   
   .modal-content {
@@ -50,7 +61,8 @@
   }
   
   .modal-info {
+    color: #fff;
+    text-align: center;
     margin-top: 10px;
-    font-size: 1rem;
   }
   

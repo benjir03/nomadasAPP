@@ -6,7 +6,7 @@ exports.insertarUsuario = (req, res) => {
     const { nombre, fecha_nacimiento, correo, contraseña, genero, telefono } = req.body;
 
     pool.query(
-        'INSERT INTO Usuario (nombre, fecha_nacimiento, correo, contraseña, genero, telefono) VALUES (?, ?, ?, ?, ?, ?)',
+        'INSERT INTO Usuario (nombre, fecha_nacimiento, email, password_user, genero, telefono) VALUES (?, ?, ?, ?, ?, ?)',
         [nombre, fecha_nacimiento, correo, contraseña, genero, telefono],
         (err, results) => {
             if (err) {
