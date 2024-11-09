@@ -1,5 +1,5 @@
-/* Contenedor principal con imagen de fondo */
-.registro-container {
+/* Contenedor con imagen de fondo */
+.inicio-sesion-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,21 +12,21 @@
   }
   
   /* Título */
-  .registro-title {
+  .inicio-sesion-title {
     margin-top: 20px;
     font-size: 2rem;
     text-align: center;
   }
   
   /* Subtítulo */
-  .registro-subtitle {
+  .inicio-sesion-subtitle {
     font-size: 0.9rem;
     color: #f0f0f0;
     margin-bottom: 20px;
   }
   
-  /* Formulario de registro */
-  .registro-form {
+  /* Formulario de inicio de sesión */
+  .inicio-sesion-form {
     width: 300px;
     text-align: left;
     background-color: rgba(0, 0, 0, 0.5);
@@ -36,17 +36,18 @@
   }
   
   /* Campos de entrada */
-  .registro-input {
+  .inicio-sesion-input {
     width: 93%;
     padding: 10px;
     margin-bottom: 15px;
     font-size: 1rem;
     border: none;
     border-radius: 4px;
+    text-align: center;
   }
   
-  /* Botón de registrarse */
-  .registro-button {
+  /* Botón de entrar */
+  .inicio-sesion-button {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
@@ -58,15 +59,27 @@
     margin-bottom: 15px;
   }
   
-  /* Enlace a inicio de sesión */
-  .registro-link {
+  /* Checkbox y enlaces */
+  .inicio-sesion-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #f0f0f0;
+    margin-bottom: 15px;
+  }
+  
+  .inicio-sesion-checkbox input {
+    margin-right: 10px;
+  }
+  
+  .inicio-sesion-link {
     font-size: 0.8rem;
     color: white;
+    cursor: pointer;
     text-align: center;
   }
   
-  .registro-login-link {
+  .registro-link {
     color: lightblue;
-    cursor: pointer;
   }
   
