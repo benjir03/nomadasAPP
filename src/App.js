@@ -33,11 +33,8 @@ function App() {
           <Route path="/Completar" element={<CompletarPerfil />} />
           <Route path="/Modificar" element={<Modificar />} />
           <Route path="/Lugares" element={<Lugares />} />
-<<<<<<< HEAD
     	    <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
-=======
           <Route path="/Verificar" element={<Verificar />} />
->>>>>>> 9bbd1ead06a2411a9df3abb015a00c1435d31b12
           {/*Rutas protegidas para verificacion*/}
           <Route path="/login" element={<InicioSesion />} />
                 <Route path="/registro" element={<Registro />} />

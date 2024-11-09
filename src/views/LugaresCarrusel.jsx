@@ -1,7 +1,16 @@
 import React from 'react';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick-theme.css";
-import '../estilos/CarouselOptions.css';
+import Slider from 'react-slick'; // Para el carrusel
+import "slick-carousel/slick/slick.css"; // Estilos base de Slick Carousel
+import "slick-carousel/slick/slick-theme.css"; // Estilos de tema de Slick Carousel
+import '../estilos/CarouselOptions.css'; // Tu archivo de estilos personalizado
+
+// Importa las imágenes directamente
+import imgFrida from '../imgs/imgfrida.jpg';
+import imgSanMiguel from '../imgs/imgsanmiguel.jpg';
+import imgPiramides from '../imgs/imgpiramides.jpg';
+import imgCascada from '../imgs/imgcascadas.jpg';
+import imgZoochapu from '../imgs/imgzoochapu.jpg';
+import imgKill from '../imgs/imgkil.jpg';
 
 const PrevArrow = (props) => {
   const { className, style, onClick } = props;
@@ -30,7 +39,7 @@ const NextArrow = (props) => {
 };
 
 const LugaresCarrusel = () => {
-  const packages = [ 
+  const packages = [
     { 
         id: 1, 
         title: "Museo Frida Kahlo", 
@@ -40,7 +49,7 @@ const LugaresCarrusel = () => {
         closingTime: "5:45 PM", 
         price: "MXN$250", 
         location: "Ciudad de México", 
-        image: "../imgs/imgfrida.jpg"
+        image: imgFrida 
     },
     { 
         id: 2, 
@@ -51,7 +60,7 @@ const LugaresCarrusel = () => {
         closingTime: "Todo el día", 
         price: "Gratis", 
         location: "Guanajuato", 
-        image: "../imgs/ImgIkKil.jpg" 
+        image: imgSanMiguel 
     },
     { 
         id: 3, 
@@ -62,7 +71,7 @@ const LugaresCarrusel = () => {
         closingTime: "5:00 PM", 
         price: "MXN$90", 
         location: "Estado de México", 
-        image: "https://via.placeholder.com/300x200?text=Teotihuacan" 
+        image: imgPiramides 
     },
     { 
         id: 4, 
@@ -73,7 +82,7 @@ const LugaresCarrusel = () => {
         closingTime: "5:00 PM", 
         price: "MXN$50", 
         location: "Chiapas", 
-        image: "https://via.placeholder.com/300x200?text=Cascadas+de+Agua+Azul" 
+        image: imgCascada 
     },
     { 
         id: 5, 
@@ -84,7 +93,7 @@ const LugaresCarrusel = () => {
         closingTime: "4:30 PM", 
         price: "Gratis", 
         location: "Ciudad de México", 
-        image: "../imgs/imgzoochapu.jpg" 
+        image: imgZoochapu 
     },
     { 
         id: 6, 
@@ -95,7 +104,7 @@ const LugaresCarrusel = () => {
         closingTime: "5:00 PM", 
         price: "MXN$150", 
         location: "Yucatán", 
-        image: "../imgs/ImgIkKil.jpg" 
+        image: imgKill 
     }
   ];
 
@@ -126,7 +135,7 @@ const LugaresCarrusel = () => {
                 <p><strong>Tiempo recomendado:</strong> {pkg.recommendedTime}</p>
                 <p><strong>Horario:</strong> {pkg.openingTime} - {pkg.closingTime}</p>
                 <p><strong>Ubicación:</strong> {pkg.location}</p>
-                <p>{pkg.price} <span className="discounted-price">{pkg.discount}</span></p>
+                <p>{pkg.price}</p>
                 <button className="view-more-btn">Ver más</button>
               </div>
             </div>
