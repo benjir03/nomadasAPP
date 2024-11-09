@@ -35,12 +35,17 @@ function App() {
                 <Route path="/registro" element={<Registro />} />
                 
                 {/* Rutas protegidas */}
-                <Route element={<Verificacion />}>
+                {/*<Route element={<Verificacion />}>
                     <Route path="/perfil" element={<Perfil />} />
-                </Route>
-
+                </Route>*/}
+            {/* Rutas protegidas */}
+            <Route element={<Verificacion />}>
+              <Route path="/Perfil" element={<Perfil />} />
+              <Route path="/Modificar" element={<Modificar />} />
+              <Route path="/Completar" element={<CompletarPerfil />} />
+            </Route>
                 {/* Ruta de inicio */}
-                <Route path="/" element={<InicioSesion />} />
+                <Route path="/" element={<Inicio />} />
         </Routes>
       </Router>
       <Footer />

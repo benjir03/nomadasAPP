@@ -77,3 +77,24 @@ exports.modificarPerfil = (req, res) => {
         }
     );
 };
+
+
+//Función para restingit el acceso de usuario no registrado
+const verificarToken = require('../middlewares/authMiddleware');
+
+// Ruta protegida: Obtener el perfil del usuario
+exports.getPerfil = [verificarToken, (req, res) => {
+    const userId = req.userId; // ID del usuario obtenido del token
+
+    // Lógica para obtener el perfil del usuario
+    pool.query(
+        'SELECT nombre, fecha_nacimiento, correo, genero, telefono FROM Usuario WHERE id_usuario = ?',
+        [userId],
+        (err, results) => {
+            if (err || results.length === 0) {
+                return res.status(404).json({ error: 'Usuario no encontrado' });
+            }
+            res.json(results[0]); // Envía los datos del perfil del usuario
+        }
+    );
+}];

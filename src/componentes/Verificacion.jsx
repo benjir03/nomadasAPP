@@ -22,7 +22,7 @@ const Verificacion = () => {
     if (isAuthenticated === null) return <div>Loading...</div>;
 
     // Si está autenticado, muestra el contenido de la ruta; si no, redirige a /login
-    return isAuthenticated ? <Outlet /> : <Navigate to="login" />;
+    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default Verificacion;

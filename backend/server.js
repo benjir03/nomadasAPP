@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser'); // Importa el paquete COOKIE PARS
 const app = express();
 const usuarioRoutes = require('./routes/usuarioRoutes'); //Rutas de usuario
 const authRoutes = require('./routes/authRoutes'); // Rutas de autenticación
+const bitacoraRoutes = require('./routes/bitacoraRoutes'); // Rutas de bitacora
+const opinionesRoutes = require('./routes/opinionesRoutes'); // Rutas de opiniones
 require('dotenv').config();
 
 // Middleware para manejar JSON
@@ -28,6 +30,12 @@ app.use('/usuario', usuarioRoutes);
 
 // Rutas de autenticación
 app.use('/auth', authRoutes);
+
+// Rutas que manejan la bitácora de viajes
+app.use('/bitacora', bitacoraRoutes);
+
+// Rutas que manejan las opiniones
+app.use('/opiniones', opinionesRoutes);
 
 // Configuración del puerto
 app.listen(3001, () => {
