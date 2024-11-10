@@ -17,6 +17,11 @@ const BarraNav = () => {
 
       <nav>
         <ul className="nav-links">
+        <li>
+            <Link className="normal" to="/GustosPerfil">
+              prueba de Gustos
+            </Link>
+          </li>
           <li>
             <Link className="normal" to="/ArmarPlan">
               Arma tu plan
