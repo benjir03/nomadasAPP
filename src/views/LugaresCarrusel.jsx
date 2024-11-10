@@ -43,7 +43,7 @@ const LugaresCarrusel = () => {
   const packages = [
     { 
       id: 1, 
-      title: "Museo Frida Kahlo", 
+      title: "Museo Frida KK", 
       category: "Museo", 
       recommendedTime: "2 horas", 
       openingTime: "10:00 AM", 
