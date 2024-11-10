@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from './componentes/Verificacion';
 import CompletarPerfil from "./views/CompletarPerfil";
 import LugaresCarrusel from "./views/LugaresCarrusel";
+import Verificar from "./views/Verificar";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/Lugares" element={<Lugares />} />
     	    <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
           <Route path="/Verificar" element={<Verificar />} />
+          <Route path="/GustosPerfil" element={<GustosPerfil />} />
           {/*Rutas protegidas para verificacion*/}
           <Route path="/login" element={<InicioSesion />} />
                 <Route path="/registro" element={<Registro />} />
