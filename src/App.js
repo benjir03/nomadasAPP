@@ -14,7 +14,9 @@ import GustosPerfil from "./views/GustosPerfil";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from './componentes/Verificacion';
 import CompletarPerfil from "./views/CompletarPerfil";
-
+import LugaresCarrusel from "./views/LugaresCarrusel";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 function App() {
   return (
     <div className="App">
@@ -31,18 +33,24 @@ function App() {
           <Route path="/Completar" element={<CompletarPerfil />} />
           <Route path="/Modificar" element={<Modificar />} />
           <Route path="/Lugares" element={<Lugares />} />
-          <Route path="/GustosPerfil" element={<GustosPerfil />} />
+    	    <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
+          <Route path="/Verificar" element={<Verificar />} />
           {/*Rutas protegidas para verificacion*/}
           <Route path="/login" element={<InicioSesion />} />
                 <Route path="/registro" element={<Registro />} />
                 
                 {/* Rutas protegidas */}
-                <Route element={<Verificacion />}>
+                {/*<Route element={<Verificacion />}>
                     <Route path="/perfil" element={<Perfil />} />
-                </Route>
-
+                </Route>*/}
+            {/* Rutas protegidas */}
+            <Route element={<Verificacion />}>
+              <Route path="/Perfil" element={<Perfil />} />
+              <Route path="/Modificar" element={<Modificar />} />
+              <Route path="/Completar" element={<CompletarPerfil />} />
+            </Route>
                 {/* Ruta de inicio */}
-                <Route path="/" element={<InicioSesion />} />
+                <Route path="/" element={<Inicio />} />
         </Routes>
       </Router>
       <Footer />

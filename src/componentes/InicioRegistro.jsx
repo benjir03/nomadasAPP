@@ -8,13 +8,13 @@ import {jwtDecode} from 'jwt-decode';
 import { validarCorreo, validarContrasena, } from "../validaciones/validacionesInicioSesion";
 
 const InicioRegistro = ({accion, boton, mensaje}) => {
-    
+    //Constantes de envio de formulario
     const [correo, setCorreo] = useState("");
     const [contraseña, setContrasena] = useState("");
     const [errores, setErrores] = useState({});
     const [googleData, setGoogleData] = useState(null);
     const navigate = useNavigate();
-    
+    //Validaciones
     const manejarEnvio = (e) => {
         e.preventDefault();
         const nuevosErrores = {};
@@ -26,7 +26,7 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         const erroresContrasena = validarContrasena(contraseña);
         if (erroresContrasena.length > 0) nuevosErrores.contraseña = erroresContrasena;
     };
-    
+    //Google
     const handleGoogleSuccess = (credentialResponse) => {
         const decoded = jwtDecode(credentialResponse?.credential);
         console.log(decoded); // Verifica que los datos están bien
@@ -74,9 +74,11 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
                         google_id: googleData?.sub,
                         picture: googleData?.picture,
                     };
-                  const response = await axios.post(URI, requestData, { withCredentials: true }); // Envío de cookies
-                  console.log(response.data.message); // Muestra mensaje de éxito
-                  navigate('/Completar'); // Redirige al perfil
+                const response = await axios.post(URI, requestData, { withCredentials: true });
+                
+                console.log(response.data.message);
+                navigate('/Verificar');
+                
                 } catch (error) {
                     console.error('Error al registrar usuario:', error);
                     alert('Hubo un problema con el registro. Inténtalo de nuevo.');

@@ -106,9 +106,6 @@ function Inicio() {
           Más historias...
         </Link>
       </section>
-      <div className="App">
-      <ImageCarousel images={images} />
-    </div>
     </div>
     
   );

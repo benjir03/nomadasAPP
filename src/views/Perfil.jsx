@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../estilos/styPerfil.css";
+import "../estilos/styInicioRegistro.css";
+import '../estilos/styGeneral.css';
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { BackPerfil, ciudad } from "../imgs/ArchivoImgs";
@@ -9,6 +10,7 @@ const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
   const [usuario, setUsuario] = useState({
     nombre: "",
+    apellido:"",
     fecha_nacimiento: "",
     correo: "",
     genero: "",
@@ -78,29 +80,17 @@ const Perfil = () => {
                 <h1>Hola {usuario.nombre}</h1>
               </div>
             </div>
-            <div>
-              <h2>Información general</h2>
-              <p><strong>Nombre:</strong> {usuario.nombre}
+            <div className="login-container" >
+              <h2 className="login-title">Información general</h2>
+              <p className="input-field"><strong>Nombre:</strong> {usuario.nombre}
               </p>
-              <p>
+              <p className="input-field">
                 <strong>Fecha de Nacimiento:</strong>{" "}
                 {usuario.fecha_nacimiento}
               </p>
-              <p>
+              <p className="input-field">
                 <strong>Género:</strong> {usuario.genero}
               </p>
-              <p>
-                <strong>Teléfono:</strong> {usuario.telefono}
-              </p>
-              <Link className="botonAccion" to="/Modificar">
-                Modificar 
-              </Link>
-              <br />
-              <br />
-              <br />
-              <button onClick={handleDelete} className="botonAccion">
-                Eliminar cuenta
-              </button>
             </div>
           </div>
         );
@@ -119,24 +109,25 @@ const Perfil = () => {
               <div className="contenedorDos"><h1>Hola {usuario.nombre}</h1>
               </div>
             </div>
-            <div>
-              <h2>Información de cuenta</h2>
-              <p>
+            <div className="login-container">
+              <h2 className="login-title" >Información de cuenta</h2>
+              <p className="input-field">
                 <strong>Nombre:</strong> {usuario.correo}
               </p>
-              <p>
-                <strong>Correo</strong> {usuario.correo}
+              <p className="input-field">
+                <strong>Correo:</strong> {usuario.correo}
               </p>
-              <p>
+              <p className="input-field">
                 <strong>Teléfono:</strong> {usuario.telefono}
               </p>
               <br />
-              <Link className="botonAccion" to="/Modificar">Modificar
+              <Link className="botonAccion" to="/Modificar">
+                Modificar datos
               </Link>
               <br />
               <br />
-              <br />
-              <button onClick={handleDelete} className="botonAccion3">
+              
+              <button onClick={handleDelete} className="botonAccion">
                 Eliminar cuenta
               </button>
             </div>
@@ -155,6 +146,7 @@ const Perfil = () => {
   };
 
   return (
+    <>
     <div className="perfil-container">
       <aside className="sidebar">
         <h2 className="perfil-nombre">{`Bienvenido ${usuario.nombre}`}</h2>
@@ -198,6 +190,10 @@ const Perfil = () => {
       </aside>
       <main className="content">{renderContent()}</main>
     </div>
+    <div className="complemento">
+
+    </div>
+    </>
   );
 };
 
