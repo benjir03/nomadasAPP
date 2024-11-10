@@ -9,8 +9,8 @@ function Footer() {
           <a href="/about" style={{ margin: '0 10px', color: '#007bff', textDecoration: 'none' }}>Acerca de</a>
           <a href="/contact" style={{ margin: '0 10px', color: '#007bff', textDecoration: 'none' }}>Contacto</a>
           <a href="/privacy" style={{ margin: '0 10px', color: '#007bff', textDecoration: 'none' }}>Política de Privacidad</a>
-        </div>
-      </div>
+        </div> {/* Cierre de div agregado */}
+      </div> {/* Cierre de div ajustado */}
     </footer>
   );
 }

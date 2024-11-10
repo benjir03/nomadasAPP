@@ -8,7 +8,14 @@
 
 .perfil-container {
   display: flex;
-  height: 100vh;
+  height:53vh;
+  background-color: var(--background-color);
+}
+
+.complemento {
+  display: flex;
+  height:75vh;
+  /*width:25vh;*/
   background-color: var(--background-color);
 }
 
@@ -18,7 +25,7 @@
   padding: 20px;
   border-right: 1px solid var(--primary-color);
   border-radius: 20px;
-  padding: 2rem;
+  /*padding: 2rem;*/
 }
 
 .sidebar ul {

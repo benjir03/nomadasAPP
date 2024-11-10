@@ -19,4 +19,7 @@ router.delete('/eliminar', verifyToken, authController.eliminarCuenta);
 // Ruta para modificar el perfil del usuario (protegida)
 router.put('/modificar', verifyToken, authController.modificarPerfil);
 
+// Ruta para verificar el correo
+router.put('/verificar', verifyToken, authController.verificar);
+
 module.exports = router;
