@@ -80,7 +80,7 @@ const Perfil = () => {
                 <h1>Hola {usuario.nombre}</h1>
               </div>
             </div>
-            <div className="login-container">
+            <div className="login-container" >
               <h2 className="login-title">Información general</h2>
               <p className="input-field"><strong>Nombre:</strong> {usuario.nombre}
               </p>
@@ -91,18 +91,6 @@ const Perfil = () => {
               <p className="input-field">
                 <strong>Género:</strong> {usuario.genero}
               </p>
-              <p className="input-field">
-                <strong>Teléfono:</strong> {usuario.telefono}
-              </p>
-              <Link className="botonAccion" to="/Modificar">
-                Modificar 
-              </Link>
-              <br />
-              <br />
-              <br />
-              <button onClick={handleDelete} className="botonAccion">
-                Eliminar cuenta
-              </button>
             </div>
           </div>
         );
@@ -121,24 +109,25 @@ const Perfil = () => {
               <div className="contenedorDos"><h1>Hola {usuario.nombre}</h1>
               </div>
             </div>
-            <div>
-              <h2>Información de cuenta</h2>
-              <p>
+            <div className="login-container">
+              <h2 className="login-title" >Información de cuenta</h2>
+              <p className="input-field">
                 <strong>Nombre:</strong> {usuario.correo}
               </p>
-              <p>
-                <strong>Correo</strong> {usuario.correo}
+              <p className="input-field">
+                <strong>Correo:</strong> {usuario.correo}
               </p>
-              <p>
+              <p className="input-field">
                 <strong>Teléfono:</strong> {usuario.telefono}
               </p>
               <br />
-              <Link className="botonAccion" to="/Modificar">Modificar
+              <Link className="botonAccion" to="/Modificar">
+                Modificar datos
               </Link>
               <br />
               <br />
-              <br />
-              <button onClick={handleDelete} className="botonAccion3">
+              
+              <button onClick={handleDelete} className="botonAccion">
                 Eliminar cuenta
               </button>
             </div>
@@ -157,6 +146,7 @@ const Perfil = () => {
   };
 
   return (
+    <>
     <div className="perfil-container">
       <aside className="sidebar">
         <h2 className="perfil-nombre">{`Bienvenido ${usuario.nombre}`}</h2>
@@ -200,6 +190,10 @@ const Perfil = () => {
       </aside>
       <main className="content">{renderContent()}</main>
     </div>
+    <div className="complemento">
+
+    </div>
+    </>
   );
 };
 
