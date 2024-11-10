@@ -1,0 +1,129 @@
+// server.js
+const express = require('express');
+const cors = require('cors');
+const axios = require('axios');
+
+const app = express(); // Esta línea define el objeto 'app'
+const port = 5000;
+
+app.use(cors());
+
+// Ruta para búsqueda de lugares
+app.get('/search', async (req, res) => {
+    const { city, radius, category, priceRange, rating, keywords, lessKnown, nonTourist } = req.query;
+    const apiKey = 'AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU';  // Cambia esto con tu propia API key
+
+    try {
+        // Construir el término de búsqueda para la API
+        let query = city;
+        if (category) query += ` ${category}`;
+        if (keywords) query += ` ${keywords}`;
+
+        // Construir la URL para la solicitud a Google Places API
+        let url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(query)}&key=${apiKey}`;
+
+        // Añadir parámetros opcionales
+        if (radius) url += `&radius=${parseInt(radius) * 1000}`; // Google API requiere el radio en metros
+        if (priceRange) url += `&minprice=${priceRange}&maxprice=${priceRange}`;
+
+        const response = await axios.get(url);
+        let places = response.data.results;
+
+        // Filtrar por rating mínimo si está especificado
+        if (rating) {
+            places = places.filter(place => place.rating >= parseFloat(rating));
+        }
+
+        // Lugares menos conocidos (menor cantidad de reseñas)
+        if (lessKnown === 'true') {
+            places = places.filter(place => place.user_ratings_total < 50);
+        }
+
+        // Filtro adicional para zonas no turísticas (esto depende de la dirección del lugar)
+        if (nonTourist === 'true') {
+            places = places.filter(place => !place.formatted_address.toLowerCase().includes("turístico"));
+        }
+
+        // Devolver los resultados al cliente
+        const results = places.map(place => ({
+            place_id: place.place_id,
+            name: place.name,
+            formatted_address: place.formatted_address,
+            vicinity: place.vicinity,
+            rating: place.rating,
+            user_ratings_total: place.user_ratings_total,
+            price_level: place.price_level,
+            photo_reference: place.photos ? place.photos[0].photo_reference : null,
+            opening_hours: place.opening_hours,
+        }));
+
+        res.json({ results });
+    } catch (error) {
+        console.error('Error al realizar la solicitud a Google Places API:', error);
+        res.status(500).send('Error al realizar la búsqueda');
+    }
+});
+
+// Nueva ruta para obtener detalles de un lugar específico usando place_id
+app.get('/place-details', async (req, res) => {
+    const { place_id } = req.query;
+    const apiKey = 'AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU';
+
+    try {
+        const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=name,formatted_address,rating,reviews,photos,opening_hours,website&key=${apiKey}`;
+        const response = await axios.get(url);
+
+        res.json(response.data.result);
+    } catch (error) {
+        console.error('Error al obtener detalles del lugar:', error);
+        res.status(500).send('Error al obtener detalles del lugar');
+    }
+});
+
+// Ruta para obtener una imagen de un lugar
+// server.js - Endpoint para obtener la foto del lugar
+app.get('/place-photo', async (req, res) => {
+    const { photo_reference } = req.query;
+    const apiKey = 'AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU';
+  
+    try {
+      const url = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=300&photoreference=${photo_reference}&key=${apiKey}`;
+      const response = await axios.get(url, {
+        responseType: 'arraybuffer', // Necesario para obtener la imagen en forma de buffer
+      });
+  
+      // Configurar los headers para indicar que es una imagen
+      res.set('Content-Type', 'image/jpeg');
+      res.send(response.data);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al obtener la imagen');
+    }
+  });
+  
+
+// Ruta para obtener reseñas de un lugar
+app.get('/place-reviews', async (req, res) => {
+    const { place_id, pagetoken } = req.query;
+    const apiKey = 'AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU';
+
+    try {
+        let url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=name,reviews&language=es&key=${apiKey}`;
+        if (pagetoken) {
+            url += `&pagetoken=${pagetoken}`;
+        }
+
+        const response = await axios.get(url);
+        const reviews = response.data.result.reviews || [];
+
+        res.json(reviews);
+    } catch (error) {
+        console.error('Error al obtener reseñas del lugar:', error);
+        res.status(500).send('Error al obtener reseñas del lugar');
+    }
+});
+
+// Iniciar el servidor
+app.listen(port, () => {
+    console.log(`Servidor escuchando en el puerto ${port}`);
+});
