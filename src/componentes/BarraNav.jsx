@@ -11,30 +11,30 @@ const BarraNav = () => {
           <img src={logoNomadas} alt="Logo de la página" />
         </Link>
         <Link to="/Inicio">
-          <h1>NómadasAPP(inicio)</h1>
+          <h1>NómadasAPP</h1>
         </Link>
       </div>
 
       <nav>
         <ul className="nav-links">
-        <li>
+          <li>
             <Link className="normal" to="/GustosPerfil">
               prueba de Gustos
             </Link>
           </li>
           <li>
             <Link className="normal" to="/ArmarPlan">
-              Arma tu plan(búsqueda de actividades)
+              Arma tu plan
             </Link>
           </li>
           <li>
             <Link className="normal" to="/Actividad">
-              Explora(explorar actividades)
+              Explora
             </Link>
           </li>
           <li>
             <Link className="normal" to="/Experiencias">
-              Experiencias(historias de usuarios)
+              Experiencias
             </Link>
           </li>
           {/*           <li>
