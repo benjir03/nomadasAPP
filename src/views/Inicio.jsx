@@ -16,11 +16,14 @@ import {
   user4Image,
 } from "../imgs/ArchivoImgs";
 
-
 const images = [
-  { src: BackInicio, alt: 'Imagen 1', info: 'Información de la imagen 1' },
-  { src: gastronomiaImage, alt: 'Imagen 2', info: 'Información de la imagen 2' },
-  { src: arteImage, alt: 'Imagen 3', info: 'Información de la imagen 3' },
+  { src: BackInicio, alt: "Imagen 1", info: "Información de la imagen 1" },
+  {
+    src: gastronomiaImage,
+    alt: "Imagen 2",
+    info: "Información de la imagen 2",
+  },
+  { src: arteImage, alt: "Imagen 3", info: "Información de la imagen 3" },
 ];
 
 function Inicio() {
@@ -52,9 +55,21 @@ function Inicio() {
       <section className="categoriasSec">
         <h2>¡Explora lugares fuera de lo común!</h2>
         <div className="categorias">
-          <FichaCategoria titulo="Historia" contenido="Algo bonito" imagen = {historiaImage}/>
-          <FichaCategoria titulo="Benji" contenido="Scrum master" imagen = {arteImage}/>
-          <FichaCategoria titulo="Uriel" contenido="Scrum master" imagen = {gastronomiaImage}/>
+          <FichaCategoria
+            titulo="Historia"
+            contenido="Algo bonito"
+            imagen={historiaImage}
+          />
+          <FichaCategoria
+            titulo="Benji"
+            contenido="Scrum master"
+            imagen={arteImage}
+          />
+          <FichaCategoria
+            titulo="Uriel"
+            contenido="Scrum master"
+            imagen={gastronomiaImage}
+          />
           {/* <Link to="/Lugares/Historia" className="category-card">
             <img
               src={historiaImage}
@@ -107,7 +122,6 @@ function Inicio() {
         </Link>
       </section>
     </div>
-    
   );
 }
 
