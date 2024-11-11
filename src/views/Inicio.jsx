@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import "../estilos/estiloInicio.css";
 import fondiInicio from "../imgs/fondoInicio.jpg";
 import FichaCategoria from "../componentes/FichaCategoria";
-import ImageCarousel from "./CarouselHome";
-
+import FichaOpinion from "../componentes/FichaOpinion";
 import {
   historiaImage,
   BackInicio,
@@ -26,6 +25,13 @@ const images = [
   { src: arteImage, alt: "Imagen 3", info: "Información de la imagen 3" },
 ];
 
+const usuarios = [
+  { nombre: "User 1", imagen: user1Image },
+  { nombre: "User 2", imagen: user2Image },
+  { nombre: "User 3", imagen: user3Image },
+  { nombre: "User 4", imagen: user4Image },
+];
+
 function Inicio() {
   return (
     <div className="contenedorVista">
@@ -35,8 +41,8 @@ function Inicio() {
         style={{
           backgroundImage: `url(${fondiInicio})`,
           height: `90vh`,
-          backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
-          backgroundPosition: "center", // Centra la imagen,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div className="contenedorDos">
@@ -70,26 +76,6 @@ function Inicio() {
             contenido="Scrum master"
             imagen={gastronomiaImage}
           />
-          {/* <Link to="/Lugares/Historia" className="category-card">
-            <img
-              src={historiaImage}
-              alt="Historia"
-              className="category-image"
-            />
-            <p className="category-text">Historia</p>
-          </Link>
-          <Link to="/Lugares/Gastronomia" className="category-card">
-            <img
-              src={gastronomiaImage}
-              alt="Gastronomía"
-              className="category-image"
-            />
-            <p className="category-text">Gastronomía</p>
-          </Link>
-          <Link to="/Lugares/Arte" className="category-card">
-            <img src={arteImage} alt="Arte" className="category-image" />
-            <p className="category-text">Arte</p>
-          </Link> */}
         </div>
         <Link to="/Lugares" className="more-categories-link">
           Más categorías...
@@ -97,30 +83,7 @@ function Inicio() {
       </section>
 
       {/* Sección de historias de usuarios */}
-      <section className="user-stories-section">
-        <h2>Comparte tu siguiente aventura.</h2>
-        <div className="user-stories">
-          <Link to="/Historias/user1" className="user-story">
-            <img src={user1Image} alt="User 1" className="user-image" />
-            <p>@User 1</p>
-          </Link>
-          <Link to="/Historias/user2" className="user-story">
-            <img src={user2Image} alt="User 2" className="user-image" />
-            <p>@User 2</p>
-          </Link>
-          <Link to="/Historias/user3" className="user-story">
-            <img src={user3Image} alt="User 3" className="user-image" />
-            <p>@User 3</p>
-          </Link>
-          <Link to="/Historias/user4" className="user-story">
-            <img src={user4Image} alt="User 4" className="user-image" />
-            <p>@User 4</p>
-          </Link>
-        </div>
-        <Link to="/Historias" className="more-stories-link">
-          Más historias...
-        </Link>
-      </section>
+      <FichaOpinion usuarios={usuarios} />
     </div>
   );
 }

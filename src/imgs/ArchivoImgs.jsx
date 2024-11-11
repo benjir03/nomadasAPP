@@ -26,6 +26,7 @@ import user1Image from "./arte.JPG";
 import user2Image from "./arte.JPG";
 import user3Image from "./arte.JPG";
 import user4Image from "./arte.JPG";
+import user5Image from "./arte.JPG";
 
 import Lugar1 from "./explora01.jpg";
 import Lugar2 from "./explora01.jpg";
@@ -61,6 +62,7 @@ export {
   user2Image,
   user3Image,
   user4Image,
+  user5Image,
   fondoInicio,
 
   Lugar1,
