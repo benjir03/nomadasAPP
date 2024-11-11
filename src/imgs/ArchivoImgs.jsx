@@ -62,4 +62,9 @@ export {
   user3Image,
   user4Image,
   fondoInicio,
+
+  Lugar1,
+  Lugar2,
+  Lugar3,
+  Lugar4,
 };

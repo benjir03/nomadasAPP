@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import '../estilos/styCarousel.css';
+import '../estilos/CarouselOptions.css';
 import axios from 'axios';
-
+import { BiAlignJustify } from 'react-icons/bi';
 const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
@@ -172,8 +172,8 @@ const LugaresCarrusel = () => {
 
   return (
     <div className="carousel-container">
-      <h2>Busca tu lugar favorito</h2>
       <form onSubmit={handleSubmit}>
+      <h2>Busca tu lugar favorito</h2>
         <div>
           <label htmlFor="city">Lugar:</label>
           <input type="text" id="city" value={city} onChange={(e) => setCity(e.target.value)} />
@@ -249,11 +249,10 @@ const LugaresCarrusel = () => {
           </Slider>
         </div>
       ) : (
-        <p>No hay imágenes disponibles para mostrar</p>
+        <p></p>
       )}
     </div>
   );
 };
 
 export default LugaresCarrusel;
-

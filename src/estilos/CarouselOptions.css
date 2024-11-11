@@ -1,9 +1,48 @@
 .carousel-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
   padding: 50px;
+  background-color: #f9fafb;
+  color: #333;
+  font-family: 'Georgia', serif;
+  gap: 30px; /* Espacio entre los elementos del contenedor */
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+form label {
+  justify-content: center;
+  font-weight: 1000;
+  color: #4a4a4a;
+  font-size: 13px;
+}
+
+form input, form select, button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: 'Georgia', serif;
+  background-color: #f4f5f7;
+}
+
+button[type="submit"] {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #2563eb;
+}
 .carousel-box {
   width: 100%;
   max-width: 1000px;
@@ -24,13 +63,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  height: 500px;
   min-height: 400px; /* Tamaño mínimo para todos los contenedores */
 }
 
 .package-image {
   width: 100%;
-  border-radius: 8px;
+  max-height: 200px; /* Ajusta este valor según tus necesidades */
+  object-fit: cover; /* Recorta la imagen si es más alta */
+  border-radius: 10px;
+  margin: auto;
 }
 
 .view-more-btn {
@@ -91,4 +133,10 @@
   border-radius: 4px;
   cursor: pointer;
   margin-top: 20px;
+}
+.titulo {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 40px;
+
 }
