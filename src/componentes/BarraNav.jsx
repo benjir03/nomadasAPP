@@ -28,7 +28,7 @@ const BarraNav = () => {
             </Link>
           </li>
           <li>
-            <Link className="normal" to="/Actividad">
+            <Link className="normal" to="/Explora">
               Explora
             </Link>
           </li>

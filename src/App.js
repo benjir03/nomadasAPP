@@ -9,7 +9,7 @@ import Experiencias from "./views/Expeciencias";
 import Modificar from "./views/ModificarPerfil";
 import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";
-import Lugares from "./views/Lugares";
+import Explora from "./views/Explora";
 import GustosPerfil from "./views/GustosPerfil";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from './componentes/Verificacion';
@@ -33,7 +33,7 @@ function App() {
           <Route path="/Perfil" element={<Perfil />} />
           <Route path="/Completar" element={<CompletarPerfil />} />
           <Route path="/Modificar" element={<Modificar />} />
-          <Route path="/Lugares" element={<Lugares />} />
+          <Route path="/Explora" element={<Explora />} />
     	    <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
           <Route path="/Verificar" element={<Verificar />} />
           <Route path="/GustosPerfil" element={<GustosPerfil />} />
