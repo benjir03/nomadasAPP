@@ -1,6 +1,6 @@
 import "./App.css";
 import BarraNav from "./componentes/BarraNav";
-import Footer from "./componentes/Footer"
+import Footer from "./componentes/Footer";
 import Inicio from "./views/Inicio";
 import Perfil from "./views/Perfil";
 import Registro from "./views/Registro";
@@ -12,11 +12,11 @@ import Actividad from "./views/Actividad";
 import Explora from "./views/Explora";
 import GustosPerfil from "./views/GustosPerfil";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Verificacion from './componentes/Verificacion';
+import Verificacion from "./componentes/Verificacion";
 import CompletarPerfil from "./views/CompletarPerfil";
 import LugaresCarrusel from "./views/LugaresCarrusel";
 import Verificar from "./views/Verificar";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 function App() {
   return (
@@ -34,25 +34,25 @@ function App() {
           <Route path="/Completar" element={<CompletarPerfil />} />
           <Route path="/Modificar" element={<Modificar />} />
           <Route path="/Explora" element={<Explora />} />
-    	    <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
+          <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
           <Route path="/Verificar" element={<Verificar />} />
           <Route path="/GustosPerfil" element={<GustosPerfil />} />
           {/*Rutas protegidas para verificacion*/}
           <Route path="/login" element={<InicioSesion />} />
-                <Route path="/registro" element={<Registro />} />
-                
-                {/* Rutas protegidas */}
-                {/*<Route element={<Verificacion />}>
+          <Route path="/registro" element={<Registro />} />
+
+          {/* Rutas protegidas */}
+          {/*<Route element={<Verificacion />}>
                     <Route path="/perfil" element={<Perfil />} />
                 </Route>*/}
-            {/* Rutas protegidas */}
-            <Route element={<Verificacion />}>
-              <Route path="/Perfil" element={<Perfil />} />
-              <Route path="/Modificar" element={<Modificar />} />
-              <Route path="/Completar" element={<CompletarPerfil />} />
-            </Route>
-                {/* Ruta de inicio */}
-                <Route path="/" element={<Inicio />} />
+          {/* Rutas protegidas */}
+          <Route element={<Verificacion />}>
+            <Route path="/Perfil" element={<Perfil />} />
+            <Route path="/Modificar" element={<Modificar />} />
+            <Route path="/Completar" element={<CompletarPerfil />} />
+          </Route>
+          {/* Ruta de inicio */}
+          <Route path="/" element={<Inicio />} />
         </Routes>
       </Router>
       <Footer />
