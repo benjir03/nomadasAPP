@@ -17,7 +17,7 @@ const BarraNav = () => {
 
       <nav>
         <ul className="nav-links">
-        <li>
+          <li>
             <Link className="normal" to="/GustosPerfil">
               prueba de Gustos
             </Link>
@@ -29,7 +29,7 @@ const BarraNav = () => {
           </li>
           <li>
             <Link className="normal" to="/Actividad">
-              Recomendaciones
+              Explora
             </Link>
           </li>
           <li>
@@ -37,11 +37,11 @@ const BarraNav = () => {
               Experiencias
             </Link>
           </li>
-          <li>
+          {/*           <li>
             <Link className="botonAccion" to="/Lugares">
               Lugares
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link className="botonAccion" to="/Registro">
               Registrarse
