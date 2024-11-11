@@ -20,12 +20,17 @@ import monumentorevolucion from "./ImgMonuRevolucion.jpeg";
 import villa from "./Imgvilla.jpg";
 import BackInicioSesion from "./inicioSesion.jpg";
 import resort from "./resort.jpg";
+import explora01 from "./explora01.jpg";
 
 import user1Image from "./arte.JPG";
 import user2Image from "./arte.JPG";
 import user3Image from "./arte.JPG";
 import user4Image from "./arte.JPG";
 
+import Lugar1 from "./explora01.jpg";
+import Lugar2 from "./explora01.jpg";
+import Lugar3 from "./explora01.jpg";
+import Lugar4 from "./explora01.jpg";
 // Inicio
 import fondoInicio from "./fondoInicio.jpg";
 
@@ -50,10 +55,16 @@ export {
   villa,
   BackInicioSesion,
   resort,
+  explora01,
 
   user1Image,
   user2Image,
   user3Image,
   user4Image,
   fondoInicio,
+
+  Lugar1,
+  Lugar2,
+  Lugar3,
+  Lugar4,
 };

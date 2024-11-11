@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../estilos/styModificarPerfil.css";
+import "../estilos/styInicioRegistro.css";
 
 const ModificarPerfil = () => {
   const [usuario, setUsuario] = useState({
@@ -59,10 +60,10 @@ const ModificarPerfil = () => {
 
   return (
     <div className="modificarPerfil">
-      <h2>Modificar Perfil</h2>
+      <h2 className="login-title">Modificar Perfil</h2>
       <form onSubmit={handleUpdate}>
-        <label>Nombre:</label>
-        <input
+        <label className="label">Nombre:</label>
+        <input 
           type="text"
           name="nombre"
           value={usuario.nombre}
@@ -70,7 +71,7 @@ const ModificarPerfil = () => {
           placeholder="Nombre"
         />
         <br />
-        <label>Fecha de nacimiento:</label>
+        <label className="label">Fecha de nacimiento:</label>
         <input
           type="date"
           name="fecha_nacimiento"
@@ -78,7 +79,7 @@ const ModificarPerfil = () => {
           onChange={handleInputChange}
         />
         <br />
-        <label>Correo:</label>
+        <label className="label">Correo:</label>
         <input
           type="email"
           name="correo"
@@ -87,7 +88,7 @@ const ModificarPerfil = () => {
           placeholder="Correo"
         />
         <br />
-        <label>Género:</label>
+        <label className="label">Género:</label>
         <input
           type="text"
           name="genero"
@@ -96,7 +97,7 @@ const ModificarPerfil = () => {
           placeholder="Género"
         />
         <br />
-        <label>Teléfono:</label>
+        <label className="label">Teléfono:</label>
         <input
           type="tel"
           name="telefono"
@@ -104,9 +105,13 @@ const ModificarPerfil = () => {
           onChange={handleInputChange}
           placeholder="Teléfono"
         />
-        <button type="submit" className="botonAccion">
+        <br/>
+        <br/>
+        <button type="submit" className="botonAccion2">
           Guardar cambios
-        </button>
+        </button>        
+        <br/>
+        <br/>
         <button
           type="button"
           className="botonAccion3"

@@ -125,8 +125,7 @@ const Perfil = () => {
                 Modificar datos
               </Link>
               <br />
-              <br />
-              
+              <br />              
               <button onClick={handleDelete} className="botonAccion">
                 Eliminar cuenta
               </button>
@@ -134,9 +133,53 @@ const Perfil = () => {
           </div>
         );
       case "security":
-        return <div>Seguridad</div>;
+        return (
+          <div className="contenedorVista">
+            <div
+              className="contenedorUno"
+              style={{
+                backgroundImage: {BackPerfil}, // Asegúrate de usar la interpolación correcta
+                height: "50vh", // Usa comillas para las unidades
+                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+                backgroundPosition: "center", // Centra la imagen
+              }}
+            >
+              <div className="contenedorDos">
+                <h1>Hola {usuario.nombre}</h1>
+              </div>
+            </div>
+            <div  >
+              <h2 className="login-title">Protección de información personal</h2>
+              <p className="Parrafo1">
+                Conoce cómo es que cuidamos la integridad de tus datos personales...
+              </p>
+            </div>
+          </div>
+        );
       case "notifications":
-        return <div>Notificaciones</div>;
+        return (
+          <div className="contenedorVista">
+            <div
+              className="contenedorUno"
+              style={{
+                backgroundImage: {BackPerfil}, // Asegúrate de usar la interpolación correcta
+                height: "50vh", // Usa comillas para las unidades
+                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+                backgroundPosition: "center", // Centra la imagen
+              }}
+            >
+              <div className="contenedorDos">
+                <h1>Hola {usuario.nombre}</h1>
+              </div>
+            </div>
+            <div  >
+              <h2 className="login-title">Notificaciones recientes</h2>
+              <p className="Parrafo1">
+                Aquí podrás consultar todas las notificaciones que genere nuestro sistema para tu cuenta.
+              </p>              
+            </div>
+          </div>
+        );
       case "logout":
         handleLogout();
         return null;
