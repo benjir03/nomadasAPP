@@ -32,11 +32,11 @@ const BarraNav = () => {
               Explora
             </Link>
           </li>
-          <li>
+          {/*           <li>
             <Link className="normal" to="/Experiencias">
               Experiencias
             </Link>
-          </li>
+          </li> */}
           {/*           <li>
             <Link className="botonAccion" to="/Lugares">
               Lugares
