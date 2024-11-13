@@ -25,7 +25,6 @@ const images = [
   },
   { src: arteImage, alt: "Imagen 3", info: "Información de la imagen 3" },
 ];
-
 function Inicio() {
   return (
     <div className="contenedorVista">

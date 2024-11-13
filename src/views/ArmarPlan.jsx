@@ -12,7 +12,7 @@ export default function ArmarPlan() {
         className="contenedorUno"
         style={{
           backgroundImage: `url(${fondiArmarPlan})`,
-          height: `60vh`,
+          height: `80vh`,
           backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
           backgroundPosition: "center", // Centra la imagen,
         }}

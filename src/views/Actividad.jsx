@@ -1,68 +1,27 @@
+// Actividad.js
 import React from "react";
 import { Link } from "react-router-dom";
 import "../estilos/styActividad.css";
-
-// Importación cartas dinamicas
+import ActividadPrincipal from "../componentes/Actividades"; // Asegúrate de que el nombre y la ruta sean correctos
 import FichaCategoria from "../componentes/FichaCategoria";
-// Importación directa de imágenes
-import {
-  chapultepec,
-  biblioteca,
-  bellasartes,
-  monumentorevolucion,
-  islamuñecas,
-} from "../imgs/ArchivoImgs";
+import { chapultepec, biblioteca, bellasartes, monumentorevolucion, islamuñecas } from "../imgs/ArchivoImgs";
 
 function Actividad() {
   return (
     <div className="Actividad">
-      {/* Sección de bienvenida */}
-      <section
-        className="contenedorUno"
-        style={{
-          backgroundImage: `url(${islamuñecas})`,
-          height: `88vh`,
-          backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
-          backgroundPosition: "center", // Centra la imagen,
-        }}
-      >
-        <div className="contenedorDos">
-          <h1>Isla de las muñecas</h1>
-          <p>
-            Una isla llena de cientos de muñecos colgados, en descomposición y
-            decapitados.
-          </p>
-          <Link className="botonAccion2">Agregar al plan</Link>
-        </div>
-      </section>
-
-      {/* Sección de información de la actividad */}
-      <section className="actividadInfo">
-        <div className="descripcion">
-          <h2>La Isla de las Muñecas</h2>
-          <p>Precio $$ Duración 3-5 hr</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac
-            lacus non augue auctor imperdiet sit amet nec metus.
-          </p>
-        </div>
-        <div className="mapa">
-          <iframe
-            title="mapa"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.608948408533!2d-99.0986!3d19.2908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fe6d2f8d5b47%3A0x25e0f7b5b7e68a1b!2sParque%20Ecol%C3%B3gico%20de%20Xochimilco!5e0!3m2!1sen!2smx!4v1601234567890!5m2!1sen!2smx"
-            width="100%"
-            height="250"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
-          <p>Parque Ecológico De Xochimilco</p>
-          <p>19.2908, -99.0986</p>
-          <Link to="https://www.kayak.com">Ver en Google Maps</Link>
-        </div>
-      </section>
-
-      {/* Sección de lugares destacados */}
+      <ActividadPrincipal
+        titulo="Isla de las Muñecas"
+        descripcion="Una isla llena de cientos de muñecos colgados, en descomposición y decapitados."
+        imagenFondo={islamuñecas}
+        infoTitulo="La Isla de las Muñecas"
+        infoPrecio="$$"
+        infoDuracion="3-5 hr"
+        infoDescripcion="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        mapaSrc="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.608948408533!2d-99.0986!3d19.2908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fe6d2f8d5b47%3A0x25e0f7b5b7e68a1b!2sParque%20Ecol%C3%B3gico%20de%20Xochimilco!5e0!3m2!1sen!2smx!4v1601234567890!5m2!1sen!2smx"
+        mapaTitulo="Mapa Isla de las Muñecas"
+        mapaUbicacion="Parque Ecológico De Xochimilco"
+        mapaLink="https://www.kayak.com"
+      />
       <section className="lugaresDestacados">
         <h3>Otras recomendaciones en Ciudad de México</h3>
         <div className="listaLugares">

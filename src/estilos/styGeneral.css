@@ -7,7 +7,7 @@
 
 .contenedorVista {
   text-align: center;
-  padding: 0rem 2%;
+  padding: 0 3%;
   background-color: var(--background-color);
 }
 
@@ -27,15 +27,20 @@
 
 .contenedorUno {
   position: relative;
-  height: 600px; /* Ajusta la altura para el tamaño del header */
-  background-size: cover; /* Hace que la imagen cubra todo el contenedor */
-  background-position: center; /* Centra la imagen en el contenedor */
+  width: 80%; /* Reduce el ancho del contenedor */
+  max-width: 1200px; /* Limita el ancho máximo */
+  max-height: 500px; /* Ajusta la altura según sea necesario */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   color: var(--background-color);
   display: flex;
-
   justify-content: flex-start;
-  border-radius: 50px;
+  align-items: center;
+  border-radius: 30px;
+  margin: 0rem auto; /* Centra el contenedor y agrega espacio superior/inferior */
+  padding: 0px; /* Agrega un espaciado interno */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
 }
 
 .contenedorDos {
@@ -48,60 +53,49 @@
 }
 
 .contenedorDos h1 {
-  font-size: 3.5em;
+  font-size: 40px;
   margin: 0;
 }
 
 .contenedorDos p {
-  font-size: 1.5em;
+  font-size: 18px;
   color: var(--background-color);
   margin-top: 10px;
 }
 
-.botonAccion2 {
+.botonAccion2,
+.botonAccion3 {
   padding: 15px 20px;
-  background-color: var(--primary-color);
   color: var(--background-color);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
-
-  font-size: 1.25rem; /* Ajusta el tamaño del texto aquí */
-
-  text-decoration: none; /* Quita el subrayado */
-  display: inline-block; /* Asegura que se comporte como un botón */
+  font-size: 16px;
   font-weight: bold;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.botonAccion2 {
+  background-color: var(--primary-color);
 }
 
 .botonAccion2:hover {
   background-color: var(--secondary-color);
-  color: var(--background-color);
 }
+
 .botonAccion3 {
-  padding: 15px 20px;
   background-color: var(--secondary-color);
-  color: var(--background-color);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  font-size: 1.25rem; /* Ajusta el tamaño del texto aquí */
-
-  text-decoration: none; /* Quita el subrayado */
-  display: inline-block; /* Asegura que se comporte como un botón */
-  font-weight: bold;
 }
 
 .botonAccion3:hover {
   background-color: var(--background-color);
-  border-color: var(--secondary-color);
   color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 .Parrafo1 {
   color: black;
   font-size: 25px;
-  font-family: 'Open Sauce'
+  font-family: 'Open Sauce';
 }

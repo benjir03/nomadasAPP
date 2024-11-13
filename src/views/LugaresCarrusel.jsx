@@ -175,11 +175,11 @@ const LugaresCarrusel = () => {
       <form onSubmit={handleSubmit}>
       <h2>Busca tu lugar favorito</h2>
         <div>
-          <label htmlFor="city">Lugar:</label>
+          <label htmlFor="city">Lugar: </label>
           <input type="text" id="city" value={city} onChange={(e) => setCity(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="radius">Radio (km):</label>
+          <label htmlFor="radius">Radio (km): </label>
           <input type="number" id="radius" value={radius} onChange={(e) => setRadius(e.target.value)} />
         </div>
         <div>
@@ -195,19 +195,19 @@ const LugaresCarrusel = () => {
           </select>
         </div>
         <div>
-          <label htmlFor="keywords">Palabras clave:</label>
+          <label htmlFor="keywords">Palabras clave: </label>
           <input type="text" id="keywords" value={keywords} onChange={(e) => setKeywords(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="priceRange">Precio (1-4):</label>
+          <label htmlFor="priceRange">Precio (1-4): </label>
           <input type="number" id="priceRange" value={priceRange} onChange={(e) => setPriceRange(e.target.value)} min="1" max="4" />
         </div>
         <div>
-          <label htmlFor="rating">Calificación mínima:</label>
+          <label htmlFor="rating">Calificación mínima: </label>
           <input type="number" id="rating" value={rating} onChange={(e) => setRating(e.target.value)} min="1" max="5" step="0.1" />
         </div>
         <div>
-          <label htmlFor="ambiance">Ambiente:</label>
+          <label htmlFor="ambiance">Ambiente: </label>
           <select id="ambiance" value={ambiance} onChange={(e) => setAmbiance(e.target.value)}>
             <option value="tranquilo">Tranquilo</option>
             <option value="animado">Animado</option>
