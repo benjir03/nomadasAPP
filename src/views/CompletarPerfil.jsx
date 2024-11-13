@@ -92,7 +92,7 @@ const CompletarPerfil = () => {
           type="email"
           name="correo"
           className="input-field"
-          value={usuario.email}
+          value={usuario.correo}
           onChange={handleInputChange}
           placeholder="Correo"
         />

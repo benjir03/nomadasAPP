@@ -8,16 +8,9 @@ import { BackPerfil, ciudad } from "../imgs/ArchivoImgs";
 
 const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
-  const [usuario, setUsuario] = useState({
-    nombre: "",
-    apellido:"",
-    fecha_nacimiento: "",
-    correo: "",
-    genero: "",
-    telefono: "",
-  });
+  const [usuario, setUsuario] = useState([]);
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     const fetchPerfil = async () => {
       try {
@@ -29,7 +22,7 @@ const Perfil = () => {
         console.error("Error al obtener el perfil del usuario:", error);
       }
     };
-
+    
     fetchPerfil();
   }, []);
 
