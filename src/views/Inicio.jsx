@@ -24,8 +24,6 @@ const images = [
   },
   { src: arteImage, alt: "Imagen 3", info: "Información de la imagen 3" },
 ];
-<<<<<<< HEAD
-=======
 
 const usuarios = [
   { nombre: "User 1", imagen: user1Image },
@@ -33,8 +31,6 @@ const usuarios = [
   { nombre: "User 3", imagen: user3Image },
   { nombre: "User 4", imagen: user4Image },
 ];
-
->>>>>>> bd6f14eae60e0a1bc2ae31e68fc917eae30a0c62
 function Inicio() {
   return (
     <div className="contenedorVista">
