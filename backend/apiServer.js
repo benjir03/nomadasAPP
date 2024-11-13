@@ -103,6 +103,7 @@ app.get('/place-photo', async (req, res) => {
   
 
 // Ruta para obtener reseñas de un lugar
+
 app.get('/place-reviews', async (req, res) => {
     const { place_id, pagetoken } = req.query;
     const apiKey = 'AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU';
@@ -122,6 +123,48 @@ app.get('/place-reviews', async (req, res) => {
         res.status(500).send('Error al obtener reseñas del lugar');
     }
 });
+
+
+//API wikipedia para descripciones
+app.get('/place-description', async (req, res) => {
+    const { place_name, exchars } = req.query;
+
+    if (!place_name) {
+        return res.status(400).send('El parámetro "place_name" es requerido.');
+    }
+
+    try {
+        const directUrl = `https://es.wikipedia.org/w/api.php?origin=*&action=query&format=json&titles=${encodeURIComponent(place_name)}&prop=extracts&exintro=true&explaintext=true&exchars=${exchars}`;
+        let response = await axios.get(directUrl);
+        let pages = response.data.query.pages;
+        let page = pages[Object.keys(pages)[0]];
+
+        let description = page.extract || null;
+
+        if (!description) {
+            const searchUrl = `https://es.wikipedia.org/w/api.php?origin=*&action=query&list=search&format=json&srsearch=${encodeURIComponent(place_name)}&utf8=`;
+            response = await axios.get(searchUrl);
+
+            if (response.data.query.search.length > 0) {
+                const firstResultTitle = response.data.query.search[0].title;
+                const fallbackUrl = `https://es.wikipedia.org/w/api.php?origin=*&action=query&format=json&titles=${encodeURIComponent(firstResultTitle)}&prop=extracts&exintro=true&explaintext=true&exchars=${exchars}`;
+                const fallbackResponse = await axios.get(fallbackUrl);
+                
+                pages = fallbackResponse.data.query.pages;
+                page = pages[Object.keys(pages)[0]];
+                description = page.extract || "Descripción no disponible";
+            } else {
+                description = "Descripción no disponible";
+            }
+        }
+
+        res.json({ description });
+    } catch (error) {
+        console.error('Error al obtener la descripción del lugar desde Wikipedia:', error);
+        res.status(500).send('Error al obtener la descripción del lugar');
+    }
+});
+
 
 // Iniciar el servidor
 app.listen(port, () => {

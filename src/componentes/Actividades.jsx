@@ -39,8 +39,8 @@ function ActividadPrincipal({
       <section className="actividadInfo">
         <div className="descripcion">
           <h2>{infoTitulo}</h2>
-          <p>Precio {infoPrecio}</p>
-          <p>Duración {infoDuracion}</p>
+          <p>Precio: {infoPrecio}</p>
+          <p>Duración: {infoDuracion}</p>
           <p>{infoDescripcion}</p>
         </div>
         <div className="mapa">
@@ -54,7 +54,7 @@ function ActividadPrincipal({
             loading="lazy"
           ></iframe>
           <p>{mapaUbicacion}</p>
-          <Link to={mapaLink}>Ver en Google Maps</Link>
+          <Link to={mapaLink}>Web del lugar</Link>
         </div>
       </section>
     </div>
