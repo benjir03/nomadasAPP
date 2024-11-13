@@ -79,15 +79,22 @@
   text-align: center;
   text-decoration: none; /* Elimina el subrayado del texto en el enlace */
   color: inherit; /* Mantiene el color original del texto */
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .user-image {
   width: 300px;
   height: 300px;
-  border-radius: 50%; /* Hace la imagen circular */
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 10px; /* Agrega espacio alrededor de cada imagen */
+  border-radius: 0; /* Imagen cuadrada */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-story:hover .user-image {
+  transform: scale(1.05); /* Agranda la imagen */
+  box-shadow: 0 8px 16px var(--suport--color); /* Sombra con var(--suport--color) */
 }
 
 .user-story p {

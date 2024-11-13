@@ -1,0 +1,50 @@
+/* Sección de lugares recomendados */
+.lugares-recomendados-section {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .lugares-recomendados {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .lugar-recomendado {
+    text-align: center;
+    text-decoration: none; /* Elimina el subrayado del texto en el enlace */
+    color: inherit; /* Mantiene el color original del texto */
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .imagen-lugar {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px var(--suport--color);
+    margin: 10px;
+    border-radius: 20px;
+    transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+  }
+  
+  .lugar-recomendado:hover .imagen-lugar {
+    transform: scale(1.05);
+    filter: var(--secondary--color) ;/* Cambia este valor para elegir el color */
+    box-shadow: 0 8px 16px var(--secondary-color, rgba(0, 0, 0, 0.3));
+  }
+  
+  
+  .lugar-recomendado p {
+    margin-top: 10px;
+    font-weight: normal;
+    color: #000000;
+  }
+  
+  .ver-mas-lugares-link {
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+  }
+  

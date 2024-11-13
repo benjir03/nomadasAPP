@@ -19,6 +19,7 @@ import LugaresCarrusel from "./views/LugaresCarrusel";
 import Verificar from "./views/Verificar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import RevisarPlan from "./views/RevisarPlan";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
           <Route path="/registro" element={<Registro />} />
+          <Route path="/RevisarPlan" element={<RevisarPlan />} />
 
           {/* Rutas protegidas */}
           <Route element={<Verificacion />}>

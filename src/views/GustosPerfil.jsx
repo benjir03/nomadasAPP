@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import "../estilos/styGustosPerfil.css";
 import OpcionCard from '../componentes/OpcionCard'; 
-import { FaLandmark, FaHiking, FaSpa, FaWalking, FaBicycle, FaCar, FaUser, FaUsers, FaCamera, FaMapMarkedAlt, FaPaw, FaBan, FaLeaf, FaSun, FaTree, FaSnowflake, FaPlane, FaCalendarAlt, FaClock } from 'react-icons/fa';
+import { FaLandmark, FaHiking, FaSpa, FaWalking, FaBicycle, FaCar, FaUser, FaUsers, FaCamera, FaMapMarkedAlt, FaPaw, FaBan, FaLeaf, FaSun, FaTree, FaSnowflake, FaPlane, FaCalendarAlt, FaClock, FaHeart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const GustosPerfil = () => {
+  const navigate = useNavigate();
+
   const preguntas = [
     {
       pregunta: "¿Qué tipo de experiencias prefieres?",
@@ -22,18 +25,19 @@ const GustosPerfil = () => {
       ],
     },
     {
-      pregunta: "¿Cada cuánto tiempo viajas?",
+      pregunta: "¿Regularmente cuanto duran tus viajes ?",
       opciones: [
-        { texto: "Frecuentemente (varias veces al año)", icono: <FaPlane /> },
-        { texto: "Ocasionalmente (una o dos veces al año)", icono: <FaCalendarAlt /> },
-        { texto: "Rara vez (menos de una vez al año)", icono: <FaClock /> },
+        { texto: "Meses", icono: <FaPlane /> },
+        { texto: "Semanas", icono: <FaCalendarAlt /> },
+        { texto: "Dias", icono: <FaClock /> },
       ],
     },
     {
       pregunta: "¿Viajas solo o acompañado?",
       opciones: [
         { texto: "Solo", icono: <FaUser /> },
-        { texto: "Acompañado", icono: <FaUsers /> },
+        { texto: "Con familia", icono: <FaUsers /> },
+        { texto: "Con pareja", icono: <FaHeart /> },    
       ],
     },
     {
@@ -61,6 +65,7 @@ const GustosPerfil = () => {
     },
   ];
 
+
   const [indice, setIndice] = useState(0);
   const [selecciones, setSelecciones] = useState(Array(preguntas.length).fill(null));
 
@@ -82,9 +87,15 @@ const GustosPerfil = () => {
     }
   };
 
+  const manejarClickFinalizar = () => {
+    navigate('/ruta-final'); // Reemplaza '/ruta-final' con la ruta deseada
+  };
+
+  const todasRespondidas = selecciones.every((seleccion) => seleccion !== null);
+
   return (
     <div>
-      <h1 class="gustosPerfil-title">Queremos conocerte más </h1>
+      <h1 className="gustosPerfil-title">Queremos conocerte más</h1>
       <div>
         <h2>{preguntas[indice].pregunta}</h2>
         <div className="opciones-contenedor horizontal">
@@ -103,9 +114,25 @@ const GustosPerfil = () => {
         <button className="botonAccion" onClick={manejarClickRegresar} disabled={indice === 0}>
           Regresar
         </button>
-        <button className="botonAccion" onClick={manejarClickSiguiente} disabled={indice === preguntas.length - 1}>
-          Siguiente Pregunta
-        </button>
+        {indice < preguntas.length - 1 ? (
+          <button
+            className="botonAccion"
+            onClick={manejarClickSiguiente}
+            disabled={!selecciones[indice]}
+            style={{ backgroundColor: selecciones[indice] ? "var(--primary-color)" : "gray" }}
+          >
+            Siguiente Pregunta
+          </button>
+        ) : (
+          <button
+            className="botonAccion"
+            onClick={manejarClickFinalizar}
+            disabled={!todasRespondidas}
+            style={{ backgroundColor: todasRespondidas ? "var(--primary-color)" : "gray" }}
+          >
+            Finalizar
+          </button>
+        )}
       </div>
     </div>
   );
