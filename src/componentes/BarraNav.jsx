@@ -32,11 +32,11 @@ const BarraNav = () => {
               Explora
             </Link>
           </li>
-          <li>
+          {/*           <li>
             <Link className="normal" to="/Experiencias">
               Experiencias
             </Link>
-          </li>
+          </li> */}
           {/*           <li>
             <Link className="botonAccion" to="/Lugares">
               Lugares
@@ -48,7 +48,7 @@ const BarraNav = () => {
             </Link>
           </li>
           <li>
-            <Link className="botonAccion" to="/Registro">
+            <Link className="botonAccion" to="/RevisarPlan">
               MI PLAN(TEST)
             </Link>
           </li>

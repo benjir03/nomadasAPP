@@ -40,7 +40,7 @@ function App() {
           <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
           <Route path="/Verificar" element={<Verificar />} />
           <Route path="/GustosPerfil" element={<GustosPerfil />} />
-          <Route path="/actividades" element={<ListaActividad />} /> {/* Nueva ruta para ListaActividad */}
+          <Route path="/Actividades" element={<ListaActividad />} /> {/* Nueva ruta para ListaActividad */}
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
           <Route path="/registro" element={<Registro />} />
