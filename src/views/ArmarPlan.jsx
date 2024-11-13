@@ -1,10 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import fondiArmarPlan from "../imgs/fondoArmarPlan.jpg";
 import "../estilos/styArmarPlan.css";
-
-import { villa, apartamento, resort, ciudad, } from "../imgs/ArchivoImgs";
+import { villa, apartamento, resort, ciudad } from "../imgs/ArchivoImgs";
 
 export default function ArmarPlan() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/LugaresCarrusel');
+  };
+
   return (
     <div className="contenedorVista">
       {/* Contenedor con imagen de fondo solo para la sección principal */}
@@ -44,7 +50,9 @@ export default function ArmarPlan() {
               <label>Presupuesto</label>
               <input type="range" className="range-field" />
             </div>
-            <button className="search-button">Explora actividades</button>
+            <button className="search-button" onClick={handleClick}>
+              Explora actividades
+            </button>
             <div className="button-container"></div>
           </div>
         </div>
