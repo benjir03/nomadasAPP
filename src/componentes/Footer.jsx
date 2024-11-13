@@ -10,13 +10,13 @@ function Footer() {
         {/* Social Media */}
         <div style={{ marginTop: '20px' }}>
           <h4>Social Media</h4>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px' }}>
+          <a href="https://www.facebook.com/Cristiano" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px' }}>
             <img src={require('../imgs/facebook.png')} alt="Facebook" style={{ width: '24px', height: '24px' }} />
           </a>
-          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px' }}>
+          <a href="https://x.com/Cristiano" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px' }}>
             <img src={require('../imgs/twitter.png')} alt="Twitter" style={{ width: '24px', height: '24px' }} />
           </a>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px' }}>
+          <a href="https://www.instagram.com/cristiano/" target="_blank" rel="noopener noreferrer" style={{ margin: '0 10px' }}>
             <img src={require('../imgs/instagram.png')} alt="Instagram" style={{ width: '24px', height: '24px' }} />
           </a>
         </div>
