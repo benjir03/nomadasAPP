@@ -149,10 +149,10 @@ const LugaresCarrusel = () => {
           <label htmlFor="city">Lugar:</label>
           <input type="text" id="city" value={city} onChange={(e) => setCity(e.target.value)} />
         </div>
-        <div>
+        {/*<div>
           <label htmlFor="radius">Radio (km):</label>
           <input type="number" id="radius" value={radius} onChange={(e) => setRadius(e.target.value)} />
-        </div>
+        </div>*/}
         <div>
           <label htmlFor="category">Categoría:</label>
           <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
