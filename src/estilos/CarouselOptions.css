@@ -5,7 +5,7 @@
   padding: 50px;
   background-color: #f9fafb;
   color: #333;
-  font-family: 'Georgia', serif;
+  font-family: Poppins;;
   gap: 30px; /* Espacio entre los elementos del contenedor */
 }
 form {
@@ -30,7 +30,7 @@ form input, form select, button {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-family: 'Georgia', serif;
+  font-family: Poppins;
   background-color: #f4f5f7;
 }
 

@@ -1,10 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import fondiArmarPlan from "../imgs/fondoArmarPlan.jpg";
 import "../estilos/styArmarPlan.css";
-
 import { villa, apartamento, resort, ciudad, } from "../imgs/ArchivoImgs";
 
 export default function ArmarPlan() {
+  const navigate = useNavigate();
+  const [ciudad, setCiudad] = useState("");
+  const [estancia, setEstancia] = useState("Unas cuantas horas");
+  const [acompanantes, setAcompanantes] = useState("Voy solo");
+  const [presupuesto, setPresupuesto] = useState(4)
+  const handleExploraActividades = () => {
+    navigate("/LugaresCarrusel", {
+      state: { ciudad, estancia, acompanantes, presupuesto },
+    });
+  };
   return (
     <div className="contenedorVista">
       {/* Contenedor con imagen de fondo solo para la sección principal */}
@@ -22,11 +32,11 @@ export default function ArmarPlan() {
             <h1>Busquemos algo increíble</h1>
             <div className="selector-item"> 
               <label>Agregar Ciudad</label>
-              <input type="text"></input>
+              <input type="text" value={ciudad} onChange={(e) => setCiudad(e.target.value)}></input>
             </div>
             <div className="selector-item">
               <label>Tiempo estimado de estancia</label>
-              <select className="select-field">
+              <select className="select-field" value={estancia} onChange={(e) => setEstancia(e.target.value)}>
                 <option>Unas cuantas horas</option>
                 <option>Un día</option>
                 <option>Fin de semana</option>
@@ -34,7 +44,7 @@ export default function ArmarPlan() {
             </div>
             <div className="selector-item">
               <label>Acompañantes</label>
-              <select className="select-field">
+              <select className="select-field" value={acompanantes} onChange={(e) => setAcompanantes(e.target.value)}>
                 <option>Voy solo</option>
                 <option>Con pareja</option>
                 <option>Familia/Amigos</option>
@@ -42,9 +52,9 @@ export default function ArmarPlan() {
             </div>
             <div className="selector-item">
               <label>Presupuesto</label>
-              <input type="range" className="range-field" />
+              <input type="range" className="range-field" value={presupuesto} min="1" max="4" onChange={(e) => setPresupuesto(e.target.value)}/>
             </div>
-            <button className="search-button">Explora actividades</button>
+            <button className="search-button" onClick={handleExploraActividades}>Explora actividades</button>
             <div className="button-container"></div>
           </div>
         </div>

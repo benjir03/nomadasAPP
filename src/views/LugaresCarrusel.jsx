@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -33,20 +33,25 @@ const NextArrow = (props) => {
 };
 
 const LugaresCarrusel = () => {
-  const [city, setCity] = useState('');
+  const location = useLocation(); // Ahora usamos useLocation correctamente
+  const navigate = useNavigate();
+
+  const [city, setCity] = useState(location.state?.ciudad || '');
   const [radius, setRadius] = useState('');
   const [category, setCategory] = useState('');
   const [keywords, setKeywords] = useState('');
-  const [priceRange, setPriceRange] = useState('');
+  const [priceRange, setPriceRange] = useState(location.state?.presupuesto || '');
   const [rating, setRating] = useState('');
-  const [ambiance, setAmbiance] = useState('');
+  const [ambiance, setAmbiance] = useState(
+    location.state?.acompanantes === "Voy solo" ? "tranquilo" : 
+    location.state?.acompanantes === "Con pareja" ? "romántico" : 
+    "familiar"
+  );
   const [lessKnown, setLessKnown] = useState(false);
   const [nonTourist, setNonTourist] = useState(false);
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -57,7 +62,7 @@ const LugaresCarrusel = () => {
     try {
       const url = `http://localhost:5000/search?city=${city}&category=${category}&radius=${radius}&priceRange=${priceRange}&rating=${rating}&keywords=${keywords}`;
       const response = await axios.get(url);
-      
+
       let fetchedPackages = response.data.results.map(result => ({
         id: result.place_id,
         title: result.name,
@@ -96,35 +101,31 @@ const LugaresCarrusel = () => {
 
   const handleViewMoreClick = async (pkg) => {
     try {
-        const detailsUrl = `http://localhost:5000/place-details?place_id=${pkg.id}`;
-        const detailsResponse = await axios.get(detailsUrl);
+      const detailsUrl = `http://localhost:5000/place-details?place_id=${pkg.id}`;
+      const detailsResponse = await axios.get(detailsUrl);
 
-        // Solicitud para la descripción corta
-        const shortDescUrl = `http://localhost:5000/place-description?place_name=${encodeURIComponent(pkg.title)}&exchars=100`;
-        const shortDescResponse = await axios.get(shortDescUrl);
+      const shortDescUrl = `http://localhost:5000/place-description?place_name=${encodeURIComponent(pkg.title)}&exchars=100`;
+      const shortDescResponse = await axios.get(shortDescUrl);
 
-        // Solicitud para la descripción detallada
-        const detailedDescUrl = `http://localhost:5000/place-description?place_name=${encodeURIComponent(pkg.title)}&exchars=300`;
-        const detailedDescResponse = await axios.get(detailedDescUrl);
+      const detailedDescUrl = `http://localhost:5000/place-description?place_name=${encodeURIComponent(pkg.title)}&exchars=300`;
+      const detailedDescResponse = await axios.get(detailedDescUrl);
 
-        // Log para verificar las descripciones recibidas
-        console.log("Descripción corta recibida del servidor:", shortDescResponse.data.description);
-        console.log("Descripción detallada recibida del servidor:", detailedDescResponse.data.description);
+      console.log("Descripción corta recibida del servidor:", shortDescResponse.data.description);
+      console.log("Descripción detallada recibida del servidor:", detailedDescResponse.data.description);
 
-        const placeData = { 
-            ...pkg, 
-            ...detailsResponse.data, 
-            descripcion_corta: shortDescResponse.data.description,
-            descripcion: detailedDescResponse.data.description,
-            category: pkg.category
-        };
+      const placeData = { 
+        ...pkg, 
+        ...detailsResponse.data, 
+        descripcion_corta: shortDescResponse.data.description,
+        descripcion: detailedDescResponse.data.description,
+        category: pkg.category
+      };
 
-        navigate('/actividad', { state: placeData });
+      navigate('/actividad', { state: placeData });
     } catch (error) {
-        console.error('Error al obtener detalles del lugar:', error);
+      console.error('Error al obtener detalles del lugar:', error);
     }
-};
-
+  };
 
   const settings = {
     dots: true,
@@ -181,8 +182,7 @@ const LugaresCarrusel = () => {
           <label htmlFor="ambiance">Ambiente:</label>
           <select id="ambiance" value={ambiance} onChange={(e) => setAmbiance(e.target.value)}>
             <option value="tranquilo">Tranquilo</option>
-            <option value="animado">Animado</option>
-            <option value="familiar">Familiar</option>
+            <option value="familiar">Familiar/Amistoso</option>
             <option value="romántico">Romántico</option>
           </select>
         </div>
@@ -199,7 +199,6 @@ const LugaresCarrusel = () => {
           </label>
         </div>
         <button type="submit" disabled={loading}>Buscar</button>
- 
       </form>
       {loading && <p>Buscando...</p>}
       {error && <p>{error}</p>}
@@ -220,9 +219,7 @@ const LugaresCarrusel = () => {
             ))}
           </Slider>
         </div>
-      ) : (
-        <p></p>
-      )}
+      ) : null}
     </div>
   );
 };
