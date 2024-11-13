@@ -44,18 +44,3 @@ exports.insertarUsuario = (req, res) => {
         }
     );
 };
-
-
-// Proteger la ruta
-const verificarToken = require('../middlewares/verificarToken');
-
-    // Rutas protegida
-router.get('../../src/views/ModificarPerfil.jsx', verificarToken, (req, res) => {
-    res.json({ message: 'Para acceder a esta página inicia sesión' });
-});
-router.get('../../src/views/Perfil.jsx', verificarToken, (req, res) => {
-    res.json({ message: 'Para acceder a esta página inicia sesión' });
-});
-router.get('../../src/views/Datosdelusuario.jsx', verificarToken, (req, res) => {
-    res.json({ message: 'Para acceder a esta página inicia sesión' });
-});

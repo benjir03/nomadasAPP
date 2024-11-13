@@ -48,7 +48,6 @@ exports.getPerfil = (req, res) => {
 
 exports.eliminarCuenta = (req, res) => {
     const userId = req.userId;
-
     pool.query('DELETE FROM USUARIO WHERE ID_user = ?', [userId], (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Error al eliminar la cuenta' });
@@ -60,10 +59,12 @@ exports.eliminarCuenta = (req, res) => {
 
 // Función para modificar el perfil del usuario
 exports.modificarPerfil = (req, res) => {
-    const userId = req.userId; // ID del usuario obtenido del token de sesión
+    const userId = req.userId;
     const { nombre, apellido, fecha_nacimiento, genero, correo, telefono } = req.body;
     // Actualiza el perfil del usuario en la base de datos
     pool.query(
+        'UPDATE Usuario SET nombre = ?, fecha_nacimiento = ?, email = ?, telefono = ? WHERE ID_user = ?',
+        [nombre, fecha_nacimiento, correo, telefono, userId],
         'UPDATE USUARIO SET nombre = ?, apellido = ?, fecha_nacimiento = ?, email = ?, telefono = ? WHERE ID_user = ?',
         [nombre, apellido, fecha_nacimiento, genero, correo, telefono, userId],
         (err, results) => {
@@ -77,23 +78,18 @@ exports.modificarPerfil = (req, res) => {
     );
 };
 
-
-//Función para restingit el acceso de usuario no registrado
-const verificarToken = require('../middlewares/authMiddleware');
-
-// Ruta protegida: Obtener el perfil del usuario
-exports.getPerfil = [verificarToken, (req, res) => {
-    const userId = req.userId; // ID del usuario obtenido del token
-
-    // Lógica para obtener el perfil del usuario
+exports.verificar = (req, res) => {
+    const userId = req.userId; // ID del usuario obtenido del token de sesión
+    const { verificacion } = req.body;
+    // Actualiza el verificado del usuario en la base de datos
     pool.query(
-        'SELECT nombre, fecha_nacimiento, correo, genero, telefono FROM Usuario WHERE id_usuario = ?',
-        [userId],
-        (err, results) => {
-            if (err || results.length === 0) {
-                return res.status(404).json({ error: 'Usuario no encontrado' });
+        'UPDATE USUARIO SET verificado = ? WHERE ID_user = ?', [verificacion, userId], (err, results) => {
+            if (err) {
+                console.error('Error al verificado el perfil:', err);
+                res.json({message: 'Información enviada', id: userId });
+                return res.status(500).json({ error: 'Error al verificado el perfil' });
             }
-            res.json(results[0]); // Envía los datos del perfil del usuario
+            res.json({ message: 'Perfil verificado exitosamente' });
         }
     );
-}];
+};
