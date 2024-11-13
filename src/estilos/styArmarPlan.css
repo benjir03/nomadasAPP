@@ -1,126 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); /* Fuente más elegante */
 @import "./styGeneral.css";
 
-.armarPlan {
-  text-align: center;
-  padding: 0rem 2%;
-  background-color: var(--background-color);
-}
-
-.contenidoImagenPlan {
-  text-align: left;
-  position: relative;
-  color: var(--primary-color);
-  background-color: var(--background-color);
-  padding: 1rem;
-  border-radius: 50px;
-  text-align: left;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  margin: 10px;
-  z-index: 1;
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
 }
 
 /* Contenedor principal */
-.container {
-  width: 90%;
-  margin: auto;
+.contenedorVista {
   max-width: 1200px;
-}
-
-.contenedorImagen h1 {
-  font-size: 3.5rem;
-  color: var(--background-color);
-  text-align: left;
-}
-
-/* Selector principal */
-.selector-principal {
-  background-color: var(--background-color);
-  color: var(--primary-color);
+  margin: auto;
   padding: 20px;
-  border-radius: 20px;
-  /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); */
-  margin-top: 20px;
-  align-content: flex-start;
 }
 
-.selector-row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.contenedorUno {
+  height: 80vh;
+  background-size: 150%;
+  background-position: center;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contenidoImagenPlan {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  max-width: 450px;
+  margin: 20px;
+  bottom: 2rem;
+  max-height: 480px;
+}
+
+.contenidoImagenPlan h1 {
+  font-size: 1.5rem;
+  font-weight: 400px;
+  color: #ffffff;
+  margin-bottom: 5px;
 }
 
 .selector-item {
-  flex: 1;
-  margin: 10px;
-  text-align: start;
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.find-destination,
-.botonAccion {
-  width: 100%;
+label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #dddddd;
+}
+
+.select-field, .range-field {
+  font-family: Poppins;
   padding: 10px;
-  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.find-destination, .search-button {
+  font-family: Poppins;
+  padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .find-destination {
   background-color: #ffffff;
-  color: #333;
-  border: 1px solid #ddd;
+  color: #007bff;
+  border: 1px solid #007bff;
+  margin-top: 15px;
+}
+
+.find-destination:hover {
+  background-color: #007bff;
+  color: #ffffff;
 }
 
 .search-button {
   background-color: #007bff;
-  color: white;
+  color: #ffffff;
+  width: 100%;
+  margin-top: 15px;
 }
 
-.select-field,
-.range-field {
-  width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+.search-button:hover {
+  background-color: #0056b3;
 }
 
 /* Estilos de tarjetas */
+.container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.container p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
 .card-row {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 20px;
+  gap: 20px;
 }
 
 .card {
-  width: 23%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  flex: 1 1 23%;
+  max-width: 23%;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card-body {
-  padding: 15px;
+  padding: 20px;
+  background-color: #ffffff;
 }
 
 .card-title {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333333;
 }
 
 .card-text {
-  color: #666;
-  font-size: 14px;
+  color: #777;
+  font-size: 0.9rem;
 }
 
 .text-secondary {
-  color: #888;
+  color: #bbb;
 }
 
 .card-img {
   width: 100%;
-  border-radius: 0 0 8px 8px;
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
 }
