@@ -48,7 +48,7 @@ const BarraNav = () => {
             </Link>
           </li>
           <li>
-            <Link className="botonAccion" to="/Registro">
+            <Link className="botonAccion" to="/RevisarPlan">
               MI PLAN(TEST)
             </Link>
           </li>
