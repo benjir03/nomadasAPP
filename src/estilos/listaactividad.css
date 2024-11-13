@@ -1,0 +1,68 @@
+.lista-actividad {
+  text-align: center;
+  background-color: #f0f8ff; /* Color de fondo */
+  padding: 20px;
+}
+
+.lista-actividad-title {
+  font-size: 2rem;
+  color: #2a7f62; /* Color del título principal */
+  transition: color 0.3s ease; /* Transición para el cambio de color */
+  cursor: pointer; /* Cambia el cursor a modo selección */
+}
+
+.lista-actividad-title:hover {
+  color: #1f5d4d; /* Color más oscuro al hacer hover sobre el título */
+}
+
+.actividad-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.more-categories-link {
+  color: #2a7f62;
+  text-decoration: underline;
+  display: block;
+  margin-top: 10px;
+  transition: color 0.3s ease; /* Transición para el cambio de color */
+  cursor: pointer; /* Cambia el cursor a modo selección */
+}
+
+.more-categories-link:hover {
+  color: #1f5d4d; /* Color más oscuro al hacer hover sobre el enlace */
+}
+
+/* Efecto hover para las tarjetas dentro de .actividad-cards */
+.actividad-card {
+  width: 400px;
+  height: 400px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Transición suave */
+  cursor: pointer; /* Cambia el cursor a modo selección */
+}
+
+.actividad-card:hover {
+  transform: scale(1.05); /* Amplía la tarjeta ligeramente al hacer hover */
+}
+
+.overlay {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.actividad-card:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.7); /* Se oscurece más el overlay */
+  opacity: 1; /* Aumenta la opacidad del overlay */
+}

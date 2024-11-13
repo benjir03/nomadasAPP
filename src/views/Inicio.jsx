@@ -31,7 +31,6 @@ const usuarios = [
   { nombre: "User 3", imagen: user3Image },
   { nombre: "User 4", imagen: user4Image },
 ];
-
 function Inicio() {
   return (
     <div className="contenedorVista">

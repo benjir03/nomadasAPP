@@ -11,6 +11,7 @@ import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";
 import Explora from "./views/Explora";
 import GustosPerfil from "./views/GustosPerfil";
+import ListaActividad from "./componentes/listaactividad"; // Importa ListaActividad
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from "./componentes/Verificacion";
 import CompletarPerfil from "./views/CompletarPerfil";
@@ -18,6 +19,7 @@ import LugaresCarrusel from "./views/LugaresCarrusel";
 import Verificar from "./views/Verificar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 function App() {
   return (
     <div className="App">
@@ -37,14 +39,11 @@ function App() {
           <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
           <Route path="/Verificar" element={<Verificar />} />
           <Route path="/GustosPerfil" element={<GustosPerfil />} />
-          {/*Rutas protegidas para verificacion*/}
+          <Route path="/actividades" element={<ListaActividad />} /> {/* Nueva ruta para ListaActividad */}
+          {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
           <Route path="/registro" element={<Registro />} />
 
-          {/* Rutas protegidas */}
-          {/*<Route element={<Verificacion />}>
-                    <Route path="/perfil" element={<Perfil />} />
-                </Route>*/}
           {/* Rutas protegidas */}
           <Route element={<Verificacion />}>
             <Route path="/Perfil" element={<Perfil />} />
