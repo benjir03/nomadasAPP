@@ -19,7 +19,7 @@ const BarraNav = () => {
         <ul className="nav-links">
           <li>
             <Link className="normal" to="/GustosPerfil">
-              prueba de Gustos
+              Prueba de Gustos
             </Link>
           </li>
           <li>

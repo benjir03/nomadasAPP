@@ -27,7 +27,7 @@
 
 .contenedorUno {
   position: relative;
-  width: 80%; /* Reduce el ancho del contenedor */
+  width: 100%; /* Reduce el ancho del contenedor */
   max-width: 1200px; /* Limita el ancho máximo */
   max-height: 500px; /* Ajusta la altura según sea necesario */
   background-size: cover;
