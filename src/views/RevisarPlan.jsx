@@ -24,9 +24,30 @@ const RevisarPlan = () => {
           <button className="botonCompletarPlan">Completar Plan</button>
         </div>
         <div className="contenedorLadoDerecho">
-          <p className="informacionAdicional">
-            #
-          </p>
+          <h3 className="nombrePlan">Nombre del Plan</h3>
+          <div className="detalleActividades">
+            <p><strong>Actividades:</strong></p>
+            <ul>
+              <li>Parque Central: Centro</li>
+              <li>Museo de Arte: Avenida Principal</li>
+            </ul>
+          </div>
+          <div className="detalleLugar">
+            <p><strong>Lugar:</strong> Descripción del lugar</p>
+          </div>
+          <div className="detalleAcompanantes">
+            <p><strong>Acompañantes:</strong> 2 personas</p>
+          </div>
+          <div className="detalleTransporte">
+            <p><strong>Transporte:</strong></p>
+            <label>
+              <input type="radio" name="transporte" value="si" /> Sí
+            </label>
+            <label>
+              <input type="radio" name="transporte" value="no" /> No
+            </label>
+          </div>
+
         </div>
       </div>
     </div>

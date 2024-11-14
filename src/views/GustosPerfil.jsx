@@ -88,7 +88,7 @@ const GustosPerfil = () => {
   };
 
   const manejarClickFinalizar = () => {
-    navigate('/ruta-final'); // Reemplaza '/ruta-final' con la ruta deseada
+    navigate('/Perfil'); 
   };
 
   const todasRespondidas = selecciones.every((seleccion) => seleccion !== null);

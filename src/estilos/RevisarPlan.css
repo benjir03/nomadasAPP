@@ -24,13 +24,39 @@
   }
   
   .contenedorLadoDerecho {
-    flex: 1;
-    background-color: var(--background-color);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color:var(--background-color);
+    border-radius: 12px; 
+    padding: 20px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    color: #2c3e50; 
+    max-width: 350px; 
+    margin-left: 20px;
+    text-align: left; 
   }
   
+  .nombrePlan {
+    font-size: 20px; 
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .detalleActividades, .detalleLugar, .detalleAcompanantes, .detalleTransporte {
+    margin-bottom: 15px; 
+  }
+  
+  .detalleTransporte label {
+    margin-right: 10px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 5px; 
+  }
+
   .informacionAdicional {
     font-size: 16px;
     color: black;
@@ -78,8 +104,9 @@
   
   .botonAccion2 {
     padding: 8px 16px;
+    background-color: var(--primary-color);
     color: var(--background-color);
-    border: none;
+    border:1cap;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -87,8 +114,11 @@
   }
   
   .botonAccion2:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color); 
   }
+  
   
   .botonAccion3 {
     padding: 8px 16px;
