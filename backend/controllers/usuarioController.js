@@ -104,7 +104,7 @@ exports.insertarUsuario = (req, res) => {
                   <body>
                     <div class="container">
                       <img
-                        src="../imgs/LogoNoP.jpeg"
+                        src="../../src/imgs/LogoNoP.jpeg"
                         width="212"
                         height="88"
                         alt="Logo"
