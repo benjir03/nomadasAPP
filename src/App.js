@@ -11,7 +11,7 @@ import Modificar from "./views/ModificarPerfil";
 import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";
 import Explora from "./views/Explora";
-import DescripLugar from "./views/DescripLugar";
+import DescripLugar from "./componentes/DescripLugar";
 import GustosPerfil from "./views/GustosPerfil";
 import ListaActividad from "./componentes/listaactividad"; // Importa ListaActividad
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
