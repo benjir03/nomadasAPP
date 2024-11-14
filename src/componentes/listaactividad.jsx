@@ -12,7 +12,7 @@ function ListaActividad() {
 
   return (
     <div className="lista-actividad">
-      <h1 className="lista-actividad-title">¡Explora actividades emocionantes!</h1>
+      <h1 className="lista-actividad-title">Actividades</h1>
       <div className="actividad-cards">
         {activities.map((activity, index) => (
           <Actividad

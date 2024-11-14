@@ -3,34 +3,23 @@ import { Link } from "react-router-dom";
 import "../estilos/estiloInicio.css";
 import fondiInicio from "../imgs/fondoInicio.jpg";
 import FichaCategoria from "../componentes/FichaCategoria";
-import FichaOpinion from "../componentes/FichaOpinion";
+import FichaLugares from "../componentes/FichaLugares"; // Importa el componente FichaLugares
+
 import {
   historiaImage,
   BackInicio,
   gastronomiaImage,
   arteImage,
-  user1Image,
-  user2Image,
-  user3Image,
-  user4Image,
+  explora01,
 } from "../imgs/ArchivoImgs";
 
-const images = [
-  { src: BackInicio, alt: "Imagen 1", info: "Información de la imagen 1" },
-  {
-    src: gastronomiaImage,
-    alt: "Imagen 2",
-    info: "Información de la imagen 2",
-  },
-  { src: arteImage, alt: "Imagen 3", info: "Información de la imagen 3" },
+const lugares = [
+  { nombre: "Lugar 1", imagen: explora01 },
+  { nombre: "Lugar 2", imagen: explora01 },
+  { nombre: "Lugar 3", imagen: explora01 },
+  { nombre: "Lugar 4", imagen: explora01 },
 ];
 
-const usuarios = [
-  { nombre: "User 1", imagen: user1Image },
-  { nombre: "User 2", imagen: user2Image },
-  { nombre: "User 3", imagen: user3Image },
-  { nombre: "User 4", imagen: user4Image },
-];
 function Inicio() {
   return (
     <div className="contenedorVista">
@@ -81,8 +70,10 @@ function Inicio() {
         </Link>
       </section>
 
-      {/* Sección de historias de usuarios */}
-      <FichaOpinion usuarios={usuarios} />
+      {/* Sección de lugares recomendados */}
+      <section className="lugaresSec">
+        <FichaLugares lugares={lugares} /> {/* Agrega el componente FichaLugares aquí */}
+      </section>
     </div>
   );
 }
