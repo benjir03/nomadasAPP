@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
@@ -53,8 +53,7 @@ const LugaresCarrusel = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true);
     setError(null);
     setPackages([]);
@@ -91,6 +90,12 @@ const LugaresCarrusel = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (city || priceRange || ambiance) { // Condiciones para asegurar datos válidos
+      handleSubmit();
+    }
+  }, [city, priceRange, ambiance]); // Ejecuta cuando cambian estos valores
 
   const getPhotoUrl = (photoReference) => {
     if (!photoReference) {
