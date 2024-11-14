@@ -1,19 +1,18 @@
 import React from 'react';
 import Actividad from './actividad'; // Importa el componente Actividad
-import '../estilos/listaactividad.css';
+import '../estilos/styDescripLugar.css'; // Cambia el nombre del archivo CSS si es necesario
 
 function ListaActividad() {
-    const activities = [
-        { title: 'Senderismo', description: 'Explora la naturaleza', imageUrl: require('../imgs/explora01.jpg') },
-        { title: 'Nadar', description: 'Descubre el agua', imageUrl: require('../imgs/imgkil.jpg') },
-        { title: 'Escalada', description: 'Desafía las alturas', imageUrl: require('../imgs/explora.jpg') },
-      ];
-      
+  const activities = [
+    { title: 'CDMX', imageUrl: require('../imgs/lugar_cdmx.webp') },
+    { title: 'Chiapas', imageUrl: require('../imgs/lugar_chiapas.webp') },
+    { title: 'Cancún', imageUrl: require('../imgs/lugar_cancun.webp') },
+  ];
 
   return (
-    <div className="lista-actividad">
-      <h1 className="lista-actividad-title">¡Explora actividades emocionantes!</h1>
-      <div className="actividad-cards">
+    <div className="city-card-list">
+      <h1 className="city-card-title">Selecciona los lugares que vas a visitar</h1>
+      <div className="city-card-container">
         {activities.map((activity, index) => (
           <Actividad
             key={index}
@@ -23,9 +22,9 @@ function ListaActividad() {
           />
         ))}
       </div>
-      <a href="#" className="more-categories-link">Más actividades...</a>
+      <a href="#" className="city-card-link">Más lugares...</a>
     </div>
   );
-}
+}   
 
 export default ListaActividad;
