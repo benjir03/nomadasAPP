@@ -8,7 +8,14 @@ import { BackPerfil, ciudad } from "../imgs/ArchivoImgs";
 
 const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
-  const [usuario, setUsuario] = useState([]);
+  const [usuario, setUsuario] = useState({
+    nombre: "",
+    apellido:"",
+    fecha_nacimiento: "",
+    email:"",
+    genero: "",
+    telefono: "",
+  });
   const navigate = useNavigate();
   
   useEffect(() => {

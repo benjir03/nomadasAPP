@@ -5,12 +5,15 @@ const pool = require('../db/connection');
 // Función para iniciar sesión
 exports.login = (req, res) => {
     const { correo, contraseña } = req.body;
+
     // Verifica credenciales en la base de datos
     pool.query('SELECT * FROM USUARIO WHERE email = ? AND password_user = ?', [correo, contraseña], (err, results) => {
         if (err || results.length === 0) {
             return res.status(401).json({ error: 'Credenciales incorrectas' });
         }
-        const userId = results.id_usuario;
+        // Obtiene el userId del resultado de la consulta
+        const userId = results[0].ID_user; // Ajusta esto al nombre correcto del campo de tu base de datos
+        // Genera el token de sesión
         const token = jwt.sign({ id_usuario: userId }, 'tu_secreto', { expiresIn: '1h' });
         // Establece la cookie con el token
         res.cookie('sessionToken', token, {
@@ -19,6 +22,8 @@ exports.login = (req, res) => {
             maxAge: 3600000 // 1 hora
         });
         res.json({ message: 'Inicio de sesión exitoso' });
+        console.log({ id: userId, token });
+        console.log(results);
     });
 };
 
@@ -26,17 +31,20 @@ exports.login = (req, res) => {
 exports.logout = (req, res) => {
     res.clearCookie('sessionToken');
     res.json({ message: 'Sesión cerrada exitosamente' });
+    console.log(res);
 };
 
 // Función para obtener el perfil de usuario completo
 exports.getPerfil = (req, res) => {
     const userId = req.userId;
     // Obtiene todos los campos del usuario
-    pool.query('SELECT ID_user, nombre, apellido, fecha_nacimiento, genero, email, telefono FROM USUARIO WHERE ID_user = ?', [userId], (err, results) => {
+    pool.query('SELECT * FROM USUARIO WHERE ID_user = ?', [userId], (err, results) => {
         if (err || results.length === 0) {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
-        res.json(results); // Envía todos los campos de la base de datos
+        res.json(results[0]); // Envía todos los campos de la base de datos
+        console.log(userId);
+        console.log(results[0]);
     });
 };
 

@@ -14,7 +14,7 @@ const CompletarPerfil = () => {
     telefono: "",
   });
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     const fetchPerfil = async () => {
       try {
@@ -26,10 +26,9 @@ const CompletarPerfil = () => {
         console.error("Error al obtener el perfil del usuario:", error);
       }
     };
-
     fetchPerfil();
   }, []);
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUsuario((prevUsuario) => ({
