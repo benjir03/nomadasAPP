@@ -5,11 +5,13 @@ import Inicio from "./views/Inicio";
 import Perfil from "./views/Perfil";
 import Registro from "./views/Registro";
 import InicioSesion from "./views/InicioSesion";
-import Experiencias from "./views/Expeciencias";
+import RecuperarC from "./views/RecuperarC";
+import Experiencias from "./views/Experiencias";
 import Modificar from "./views/ModificarPerfil";
 import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";
 import Explora from "./views/Explora";
+import DescripLugar from "./views/DescripLugar";
 import GustosPerfil from "./views/GustosPerfil";
 import ListaActividad from "./componentes/listaactividad"; // Importa ListaActividad
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -30,6 +32,7 @@ function App() {
           <Route path="/Inicio" element={<Inicio />} />
           <Route path="/Registro" element={<Registro />} />
           <Route path="/InicioSesion" element={<InicioSesion />} />
+          <Route path="/RecuperarC" element={<RecuperarC />} />
           <Route path="/ArmarPlan" element={<ArmarPlan />} />
           <Route path="/Actividad" element={<Actividad />} />
           <Route path="/Experiencias" element={<Experiencias />} />
@@ -37,6 +40,7 @@ function App() {
           <Route path="/Completar" element={<CompletarPerfil />} />
           <Route path="/Modificar" element={<Modificar />} />
           <Route path="/Explora" element={<Explora />} />
+          <Route path="/DescripLugar" element={<DescripLugar />} />
           <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
           <Route path="/Verificar" element={<Verificar />} />
           <Route path="/GustosPerfil" element={<GustosPerfil />} />
