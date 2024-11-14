@@ -9,7 +9,6 @@ const CompletarPerfil = () => {
     nombre: "",
     apellido:"",
     fecha_nacimiento: "",
-    correo:"",
     genero: "",
     telefono: "",
   });
@@ -44,7 +43,7 @@ const CompletarPerfil = () => {
         withCredentials: true,
       });
       alert("Perfil actualizado exitosamente");
-      navigate("/Perfil"); // Redirige al perfil después de guardar
+      navigate("/GustosPerfil"); // Redirige al perfil después de guardar
     } catch (error) {
       console.error("Error al actualizar el perfil:", error);
       alert("Hubo un problema al actualizar el perfil");
@@ -84,16 +83,6 @@ const CompletarPerfil = () => {
           className="input-field"
           value={usuario.fecha_nacimiento}
           onChange={handleInputChange}
-        />
-        <br />
-        <label>Correo:</label>
-        <input
-          type="email"
-          name="correo"
-          className="input-field"
-          value={usuario.correo}
-          onChange={handleInputChange}
-          placeholder="Correo"
         />
         <br />
         <label>Género:</label>

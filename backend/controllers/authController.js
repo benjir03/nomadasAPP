@@ -62,11 +62,11 @@ exports.eliminarCuenta = (req, res) => {
 // Función para modificar el perfil del usuario
 exports.modificarPerfil = (req, res) => {
     const userId = req.userId;
-    const { nombre, apellido, fecha_nacimiento, genero, correo, telefono } = req.body;
+    const { nombre, apellido, fecha_nacimiento, genero, telefono } = req.body;
     // Actualiza el perfil del usuario en la base de datos
     pool.query(
-        'UPDATE USUARIO SET nombre = ?, apellido = ?, fecha_nacimiento = ?, genero = ?, email = ?, telefono = ? WHERE ID_user = ?',
-        [nombre, apellido, fecha_nacimiento, genero, correo, telefono, userId],
+        'UPDATE USUARIO SET nombre = ?, apellido = ?, fecha_nacimiento = ?, genero = ?, telefono = ? WHERE ID_user = ?',
+        [nombre, apellido, fecha_nacimiento, genero, telefono, userId],
         (err, results) => {
             if (err) {
                 console.error('Error al actualizar el perfil:', err);

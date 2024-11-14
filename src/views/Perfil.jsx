@@ -112,10 +112,10 @@ const Perfil = () => {
             <div className="login-container">
               <h2 className="login-title" >Información de cuenta</h2>
               <p className="input-field">
-                <strong>Nombre:</strong> {usuario.correo}
+                <strong>Nombre:</strong> {usuario.nombre}
               </p>
               <p className="input-field">
-                <strong>Correo:</strong> {usuario.correo}
+                <strong>Correo:</strong> {usuario.email}
               </p>
               <p className="input-field">
                 <strong>Teléfono:</strong> {usuario.telefono}

@@ -51,7 +51,7 @@ function Actividad() {
                 {lugar.photos.map((photo, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:5000/place-photo?photo_reference=${photo.photo_reference}`}
+                    src={`http://localhost:3002/place-photo?photo_reference=${photo.photo_reference}`}
                     alt="Imagen adicional"
                     className="additional-image"
                   />
