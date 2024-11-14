@@ -9,7 +9,7 @@ export default function ArmarPlan() {
   const [ciudad, setCiudad] = useState("");
   const [estancia, setEstancia] = useState("Unas cuantas horas");
   const [acompanantes, setAcompanantes] = useState("Voy solo");
-  const [presupuesto, setPresupuesto] = useState(4)
+  const [presupuesto, setPresupuesto] = useState(2)
   const handleExploraActividades = () => {
     navigate("/LugaresCarrusel", {
       state: { ciudad, estancia, acompanantes, presupuesto },
