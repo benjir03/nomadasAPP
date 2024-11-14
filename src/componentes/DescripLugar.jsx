@@ -11,7 +11,7 @@ function ListaActividad() {
 
   return (
     <div className="city-card-list">
-      <h1 className="city-card-title">Selecciona los lugares que vas a visitar</h1>
+      <h1 className="city-card-title">Lugares</h1>
       <div className="city-card-container">
         {activities.map((activity, index) => (
           <Actividad

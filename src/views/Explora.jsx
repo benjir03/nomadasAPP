@@ -1,10 +1,11 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import "../estilos/estiloInicio.css";
 import fondiInicio from "../imgs/explora.jpg";
 import FichaCategoria from "../componentes/FichaCategoria";
 import FichaLugares from "../componentes/FichaLugares";
+import ListaActividad from "../componentes/listaactividad";
+import DescripLugar from "../componentes/DescripLugar";
 
 import {
   historiaImage,
@@ -13,12 +14,6 @@ import {
   arteImage,
   explora01,
 } from "../imgs/ArchivoImgs";
-
-const images = [
-  { src: BackInicio, alt: "Imagen 1", info: "Información de la imagen 1" },
-  { src: gastronomiaImage, alt: "Imagen 2", info: "Información de la imagen 2" },
-  { src: arteImage, alt: "Imagen 3", info: "Información de la imagen 3" },
-];
 
 const lugares = [
   { nombre: "Lugar 1", imagen: explora01 },
@@ -41,8 +36,8 @@ function Inicio() {
         }}
       >
         <div className="contenedorDos">
-          <h1>Lugares</h1>
-          <p>¡Explora lugares fuera de lo común!</p>
+          <h1>Explora</h1>
+          <p>¡Encuentra lugares fuera de lo común!</p>
         </div>
       </section>
 
@@ -59,8 +54,15 @@ function Inicio() {
         </Link>
       </section>
 
-      {/* Sección de lugares recomendados */}
-      <FichaLugares lugares={lugares} />
+      {/* Sección de actividades */}
+      <section className="actividadesSec">
+        <DescripLugar /> {/* Agrega el componente ListaActividad aquí */}
+      </section>
+
+      {/* Sección de actividades */}
+      <section className="actividadesSec">
+        <ListaActividad /> {/* Agrega el componente ListaActividad aquí */}
+      </section>
     </div>
   );
 }
