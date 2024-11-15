@@ -60,7 +60,7 @@ const LugaresCarrusel = () => {
     setPackages([]);
 
     try {
-      const url = `http://localhost:5000/search?city=${city}&category=${category}&radius=${radius}&priceRange=${priceRange}&rating=${rating}&keywords=${keywords}`;
+      const url = `http://localhost:3002/search?city=${city}&category=${category}&radius=${radius}&priceRange=${priceRange}&rating=${rating}&keywords=${keywords}`;
       const response = await axios.get(url);
 
       let fetchedPackages = response.data.results.map(result => ({
@@ -96,18 +96,18 @@ const LugaresCarrusel = () => {
     if (!photoReference) {
       return 'https://via.placeholder.com/400';
     }
-    return `http://localhost:5000/place-photo?photo_reference=${photoReference}`;
+    return `http://localhost:3002/place-photo?photo_reference=${photoReference}`;
   };
 
   const handleViewMoreClick = async (pkg) => {
     try {
-      const detailsUrl = `http://localhost:5000/place-details?place_id=${pkg.id}`;
+      const detailsUrl = `http://localhost:3002/place-details?place_id=${pkg.id}`;
       const detailsResponse = await axios.get(detailsUrl);
 
-      const shortDescUrl = `http://localhost:5000/place-description?place_name=${encodeURIComponent(pkg.title)}&exchars=100`;
+      const shortDescUrl = `http://localhost:3002/place-description?place_name=${encodeURIComponent(pkg.title)}&exchars=100`;
       const shortDescResponse = await axios.get(shortDescUrl);
 
-      const detailedDescUrl = `http://localhost:5000/place-description?place_name=${encodeURIComponent(pkg.title)}&exchars=300`;
+      const detailedDescUrl = `http://localhost:3002/place-description?place_name=${encodeURIComponent(pkg.title)}&exchars=300`;
       const detailedDescResponse = await axios.get(detailedDescUrl);
 
       console.log("Descripción corta recibida del servidor:", shortDescResponse.data.description);

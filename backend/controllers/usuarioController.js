@@ -26,7 +26,8 @@ exports.insertarUsuario = (req, res) => {
                 secure: process.env.NODE_ENV === 'production',
                 maxAge: 3600000 // 1 hora
             });
-            const formato_correo = `<!DOCTYPE html>
+            const formato_correo = `
+            <!DOCTYPE html>
                 <html>
                   <head>
                     <style>
@@ -110,9 +111,9 @@ exports.insertarUsuario = (req, res) => {
                         alt="Logo"
                         class="logo"
                       />
-                      <p class="tertiary">Verifica Tu Correo</p>
+                      <p class="tertiary">Bienvenida</p>
                       <h1 class="secondary">
-                        Haz click en el siguiente botón para verificar y acceder
+                        Bienvenido a Nomadas
                       </h1>
                       <div class="code-container">
                         <p class="code"></p>

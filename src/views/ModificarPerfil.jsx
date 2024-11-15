@@ -8,7 +8,7 @@ const ModificarPerfil = () => {
   const [usuario, setUsuario] = useState({
     nombre: "",
     fecha_nacimiento: "",
-    correo: "",
+    email: "",
     genero: "",
     telefono: "",
   });
@@ -83,7 +83,7 @@ const ModificarPerfil = () => {
         <input
           type="email"
           name="correo"
-          value={usuario.correo}
+          value={usuario.email}
           onChange={handleInputChange}
           placeholder="Correo"
         />
