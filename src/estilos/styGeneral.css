@@ -44,6 +44,24 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
 }
 
+.contenedorTres {
+  position: relative;
+  width: 150px; /* Ajusta el ancho para un círculo */
+  height: 150px; /* El alto debe ser igual al ancho */
+  max-width: 200px; /* Asegúrate de mantener proporción */
+  max-height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%; /* Convierte el contenedor en un círculo */
+  overflow: hidden; /* Recorta el contenido fuera del borde circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 1rem auto; /* Centra el contenedor */
+}
+
 .contenedorDos {
   text-align: left;
   position: absolute;
