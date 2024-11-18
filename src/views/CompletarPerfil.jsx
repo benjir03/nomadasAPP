@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../estilos/styInicioRegistro.css";
 import '../estilos/styGeneral.css';
 
-const CompletarPerfil = () => {
+const CompletarPerfil = ({googlenombre, googleapellido}) => {
   const [usuario, setUsuario] = useState({
     nombre: "",
     apellido:"",
@@ -61,7 +61,7 @@ const CompletarPerfil = () => {
           className="input-field"
           value={usuario.nombre}
           onChange={handleInputChange}
-          placeholder="Nombre"
+          placeholder={googlenombre}
         />
         <br />
         
@@ -72,7 +72,7 @@ const CompletarPerfil = () => {
           className="input-field"
           value={usuario.apellido}
           onChange={handleInputChange}
-          placeholder="Apellido"
+          placeholder={googleapellido}
         />
         <br />
         
