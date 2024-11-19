@@ -7,12 +7,18 @@ import Login from "../componentes/GoogleLogin";
 import {jwtDecode} from 'jwt-decode';
 import { validarCorreo, validarContrasena, } from "../validaciones/validacionesInicioSesion";
 import { gapi } from "gapi-script";
+<<<<<<< HEAD
+=======
+import CompletarPerfil from "../views/CompletarPerfil";
+>>>>>>> 8b39786efdacb268a104cb910df9e77e6b00a3f3
 
 const clientId = "226964234531-b8fnlu7fh96jlikvns9fmd745m6crclh.apps.googleusercontent.com";
 
 const InicioRegistro = ({accion, boton, mensaje}) => {
     //Constantes de envio de formulario
     const [correo, setCorreo] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [apellido, setApellido] = useState("");
     const [contraseña, setContrasena] = useState("");
     const [errores, setErrores] = useState({});
     const [googleData, setGoogleData] = useState(null);
@@ -44,6 +50,11 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         console.log(data); // Datos del usuario de Google
         setGoogleData(data);
         setCorreo(data.email); // Establecer el correo desde los datos de Google
+<<<<<<< HEAD
+=======
+        setNombre(data.given_name); // Establecer el correo desde los datos de Google
+        setApellido(data.family_name); // Establecer el correo desde los datos de Google
+>>>>>>> 8b39786efdacb268a104cb910df9e77e6b00a3f3
     };
     //Login
     const enviar = async (e) =>{
@@ -76,6 +87,11 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
     const store = async (googleUserData) => {
         const data = googleUserData || {}; // Si hay datos de Google, úsalos
         setCorreo(data.email); // Establece el correo si es proporcionado por Google
+<<<<<<< HEAD
+=======
+        setNombre(data.given_name); // Establece el nombre si es proporcionado por Google
+        setApellido(data.family_name); // Establece el apellido si es proporcionado por Google
+>>>>>>> 8b39786efdacb268a104cb910df9e77e6b00a3f3
         try {
             const URI = "http://localhost:3001/usuario/insertar";
             const requestData = {
@@ -84,6 +100,10 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
             };
             const response = await axios.post(URI, requestData, { withCredentials: true });
             console.log(response.data.message);
+<<<<<<< HEAD
+=======
+            <CompletarPerfil googlenombre ={data.given_name} googleapellido ={data.family_name}/>
+>>>>>>> 8b39786efdacb268a104cb910df9e77e6b00a3f3
             navigate("/Verificar");
         } catch (error) {
             console.error("Error al registrar usuario:", error);
