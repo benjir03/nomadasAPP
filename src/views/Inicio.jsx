@@ -10,15 +10,9 @@ import {
   BackInicio,
   gastronomiaImage,
   arteImage,
-  explora01,
+  explora01,Lugar1,Lugar2,Lugar3,Lugar4
 } from "../imgs/ArchivoImgs";
 
-const lugares = [
-  { nombre: "Lugar 1", imagen: explora01 },
-  { nombre: "Lugar 2", imagen: explora01 },
-  { nombre: "Lugar 3", imagen: explora01 },
-  { nombre: "Lugar 4", imagen: explora01 },
-];
 
 function Inicio() {
   return (
@@ -71,9 +65,34 @@ function Inicio() {
       </section>
 
       {/* Sección de lugares recomendados */}
-      <section className="lugaresSec">
-        <FichaLugares lugares={lugares} /> {/* Agrega el componente FichaLugares aquí */}
-      </section>
+      <div className="contenedorLugaresSec">
+        <h2 className="tituloLugares">Lugares Recomendados</h2>
+        <section className="lugaresSec">
+          <FichaLugares
+            titulo="Lugar 1"
+            contenido="Descripción del Lugar 1"
+            imagen={Lugar1}
+          />
+          <FichaLugares
+            titulo="Lugar 2"
+            contenido="Descripción del Lugar 2"
+            imagen={Lugar2}
+          />
+          <FichaLugares
+            titulo="Lugar 3"
+            contenido="Descripción del Lugar 3"
+            imagen={Lugar3}
+          />
+          <FichaLugares
+            titulo="Lugar 4"
+            contenido="Descripción del Lugar 4"
+            imagen={Lugar4}
+          />
+        </section>
+        <div className="linkMasLugares">
+          <a href="/mas-lugares">Más lugares</a>
+        </div>
+      </div>
     </div>
   );
 }
