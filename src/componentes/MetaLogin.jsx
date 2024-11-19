@@ -1,29 +1,31 @@
+// MetaLogin.jsx
 import React from 'react';
 import FacebookLogin from 'react-facebook-login';
 
-const FacebookLoginComponent = ({ onSuccess }) => {
+const MetaLogin = ({ onFacebookSuccess }) => {
     const responseFacebook = (response) => {
         if (response.status !== 'unknown') {
-            // Extrae datos del usuario y pásalos al formulario
+            // Estructura uniforme de datos
             const userData = {
-                nombre: response.name,
+                nombre: response.name.split(" ")[0], // Primer nombre
+                apellido: response.name.split(" ").slice(1).join(" "), // Resto del nombre como apellido
                 correo: response.email,
             };
-            onSuccess("Datos de Meta", userData);
+            onFacebookSuccess(userData);
         } else {
-            console.error('Error en la autenticación con Facebook');
+            console.error("Error en la autenticación con Facebook");
         }
     };
 
     return (
         <FacebookLogin
             appId="450122651452431"
-            autoLoad={false}
-            fields="name, email"
+            fields="name,email"
             callback={responseFacebook}
+            textButton="Iniciar sesión con Facebook"
             icon="fa-facebook"
         />
     );
 };
 
-export default FacebookLoginComponent;
+export default MetaLogin;

@@ -1,24 +1,32 @@
-import { GoogleLogin } from "@react-oauth/google";
-import {jwtDecode} from "jwt-decode";
-import React from "react";
-//Inicio Google
-function Login({ onGoogleSuccess }) {
-//Exito
-    const onSuccess = (credentialResponse) => {
-        const decoded = jwtDecode(credentialResponse.credential);
-        console.log("Inicio de sesión exitoso: ", decoded);
-        onGoogleSuccess(decoded); // Pasar los datos al componente padre
-    };
-//Fallo
-    const onFailure = (error) => {
-        console.log("Inicio de sesión fallido", error);
-    };
-//Boton
-    return (
-        <div id="signInButton">
-            <GoogleLogin onSuccess={onSuccess} onError={onFailure} />
-        </div>
-    );
-}
+// GoogleLogin.jsx
+import React from 'react';
+import { GoogleLogin } from 'react-google-login';
 
-export default Login;
+const GoogleLoginComponent = ({ onGoogleSuccess }) => {
+    const responseGoogle = (response) => {
+        const { profileObj } = response;
+        if (profileObj) {
+            // Estructura uniforme de datos
+            const userData = {
+                nombre: profileObj.givenName,
+                apellido: profileObj.familyName,
+                correo: profileObj.email,
+            };
+            onGoogleSuccess(userData);
+        } else {
+            console.error("Error en la autenticación con Google");
+        }
+    };
+
+    return (
+        <GoogleLogin
+            clientId="226964234531-b8fnlu7fh96jlikvns9fmd745m6crclh.apps.googleusercontent.com"
+            buttonText="Iniciar sesión con Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+        />
+    );
+};
+
+export default GoogleLoginComponent;

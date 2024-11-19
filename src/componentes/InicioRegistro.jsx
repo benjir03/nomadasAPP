@@ -3,7 +3,7 @@ import "../estilos/styInicioRegistro.css";
 import '../estilos/styGeneral.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Login from "../componentes/GoogleLogin";
+import GoogleLogin from "../componentes/GoogleLogin";
 import {jwtDecode} from 'jwt-decode';
 import { validarCorreo, validarContrasena, } from "../validaciones/validacionesInicioSesion";
 import { gapi } from "gapi-script";
@@ -18,9 +18,8 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
     const [nombre, setNombre] = useState("");
     const [apellido, setApellido] = useState("");
     const [contraseña, setContrasena] = useState("");
-    const [errores, setErrores] = useState({});
-    const [googleData, setGoogleData] = useState(null);
     const navigate = useNavigate();
+    const [errores, setErrores] = useState({});
     //Validaciones
     const manejarEnvio = (e) => {
         e.preventDefault();
@@ -43,20 +42,15 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         }
         gapi.load('client:auth2', start);
     },[]);
-    //Google
-    const handleGoogleSuccess = (data) => {
-        console.log(data); // Datos del usuario de Google
-        setGoogleData(data);
-        setCorreo(data.email); // Establecer el correo desde los datos de Google
-        setNombre(data.given_name); // Establecer el correo desde los datos de Google
-        setApellido(data.family_name); // Establecer el correo desde los datos de Google
-    };
-    //Meta
-    const handleFacebookSuccess = (userData) => {
-        console.log(userData)
-        setNombre(userData.nombre);
-        setCorreo(userData.correo);
-        // Aquí puedes enviar los datos al servidor si es necesario
+    //Google y Meta
+    const handleSocialSuccess = (userData) => {
+        // Actualiza los campos con los datos recibidos
+        if (userData.nombre) setNombre(userData.nombre);
+        if (userData.apellido) setApellido(userData.apellido);
+        if (userData.correo) setCorreo(userData.correo);
+
+        // Llama a la función store automáticamente para enviar los datos
+        store(userData);
     };
     //Login
     const enviar = async (e) =>{
@@ -86,20 +80,24 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         }
     }
     //Registro
-    const store = async ({googleUserData, userData}) => {
-        const data = googleUserData || {}; // Si hay datos de Google, úsalos
-        const datamet = userData || {};
-        setCorreo(data.email || datamet.correo); // Establece el correo si es proporcionado por Google
-        setNombre(data.given_name || datamet.nombre); // Establece el nombre si es proporcionado por Google
-        setApellido(data.family_name); // Establece el apellido si es proporcionado por Google
+    const store = async (userData = null) => {
+        // Si se proporcionan datos de usuario de redes sociales, actualiza los campos
+        if (userData) {
+            if (userData.nombre) setNombre(userData.nombre);
+            if (userData.apellido) setApellido(userData.apellido);
+            if (userData.correo) setCorreo(userData.correo);
+        }
+
+        const URI = "http://localhost:3001/usuario/insertar";
+        const requestData = {
+            nombre: userData.nombre || "", // Usa el valor actual o una cadena vacía
+            apellido: userData.apellido || "",
+            correo: userData.correo || correo,
+            contraseña: contraseña || "",
+        };
+
         try {
-            const URI = "http://localhost:3001/usuario/insertar";
-            const requestData = {
-                nombre: data.given_name || datamet.nombre,
-                apellido: data.family_name,
-                correo: data.email || correo || datamet.correo,
-                contraseña: contraseña,
-            };
+            // Envía los datos al backend
             const response = await axios.post(URI, requestData, { withCredentials: true });
             console.log(response.data.message);
             navigate("/Verificar");
@@ -119,7 +117,6 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
                 className="input-field"
                 value={correo}
                 onChange={(e) => setCorreo(e.target.value)}
-                disabled={!!googleData} // Desactiva si ya hay datos de Google
             />
             <input
                 type="password"
@@ -136,8 +133,8 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
                 ))}
             
             <button type="submit" className="login-button">{boton}</button>
-            <Login onGoogleSuccess={accion === "store" ? store : enviar} />
-            <MetaLogin onSuccess={handleFacebookSuccess}/>
+            <GoogleLogin onGoogleSuccess={handleSocialSuccess} />
+            <MetaLogin onFacebookSuccess={handleSocialSuccess} />
         </form>
             <a href="/forgot-password" className="forgot-password">¿Olvidaste tu contraseña?</a>
         </div>
