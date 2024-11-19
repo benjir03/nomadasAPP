@@ -28,8 +28,8 @@ const BarraNav = () => {
             </Link>
           </li>
           <li>
-            <Link className="botonAccion" to="/Registro">
-              Registrarse
+            <Link className="botonAccion" to="/RevisarPlan">
+              Ver mi plan
             </Link>
           </li>
           <li>
