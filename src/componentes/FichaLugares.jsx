@@ -1,23 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../estilos/FichasLugares.css"; // Importa el archivo CSS
+import React, { useState } from "react";
+import "../estilos/FichasLugares.css";
 
-const FichaLugares = ({ lugares }) => {
+const FichaLugares = ({ titulo, contenido, imagen }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <section className="lugares-recomendados-section">
-      <h2>Lugares Recomendados</h2>
-      <div className="lugares-recomendados">
-        {lugares.map((lugar, index) => (
-          <Link to={`/Historias/${lugar.nombre}`} className="lugar-recomendado" key={index}>
-            <img src={lugar.imagen} alt={lugar.nombre} className="imagen-lugar" />
-            <p>{lugar.nombre}</p>
-          </Link>
-        ))}
+    <div
+      className="contenedorFichaLugares"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{ backgroundImage: `url(${imagen})` }} // Solo mantén el estilo de la imagen
+    >
+      <div
+        className="gradienteSuperpuestoLugares"
+        style={{ opacity: isHovered ? 0 : 1 }}
+      ></div>
+      <div
+        className="gradienteSuperpuestoLugares"
+        style={{ opacity: isHovered ? 1 : 0 }}
+      ></div>
+      <div className="contenedorContendioFichasLugares">
+        <h1>{titulo}</h1>
+        <p>{contenido}</p>
       </div>
-      <Link to="/Historias" className="ver-mas-lugares-link">
-        Más lugares...
-      </Link>
-    </section>
+    </div>
   );
 };
 
