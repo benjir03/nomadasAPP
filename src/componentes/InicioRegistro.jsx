@@ -7,7 +7,7 @@ import Login from "../componentes/GoogleLogin";
 import {jwtDecode} from 'jwt-decode';
 import { validarCorreo, validarContrasena, } from "../validaciones/validacionesInicioSesion";
 import { gapi } from "gapi-script";
-import CompletarPerfil from "../views/CompletarPerfil";
+import MetaLogin from "./MetaLogin";
 
 
 const clientId = "226964234531-b8fnlu7fh96jlikvns9fmd745m6crclh.apps.googleusercontent.com";
@@ -51,6 +51,13 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         setNombre(data.given_name); // Establecer el correo desde los datos de Google
         setApellido(data.family_name); // Establecer el correo desde los datos de Google
     };
+    //Meta
+    const handleFacebookSuccess = (userData) => {
+        console.log(userData)
+        setNombre(userData.nombre);
+        setCorreo(userData.correo);
+        // Aquí puedes enviar los datos al servidor si es necesario
+    };
     //Login
     const enviar = async (e) =>{
         e.preventDefault();
@@ -79,17 +86,18 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         }
     }
     //Registro
-    const store = async (googleUserData) => {
+    const store = async ({googleUserData, userData}) => {
         const data = googleUserData || {}; // Si hay datos de Google, úsalos
-        setCorreo(data.email); // Establece el correo si es proporcionado por Google
-        setNombre(data.given_name); // Establece el nombre si es proporcionado por Google
+        const datamet = userData || {};
+        setCorreo(data.email || datamet.correo); // Establece el correo si es proporcionado por Google
+        setNombre(data.given_name || datamet.nombre); // Establece el nombre si es proporcionado por Google
         setApellido(data.family_name); // Establece el apellido si es proporcionado por Google
         try {
             const URI = "http://localhost:3001/usuario/insertar";
             const requestData = {
-                nombre: data.given_name,
+                nombre: data.given_name || datamet.nombre,
                 apellido: data.family_name,
-                correo: data.email || correo,
+                correo: data.email || correo || datamet.correo,
                 contraseña: contraseña,
             };
             const response = await axios.post(URI, requestData, { withCredentials: true });
@@ -128,9 +136,8 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
                 ))}
             
             <button type="submit" className="login-button">{boton}</button>
-            <button type="submit" className="login-button" onSubmit={store}>
-                <Login onGoogleSuccess={store} />
-            </button>
+            <Login onGoogleSuccess={accion === "store" ? store : enviar} />
+            <MetaLogin onSuccess={handleFacebookSuccess}/>
         </form>
             <a href="/forgot-password" className="forgot-password">¿Olvidaste tu contraseña?</a>
         </div>
