@@ -87,14 +87,13 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         try {
             const URI = "http://localhost:3001/usuario/insertar";
             const requestData = {
+                nombre: data.given_name,
+                apellido: data.family_name,
                 correo: data.email || correo,
-                contraseña,
+                contraseña: contraseña,
             };
             const response = await axios.post(URI, requestData, { withCredentials: true });
             console.log(response.data.message);
-
-            <CompletarPerfil googlenombre ={data.given_name} googleapellido ={data.family_name}/>
-
             navigate("/Verificar");
         } catch (error) {
             console.error("Error al registrar usuario:", error);
