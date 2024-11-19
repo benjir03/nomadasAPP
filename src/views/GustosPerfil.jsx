@@ -63,6 +63,19 @@ const GustosPerfil = () => {
         { texto: "Invierno", icono: <FaSnowflake /> },
       ],
     },
+    {
+      pregunta: "Selecciona categorías de tu preferencia:",
+      opciones: [
+        { texto: "Gastronomía", icono: <FaLandmark /> },
+        { texto: "Cultura e Historia", icono: <FaHiking /> },
+        { texto: "Arte", icono: <FaSpa /> },
+        { texto: "Naturaleza y Aventura", icono: <FaWalking /> },
+        { texto: "Vida Nocturna", icono: <FaBicycle /> },
+        { texto: "Compras", icono: <FaCar /> },
+        { texto: "Familia y Niños", icono: <FaUser /> },
+        { texto: "Deportes y Actividades Extremas", icono: <FaUsers /> },
+      ],
+    },
   ];
 
 
@@ -94,10 +107,10 @@ const GustosPerfil = () => {
   const todasRespondidas = selecciones.every((seleccion) => seleccion !== null);
 
   return (
-    <div>
+    <div class= "gustosPerfil-contenedor">
       <h1 className="gustosPerfil-title">Queremos conocerte más</h1>
       <div>
-        <h2>{preguntas[indice].pregunta}</h2>
+        <h2 class="gustosPerfil-pregunta">{preguntas[indice].pregunta}</h2>
         <div className="opciones-contenedor horizontal">
           {preguntas[indice].opciones.map((opcion, idx) => (
             <OpcionCard
