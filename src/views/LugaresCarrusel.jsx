@@ -33,7 +33,7 @@ const NextArrow = (props) => {
 };
 
 const LugaresCarrusel = () => {
-  const location = useLocation(); // Ahora usamos useLocation correctamente
+  const location = useLocation();
   const navigate = useNavigate();
 
   const [city, setCity] = useState(location.state?.ciudad || '');
@@ -92,10 +92,10 @@ const LugaresCarrusel = () => {
   };
 
   useEffect(() => {
-    if (city || priceRange || ambiance) { // Condiciones para asegurar datos válidos
+    if (city || priceRange || ambiance) {
       handleSubmit();
     }
-  }, [city, priceRange, ambiance]); // Ejecuta cuando cambian estos valores
+  }, [city, priceRange, ambiance]);
 
   const getPhotoUrl = (photoReference) => {
     if (!photoReference) {
