@@ -23,6 +23,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RevisarPlan from "./views/RevisarPlan";
 import MetaLogin from "./componentes/MetaLogin";
+import ModPerfil from "./componentes/ModPerfil";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/Verificar" element={<Verificar />} />
           <Route path="/GustosPerfil" element={<GustosPerfil />} />
           <Route path="/MetaLogin" element={<MetaLogin />} />
+          <Route path="/ModPerfil" element={<ModPerfil />} />
           <Route path="/Actividades" element={<ListaActividad />} /> {/* Nueva ruta para ListaActividad */}
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
