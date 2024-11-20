@@ -32,6 +32,7 @@ function ActividadPrincipal({
           <h1>{titulo}</h1>
           <p>{descripcion}</p>
           <Link className="botonAccion2">Agregar al plan</Link>
+          <Link className="botonAccion2"> Favoritos</Link>
         </div>
       </section>
 
