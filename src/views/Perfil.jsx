@@ -86,7 +86,7 @@ const Perfil = () => {
               <h2 className="login-title" >Datos de la cuenta</h2>
 
               <p className="input-field">
-                <strong>Correo:</strong> {`${usuario.correo}`}
+                <strong>Correo:</strong> {`${usuario.email}`}
               </p>
 
               <p className="input-field">

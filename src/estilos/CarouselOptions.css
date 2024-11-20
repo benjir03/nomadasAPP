@@ -17,6 +17,7 @@ form {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 280px; /* Ajusta el ancho al 80% del contenedor principal */
 }
 
 form label {
@@ -140,4 +141,17 @@ button[type="submit"]:hover {
   color: #333;
   margin-bottom: 40px;
 
+}
+
+.list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.list-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  background: #fff;
 }
