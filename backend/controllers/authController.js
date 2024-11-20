@@ -7,7 +7,7 @@ exports.login = (req, res) => {
     const { correo, contraseña } = req.body;
 
     // Verifica credenciales en la base de datos
-    pool.query('SELECT * FROM USUARIO WHERE email = ? AND password_user = ?', [correo, contraseña], (err, results) => {
+    pool.query('SELECT * FROM USUARIO WHERE email = ? AND password_user = ? OR email = ?', [correo, contraseña, correo], (err, results) => {
         if (err || results.length === 0) {
             return res.status(401).json({ error: 'Credenciales incorrectas' });
         }
@@ -31,7 +31,6 @@ exports.login = (req, res) => {
 exports.logout = (req, res) => {
     res.clearCookie('sessionToken');
     res.json({ message: 'Sesión cerrada exitosamente' });
-    console.log(res);
 };
 
 // Función para obtener el perfil de usuario completo
@@ -43,8 +42,7 @@ exports.getPerfil = (req, res) => {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
         res.json(results[0]); // Envía todos los campos de la base de datos
-        console.log(userId);
-        console.log(results[0]);
+        console.log(userId, results[0]);
     });
 };
 
@@ -62,11 +60,11 @@ exports.eliminarCuenta = (req, res) => {
 // Función para modificar el perfil del usuario
 exports.modificarPerfil = (req, res) => {
     const userId = req.userId;
-    const { nombre, apellido, fecha_nacimiento, genero, correo, telefono } = req.body;
+    const { nombre, apellido, fecha_nacimiento, genero, telefono } = req.body;
     // Actualiza el perfil del usuario en la base de datos
     pool.query(
-        'UPDATE USUARIO SET nombre = ?, apellido = ?, fecha_nacimiento = ?, genero = ?, email = ?, telefono = ? WHERE ID_user = ?',
-        [nombre, apellido, fecha_nacimiento, genero, correo, telefono, userId],
+        'UPDATE USUARIO SET nombre = ?, apellido = ?, fecha_nacimiento = ?, genero = ?, telefono = ? WHERE ID_user = ?',
+        [nombre, apellido, fecha_nacimiento, genero, telefono, userId],
         (err, results) => {
             if (err) {
                 console.error('Error al actualizar el perfil:', err);
@@ -74,6 +72,7 @@ exports.modificarPerfil = (req, res) => {
             }
 
             res.json({ message: 'Perfil actualizado exitosamente' });
+            console.log(results);
         }
     );
 };

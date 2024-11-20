@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import historia from "../imgs/historia.jpg"; // Asegúrate de que la ruta sea correcta
+import { useNavigate } from "react-router-dom";
 
 // Componente para calificar con estrellas
 function StarRating({ rating, onRate }) {
   const stars = Array(5).fill(0);
-
+  
   return (
+    //Rating opinion
     <div style={{ display: 'flex', flexDirection: 'row' }}>
       {stars.map((_, index) => (
         <span
@@ -26,28 +29,50 @@ function StarRating({ rating, onRate }) {
 
 // Componente principal de Experiencias
 export default function Experiencias() {
-  const [opiniones, setOpiniones] = useState([]);
-  const [nombre, setNombre] = useState('');
-  const [comentario, setComentario] = useState('');
   const [rating, setRating] = useState(0);
-
+  const [comentario, setComentario] = useState("");
+  const [usuario, setUsuario] = useState({
+    nombre: "",
+    apellido: "",
+  });
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    const fetchPerfil = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/auth/perfil", {
+          withCredentials: true,
+        });
+        setUsuario(response.data);
+      } catch (error) {
+        console.error("Error al obtener el perfil del usuario:", error);
+      }
+    };
+    
+    fetchPerfil();
+  }, []);
+  
   // Función para agregar una nueva opinión
-  const agregarOpinion = () => {
-    if (nombre && comentario) {
-      const nuevaOpinion = {
-        id: Date.now(),
-        nombre,
-        comentario,
-        rating,
+  const agregarOpinion = async (e) => {
+    e.preventDefault();
+    try {
+      const data ={
+        comentario: comentario,
       };
-      setOpiniones([...opiniones, nuevaOpinion]);
-      setNombre('');
-      setComentario('');
-      setRating(0);
+      await axios.post("http://localhost:3001/opiniones/publicar", data, {
+        withCredentials: true,
+      });
+      alert("Opinion publicada correctamente");
+      navigate("/Perfil"); // Redirige al perfil después de 
+      console.log({data});
+    } catch (error) {
+      console.error("Error al publicar experiencia:", error);
+      alert("Hubo un problema al publicar la experiencia");
     }
   };
 
   return (
+    
     <div style={{
       display: 'flex',
       padding: '20px',
@@ -79,17 +104,6 @@ export default function Experiencias() {
         {/* Sección de opiniones */}
         <div style={{ flex: 1, marginRight: '20px' }}>
           <h2 style={{ color: '#00363A' }}>Opiniones de otros usuarios</h2>
-          {opiniones.length > 0 ? (
-            opiniones.map((opinion) => (
-              <div key={opinion.id} style={{ borderBottom: '1px solid #ccc', padding: '10px 0' }}>
-                <h4>{opinion.nombre}</h4>
-                <p>{opinion.comentario}</p>
-                <StarRating rating={opinion.rating} onRate={() => {}} />
-              </div>
-            ))
-          ) : (
-            <p>No hay opiniones aún.</p>
-          )}
         </div>
         
         {/* Formulario de opinión */}
@@ -104,9 +118,9 @@ export default function Experiencias() {
           <div style={{ width: '80%', margin: '0 auto' }}>
             <input
               type="text"
-              placeholder="Tu nombre"
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
+              name="nombre"
+              placeholder={usuario.nombre} 
+              onChange={(e) => setUsuario(e.target.value)}
               style={{
                 display: 'block',
                 width: '100%',
@@ -116,10 +130,13 @@ export default function Experiencias() {
                 border: '1px solid #8FB8B8',
               }}
             />
-            <textarea
-              placeholder="Escribe tu opinión"
+            <input
+              type="text"
+              name="comentario"
+              className="input-field"
               value={comentario}
               onChange={(e) => setComentario(e.target.value)}
+              placeholder="Comentario"
               style={{
                 display: 'block',
                 width: '100%',

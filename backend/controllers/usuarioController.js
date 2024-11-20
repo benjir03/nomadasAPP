@@ -6,11 +6,11 @@ const { Resend } = require('resend');
 const resend = new Resend('re_5QN9cfnr_KE9jvjvkwRQdJ9FYxUy4hvsJ');
 
 exports.insertarUsuario = (req, res) => {
-    const { nombre, apellido, fecha_nacimiento, correo, contraseña, genero, telefono } = req.body;
+    const { nombre, apellido, correo, contraseña } = req.body;
 
     pool.query(
-        'INSERT INTO USUARIO (nombre, apellido, fecha_nacimiento, email, password_user, genero, telefono, verificado) VALUES (?, ?, ?, ?, ?, ?, ?, 0)',
-        [nombre, apellido,fecha_nacimiento, correo, contraseña, genero, telefono],
+        'INSERT INTO USUARIO (nombre, apellido, email, password_user, verificado) VALUES (?, ?, ?, ?, 0)',
+        [nombre, apellido, correo, contraseña],
         (err, results) => {
             if (err) {
                 console.error('Error en la inserción:', err);
@@ -26,7 +26,8 @@ exports.insertarUsuario = (req, res) => {
                 secure: process.env.NODE_ENV === 'production',
                 maxAge: 3600000 // 1 hora
             });
-            const formato_correo = `<!DOCTYPE html>
+            const formato_correo = `
+            <!DOCTYPE html>
                 <html>
                   <head>
                     <style>
@@ -110,9 +111,9 @@ exports.insertarUsuario = (req, res) => {
                         alt="Logo"
                         class="logo"
                       />
-                      <p class="tertiary">Verifica Tu Correo</p>
+                      <p class="tertiary">Bienvenida</p>
                       <h1 class="secondary">
-                        Haz click en el siguiente botón para verificar y acceder
+                        Bienvenido a Nomadas
                       </h1>
                       <div class="code-container">
                         <p class="code"></p>

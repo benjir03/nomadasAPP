@@ -4,18 +4,12 @@ import '../estilos/styGeneral.css';
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { BackPerfil, ciudad } from "../imgs/ArchivoImgs";
+import { FaCircle } from "react-icons/fa";
 
 
 const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
-  const [usuario, setUsuario] = useState({
-    nombre: "",
-    apellido:"",
-    fecha_nacimiento: "",
-    email:"",
-    genero: "",
-    telefono: "",
-  });
+  const [usuario, setUsuario] = useState([]);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -64,90 +58,58 @@ const Perfil = () => {
 
   const renderContent = () => {
     switch (activeSection) {
+
       case "info":
         return (
           <div className="contenedorVista">
-            <div
-              className="contenedorUno"
-              style={{
-                backgroundImage: {BackPerfil}, // Asegúrate de usar la interpolación correcta
-                height: "50vh", // Usa comillas para las unidades
-                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
-                backgroundPosition: "center", // Centra la imagen
-              }}
-            >
-              <div className="contenedorDos">
-                <h1>Hola {usuario.nombre}</h1>
-              </div>
-            </div>
             <div className="login-container" >
-              <h2 className="login-title">Información general</h2>
-              <p className="input-field"><strong>Nombre:</strong> {usuario.nombre}
-              </p>
+              <h2 className="login-title">Datos generales</h2>
+              
               <p className="input-field">
-                <strong>Fecha de Nacimiento:</strong>{" "}
+                <strong>Nombre:</strong> {`${usuario.nombre}`}
+              </p>
+
+              <p className="input-field">
+                <strong>Apellido:</strong> {`${usuario.apellido}`}
+              </p>
+
+              <p className="input-field">
+                <strong>Fecha de nacimiento:</strong> {`${usuario.fecha_nacimiento}`}
                 {usuario.fecha_nacimiento}
               </p>
               <p className="input-field">
-                <strong>Género:</strong> {usuario.genero}
+                <strong>Género:</strong> {`${usuario.genero}`}
               </p>
             </div>
-          </div>
-        );
-      case "settings":
-        return (
-          <div className="contenedorVista">
-            <div
-              className="contenedorUno"
-              style={{
-                backgroundImage: {ciudad}, // Asegúrate de usar la interpolación correcta
-                height: "50vh", // Usa comillas para las unidades
-                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
-                backgroundPosition: "center", // Centra la imagen
-              }}
-            >
-              <div className="contenedorDos"><h1>Hola {usuario.nombre}</h1>
-              </div>
-            </div>
+
             <div className="login-container">
-              <h2 className="login-title" >Información de cuenta</h2>
+              <h2 className="login-title" >Datos de la cuenta</h2>
+
               <p className="input-field">
-                <strong>Nombre:</strong> {usuario.correo}
+                <strong>Correo:</strong> {`${usuario.email}`}
               </p>
+
               <p className="input-field">
-                <strong>Correo:</strong> {usuario.correo}
+                <strong>Teléfono:</strong> {`${usuario.telefono}`}
               </p>
-              <p className="input-field">
-                <strong>Teléfono:</strong> {usuario.telefono}
-              </p>
+
               <br />
+
               <Link className="botonAccion" to="/Modificar">
                 Modificar datos
               </Link>
               <br />
-              <br />              
+              <br />
               <button onClick={handleDelete} className="botonAccion">
-                Eliminar cuenta
+                Eliminar cuenta 
               </button>
             </div>
           </div>
         );
+
       case "security":
         return (
           <div className="contenedorVista">
-            <div
-              className="contenedorUno"
-              style={{
-                backgroundImage: {BackPerfil}, // Asegúrate de usar la interpolación correcta
-                height: "50vh", // Usa comillas para las unidades
-                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
-                backgroundPosition: "center", // Centra la imagen
-              }}
-            >
-              <div className="contenedorDos">
-                <h1>Hola {usuario.nombre}</h1>
-              </div>
-            </div>
             <div  >
               <h2 className="login-title">Protección de información personal</h2>
               <p className="Parrafo1">
@@ -156,22 +118,10 @@ const Perfil = () => {
             </div>
           </div>
         );
+
       case "notifications":
         return (
           <div className="contenedorVista">
-            <div
-              className="contenedorUno"
-              style={{
-                backgroundImage: {BackPerfil}, // Asegúrate de usar la interpolación correcta
-                height: "50vh", // Usa comillas para las unidades
-                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
-                backgroundPosition: "center", // Centra la imagen
-              }}
-            >
-              <div className="contenedorDos">
-                <h1>Hola {usuario.nombre}</h1>
-              </div>
-            </div>
             <div  >
               <h2 className="login-title">Notificaciones recientes</h2>
               <p className="Parrafo1">
@@ -180,6 +130,7 @@ const Perfil = () => {
             </div>
           </div>
         );
+
       case "logout":
         handleLogout();
         return null;
@@ -188,11 +139,29 @@ const Perfil = () => {
     }
   };
 
+
+
   return (
     <>
     <div className="perfil-container">
+
       <aside className="sidebar">
-        <h2 className="perfil-nombre">{`Bienvenido ${usuario.nombre}`}</h2>
+        <h2 className="perfil-nombre">Bienvenido</h2>
+
+        <div
+              className="contenedorTres"
+              style={{
+                backgroundImage: {BackPerfil}, // Asegúrate de usar la interpolación correcta
+                //height: "20vh", // Usa comillas para las unidades
+                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+                backgroundPosition: "center", // Centra la imagen                                
+              }}
+        >
+        </div>
+
+        <h2 className="perfil-nombre">{`${usuario.nombre}`}</h2>
+
+        <br/>
 
         <ul>
           <li
@@ -200,13 +169,6 @@ const Perfil = () => {
             onClick={() => setActiveSection("info")}
           >
             Información personal
-          </li>
-
-          <li
-            className={activeSection === "settings" ? "active" : ""}
-            onClick={() => setActiveSection("settings")}
-          >
-            Configuración de cuenta
           </li>
 
           <li
@@ -233,6 +195,8 @@ const Perfil = () => {
       </aside>
       <main className="content">{renderContent()}</main>
     </div>
+
+
     <div className="complemento">
 
     </div>

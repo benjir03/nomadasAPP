@@ -18,11 +18,6 @@ const BarraNav = () => {
       <nav>
         <ul className="nav-links">
           <li>
-            <Link className="normal" to="/GustosPerfil">
-              Prueba de Gustos
-            </Link>
-          </li>
-          <li>
             <Link className="normal" to="/ArmarPlan">
               Arma tu plan
             </Link>
@@ -30,26 +25,6 @@ const BarraNav = () => {
           <li>
             <Link className="normal" to="/Explora">
               Explora
-            </Link>
-          </li>
-          {/*           <li>
-            <Link className="normal" to="/Experiencias">
-              Experiencias
-            </Link>
-          </li> */}
-          {/*           <li>
-            <Link className="botonAccion" to="/Lugares">
-              Lugares
-            </Link>
-          </li> */}
-          <li>
-            <Link className="botonAccion" to="/Registro">
-              Nuevo_PERFIL
-            </Link>
-          </li>
-          <li>
-            <Link className="botonAccion" to="/RevisarPlan">
-              MI PLAN(TEST)
             </Link>
           </li>
           <li>

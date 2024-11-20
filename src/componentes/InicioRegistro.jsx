@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../estilos/styInicioRegistro.css";
 import '../estilos/styGeneral.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogin } from '@react-oauth/google';
+import GoogleLogin from "../componentes/GoogleLogin";
 import {jwtDecode} from 'jwt-decode';
 import { validarCorreo, validarContrasena, } from "../validaciones/validacionesInicioSesion";
+import { gapi } from "gapi-script";
+import MetaLogin from "./MetaLogin";
+
+
+const clientId = "226964234531-b8fnlu7fh96jlikvns9fmd745m6crclh.apps.googleusercontent.com";
 
 const InicioRegistro = ({accion, boton, mensaje}) => {
     //Constantes de envio de formulario
     const [correo, setCorreo] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [apellido, setApellido] = useState("");
     const [contraseña, setContrasena] = useState("");
-    const [errores, setErrores] = useState({});
-    const [googleData, setGoogleData] = useState(null);
     const navigate = useNavigate();
+    const [errores, setErrores] = useState({});
     //Validaciones
     const manejarEnvio = (e) => {
         e.preventDefault();
@@ -26,11 +32,25 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         const erroresContrasena = validarContrasena(contraseña);
         if (erroresContrasena.length > 0) nuevosErrores.contraseña = erroresContrasena;
     };
-    //Google
-    const handleGoogleSuccess = (credentialResponse) => {
-        const decoded = jwtDecode(credentialResponse?.credential);
-        console.log(decoded); // Verifica que los datos están bien
-        setGoogleData(decoded); // Almacena los datos de Google en el estado
+    
+    useEffect(() =>{
+        function start() {
+            gapi.client.init({
+                clientId: clientId,
+                scope: ""
+            })
+        }
+        gapi.load('client:auth2', start);
+    },[]);
+    //Google y Meta
+    const handleSocialSuccess = (userData) => {
+        // Actualiza los campos con los datos recibidos
+        if (userData.nombre) setNombre(userData.nombre);
+        if (userData.apellido) setApellido(userData.apellido);
+        if (userData.correo) setCorreo(userData.correo);
+
+        // Llama a la función store automáticamente para enviar los datos
+        store(userData);
     };
     //Login
     const enviar = async (e) =>{
@@ -60,29 +80,30 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         }
     }
     //Registro
-    const store = async (e) => {
-        e.preventDefault();
-        manejarEnvio(e);
-        
-        if (Object.keys(errores).length === 0) {
-            try {
-                const URI = "http://localhost:3001/usuario/insertar";
-                    const requestData = {
-                        nombre: googleData?.name,
-                        correo: googleData?.email || correo,
-                        contraseña,
-                        google_id: googleData?.sub,
-                        picture: googleData?.picture,
-                    };
-                const response = await axios.post(URI, requestData, { withCredentials: true });
-                
-                console.log(response.data.message);
-                navigate('/Verificar');
-                
-                } catch (error) {
-                    console.error('Error al registrar usuario:', error);
-                    alert('Hubo un problema con el registro. Inténtalo de nuevo.');
-                }
+    const store = async (userData = null) => {
+        // Si se proporcionan datos de usuario de redes sociales, actualiza los campos
+        if (userData) {
+            if (userData.nombre) setNombre(userData.nombre);
+            if (userData.apellido) setApellido(userData.apellido);
+            if (userData.correo) setCorreo(userData.correo);
+        }
+
+        const URI = "http://localhost:3001/usuario/insertar";
+        const requestData = {
+            nombre: userData.nombre || "", // Usa el valor actual o una cadena vacía
+            apellido: userData.apellido || "",
+            correo: userData.correo || correo,
+            contraseña: contraseña || "",
+        };
+
+        try {
+            // Envía los datos al backend
+            const response = await axios.post(URI, requestData, { withCredentials: true });
+            console.log(response.data.message);
+            navigate("/Verificar");
+        } catch (error) {
+            console.error("Error al registrar usuario:", error);
+            alert("Hubo un problema con el registro. Inténtalo de nuevo.");
         }
     };
     
@@ -96,10 +117,7 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
                 className="input-field"
                 value={correo}
                 onChange={(e) => setCorreo(e.target.value)}
-                disabled={!!googleData} // Desactiva si viene de Google
             />
-            {errores.correo && <p className="error">{errores.correo}</p>}
-
             <input
                 type="password"
                 placeholder="Ingresa tu contraseña"
@@ -115,15 +133,8 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
                 ))}
             
             <button type="submit" className="login-button">{boton}</button>
-            <div className='btn'>
-                <GoogleLogin
-                    onSuccess={handleGoogleSuccess}
-                    onError={() =>{
-                    console.log('Inicio fallido');
-                    }}
-                    cookiePolicy={"single_host_policy"}
-                />
-            </div>
+            <GoogleLogin onGoogleSuccess={handleSocialSuccess} />
+            <MetaLogin onFacebookSuccess={handleSocialSuccess} />
         </form>
             <a href="/forgot-password" className="forgot-password">¿Olvidaste tu contraseña?</a>
         </div>
