@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../estilos/FichaCategoria.css";
 
-const FichaCategoria = ({ titulo, contenido, imagen, categoria }) => {
+const FichaCategoria = ({titulo, contenido, imagen, categoria}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const navigate = useNavigate();
 
   const handleCategoryClick = () => {
-    navigate("/Categoria.jsx", {
+    navigate("/vista-lugares", {
       state: {
         categoria, // Lista de subcategorías
         ciudad: "Polanco", // Ubicación predeterminada
@@ -32,6 +32,7 @@ const FichaCategoria = ({ titulo, contenido, imagen, categoria }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleCategoryClick} // Navegación al hacer clic
+
     >
       <div
         className="gradienteSuperpuesto"
