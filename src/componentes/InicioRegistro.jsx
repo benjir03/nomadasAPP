@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../estilos/styInicioRegistro.css";
 import '../estilos/styGeneral.css';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import GoogleLogin from "../componentes/GoogleLogin";
 import {jwtDecode} from 'jwt-decode';
 import { validarCorreo, validarContrasena, } from "../validaciones/validacionesInicioSesion";
@@ -129,6 +129,9 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
             <MetaLogin onFacebookSuccess={(userData) => handleSocialSuccess(userData, accion)} />
         </form>
             <a href="/forgot-password" className="forgot-password">¿Olvidaste tu contraseña?</a>
+            <br />
+            <p className="forgot-password">{accion === "store" ? "Ya tienes cuenta ?" : "No tienes cuenta"}</p>
+            <Link to={accion === "store" ? "/InicioSesion" : "/Registro"}>{accion === "store" ? "Inicia sesion" : "Registrate"}</Link>
         </div>
     );
 }
