@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../estilos/FichaCategoria.css";
 
-const FichaLugaresR = ({titulo, contenido, imagen}) => {
+const FichaLugaresR = ({ titulo, contenido, imagen }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleCategoryClick = () => {
+    navigate("/DescripLugar");
+  };
 
   return (
     <div
@@ -57,4 +64,3 @@ const FichaLugaresR = ({titulo, contenido, imagen}) => {
 };
 
 export default FichaLugaresR;
-
