@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../estilos/FichaCategoria.css";
 
-const FichaCategoria = ({titulo, contenido, imagen}) => {
+const FichaActividad = ({titulo, contenido, imagen}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -56,4 +56,4 @@ const FichaCategoria = ({titulo, contenido, imagen}) => {
   );
 };
 
-export default FichaCategoria;
+export default FichaActividad;

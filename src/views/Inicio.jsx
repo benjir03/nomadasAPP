@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../estilos/estiloInicio.css";
 import fondiInicio from "../imgs/fondoInicio.jpg";
 import FichaCategoria from "../componentes/FichaCategoria";
-import FichaLugares from "../componentes/FichaLugares"; // Importa el componente FichaLugares
+import FichaLugares from "../componentes/FichaLugares";
 
 import {
   historiaImage,
@@ -45,17 +45,17 @@ function Inicio() {
         <div className="categorias">
           <FichaCategoria
             titulo="Historia"
-            contenido="Algo bonito"
+            contenido=""
             imagen={historiaImage}
           />
           <FichaCategoria
-            titulo="Benji"
-            contenido="Scrum master"
+            titulo="Arte"
+            contenido=""
             imagen={arteImage}
           />
           <FichaCategoria
-            titulo="Uriel"
-            contenido="Scrum master"
+            titulo="Gastronomía"
+            contenido=""
             imagen={gastronomiaImage}
           />
         </div>
@@ -64,35 +64,31 @@ function Inicio() {
         </Link>
       </section>
 
-      {/* Sección de lugares recomendados */}
-      <div className="contenedorLugaresSec">
-        <h2 className="tituloLugares">Lugares Recomendados</h2>
-        <section className="lugaresSec">
+ {/* Sección de lugares recomendados */}
+ <section className="categoriasSec">
+        <h2>Lugares Recomendados</h2>
+        <div className="categorias">
           <FichaLugares
-            titulo="Lugar 1"
-            contenido="Descripción del Lugar 1"
+            titulo="Lugar1"
+            contenido=""
             imagen={Lugar1}
           />
           <FichaLugares
-            titulo="Lugar 2"
-            contenido="Descripción del Lugar 2"
-            imagen={Lugar2}
+            titulo="Lugar2"
+            contenido=""
+            imagen={Lugar1}
           />
           <FichaLugares
-            titulo="Lugar 3"
-            contenido="Descripción del Lugar 3"
-            imagen={Lugar3}
+            titulo="Lugar3"
+            contenido=""
+            imagen={Lugar1}
           />
-          <FichaLugares
-            titulo="Lugar 4"
-            contenido="Descripción del Lugar 4"
-            imagen={Lugar4}
-          />
-        </section>
-        <div className="linkMasLugares">
-          <a href="/mas-lugares">Más lugares</a>
         </div>
-      </div>
+        <Link to="/Lugares" className="more-categories-link">
+          Más lugares...
+        </Link>
+      </section>
+     
     </div>
   );
 }
