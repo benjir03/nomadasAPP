@@ -18,7 +18,13 @@ const Perfil = () => {
         const response = await axios.get("http://localhost:3001/auth/perfil", {
           withCredentials: true,
         });
-        setUsuario(response.data);
+        const userData = response.data;
+        // Formatear la fecha de nacimiento al formato YYYY-MM-DD
+        const formattedDate = userData.fecha_nacimiento
+          ? userData.fecha_nacimiento.split('T')[0]
+          : "";
+
+        setUsuario({ ...userData, fecha_nacimiento: formattedDate });
       } catch (error) {
         console.error("Error al obtener el perfil del usuario:", error);
       }
@@ -74,11 +80,10 @@ const Perfil = () => {
               </p>
 
               <p className="input-field">
-                <strong>Fecha de nacimiento:</strong> {`${usuario.fecha_nacimiento}`}
-                {usuario.fecha_nacimiento}
+                <strong>Fecha de nacimiento:</strong>{usuario.fecha_nacimiento}
               </p>
               <p className="input-field">
-                <strong>Género:</strong> {`${usuario.genero}`}
+                <strong>Género:</strong> {`${usuario.genero}` === 'M' ? 'Masculino' : 'Femenino'}
               </p>
             </div>
 
