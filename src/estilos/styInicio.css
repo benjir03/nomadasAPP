@@ -11,12 +11,12 @@
   padding: 20px;
 }
 
-.contenedorUno {
+.contenedorUnoIn {
   background-image: url("../imgs/fondoInicio.jpg");
   height: 88vh;
 }
 
-.contenedorVista {
+.contenedorVistaIn {
   background-color: var(--background-color);
 }
 

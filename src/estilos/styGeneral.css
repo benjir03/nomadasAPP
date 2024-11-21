@@ -29,8 +29,8 @@
 .contenedorUno {
   position: relative;
   width: 100%; /* Reduce el ancho del contenedor */
-  max-width: 1200px; /* Limita el ancho máximo */
-  max-height: 500px; /* Ajusta la altura según sea necesario */
+  max-width: 2200px; /* Limita el ancho máximo */
+  max-height: 800px; /* Ajusta la altura según sea necesario */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
