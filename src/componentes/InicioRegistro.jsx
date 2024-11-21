@@ -48,36 +48,29 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         if (userData.nombre) setNombre(userData.nombre);
         if (userData.apellido) setApellido(userData.apellido);
         if (userData.correo) setCorreo(userData.correo);
-
+        
         // Llama a la función store automáticamente para enviar los datos
-        store(userData);
+        accion === "store" ? store(userData) : enviar(userData);
     };
     //Login
-    const enviar = async (e) =>{
-        e.preventDefault();
-        manejarEnvio(e);
-        
-        if (Object.keys(errores).length === 0) {
+    const enviar = async (userData = null) =>{
+        // Si se proporcionan datos de usuario de redes sociales, actualiza los campos
+        if (userData) {
+            if (userData.correo) setCorreo(userData.correo);
+        }
+        const URI = "http://localhost:3001/auth/login";
+        const requestData = {
+            correo: userData.correo || correo,
+            contraseña: contraseña,
+        };
             try {
-            const response = await axios.post(
-                "http://localhost:3001/auth/login",
-                {
-                correo,
-                contraseña: contraseña,
-                },
-                { withCredentials: true }
-            );
-    
+            const response = await axios.post(URI, requestData, { withCredentials: true });
             console.log(response.data.message); // Mensaje de éxito
-                navigate("/Perfil"); // Redirige a Perfil
+            navigate("/Perfil"); // Redirige a Perfil
             } catch (error) {
-            console.error(
-                "Error al iniciar sesión:",
-                error.response?.data || error.message
-            );
+            console.error( "Error al iniciar sesión:", error);
             alert("Hubo un problema con el inicio de sesión.");
             }
-        }
     }
     //Registro
     const store = async (userData = null) => {
@@ -95,7 +88,6 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
             correo: userData.correo || correo,
             contraseña: contraseña || "",
         };
-
         try {
             // Envía los datos al backend
             const response = await axios.post(URI, requestData, { withCredentials: true });
@@ -133,8 +125,8 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
                 ))}
             
             <button type="submit" className="login-button">{boton}</button>
-            <GoogleLogin onGoogleSuccess={handleSocialSuccess} />
-            <MetaLogin onFacebookSuccess={handleSocialSuccess} />
+            <GoogleLogin onGoogleSuccess={(userData) => handleSocialSuccess(userData, accion)} />
+            <MetaLogin onFacebookSuccess={(userData) => handleSocialSuccess(userData, accion)} />
         </form>
             <a href="/forgot-password" className="forgot-password">¿Olvidaste tu contraseña?</a>
         </div>

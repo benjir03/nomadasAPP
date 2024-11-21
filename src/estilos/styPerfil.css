@@ -1,6 +1,6 @@
 @import "./styGeneral.css";
 
-.contenedorUno {
+.contenedorUnoP {
   background-image: url("../imgs/fondoInicio.jpg");
   background-color: var(--background-color);
   height: 50vh;

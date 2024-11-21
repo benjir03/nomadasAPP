@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../estilos/estiloFichaCategoria.css";
+import "../estilos/FichaCategoria.css";
 
 const FichaCategoria = ({titulo, contenido, imagen}) => {
   const [isHovered, setIsHovered] = useState(false);
