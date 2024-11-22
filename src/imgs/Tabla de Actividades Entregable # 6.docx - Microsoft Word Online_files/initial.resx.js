@@ -1,0 +1,4 @@
+"use strict";(self.odspNextWebpackJsonp=self.odspNextWebpackJsonp||[]).push([["initial.resx"],{188:e=>{e.exports=JSON.parse('{"a":"Mis archivos"}')}
+,182:e=>{e.exports=JSON.parse('{"m":"Abrir en Word","h":"Abrir en Project","b":"Abrir en Excel","g":"Abrir en PowerPoint","e":"Abrir en OneNote","k":"Abrir en Visio","i":"Abrir en Publisher","c":"Abrir en InfoPath","l":"Abrir en Word Online","f":"Abrir en PowerPoint Online","a":"Abrir en Excel Online","d":"Abrir en OneNote Online","j":"Abrir en Visio Online"}')}
+,209:e=>{e.exports=JSON.parse('{"c":"¿Todavía aquí?","a":"Por tu seguridad, el Almacén personal se bloqueará automáticamente en 1 minuto.","b":"Mantener desbloqueado","f":"La bóveda personal no se ha bloqueado","d":"Se ha producido un problema al cerrar el Almacén personal. Si esto vuelve a suceder, puedes cerrar la sesión de OneDrive para bloquear tu Almacén personal.","e":"Reintentar"}')}
+}]),define("initial.resx",[],{});

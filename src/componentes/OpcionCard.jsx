@@ -5,7 +5,10 @@ const OpcionCard = ({ icono, texto, seleccionado, onClick }) => {
   return (
     <div
       className={`opcion-card ${seleccionado ? "selected" : ""}`}
-      onClick={onClick}
+      onClick={(e) => {
+        e.stopPropagation(); // Evita que el evento se propague si es necesario
+        onClick();
+      }}
     >
       <div className="icono">{icono}</div>
       <button className="opcion-boton">{texto}</button>
