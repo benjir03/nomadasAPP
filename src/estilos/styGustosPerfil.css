@@ -1,15 +1,16 @@
-@import "./styGeneral.css";
-
-.contenedorUnoGP {
-  background-image: url("../imgs/fondoInicio.jpg");
-  background-color: var(--background-color);
-  height: 50vh;
+.gustosPerfil-title {
+  font-size: 2rem;
+  color: var(--background-color);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.perfil-container {
-  display: flex;
-  height:53vh;
-  background-color: var(--background-color);
+.gustosPerfil-pregunta {
+  color: var(--background-color);
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.5rem; 
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Añade una ligera sombra */
 }
 
 .gustosPerfil-contenedor {
@@ -46,54 +47,10 @@
   display: flex;
   justify-content: space-between; 
   align-items: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  margin: 1rem auto; /* Centra el contenedor */
+  gap: 30px;
+  margin-top: 50px;
 }
 
-.contenedorFoto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Asegura que la imagen llene el círculo */
-}
-
-.sidebar {
-  width: 250px;
-  background-color: var(--primary-color);
-  padding: 20px;
-  border-right: 1px solid var(--primary-color);
-  border-radius: 20px;
-  height: 550px;
-  color: var(--background-color)
-  /*padding: 2rem;*/
-}
-
-.sidebar ul {
-  border-radius: 20px;
-  background-color: #83c5B3;
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  border-radius: 10px;
-  padding: 10px;
-  cursor: pointer;
-  color: #333;
-  font-weight: 500;
-}
-
-.sidebar li:hover,
-.sidebar li.active {
-  /*background-color: #ddd;*/
-  color: #000;
-  font-weight: bold;
-  font-size: medium;
-}
-
-.content {
-  padding: 20px;
-  flex-grow: 1;
-}
 
 .botonAccion {
   padding: 15px 30px; 
