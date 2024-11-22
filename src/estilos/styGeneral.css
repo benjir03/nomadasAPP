@@ -28,9 +28,12 @@
 
 .contenedorUno {
   position: relative;
-  width: 100%; /* Reduce el ancho del contenedor */
-  max-width: 1200px; /* Limita el ancho máximo */
-  max-height: 500px; /* Ajusta la altura según sea necesario */
+  width: 100%;
+  /* Reduce el ancho del contenedor */
+  max-width: 2200px;
+  /* Limita el ancho máximo */
+  max-height: 800px;
+  /* Ajusta la altura según sea necesario */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -39,27 +42,36 @@
   justify-content: flex-start;
   align-items: center;
   border-radius: 30px;
-  margin: 0rem auto; /* Centra el contenedor y agrega espacio superior/inferior */
-  padding: 0px; /* Agrega un espaciado interno */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+  margin: 0rem auto;
+  /* Centra el contenedor y agrega espacio superior/inferior */
+  padding: 0px;
+  /* Agrega un espaciado interno */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  /* Sombra para dar profundidad */
 }
 
 .contenedorTres {
   position: relative;
-  width: 150px; /* Ajusta el ancho para un círculo */
-  height: 150px; /* El alto debe ser igual al ancho */
-  max-width: 200px; /* Asegúrate de mantener proporción */
+  width: 150px;
+  /* Ajusta el ancho para un círculo */
+  height: 150px;
+  /* El alto debe ser igual al ancho */
+  max-width: 200px;
+  /* Asegúrate de mantener proporción */
   max-height: 200px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 50%; /* Convierte el contenedor en un círculo */
-  overflow: hidden; /* Recorta el contenido fuera del borde circular */
+  border-radius: 50%;
+  /* Convierte el contenedor en un círculo */
+  overflow: hidden;
+  /* Recorta el contenido fuera del borde circular */
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  margin: 1rem auto; /* Centra el contenedor */
+  margin: 1rem auto;
+  /* Centra el contenedor */
 }
 
 .contenedorDos {
@@ -93,6 +105,7 @@
   font-weight: bold;
   display: inline-block;
   transition: background-color 0.3s;
+  margin-right: 15px;
 }
 
 .botonAccion2 {
