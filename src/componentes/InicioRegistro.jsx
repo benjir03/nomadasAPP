@@ -128,7 +128,7 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
             <GoogleLogin onGoogleSuccess={(userData) => handleSocialSuccess(userData, accion)} />
             <MetaLogin onFacebookSuccess={(userData) => handleSocialSuccess(userData, accion)} />
         </form>
-            <a href="/forgot-password" className="forgot-password">¿Olvidaste tu contraseña?</a>
+        <Link to ="/Olvido">¿Olvidaste tu contraseña?</Link>
             <br />
             <p className="forgot-password">{accion === "store" ? "Ya tienes cuenta ?" : "No tienes cuenta"}</p>
             <Link to={accion === "store" ? "/InicioSesion" : "/Registro"}>{accion === "store" ? "Inicia sesion" : "Registrate"}</Link>

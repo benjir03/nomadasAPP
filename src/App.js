@@ -23,6 +23,8 @@ import RevisarPlan from "./views/RevisarPlan";
 import MetaLogin from "./componentes/MetaLogin";
 import ModPerfil from "./componentes/ModPerfil";
 import VistaLugares from "./views/VistaLugares";
+import Olvido from "./componentes/Olvido";
+import InfoPass from "./componentes/InfoPass";
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
           <Route path="/ModPerfil" element={<ModPerfil />} />
           <Route path="/Actividades" element={<ListaActividad />} /> {/* Nueva ruta para ListaActividad */}
           <Route path="/vista-lugares" element={<VistaLugares />} />
+          <Route path="/Olvido" element={<Olvido />} />
+          <Route path="/InfoPass" element={<InfoPass/>} />
 
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
