@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import "../estilos/styGustosPerfil.css";
 import OpcionCard from '../componentes/OpcionCard'; 
-import { FaLandmark, FaHiking, FaSpa, FaWalking, FaBicycle, FaCar, FaUser, FaUsers, FaCamera, FaMapMarkedAlt, FaPaw, FaBan, FaLeaf, FaSun, FaTree, FaSnowflake, FaPlane, FaCalendarAlt, FaClock, FaHeart } from 'react-icons/fa';
+import { FaLandmark, FaHiking, FaSpa, FaWalking, FaBicycle, FaCar, FaUser, FaUsers, FaCamera, FaMapMarkedAlt, FaPaw, FaBan, FaLeaf, FaSun, FaTree, FaSnowflake, FaPlane, FaCalendarAlt, FaClock, FaHeart, FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const GustosPerfil = () => {
   const navigate = useNavigate();
 
   const preguntas = [
-    {
-      pregunta: "¿Qué tipo de experiencias prefieres?",
-      opciones: [
-        { texto: "Cultural", icono: <FaLandmark /> },
-        { texto: "Aventura", icono: <FaHiking /> },
-        { texto: "Relajación", icono: <FaSpa /> },
-      ],
-    },
     {
       pregunta: "¿Qué medios de transporte prefieres usar?",
       opciones: [
@@ -25,19 +17,19 @@ const GustosPerfil = () => {
       ],
     },
     {
-      pregunta: "¿Regularmente cuanto duran tus viajes ?",
+      pregunta: "¿Regularmente cuanto duran tus viajes?",
       opciones: [
-        { texto: "Meses", icono: <FaPlane /> },
-        { texto: "Semanas", icono: <FaCalendarAlt /> },
-        { texto: "Dias", icono: <FaClock /> },
+        { texto: "1 día", icono: <FaClock /> },
+        { texto: "2 días", icono: <FaCalendarAlt /> },
+        { texto: "Más de 3 días", icono: <FaPlane /> },
       ],
     },
     {
       pregunta: "¿Viajas solo o acompañado?",
       opciones: [
         { texto: "Solo", icono: <FaUser /> },
-        { texto: "Con familia", icono: <FaUsers /> },
-        { texto: "Con pareja", icono: <FaHeart /> },    
+        { texto: "Con pareja", icono: <FaHeart /> },
+        { texto: "Con familia o amigos", icono: <FaUsers /> },
       ],
     },
     {
@@ -55,11 +47,39 @@ const GustosPerfil = () => {
       ],
     },
     {
+      pregunta: "¿Eres vegano/a o prefieres opciones veganas?",
+      opciones: [
+        { texto: "Sí", icono: <FaCheck /> },
+        { texto: "No", icono: <FaBan /> },
+      ],
+    },
+    {
+      pregunta: "¿Te interesa que el lugar sea pet friendly?",
+      opciones: [
+        { texto: "Sí", icono: <FaCheck /> },
+        { texto: "No", icono: <FaBan /> },
+      ],
+    },
+    {
+      pregunta: "¿Requieres asistencia para capacidades diferentes?",
+      opciones: [
+        { texto: "Sí", icono: <FaCheck /> },
+        { texto: "No", icono: <FaBan /> },
+      ],
+    },
+    {
+      pregunta: "¿Eres mayor de edad (18+ años)?",
+      opciones: [
+        { texto: "Sí", icono: <FaCheck /> },
+        { texto: "No", icono: <FaBan /> },
+      ],
+    },
+    {
       pregunta: "¿En qué estaciones del año te gusta más viajar?",
       opciones: [
-        { texto: "Primavera", icono: <FaLeaf /> },
+        { texto: "Primavera", icono: <FaTree /> },
         { texto: "Verano", icono: <FaSun /> },
-        { texto: "Otoño", icono: <FaTree /> },
+        { texto: "Otoño", icono: <FaLeaf /> },
         { texto: "Invierno", icono: <FaSnowflake /> },
       ],
     },
@@ -78,13 +98,27 @@ const GustosPerfil = () => {
     },
   ];
 
-
   const [indice, setIndice] = useState(0);
   const [selecciones, setSelecciones] = useState(Array(preguntas.length).fill(null));
 
   const manejarClickOpcion = (opcion) => {
     const nuevasSelecciones = [...selecciones];
-    nuevasSelecciones[indice] = opcion;
+
+    if (indice === preguntas.length - 1) {
+      if (!nuevasSelecciones[indice]) {
+        nuevasSelecciones[indice] = [];
+      }
+      if (nuevasSelecciones[indice].includes(opcion)) {
+        nuevasSelecciones[indice] = nuevasSelecciones[indice].filter(
+          (item) => item !== opcion
+        );
+      } else {
+        nuevasSelecciones[indice].push(opcion);
+      }
+    } else {
+      nuevasSelecciones[indice] = opcion;
+    }
+
     setSelecciones(nuevasSelecciones);
   };
 
@@ -101,23 +135,36 @@ const GustosPerfil = () => {
   };
 
   const manejarClickFinalizar = () => {
-    navigate('/Perfil'); 
+    navigate('/Perfil');
   };
 
-  const todasRespondidas = selecciones.every((seleccion) => seleccion !== null);
+  const todasRespondidas = selecciones.every((seleccion, i) => {
+    if (i === preguntas.length - 1) {
+      return seleccion && seleccion.length > 0;
+    }
+    return seleccion !== null;
+  });
 
   return (
-    <div class= "gustosPerfil-contenedor">
+    <div className="gustosPerfil-contenedor">
+      {/* Imagen de fondo */}
+      <div className="gustosPerfil-background"></div>
+
+      {/* Contenido principal */}
       <h1 className="gustosPerfil-title">Queremos conocerte más</h1>
       <div>
-        <h2 class="gustosPerfil-pregunta">{preguntas[indice].pregunta}</h2>
+        <h2 className="gustosPerfil-pregunta">{preguntas[indice].pregunta}</h2>
         <div className="opciones-contenedor horizontal">
           {preguntas[indice].opciones.map((opcion, idx) => (
             <OpcionCard
               key={idx}
               icono={opcion.icono}
               texto={opcion.texto}
-              seleccionado={selecciones[indice] === opcion.texto}
+              seleccionado={
+                indice === preguntas.length - 1
+                  ? selecciones[indice]?.includes(opcion.texto)
+                  : selecciones[indice] === opcion.texto
+              }
               onClick={() => manejarClickOpcion(opcion.texto)}
             />
           ))}
@@ -129,10 +176,9 @@ const GustosPerfil = () => {
         </button>
         {indice < preguntas.length - 1 ? (
           <button
-            className="botonAccion"
-            onClick={manejarClickSiguiente}
-            disabled={!selecciones[indice]}
-            style={{ backgroundColor: selecciones[indice] ? "var(--primary-color)" : "gray" }}
+          className="botonAccion"
+          onClick={manejarClickSiguiente}
+          disabled={!selecciones[indice]} // Deshabilitado si no hay selección
           >
             Siguiente Pregunta
           </button>

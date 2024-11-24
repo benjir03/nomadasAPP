@@ -22,6 +22,13 @@ const RevisarPlan = () => {
           />
           {/* Botón Completar Plan */}
           <button className="botonCompletarPlan">Completar Plan</button>
+          <button
+          className="search-button"
+          onClick={() => window.open('https://www.google.com/maps/dir/Alejandro+Dumas+81,+Polanco,+Polanco+IV+Secc,+Miguel+Hidalgo,+11550+Ciudad+de+M%C3%A9xico,+CDMX/Blvd.+Miguel+de+Cervantes+Saavedra,+Granada,+11529+Ciudad+de+M%C3%A9xico,+CDMX/@19.4355518,-99.2042008,16z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x85d202020055c1c3:0x6604f6bd7e880fae!2m2!1d-99.1956749!2d19.4304316!1m5!1m1!1s0x85d2021a843d2a1b:0xe7656ed95e724022!2m2!1d-99.2034115!2d19.4401937?entry=ttu&g_ep=EgoyMDI0MTExMi4wIKXMDSoASAFQAw%3D%3D', '_blank')}
+        >
+          Ver ruta
+        </button>
+
         </div>
         <div className="contenedorLadoDerecho">
           <h3 className="nombrePlan">Nombre del Plan</h3>

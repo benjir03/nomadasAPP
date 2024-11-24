@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fondiArmarPlan from "../imgs/fondoArmarPlan.jpg";
+import fondiArmarPlan from "../imgs/piramid.jpg";
 import "../estilos/styArmarPlan.css";
-import DescripLugar from "../componentes/DescripLugar"; // Importa el componente DescripLugar
+import FichaLugares from "../componentes/FichaLugares";
+import Lugar1 from '../imgs/explora01.jpg';
+import { Link } from "react-router-dom";
 
 export default function ArmarPlan() {
   const navigate = useNavigate();
@@ -85,8 +87,30 @@ export default function ArmarPlan() {
         </div>
       </div>
 
-      {/* Componente DescripLugar */}
-      <DescripLugar /> {/* Agrega el componente DescripLugar aquí */}
+        {/* Sección de lugares recomendados */}
+ <section className="categoriasSec">
+        <h2>Lugares Recomendados</h2>
+        <div className="categorias">
+          <FichaLugares
+            titulo="Lugar1"
+            contenido=""
+            imagen={Lugar1}
+          />
+          <FichaLugares
+            titulo="Lugar2"
+            contenido=""
+            imagen={Lugar1}
+          />
+          <FichaLugares
+            titulo="Lugar3"
+            contenido=""
+            imagen={Lugar1}
+          />
+        </div>
+        <Link to="/Lugares" className="more-categories-link">
+          Más lugares...
+        </Link>
+      </section>
     </div>
   );
 }

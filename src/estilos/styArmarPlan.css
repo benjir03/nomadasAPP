@@ -8,13 +8,13 @@ body {
 }
 
 /* Contenedor principal */
-.contenedorVista {
+.contenedorVistaAP {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
 }
 
-.contenedorUno {
+.contenedorUnoAP {
   height: 80vh;
   background-size: 150%;
   background-position: left;

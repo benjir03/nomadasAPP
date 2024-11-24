@@ -104,16 +104,31 @@ const ModPerfil = ({Accion, Navegacion}) => {
           placeholder="Correo"
         />
         <br />
-
         <label>Género:</label>
-        <input
-          type="text"
-          name="genero"
-          className="input-field"
-          value={usuario.genero}
-          onChange={handleInputChange}
-          placeholder="Género"
-        />
+        <div className="radio-group">
+          <label className="radio-label">
+            <input
+              type="radio"
+              name="genero"
+              className="radio-input"
+              value="M"
+              onChange={handleInputChange}
+              checked={usuario.genero === "M"}
+            />
+            Masculino
+          </label>
+          <label className="radio-label">
+            <input
+              type="radio"
+              name="genero"
+              className="radio-input"
+              value="F"
+              onChange={handleInputChange}
+              checked={usuario.genero === "F"}
+            />
+            Femenino
+          </label>
+        </div>
         <br />
         <label>Teléfono:</label>
         <input
