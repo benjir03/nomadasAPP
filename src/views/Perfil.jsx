@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { BackPerfil, ciudad } from "../imgs/ArchivoImgs";
 import { FaCircle } from "react-icons/fa";
-
+import { EjemploPerfil } from "../imgs/ArchivoImgs";
 
 const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
@@ -67,47 +67,63 @@ const Perfil = () => {
 
       case "info":
         return (
-          <div className="contenedorVista">
+          <div className="perfil-centrado">
             <div className="login-container" >
               <h2 className="login-title">Datos generales</h2>
               
-              <p className="input-field">
+              <p className="camposPerfil">
                 <strong>Nombre:</strong> {`${usuario.nombre}`}
               </p>
 
-              <p className="input-field">
+              <p className="camposPerfil">
                 <strong>Apellido:</strong> {`${usuario.apellido}`}
               </p>
 
-              <p className="input-field">
-                <strong>Fecha de nacimiento:</strong>{usuario.fecha_nacimiento}
+              <p className="camposPerfil">
+                <strong>Fecha de nacimiento:</strong> {`${usuario.fecha_nacimiento}`}
               </p>
-              <p className="input-field">
+              <p className="camposPerfil">
                 <strong>Género:</strong> {`${usuario.genero}` === 'M' ? 'Masculino' : 'Femenino'}
               </p>
-            </div>
+            
+              <br/>
 
-            <div className="login-container">
               <h2 className="login-title" >Datos de la cuenta</h2>
 
-              <p className="input-field">
+              <p className="camposPerfil">
                 <strong>Correo:</strong> {`${usuario.email}`}
               </p>
 
-              <p className="input-field">
+              <p className="camposPerfil">
+                <strong>Contraseña:</strong> {`${usuario.contraseña}`}
+              </p>
+
+              <p className="camposPerfil">
                 <strong>Teléfono:</strong> {`${usuario.telefono}`}
               </p>
 
-              <br />
+              <br/>
 
               <Link className="botonAccion" to="/Modificar">
                 Modificar datos
               </Link>
-              <br />
-              <br />
+
+              <br/>
+              <br/>
+
               <button onClick={handleDelete} className="botonAccion">
                 Eliminar cuenta 
               </button>
+
+              <br/>
+              <br/>
+              <br/>
+
+              <button className="botonAccion">
+                Editar foto de perfil
+              </button>
+
+
             </div>
           </div>
         );
@@ -136,6 +152,18 @@ const Perfil = () => {
           </div>
         );
 
+        case "config":
+        return (
+          <div className="contenedorVista">
+            <div  >
+              <h2 className="login-title">Configuración Avanzada</h2>
+              <p className="Parrafo1">
+                En esta sección puedes configurar los detalles de tu cuenta para tener la mejor experiencia.
+              </p>              
+            </div>
+          </div>
+        );
+
       case "logout":
         handleLogout();
         return null;
@@ -148,23 +176,22 @@ const Perfil = () => {
 
   return (
     <>
-    <div className="perfil-container">
+    <div className="perfil-centrado">
 
-      <aside className="sidebar">
-        <h2 className="perfil-nombre">Bienvenido</h2>
+      
+
+      <div className="sidebar">
+        <h2 className="perfil-nombre">Bienvenido {`${usuario.nombre}`}</h2>
 
         <div
               className="contenedorTres"
               style={{
-                backgroundImage: {BackPerfil}, // Asegúrate de usar la interpolación correcta
-                //height: "20vh", // Usa comillas para las unidades
+                backgroundImage: `url(${EjemploPerfil})`, // Asegúrate de usar la interpolación correcta*/
                 backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
-                backgroundPosition: "center", // Centra la imagen                                
+                backgroundPosition: "center", // Centra la imagen
               }}
         >
         </div>
-
-        <h2 className="perfil-nombre">{`${usuario.nombre}`}</h2>
 
         <br/>
 
@@ -177,10 +204,10 @@ const Perfil = () => {
           </li>
 
           <li
-            className={activeSection === "security" ? "active" : ""}
-            onClick={() => setActiveSection("security")}
+            className={activeSection === "pref" ? "active" : ""}
+            onClick={() => setActiveSection("pref")}
           >
-            Seguridad
+            Preferencias
           </li>
 
           <li
@@ -191,20 +218,41 @@ const Perfil = () => {
           </li>
 
           <li
-            className={activeSection === "logout" ? "active" : ""}
-            onClick={() => setActiveSection("logout")}
+            className={activeSection === "planes" ? "active" : ""}
+            onClick={() => setActiveSection("planes")}
           >
-            Cerrar sesión
+            Mis planes
           </li>
+
+          <li
+            className={activeSection === "reseñas" ? "active" : ""}
+            onClick={() => setActiveSection("reseñas")}
+          >
+            Mis reseñas
+          </li>
+
+          <li
+            className={activeSection === "config" ? "active" : ""}
+            onClick={() => setActiveSection("config")}
+          >
+            Configuración avanzada
+          </li>
+
+          <br/>
+
+          <button className="botonCerrar"
+            onClick={() => setActiveSection("logout")}>
+            Cerrar Sesión
+          </button>
+
         </ul>
-      </aside>
+      </div>
       <main className="content">{renderContent()}</main>
     </div>
 
 
-    <div className="complemento">
+    <div className="complemento0"></div>
 
-    </div>
     </>
   );
 };
