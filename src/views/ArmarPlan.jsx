@@ -69,7 +69,7 @@ export default function ArmarPlan() {
                 type="range"
                 className="range-field"
                 value={presupuesto}
-                min="1"
+                min="0"
                 max="4"
                 onChange={(e) => setPresupuesto(e.target.value)}
               />

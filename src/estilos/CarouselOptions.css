@@ -17,7 +17,8 @@ form {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 280px; /* Ajusta el ancho al 80% del contenedor principal */
+  max-width: 280px; /* Ajusta el ancho al 80% del contenedor principal */
+  min-width: 280px;
 }
 
 form label {
