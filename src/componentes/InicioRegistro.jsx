@@ -58,13 +58,13 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         if (userData) {
             if (userData.correo) setCorreo(userData.correo);
         }
-        const URI = "http://localhost:3001/auth/login";
+        const URI = 'http://localhost:3001/auth/login';
         const requestData = {
             correo: userData.correo || correo,
             contraseña: contraseña,
         };
             try {
-            const response = await axios.post(URI, requestData, { withCredentials: true });
+            const response = await axios.post('http://localhost:3001/auth/login', requestData, { withCredentials: true });
             console.log(response.data.message); // Mensaje de éxito
             navigate("/Perfil"); // Redirige a Perfil
             } catch (error) {
@@ -80,17 +80,16 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
             if (userData.apellido) setApellido(userData.apellido);
             if (userData.correo) setCorreo(userData.correo);
         }
-
         const URI = "http://localhost:3001/usuario/insertar";
-        const requestData = {
-            nombre: userData.nombre || "", // Usa el valor actual o una cadena vacía
-            apellido: userData.apellido || "",
-            correo: userData.correo || correo,
-            contraseña: contraseña || "",
-        };
         try {
+            const requestData = {
+                nombre: userData.nombre, // Usa el valor actual o una cadena vacía
+                apellido: userData.apellido,
+                correo: userData.correo || correo,
+                contraseña: contraseña,
+            };
             // Envía los datos al backend
-            const response = await axios.post(URI, requestData, { withCredentials: true });
+            const response = await axios.post('http://localhost:3001/usuario/insertar', requestData, { withCredentials: true });
             console.log(response.data.message);
             navigate("/Verificar");
         } catch (error) {

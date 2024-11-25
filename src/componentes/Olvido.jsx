@@ -30,7 +30,7 @@ const Verificar = () => {
                 correo: correo,
             };
                 try {
-                const response = await axios.post(URI, requestData, { withCredentials: true });
+                const response = await axios.get(URI, requestData, { withCredentials: true });
                 console.log(response.data.message); // Mensaje de éxito
                 navigate("/InfoPass"); // Redirige a Perfil
                 } catch (error) {

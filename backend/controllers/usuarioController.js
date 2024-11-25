@@ -2,12 +2,10 @@
 const jwt = require('jsonwebtoken');
 const pool = require('../db/connection');
 const { Resend } = require('resend');
-//API Resend (correo)
 const resend = new Resend('re_5QN9cfnr_KE9jvjvkwRQdJ9FYxUy4hvsJ');
 
 exports.insertarUsuario = (req, res) => {
     const { nombre, apellido, correo, contraseña } = req.body;
-
     pool.query(
         'INSERT INTO USUARIO (nombre, apellido, email, password_user, verificado) VALUES (?, ?, ?, ?, 0)',
         [nombre, apellido, correo, contraseña],
@@ -15,18 +13,16 @@ exports.insertarUsuario = (req, res) => {
             if (err) {
                 console.error('Error en la inserción:', err);
                 return res.status(500).json({ error: 'Error en la inserción' });
-            }
-
-            const userId = results.insertId;
-            const token = jwt.sign({ id_usuario: userId }, 'tu_secreto', { expiresIn: '1h' });
-
-            // Envía el token en una cookie y en la respuesta JSON
-            res.cookie('sessionToken', token, {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
-                maxAge: 3600000 // 1 hora
-            });
-            const formato_correo = `
+            }else{
+              const userId = results.insertId;
+              const token = jwt.sign({ id_usuario: userId }, 'tu_secreto', { expiresIn: '1h' });
+              // Envía el token en una cookie y en la respuesta JSON
+              res.cookie('sessionToken', token, {
+                  httpOnly: true,
+                  secure: process.env.NODE_ENV === 'production',
+                  maxAge: 3600000 // 1 hora
+              });
+              const formato_correo = `
             <!DOCTYPE html>
                 <html>
                   <head>
@@ -105,7 +101,7 @@ exports.insertarUsuario = (req, res) => {
                   <body>
                     <div class="container">
                       <img
-                        src="../../src/imgs/LogoNoP.jpeg"
+                        src="https://res.cloudinary.com/dtkc1kihy/image/upload/v1732406554/LogoNoP_qchoqw.jpg"
                         width="212"
                         height="88"
                         alt="Logo"
@@ -129,22 +125,23 @@ exports.insertarUsuario = (req, res) => {
                     </div>
                     <p class="footer">¡El mundo no se va a conquistar solo!</p>
                   </body>
-                </html>`;
-            //Funcion envio de correo
-            (async function () {
-                const { data, error } = await resend.emails.send({
-                    from: 'NomadasApp <onboarding@resend.dev>',
-                    to: correo,
-                    subject: 'Registro',
-                    html: formato_correo,
-                });
-                if (error) {
-                    return console.error({ error });
-                }
-                console.log({ data });
-            })();
-            
-            res.json({ message: 'Usuario registrado y autenticado', id: userId, token });
+                  </html>`;
+              //Funcion envio de correo
+              (async function () {
+                  const { data, error } = await resend.emails.send({
+                      from: 'NomadasApp <onboarding@resend.dev>',
+                      to: correo,
+                      subject: 'Registro',
+                      html: formato_correo,
+                  });
+                  if (error) {
+                      return console.error({ error });
+                  }
+                  console.log({ data });
+              })();
+              res.json({ message: 'Usuario registrado y autenticado', id: userId, token });
+              console.log({message: results});
+            }
         }
     );
 };
@@ -178,7 +175,7 @@ exports.olvidoUsuario = (req, res) => {
                     padding: 68px 0 130px;
                   }
                   .logo {
-                    margin: 0 auto;
+                    margin: auto;
                   }
                   .tertiary {
                     color: #0a85ea;
@@ -237,8 +234,8 @@ exports.olvidoUsuario = (req, res) => {
               <body>
                 <div class="container">
                   <img
-                    src="../../src/imgs/LogoNoP.jpeg"
-                    width="212"
+                    src="https://res.cloudinary.com/dtkc1kihy/image/upload/v1732406554/LogoNoP_qchoqw.jpg"
+                    width="88"
                     height="88"
                     alt="Logo"
                     class="logo"
