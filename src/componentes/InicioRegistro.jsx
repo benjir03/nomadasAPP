@@ -102,6 +102,7 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
         <div className="login-container">
             <h1 className="login-title">{mensaje}</h1>
         <form className="login-form" a onSubmit={accion === "store" ? store : enviar}>
+            {/* 
             <input
                 type="email"
                 placeholder="Ingresa tu correo"
@@ -124,6 +125,8 @@ const InicioRegistro = ({accion, boton, mensaje}) => {
                 ))}
             
             <button type="submit" className="login-button">{boton}</button>
+            */}
+            
             <GoogleLogin onGoogleSuccess={(userData) => handleSocialSuccess(userData, accion)} />
             <MetaLogin onFacebookSuccess={(userData) => handleSocialSuccess(userData, accion)} />
         </form>
