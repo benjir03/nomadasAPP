@@ -63,10 +63,23 @@ const LugaresCarrusel = () => {
   };
 
   useEffect(() => {
-    if (city || priceRange || ambiance) {
+    const {
+      ciudad,
+      presupuesto,
+      categoria,
+      calificacionMinima,
+      ambiente,
+    } = location.state || {};
+  
+    if (ciudad || presupuesto || categoria || calificacionMinima || ambiente) {
+      setCity(ciudad || "");
+      setPriceRange(presupuesto || "");
+      setCategory(categoria || "");
+      setRating(calificacionMinima || "");
+      setAmbiance(ambiente || "");
       handleSubmit();
     }
-  }, [city, priceRange, ambiance]);
+  }, [location.state]);
 
   const getPhotoUrl = (photoReference) => {
     if (!photoReference) {
