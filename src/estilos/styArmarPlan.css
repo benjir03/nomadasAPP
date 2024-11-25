@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); /* Fuente más elegante */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"); /* Fuente más elegante */
 @import "./styGeneral.css";
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #f7f7f7;
   color: #333;
 }
@@ -25,23 +25,23 @@ body {
 }
 
 .contenidoImagenPlan {
-  background: rgba(0, 109, 119, 0.8);
-  padding: 30px;
-  max-width: 450px;
-  margin: 20px;
-  bottom: 2rem;
+  background: var(--background-color);
+  max-width: 300px;
   max-height: 480px;
+  border-radius: 15px;
+  padding: 10px 0px;
+  margin-bottom: 15px;
 }
 
 .contenidoImagenPlan h1 {
   font-size: 1.5rem;
   font-weight: 400px;
-  color: #ffffff;
-  margin-bottom: 5px;
+  color: var(--primary-color);
 }
 
 .selector-item {
-  margin: 15px auto;
+  margin: 10px;
+  align-items: start;
   display: flex;
   flex-direction: column;
 }
@@ -58,19 +58,20 @@ input {
 label {
   font-weight: 500;
   margin-bottom: 8px;
-  color: #dddddd;
+  color: var(--primary-color);
 }
 
-.select-field, .range-field {
-  font-family: Poppins;
+.select-field,
+.range-field {
   padding: 10px;
   border-radius: 6px;
-  border: 1px solid #ddd;
-  background-color: #f2f2f2;
-  color: #333;
+  border: 1px solid var(--primary-color);
+  background-color: var(--background-color);
+  color: var(--primary-color);
 }
 
-.find-destination, .search-button {
+.find-destination,
+.search-button {
   font-family: Poppins;
   padding: 12px;
   border: none;
