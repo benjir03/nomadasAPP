@@ -150,25 +150,25 @@ const Perfil = () => {
                 <strong>Duracion usual de viajes:</strong> {`${pref.duracion}`=== 1 ? '1 dia' : '2 dias o mas'}
               </p>
               <p className="camposPerfil">
-                <strong>Viajas solito pibe ?</strong> {`${pref.genero}` === 'A' ? 'Solo' : 'No, Acompañado'}
+                <strong>Viajas solito pibe ?</strong> {`${pref.compañia}` === 'A' ? 'Solo' : 'No, Acompañado'}
               </p>
               <p className="camposPerfil">
-                <strong>Te interesan destinos turisticos o poco turisticos</strong> {`${pref.genero}` === 'S' ? 'Turisticos' : 'No turisticos'}
+                <strong>Te interesan destinos turisticos o poco turisticos</strong> {`${pref.turistico}` === 'S' ? 'Turisticos' : 'No turisticos'}
               </p>
               <p className="camposPerfil">
-                <strong>Viajas con mascotas ? Te interesan lugar pet-frendly</strong> {`${pref.genero}` === 'S' ? 'Si' : 'No'}
+                <strong>Viajas con mascotas ? Te interesan lugar pet-frendly</strong> {`${pref.pets}` === 'S' ? 'Si' : 'No'}
               </p>
               <p className="camposPerfil">
                 <strong>Prefieres opciones veganas ?</strong> {`${pref.vegano}` === 'S' ? 'Si' : 'No'}
               </p>
               <p className="camposPerfil">
-                <strong>Cuentas con capacidades diferestes al resto ?</strong> {`${pref.genero}` === 'S' ? 'Si' : 'No'}
+                <strong>Cuentas con capacidades diferestes al resto ?</strong> {`${pref.capacidades_diferentes}` === 'S' ? 'Si' : 'No'}
               </p>
               <br/>
               <br/>
 
-              <Link className="botonAccion" to="/Modificar">
-                Modificar datos
+              <Link className="botonAccion" to="/">
+                Modificar gustos y preferencias
               </Link>
               <br/><br/><br />
             </div>
