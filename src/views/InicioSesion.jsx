@@ -1,12 +1,13 @@
-import React from 'react';
-import InicioRegistro from '../componentes/InicioRegistro';
+import React from "react";
+import InicioRegistro from "../componentes/InicioRegistro";
 
 const InicioSesion = () => {
   return (
-    <InicioRegistro 
-    accion="enviar" 
-    boton="Iniciar sesion"
-    mensaje="Iniciar sesion"/>
+    <InicioRegistro
+      accion="enviar"
+      boton="Inicia sesión"
+      mensaje="Iniciar sesión"
+    />
   );
 };
 
