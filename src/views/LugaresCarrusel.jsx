@@ -9,22 +9,19 @@ const LugaresCarrusel = () => {
 
   const [city, setCity] = useState(location.state?.ciudad || '');
   const [radius, setRadius] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState(location.state?.categoria || '');
   const [keywords, setKeywords] = useState('');
   const [priceRange, setPriceRange] = useState(location.state?.presupuesto || '');
-  const [rating, setRating] = useState('');
-  const [ambiance, setAmbiance] = useState(
-    location.state?.acompanantes === "Voy solo" ? "tranquilo" : 
-    location.state?.acompanantes === "Con pareja" ? "romántico" : 
-    "familiar"
-  );
+  const [rating, setRating] = useState(location.state?.calificacionMinima || '');
+  const [ambiance, setAmbiance] = useState(location.state?.ambiente || '');
   const [lessKnown, setLessKnown] = useState(false);
   const [nonTourist, setNonTourist] = useState(false);
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setLoading(true);
     setError(null);
     setPackages([]);
@@ -70,14 +67,13 @@ const LugaresCarrusel = () => {
       calificacionMinima,
       ambiente,
     } = location.state || {};
-  
+
     if (ciudad || presupuesto || categoria || calificacionMinima || ambiente) {
       setCity(ciudad || "");
       setPriceRange(presupuesto || "");
       setCategory(categoria || "");
       setRating(calificacionMinima || "");
       setAmbiance(ambiente || "");
-      handleSubmit();
     }
   }, [location.state]);
 
@@ -115,7 +111,6 @@ const LugaresCarrusel = () => {
       console.error('Error al obtener detalles del lugar:', error);
     }
   };
-
 
   return (
     <div className="carousel-container">
@@ -157,21 +152,9 @@ const LugaresCarrusel = () => {
           <label htmlFor="ambiance">Ambiente:</label>
           <select id="ambiance" value={ambiance} onChange={(e) => setAmbiance(e.target.value)}>
             <option value="tranquilo">Tranquilo</option>
-            <option value="familiar">Familiar/Amistoso</option>
+            <option value="familiar">Familiar</option>
             <option value="romántico">Romántico</option>
           </select>
-        </div>
-        <div>
-          <label>
-            <input type="checkbox" checked={lessKnown} onChange={() => setLessKnown(!lessKnown)} />
-            Lugares menos conocidos
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type="checkbox" checked={nonTourist} onChange={() => setNonTourist(!nonTourist)} />
-            Fuera de las zonas turísticas
-          </label>
         </div>
         <button type="submit" disabled={loading}>Buscar</button>
       </form>
@@ -179,18 +162,17 @@ const LugaresCarrusel = () => {
       {error && <p>{error}</p>}
       {packages.length > 0 ? (
         <div className="list-container">
-        {packages.map(pkg => (
-          <div key={pkg.id} className="list-item">
-            <img src={pkg.image} alt={pkg.title} className="package-image" />
-            <h3>{pkg.title}</h3>
-            <p><strong>Categoría:</strong> {pkg.category}</p>
-            <p><strong>Calificación:</strong> {pkg.rating}</p>
-            <p><strong>Ubicación:</strong> {pkg.location}</p>
-            <button className="view-more-btn" onClick={() => handleViewMoreClick(pkg)}>Ver más</button>
-          </div>
-        ))}
-      </div>
-      
+          {packages.map(pkg => (
+            <div key={pkg.id} className="list-item">
+              <img src={pkg.image} alt={pkg.title} className="package-image" />
+              <h3>{pkg.title}</h3>
+              <p><strong>Categoría:</strong> {pkg.category}</p>
+              <p><strong>Calificación:</strong> {pkg.rating}</p>
+              <p><strong>Ubicación:</strong> {pkg.location}</p>
+              <button className="view-more-btn" onClick={() => handleViewMoreClick(pkg)}>Ver más</button>
+            </div>
+          ))}
+        </div>
       ) : null}
     </div>
   );

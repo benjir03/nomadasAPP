@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import fondiArmarPlan from "../imgs/piramid.jpg"; 
 import "../estilos/styArmarPlan.css";
@@ -11,7 +11,29 @@ export default function ArmarPlan() {
   const [ciudad, setCiudad] = useState("");
   const [estancia, setEstancia] = useState("Unas cuantas horas");
   const [acompanantes, setAcompanantes] = useState("Voy solo");
-  const [presupuesto, setPresupuesto] = useState(2);
+  const [presupuesto, setPresupuesto] = useState(1);
+  const [categoria, setCategoria] = useState("");
+  const [calificacionMinima, setCalificacionMinima] = useState("");
+  const [ambiente, setAmbiente] = useState("");
+
+  useEffect(() => {
+    if (acompanantes === "Voy solo") {
+      setAmbiente("Tranquilo");
+    } else if (acompanantes === "Con pareja") {
+      setAmbiente("Romántico");
+    } else if (acompanantes === "Familia/Amigos") {
+      setAmbiente("Familiar/Amistoso");
+    }
+  }, [acompanantes]);
+
+  const handleAgregarCiudad = () => {
+    navigate("/AgregarCiudad", {
+      state: {
+        ciudad,
+      },
+    });
+  };
+
   const handleExploraActividades = () => {
     navigate("/LugaresCarrusel", {
       state: {
@@ -41,11 +63,14 @@ export default function ArmarPlan() {
               <label>Buscar ciudad</label>
               <select
                 className="select-field"
-                value={ciudad}
+                value={ciudad}  
                 onChange={(e) => setCiudad(e.target.value)}
               >
                 <option>Ubicación actual</option>
                 <option>Ciudad de México</option>
+                <option>Jalisco</option>
+                <option>Toluca de Lerdo</option>
+                <option>Chilpancingo</option>
               </select>
             </div>
             <div className="selector-item">
@@ -73,12 +98,28 @@ export default function ArmarPlan() {
               </select>
             </div>
             <div className="selector-item">
+              <label>Categoría</label>
+              <select
+                className="select-field"
+                value={categoria}
+                onChange={(e) => setCategoria(e.target.value)}
+              >
+                <option value="">Selecciona</option>
+                <option value="restaurant">Restaurantes</option>
+                <option value="bar">Bares</option>
+                <option value="cafe">Cafeterías</option>
+                <option value="store">Tiendas</option>
+                <option value="museum">Museos</option>
+                <option value="park">Parques</option>
+              </select>
+            </div>
+            <div className="selector-item">
               <label>Presupuesto</label>
               <input
                 type="range"
                 className="range-field"
                 value={presupuesto}
-                min="1"
+                min="0"
                 max="4"
                 onChange={(e) => setPresupuesto(e.target.value)}
               />
@@ -88,7 +129,11 @@ export default function ArmarPlan() {
           <button className="botonAccion" onClick={handleExploraActividades}>
             Explora actividades
           </button>
+          <button className="botonAccion" onClick={handleAgregarCiudad}>
+            Agregar Ciudad
+          </button>
         </div>
+        
       </div>
 
       {/* Sección de lugares recomendados */}

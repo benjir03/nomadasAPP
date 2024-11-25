@@ -15,7 +15,7 @@ body {
 }
 
 .contenedorUnoAP {
-  height: 80vh;
+  height: 680px;
   background-size: 150%;
   background-position: left;
   position: relative;
@@ -26,16 +26,16 @@ body {
 
 .contenidoImagenPlan {
   background: var(--background-color);
-  max-width: 300px;
-  max-height: 480px;
+  max-width: 450px; /* Aumentado el ancho máximo */
+  max-height: 580px; /* Aumentado la altura máxima */
   border-radius: 15px;
-  padding: 10px 0px;
+  padding: 2  0px; /* Aumentado el padding */
   margin-bottom: 15px;
 }
 
 .contenidoImagenPlan h1 {
   font-size: 1.5rem;
-  font-weight: 400px;
+  font-weight: 400;
   color: var(--primary-color);
 }
 
@@ -51,12 +51,13 @@ select,
 button {
   margin: auto;
   font-family: Poppins;
-  font-size: 12px;
-  padding: 10px;
+  font-size: 14px; /* Aumentado el tamaño de fuente */
+  padding: 12px; /* Aumentado el padding */
   border-radius: 10px;
   border: 1px solid #ddd;
   background-color: #f2f2f2;
   color: #333;
+  width: 100%; /* Asegura que los inputs y selects ocupen todo el ancho */
 }
 
 label {

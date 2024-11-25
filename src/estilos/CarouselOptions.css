@@ -31,7 +31,7 @@ form label {
 form input, form select, button {
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 12px;
   font-family: Poppins;
   background-color: #f4f5f7;
 }
@@ -41,6 +41,9 @@ button[type="submit"] {
   color: #ffffff;
   border: none;
   cursor: pointer;
+  max-width: 250px;
+  margin-top: 30px;
+  border-radius: 12px;
 }
 
 button[type="submit"]:hover {
