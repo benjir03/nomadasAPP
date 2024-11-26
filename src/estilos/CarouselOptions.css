@@ -17,7 +17,8 @@ form {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 280px; /* Ajusta el ancho al 80% del contenedor principal */
+  max-width: 280px; /* Ajusta el ancho al 80% del contenedor principal */
+  min-width: 280px;
 }
 
 form label {
@@ -30,7 +31,7 @@ form label {
 form input, form select, button {
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 12px;
   font-family: Poppins;
   background-color: #f4f5f7;
 }
@@ -40,6 +41,9 @@ button[type="submit"] {
   color: #ffffff;
   border: none;
   cursor: pointer;
+  max-width: 250px;
+  margin-top: 30px;
+  border-radius: 12px;
 }
 
 button[type="submit"]:hover {

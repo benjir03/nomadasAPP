@@ -34,6 +34,7 @@ import Lugar3 from "./explora01.jpg";
 import Lugar4 from "./explora01.jpg";
 // Inicio
 import fondoInicio from "./fondoInicio.jpg";
+import EjemploPerfil from "./EjemploPerfil.jpg";
 
 // Expórtala para ser usada
 export {
@@ -57,6 +58,7 @@ export {
   BackInicioSesion,
   resort,
   explora01,
+  EjemploPerfil,
 
   user1Image,
   user2Image,

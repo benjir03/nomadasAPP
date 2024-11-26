@@ -14,24 +14,34 @@
 }
 
 .gustosPerfil-contenedor {
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.7), /* Color negro semitransparente en la parte superior */
-      rgba(0, 0, 0, 0.1) /* Color más claro hacia la parte inferior */
-    ),
-    url('../imgs/backgroundGustosPerfil.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 40px;
-  border-radius: 20px;
+  position: relative;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 40px;
+  overflow: hidden; /* Asegura que los bordes redondeados se mantengan */
 }
 
+.gustosPerfil-background {
+  position: absolute;
+  top: 20px; /* Espaciado superior */
+  left: 20px; /* Espaciado izquierdo */
+  right: 20px; /* Espaciado derecho */
+  bottom: 20px; /* Espaciado inferior */
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.1)
+    ),
+    url('../imgs/backgroundGustosPerfil.jpg');
+  background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px; /* Bordes redondeados */
+  z-index: -1; /* Asegura que quede detrás del contenido */
+}
 
 .accion-botones {
   display: flex;
@@ -49,14 +59,22 @@
   font-size: 1rem; 
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
   min-width: 150px; 
   text-align: center;
 }
 
+.botonAccion:disabled {
+  background-color: gray; /* Color gris cuando está deshabilitado */
+  cursor: not-allowed; /* Cursor deshabilitado */
+}
 
-.botonAccion:hover {
-  background-color: var(--secondary-color);
+.botonAccion:hover:not(:disabled) {
+  background-color: var(--secondary-color); /* Cambia a secondary-color cuando está habilitado y pasa el mouse */
+}
+
+.botonAccion:active:not(:disabled) {
+  background-color: var(--secondary-color); /* Cambia a secondary-color al hacer clic */
 }
 
 .opciones-contenedor.horizontal {
@@ -68,7 +86,7 @@
 }
 
 .opcion-card {
-  width: 180px; 
+  width: 180px;
   height: 180px;
   display: flex;
   flex-direction: column;
@@ -79,8 +97,9 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, transform 0s; /* Eliminar transformaciones */
 }
+
 
 
 .opcion-card:hover,

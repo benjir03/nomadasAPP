@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); /* Fuente más elegante */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"); /* Fuente más elegante */
 @import "./styGeneral.css";
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #f7f7f7;
   color: #333;
 }
 
 /* Contenedor principal */
-.contenedorVista {
+.contenedorVistaAP {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
 }
 
-.contenedorUno {
-  height: 80vh;
+.contenedorUnoAP {
+  height: 680px;
   background-size: 150%;
   background-position: left;
   position: relative;
@@ -25,52 +25,58 @@ body {
 }
 
 .contenidoImagenPlan {
-  background: rgba(0, 109, 119, 0.8);
-  padding: 30px;
-  max-width: 450px;
-  margin: 20px;
-  bottom: 2rem;
-  max-height: 480px;
+  background: var(--background-color);
+  max-width: 450px; /* Aumentado el ancho máximo */
+  max-height: 580px; /* Aumentado la altura máxima */
+  border-radius: 15px;
+  padding: 2  0px; /* Aumentado el padding */
+  margin-bottom: 15px;
 }
 
 .contenidoImagenPlan h1 {
   font-size: 1.5rem;
-  font-weight: 400px;
-  color: #ffffff;
-  margin-bottom: 5px;
+  font-weight: 400;
+  color: var(--primary-color);
 }
 
 .selector-item {
-  margin: 15px auto;
+  margin: 10px;
+  align-items: start;
   display: flex;
   flex-direction: column;
 }
-input {
+
+input,
+select,
+button {
   margin: auto;
   font-family: Poppins;
-  font-size: 12px;
-  padding: 10px;
+  font-size: 14px; /* Aumentado el tamaño de fuente */
+  padding: 12px; /* Aumentado el padding */
   border-radius: 10px;
   border: 1px solid #ddd;
   background-color: #f2f2f2;
   color: #333;
+  width: 100%; /* Asegura que los inputs y selects ocupen todo el ancho */
 }
+
 label {
   font-weight: 500;
   margin-bottom: 8px;
-  color: #dddddd;
+  color: var(--primary-color);
 }
 
-.select-field, .range-field {
-  font-family: Poppins;
+.select-field,
+.range-field {
   padding: 10px;
   border-radius: 6px;
-  border: 1px solid #ddd;
-  background-color: #f2f2f2;
-  color: #333;
+  border: 1px solid var(--primary-color);
+  background-color: var(--background-color);
+  color: var(--primary-color);
 }
 
-.find-destination, .search-button {
+.find-destination,
+.search-button {
   font-family: Poppins;
   padding: 12px;
   border: none;
@@ -108,12 +114,12 @@ label {
   font-size: 2rem;
   font-weight: 600;
   color: #333333;
-  text-align: center;
+  text-align: left;
   margin-bottom: 10px;
 }
 
 .container p {
-  text-align: center;
+  text-align: left;
   color: #666;
   margin-bottom: 30px;
 }
@@ -165,4 +171,80 @@ label {
   height: 150px;
   object-fit: cover;
   border-bottom: 1px solid #eee;
+}
+
+label {
+  justify-content: left;
+  font-weight: 1000;
+  color: #4a4a4a;
+  font-size: 13px;
+}
+
+input, select, button {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: Poppins;
+  background-color: #f4f5f7;
+}
+
+button[type="submit"] {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #2563eb;
+}
+
+/* Añadido: estilo para hacer más legible el contenido dentro del contenedor verde */
+.contenidoImagenPlan {
+  background: rgba(0, 109, 119, 0.8); /* Mantenemos el color verde con cierta opacidad */
+  padding: 30px;
+  max-width: 450px;
+  margin: 20px;
+  bottom: 2rem;
+  max-height: 580px;
+  border-radius: 20px;
+  color: #ffffff; /* Cambiamos el color del texto a blanco para mejor contraste */
+}
+
+.contenidoImagenPlan h1, 
+.contenidoImagenPlan label, 
+.contenidoImagenPlan input, 
+.contenidoImagenPlan select, 
+.contenidoImagenPlan button {
+  color: #ffffff;
+}
+
+/* Ajustamos el color del texto en los inputs y selects */
+.contenidoImagenPlan input, 
+.contenidoImagenPlan select {
+  color: #333;
+  background-color: #f2f2f2;
+}
+
+/* Agregamos un borde más visible para los inputs y selects */
+.contenidoImagenPlan input, 
+.contenidoImagenPlan select {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+/* Mejoramos la apariencia del botón */
+.contenidoImagenPlan button {
+  background-color: #007bff;
+  color: #ffffff;
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+}
+
+.contenidoImagenPlan button:hover {
+  background-color: #0056b3;
 }
