@@ -19,6 +19,7 @@
   padding: 8px;
   border-radius: 10px;
   font-weight: bold;
+  margin-left: 17px;
 }
 
 .botonAccion:hover {
@@ -84,8 +85,9 @@
 }
 
 .contenedorDos h1 {
-  font-size: 40px;
+  font-size: 35px;
   margin: 0;
+  color: #edf6f9;
 }
 
 .contenedorDos p {
