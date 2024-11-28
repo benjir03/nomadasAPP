@@ -85,9 +85,9 @@ const LugaresCarrusel = () => {
 
   const translatePriceRange = (value) => {
     if (value <= 300) return 1;
-    if (value <= 1000) return 2;
-    if (value <= 5000) return 3;
-    if (value <= 10000) return 4;
+    if (value <= 600) return 2;
+    if (value <= 1500) return 3;
+    if (value <= 2500) return 4;
     return 0; // Para el valor inicial de 0
   };
 
@@ -137,13 +137,15 @@ const LugaresCarrusel = () => {
         <div>
           <label htmlFor="category">Categoría:</label>
           <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="restaurant">Restaurantes</option>
-            <option value="bar">Bares</option>
-            <option value="cafe">Cafeterías</option>
-            <option value="store">Tiendas</option>
-            <option value="museum">Museos</option>
-            <option value="park">Parques</option>
-            <option value="">Otros</option>
+            <option value="">Todas las Categorias</option>
+            <option value="art">Arte</option>
+            <option value="shop">Compras</option>
+            <option value="history">Cultura e Historia</option>
+            <option value="sport">Deportes y Actividades Extremas</option>
+            <option value="family">Familia y Niños</option>
+            <option value="food">Gastronomia</option>
+            <option value="nature">Naturaleza y Aventura</option>
+            <option value="night">Vida Nocturna</option>
           </select>
         </div>
         <div>
