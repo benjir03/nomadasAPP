@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken');
 const pool = require('../db/connection');
 const { Resend } = require('resend');
-const resend = new Resend('re_5QN9cfnr_KE9jvjvkwRQdJ9FYxUy4hvsJ');
+const resend = new Resend('re_A3gYdg1F_AP2LBZ4JiSFU63hc54ssg7x4');
 
 exports.insertarUsuario = (req, res) => {
     const { nombre, apellido, correo, contraseña } = req.body;
@@ -149,13 +149,14 @@ exports.insertarUsuario = (req, res) => {
 exports.olvidoUsuario = (req, res) => {
   const { correo } = req.body;
   pool.query(
-    'SELECT * FROM USUARIO WHERE email = ?', 
-    [correo], (err, results) => {
+    'SELECT email FROM USUARIO WHERE email = ?', 
+    [correo], 
+    (err, results) => {
         if (err) {
             console.error('Error en la consulta de email:', err);
             return res.status(401).json({ error: 'Error en la consulta' });
-        }
-        const formato_correo = `
+        }else{
+          const formato_correo = `
         <!DOCTYPE html>
             <html>
               <head>
@@ -259,21 +260,22 @@ exports.olvidoUsuario = (req, res) => {
                 <p class="footer">¡El mundo no se va a conquistar solo!</p>
               </body>
             </html>`;
-        //Funcion envio de correo
-        (async function () {
-            const { data, error } = await resend.emails.send({
-                from: 'NomadasApp <onboarding@resend.dev>',
-                to: correo,
-                subject: 'Restablecer contraseña',
-                html: formato_correo,
-            });
-            if (error) {
-                return console.error({ error });
-            }
-            console.log({ data });
-        })();
-        
-        res.json({ message: 'Restablecer contraseña', results });
+          //Funcion envio de correo
+          (async function () {
+              const { data, error } = await resend.emails.send({
+                  from: 'NomadasApp <onboarding@resend.dev>',
+                  to: correo,
+                  subject: 'Restablecer contraseña',
+                  html: formato_correo,
+              });
+              if (error) {
+                  return console.error({ error });
+              }
+              console.log({ data });
+          })();
+          
+          res.json({ message: 'Restablecer contraseña', results });
+        }
     }
 );
 }
