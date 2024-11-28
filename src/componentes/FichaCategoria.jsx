@@ -11,7 +11,7 @@ const FichaCategoria = ({titulo, contenido, imagen, categoria}) => {
     navigate("/vista-lugares", {
       state: {
         categoria, // Lista de subcategorías
-        ciudad: "Polanco", // Ubicación predeterminada
+        ciudad: "", // Ubicación predeterminada
       },
     });
   };

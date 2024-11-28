@@ -25,6 +25,7 @@ import ModPerfil from "./componentes/ModPerfil";
 import VistaLugares from "./views/VistaLugares";
 import Olvido from "./componentes/Olvido";
 import InfoPass from "./componentes/InfoPass";
+import NotFound from "./views/NotFound";
 
 function App() {
   return (
@@ -65,6 +66,8 @@ function App() {
           </Route>
           {/* Ruta de inicio */}
           <Route path="/" element={<Inicio />} />
+          {/* Ruta NotFound */}
+          <Route path="*" Component={NotFound} />
         </Routes>
       </Router>
       <Footer />
