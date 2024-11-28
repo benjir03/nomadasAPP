@@ -21,13 +21,15 @@ const LugaresCarrusel = () => {
   const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    if (event) event.preventDefault();
     setLoading(true);
     setError(null);
     setPackages([]);
 
+    const translatedPriceRange = translatePriceRange(priceRange);
+
     try {
-      const url = `http://localhost:3002/search?city=${city}&category=${category}&radius=${radius}&priceRange=${priceRange}&rating=${rating}&keywords=${keywords}`;
+      const url = `http://localhost:3002/search?city=${city}&category=${category}&radius=${radius}&priceRange=${translatedPriceRange}&rating=${rating}&keywords=${keywords}`;
       const response = await axios.get(url);
 
       let fetchedPackages = response.data.results.map(result => ({
@@ -75,7 +77,19 @@ const LugaresCarrusel = () => {
       setRating(calificacionMinima || "");
       setAmbiance(ambiente || "");
     }
+    // Realiza la búsqueda automáticamente al cargar la página si hay datos en location.state
+    if (location.state) {
+      handleSubmit();
+    }
   }, [location.state]);
+
+  const translatePriceRange = (value) => {
+    if (value <= 300) return 1;
+    if (value <= 1000) return 2;
+    if (value <= 5000) return 3;
+    if (value <= 10000) return 4;
+    return 0; // Para el valor inicial de 0
+  };
 
   const getPhotoUrl = (photoReference) => {
     if (!photoReference) {
@@ -120,10 +134,6 @@ const LugaresCarrusel = () => {
           <label htmlFor="city">Lugar:</label>
           <input type="text" id="city" value={city} onChange={(e) => setCity(e.target.value)} />
         </div>
-        {/*<div>
-          <label htmlFor="radius">Radio (km):</label>
-          <input type="number" id="radius" value={radius} onChange={(e) => setRadius(e.target.value)} />
-        </div>*/}
         <div>
           <label htmlFor="category">Categoría:</label>
           <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
@@ -141,8 +151,8 @@ const LugaresCarrusel = () => {
           <input type="text" id="keywords" value={keywords} onChange={(e) => setKeywords(e.target.value)} />
         </div>
         <div>
-          <label htmlFor="priceRange">Precio (1-4):</label>
-          <input type="number" id="priceRange" value={priceRange} onChange={(e) => setPriceRange(e.target.value)} min="1" max="4" />
+          <label htmlFor="priceRange">Precio (0-4):</label>
+          <input type="number" id="priceRange" value={translatePriceRange(priceRange)} readOnly />
         </div>
         <div>
           <label htmlFor="rating">Calificación mínima:</label>
