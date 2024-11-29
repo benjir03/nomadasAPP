@@ -48,12 +48,23 @@ exports.getPerfil = (req, res) => {
 
 exports.eliminarCuenta = (req, res) => {
     const userId = req.userId;
-    pool.query('DELETE FROM USUARIO WHERE ID_user = ?', [userId], (err, results) => {
+    //Primero elimina preferencias
+    pool.query('DELETE FROM PREFERENCIAS WHERE ID_user = ?', [userId], (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Error al eliminar la cuenta' });
+        }else{
+            res.clearCookie('sessionToken'); // Elimina la cookie de sesión
+            res.json({ message: 'Cuenta eliminada exitosamente' });
+            //Eliminar usuario
+            pool.query('DELETE FROM USUARIO WHERE ID_user = ?', [userId], (err, results) => {
+                if (err) {
+                    return res.status(500).json({ error: 'Error al eliminar la cuenta' });
+                }else{
+                    res.clearCookie('sessionToken'); // Elimina la cookie de sesión
+                res.json({ message: 'Cuenta eliminada exitosamente' });
+                }
+            });
         }
-        res.clearCookie('sessionToken'); // Elimina la cookie de sesión
-        res.json({ message: 'Cuenta eliminada exitosamente' });
     });
 };
 
