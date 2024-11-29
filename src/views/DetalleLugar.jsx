@@ -5,6 +5,7 @@ import fondiInicio from "../imgs/cdmx-portada.jpg";
 import FichaCategoria from "../componentes/FichaCategoria";
 import FichaLugares from "../componentes/FichaLugares";
 import FichaActividad from "../componentes/FichaActividad";
+import BotonRegresar from "../componentes/BotonRegresar";
 
 import {
   historiaImage,
@@ -27,6 +28,10 @@ function DetalleLugar() {
           backgroundPosition: "center top",
         }}
       >
+         {/* Botón de regresar en la esquina superior izquierda */}
+         <div style={{ position: "absolute", top: "10px", left: "10px", zIndex: 10 }}>
+          <BotonRegresar />
+        </div>
         <div className="contenedorDos">
           <h1>Ciudad</h1>
           <p>En esta sección encontrarás las actividades que corresponden a un lugar o ciudad</p>
