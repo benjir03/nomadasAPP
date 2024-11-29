@@ -281,13 +281,6 @@ const Perfil = () => {
           </li>
 
           <li
-            className={activeSection === "reseñas" ? "active" : ""}
-            onClick={() => setActiveSection("reseñas")}
-          >
-            Mis reseñas
-          </li>
-
-          <li
             className={activeSection === "config" ? "active" : ""}
             onClick={() => setActiveSection("config")}
           >

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import GoogleLogin from "../componentes/GoogleLogin";
 import { jwtDecode } from "jwt-decode";
+import { BackRegistro } from "../imgs/ArchivoImgs"; 
 import {
   validarCorreo,
   validarContrasena,
@@ -111,7 +112,13 @@ const InicioRegistro = ({ accion, boton, mensaje }) => {
   };
 
   return (
-    <div className="generalVista">
+    <div className="generalVista"
+    style={{
+      backgroundImage: `url(${BackRegistro})`, // Asegúrate de usar la interpolación correcta*/
+      backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+      backgroundPosition: "center", // Centra la imagen
+    }}
+    >
       <div className="login-container">
         <h1 className="login-title">{mensaje}</h1>
         <form
@@ -119,32 +126,7 @@ const InicioRegistro = ({ accion, boton, mensaje }) => {
           a
           onSubmit={accion === "store" ? store : enviar}
         >
-          {/*
-          <input
-            type="email"
-            placeholder="Ingresa tu correo"
-            className="input-field"
-            value={correo}
-            onChange={(e) => setCorreo(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Ingresa tu contraseña"
-            className="input-field"
-            value={contraseña}
-            onChange={(e) => setContrasena(e.target.value)}
-          />
-          {errores.contrasena &&
-            errores.contrasena.map((error, index) => (
-              <p key={index} className="error">
-                {error}
-              </p>
-            ))}
 
-          <button type="submit" className="botonAccion">
-            {boton}
-          </button>
-          */}
           <GoogleLogin
             onGoogleSuccess={(userData) =>
               handleSocialSuccess(userData, accion)
@@ -156,10 +138,11 @@ const InicioRegistro = ({ accion, boton, mensaje }) => {
             }
           />
         </form>
-        <Link to="/Olvido">¿Olvidaste tu contraseña?</Link>
+        
+        <br />
         <br />
         <p className="forgot-password">
-          {accion === "store" ? "¿Ya tienes cuenta?" : "No tienes cuenta"}
+          {accion === "store" ? "¿Ya tienes cuenta?" : "¿No tienes cuenta?"}
         </p>
         <Link to={accion === "store" ? "/InicioSesion" : "/Registro"}>
           {accion === "store" ? "Inicia sesión" : "Regístrate"}
