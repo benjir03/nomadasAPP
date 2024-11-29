@@ -1,9 +1,11 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../estilos/styActividad.css";
 import ActividadPrincipal from "../componentes/Actividades";
-import FichaCategoria from "../componentes/FichaCategoria";
+import FichaActividad from "../componentes/FichaActividad";
 import { chapultepec, biblioteca, bellasartes, monumentorevolucion } from "../imgs/ArchivoImgs";
+
 
 function Actividad() {
   const location = useLocation();
@@ -27,25 +29,10 @@ function Actividad() {
             mapaSrc={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU&q=place_id:${lugar.id}`}
             mapaLink={lugar.website || "#"}
           />
-          {/* Contenedor para reseñas */}
-          <section className="reviews-container">
-            <h3>Reseñas</h3>
-            {lugar.reviews && lugar.reviews.length > 0 ? (
-              <ul>
-                {lugar.reviews.map((review, index) => (
-                  <li key={index}>
-                    <strong>{review.author_name}:</strong> {review.text}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No hay reseñas disponibles.</p>
-            )}
-          </section>
           
           {/* Contenedor para imágenes adicionales */}
-          <section className="photos-container">
-            <h3>Imágenes adicionales</h3>
+          <section className="photos-containerAct">
+            <h3>Imágenes</h3>
             {lugar.photos && lugar.photos.length > 0 ? (
               <div className="additional-images">
                 {lugar.photos.map((photo, index) => (
@@ -65,29 +52,48 @@ function Actividad() {
       ) : (
         <p>No se encontraron datos para esta actividad.</p>
       )}
-      
-      <section className="lugaresDestacados">
-        <h3>Otras recomendaciones en Ciudad de México</h3>
-        <div className="listaLugares">
-          <FichaCategoria />
-          <div className="lugar">
-            <img src={chapultepec} alt="Lugar 1" />
-            <p>Lorem ipsum.</p>
-          </div>
-          <div className="lugar">
-            <img src={biblioteca} alt="Lugar 2" />
-            <p>Lorem ipsum.</p>
-          </div>
-          <div className="lugar">
-            <img src={bellasartes} alt="Lugar 3" />
-            <p>Lorem ipsum.</p>
-          </div>
-          <div className="lugar">
-            <img src={monumentorevolucion} alt="Lugar 4" />
-            <p>Lorem ipsum.</p>
-          </div>
+
+       {/* Contenedor para reseñas */}
+       <section className="reviews-containerAct">
+            <h3>Reseñas</h3>
+            {lugar.reviews && lugar.reviews.length > 0 ? (
+              <ul>
+                {lugar.reviews.map((review, index) => (
+                  <li key={index}>
+                    <strong>{review.author_name}:</strong> {review.text}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No hay reseñas disponibles.</p>
+            )}
+          </section>
+
+      {/* Sección de actividades */}
+      <section className="categoriasSec">
+        <h2>Actividades relacionadas</h2>
+        <div className="categorias">
+          <FichaActividad
+            titulo="Actividad1"
+            contenido=""
+            imagen={biblioteca}
+          />
+          <FichaActividad
+            titulo="Actividad2"
+            contenido=""
+            imagen={bellasartes}
+          />
+          <FichaActividad
+            titulo="Actividad3"
+            contenido=""
+            imagen={monumentorevolucion}
+          />
         </div>
+        <Link to="/Lugares" className="more-categories-link">
+          Más actividades...
+        </Link>
       </section>
+      
     </div>
   );
 }
