@@ -128,21 +128,21 @@ export default function ArmarPlan() {
                   className="range-field"
                   value={presupuesto}
                   min="0"
-                  max="10000"
+                  max="2500"
                   onChange={(e) => setPresupuesto(e.target.value)}
                 />
                 <span className="range-label range-label-right">$$$</span>
               </div>
               <span>${presupuesto} pesos</span>
             </div>
-            <div className="button-container">
+          </div>
+          <div className="button-container">
             <button className="botAccion" onClick={handleExploraActividades}>
-              Explora actividades
+              Explora Actividades
             </button>
             <button className="botAccion" onClick={handleAgregarCiudad}>
               Agregar Ciudad
             </button>
-          </div>
           </div>
         </div>
       </div>

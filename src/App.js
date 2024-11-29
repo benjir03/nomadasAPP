@@ -26,6 +26,8 @@ import VistaLugares from "./views/VistaLugares";
 import Olvido from "./componentes/Olvido";
 import InfoPass from "./componentes/InfoPass";
 import NotFound from "./views/NotFound";
+import DetalleLugarC from "./componentes/DetalleLugarC";
+import DetalleLugar from "./views/DetalleLugar";
 
 function App() {
   return (
@@ -52,6 +54,8 @@ function App() {
           <Route path="/vista-lugares" element={<VistaLugares />} />
           <Route path="/Olvido" element={<Olvido />} />
           <Route path="/InfoPass" element={<InfoPass/>} />
+          <Route path="/DetalleLugarC" element={<DetalleLugarC/>} />
+          <Route path="/DetalleLugar" element={<DetalleLugar/>} />
 
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
