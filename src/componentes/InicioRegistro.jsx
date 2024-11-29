@@ -119,6 +119,7 @@ const InicioRegistro = ({ accion, boton, mensaje }) => {
           a
           onSubmit={accion === "store" ? store : enviar}
         >
+          {/*
           <input
             type="email"
             placeholder="Ingresa tu correo"
@@ -143,6 +144,7 @@ const InicioRegistro = ({ accion, boton, mensaje }) => {
           <button type="submit" className="botonAccion">
             {boton}
           </button>
+          */}
           <GoogleLogin
             onGoogleSuccess={(userData) =>
               handleSocialSuccess(userData, accion)
