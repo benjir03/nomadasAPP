@@ -11,7 +11,17 @@ const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
   const [usuario, setUsuario] = useState([]);
   const [pref, setPref] = useState([]);
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  //Token perfil
+  {/*
+      useEffect(() => {
+    if (!token) {
+      navigate('/InicioSesion');  // Redirige si no hay token
+    }
+  }, [token, navigate]);
+  */}
+
   //Datos del perfil
   useEffect(() => {
     const fetchPerfil = async () => {
@@ -268,13 +278,6 @@ const Perfil = () => {
             onClick={() => setActiveSection("planes")}
           >
             Mis planes
-          </li>
-
-          <li
-            className={activeSection === "reseñas" ? "active" : ""}
-            onClick={() => setActiveSection("reseñas")}
-          >
-            Mis reseñas
           </li>
 
           <li

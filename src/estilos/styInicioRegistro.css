@@ -18,19 +18,39 @@
 }
 
 .login-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 10px;
+  /*align-items: center;
+  
+  /*box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);*/
+
+  /*background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: max-content;
+  width: max-content;*/
 }
 
 .input-field {
   padding: 10px;
-  border: 1px solid var(--support-color);
-  border-radius: 5px;
+  border: 2px solid;
+  border-radius: 10px;
   font-size: 1rem;
   color: var(--primary-color);
   text-align: left;
+}
+
+.sidebar ul {
+  border-radius: 20px;
+  /*background-color: #83c5B3;*/
+  border-color: #83c5be;
+  /*border-style: solid;*/
+  list-style: none;
+  padding: 0;
+  padding-bottom: 15px;
 }
 
 .input-field:focus {
@@ -57,7 +77,7 @@
 
 .forgot-password {
   text-align: center;
-  color: var(--support-color);
+  color: var(--primary-color);
   font-size: 0.9rem;
   text-decoration: none;
   transition: color 0.3s;
