@@ -167,7 +167,7 @@ const Perfil = () => {
               <br/>
               <br/>
 
-              <Link className="botonAccion" to="/">
+              <Link className="botonAccion" to="/ModGustos">
                 Modificar gustos y preferencias
               </Link>
               <br/><br/><br />

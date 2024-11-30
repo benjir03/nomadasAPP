@@ -11,6 +11,7 @@ import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";
 import Explora from "./views/Explora";
 import GustosPerfil from "./views/GustosPerfil";
+import ModGustos from "./views/ModGustosPerfil";
 import ListaActividad from "./componentes/listaactividad"; // Importa ListaActividad
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from "./componentes/Verificacion";
@@ -48,6 +49,7 @@ function App() {
           <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
           <Route path="/Verificar" element={<Verificar />} />
           <Route path="/GustosPerfil" element={<GustosPerfil />} />
+          <Route path="/ModGustos" element={<ModGustos />} />
           <Route path="/MetaLogin" element={<MetaLogin />} />
           <Route path="/ModPerfil" element={<ModPerfil />} />
           <Route path="/Actividades" element={<ListaActividad />} /> {/* Nueva ruta para ListaActividad */}
