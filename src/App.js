@@ -13,6 +13,7 @@ import Explora from "./views/Explora";
 import GustosPerfil from "./views/GustosPerfil";
 import ModGustos from "./views/ModGustosPerfil";
 import ListaActividad from "./componentes/listaactividad"; // Importa ListaActividad
+import Categoria from "./componentes/Categoria"; // Importa el componente Categoria
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from "./componentes/Verificacion";
 import CompletarPerfil from "./views/CompletarPerfil";
@@ -52,12 +53,13 @@ function App() {
           <Route path="/ModGustos" element={<ModGustos />} />
           <Route path="/MetaLogin" element={<MetaLogin />} />
           <Route path="/ModPerfil" element={<ModPerfil />} />
-          <Route path="/Actividades" element={<ListaActividad />} /> {/* Nueva ruta para ListaActividad */}
+          <Route path="/Actividades" element={<ListaActividad />} /> {/* Ruta para ListaActividad */}
+          <Route path="/Categoria" element={<Categoria />} /> {/* Ruta para Categoria */}
           <Route path="/vista-lugares" element={<VistaLugares />} />
           <Route path="/Olvido" element={<Olvido />} />
-          <Route path="/InfoPass" element={<InfoPass/>} />
-          <Route path="/DetalleLugarC" element={<DetalleLugarC/>} />
-          <Route path="/DetalleLugar" element={<DetalleLugar/>} />
+          <Route path="/InfoPass" element={<InfoPass />} />
+          <Route path="/DetalleLugarC" element={<DetalleLugarC />} />
+          <Route path="/DetalleLugar" element={<DetalleLugar />} />
 
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
