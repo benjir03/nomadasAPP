@@ -5,6 +5,8 @@ import fondiInicio from "../imgs/explora.jpg";
 import FichaCategoria from "../componentes/FichaCategoria";
 import FichaLugares from "../componentes/FichaLugares";
 import FichaActividad from "../componentes/FichaActividad";
+import CarrouselCategorias from "../componentes/CarrouselCategorias";
+
 
 import {
   historiaImage,
@@ -15,6 +17,60 @@ import {
 } from "../imgs/ArchivoImgs";
 
 function Explora() {
+
+  const categorias = [
+    {
+      titulo: "Gastronomía",
+      contenido: "Disfruta de una amplia variedad de experiencias culinarias.",
+      imagen: Lugar1,
+      categoria: [
+        "gastronomia",
+
+      ],
+    },
+    {
+      titulo: "Cultura e Historia",
+      contenido: "Descubre sitios históricos y culturales únicos.",
+      imagen: Lugar2,
+      categoria: ["Cultura", ],
+    },
+    {
+      titulo: "Arte",
+      contenido: "Vive experiencias de arte únicas.",
+      imagen: Lugar3,
+      categoria: ["ArteEntretenimiento", ],
+    },
+    {
+      titulo: "Naturaleza y Aventura",
+      contenido: "Conecta con la naturaleza y vive aventuras inolvidables.",
+      imagen: Lugar1,
+      categoria: ["Naturaleza",],
+    },
+    {
+      titulo: "Vida Nocturna",
+      contenido: "Explora los mejores lugares para disfrutar la noche.",
+      imagen: Lugar2,
+      categoria: ["VidaNocturna", ],
+    },
+    {
+      titulo: "Compras",
+      contenido: "Descubre los mejores lugares para ir de compras.",
+      imagen: Lugar3,
+      categoria: ["Compras", ],
+    },
+    {
+      titulo: "Familia y Niños",
+      contenido: "Actividades ideales para disfrutar en familia.",
+      imagen: Lugar1,
+      categoria: ["FamiliaNinos", ],
+    },
+    {
+      titulo: "Deportes y Actividades Extremas",
+      contenido: "Experimenta la adrenalina con actividades extremas.",
+      imagen: Lugar2,
+      categoria: ["Deportes", ],
+    },
+  ];
   return (
     <div className="contenedorVista">
       {/* Sección de bienvenida */}
@@ -33,29 +89,10 @@ function Explora() {
         </div>
       </section>
 
-      {/* Sección de categorías */}
+      {/* Carrousel de categorías */}
       <section className="categoriasSec">
-        <h2>Categorías</h2>
-        <div className="categorias">
-          <FichaCategoria
-            titulo="Historia"
-            contenido=""
-            imagen={historiaImage}
-          />
-          <FichaCategoria
-            titulo="Arte"
-            contenido=""
-            imagen={arteImage}
-          />
-          <FichaCategoria
-            titulo="Gastronomía"
-            contenido=""
-            imagen={gastronomiaImage}
-          />
-        </div>
-        <Link to="/Lugares" className="more-categories-link">
-          Más categorías...
-        </Link>
+        <h2>¡Explora lugares fuera de lo común!</h2>
+        <CarrouselCategorias categorias={categorias} />
       </section>
 
       {/* Sección de lugares recomendados */}
