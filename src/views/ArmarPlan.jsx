@@ -120,6 +120,24 @@ export default function ArmarPlan() {
               </div>
             </div>
             <div className="selector-item">
+              <label>Categoría</label>
+              <select
+                value={categoria}
+                onChange={(e) => setCategoria(e.target.value)}
+                className="select-field"
+              >
+                <option value="all">Todas las Categorias</option>
+                <option value="art">Arte</option>
+                <option value="shop">Compras</option>
+                <option value="history">Cultura e Historia</option>
+                <option value="sport">Deportes y Actividades Extremas</option>
+                <option value="family">Familia y Niños</option>
+                <option value="food">Gastronomia</option>
+                <option value="nature">Naturaleza y Aventura</option>
+                <option value="night">Vida Nocturna</option>
+              </select>
+            </div>
+            <div className="selector-item">
               <label>Presupuesto</label>
               <div className="range-container">
                 <span className="range-label range-label-left">$</span>
@@ -128,12 +146,12 @@ export default function ArmarPlan() {
                   className="range-field"
                   value={presupuesto}
                   min="0"
-                  max="2500"
+                  max="3000"
                   onChange={(e) => setPresupuesto(e.target.value)}
                 />
                 <span className="range-label range-label-right">$$$</span>
               </div>
-              <span>${presupuesto} pesos</span>
+              <span>{presupuesto >= 3000 ? "$3000 o más" : `$${presupuesto}`}</span>
             </div>
           </div>
           <div className="button-container">

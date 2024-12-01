@@ -121,10 +121,10 @@ useEffect(() => {
 }, [city, category, priceRange, rating, keywords, ambiance]);
 
   const translatePriceRange = (value) => {
-    if (value <= 300) return 1;
-    if (value <= 600) return 2;
-    if (value <= 1500) return 3;
-    if (value <= 2500) return 4;
+    if (value <= 200) return 1;
+    if (value <= 800) return 2;
+    if (value <= 2600) return 3;
+    if (value <= 3000) return 4;
     return 0; // Para el valor inicial de 0
   };
 
@@ -174,7 +174,7 @@ useEffect(() => {
         <div>
           <label htmlFor="category">Categoría:</label>
           <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="">Todas las Categorias</option>
+            <option value="all">Todas las Categorias</option>
             <option value="art">Arte</option>
             <option value="shop">Compras</option>
             <option value="history">Cultura e Historia</option>
