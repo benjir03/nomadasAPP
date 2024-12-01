@@ -32,7 +32,35 @@ exports.registrar = (req, res) => {
 
 
 exports.modificar = (req, res) =>{
+    const userId = req.userId;
+    const { transporte, duracion, compañia, turistico, pets, vegano, pet_friendly, capacidades_diferentes, mayoria_edad, ID_estacion, ID_categoria,
+    } = req.body || {};
+    // Actualiza el perfil del usuario en la base de datos
+    pool.query(
+        'UPDATE USUARIO SET nombre = ?, apellido = ?, fecha_nacimiento = ?, genero = ?, telefono = ? WHERE ID_user = ?',
+        [nombre, apellido, fecha_nacimiento, genero, telefono, userId],
+        (err, results) => {
+            if (err) {
+                console.error('Error al actualizar el perfil:', err);
+                return res.status(500).json({ error: 'Error al actualizar el perfil' });
+            }
 
+            res.json({ message: 'Perfil actualizado exitosamente' }); // Envía todos los campos de la base de datos
+            console.log(userId, results[0]);
+        }
+    );
+}
+
+exports.eliminar = (req, res) =>{
+    const userId = req.userId;
+    pool.query('DELETE FROM PREFERENCIAS WHERE ID_user = ?', [userId], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error al eliminar Preferencias' });
+        }else{
+            res.clearCookie('sessionToken'); // Elimina la cookie de sesión
+            res.json({ message: 'Preferencias eliminadas exitosamente' });
+        } 
+    });
 }
 
 exports.gustos = (req, res) =>{

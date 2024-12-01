@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { logoNomadas } from "../imgs/ArchivoImgs";
 import "../estilos/estiloBarraNav.css";
+import axios from "axios";
 
 const BarraNav = () => {
+  const [nombreUsuario, setNombreUsuario] = useState(null); // Estado para el nombre
+
+  useEffect(() => {
+    const verificarUsuario = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/auth/perfil", {
+          withCredentials: true,
+        });
+        setNombreUsuario(response.data.nombre); // Asignar el nombre si está autenticado
+      } catch (error) {
+        setNombreUsuario(null); // Usuario no autenticado
+      }
+    };
+    verificarUsuario();
+  }, []);
   return (
     <header className="header">
       <div className="logo">
@@ -39,7 +55,7 @@ const BarraNav = () => {
           </li>
           <li>
             <Link className="botonAccion" to="/Perfil">
-              Perfil
+            {nombreUsuario ? nombreUsuario : "Perfil"}
             </Link>
           </li>
         </ul>

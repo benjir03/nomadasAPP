@@ -11,7 +11,17 @@ const Perfil = () => {
   const [activeSection, setActiveSection] = useState("info");
   const [usuario, setUsuario] = useState([]);
   const [pref, setPref] = useState([]);
+  const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  //Token perfil
+  {/*
+      useEffect(() => {
+    if (!token) {
+      navigate('/InicioSesion');  // Redirige si no hay token
+    }
+  }, [token, navigate]);
+  */}
+
   //Datos del perfil
   useEffect(() => {
     const fetchPerfil = async () => {
@@ -167,7 +177,7 @@ const Perfil = () => {
               <br/>
               <br/>
 
-              <Link className="botonAccion" to="/">
+              <Link className="botonAccion" to="/ModGustos">
                 Modificar gustos y preferencias
               </Link>
               <br/><br/><br />
@@ -224,80 +234,79 @@ const Perfil = () => {
     <>
     <div className="perfil-centrado">
 
-      
+      <div className="izquierda">
 
-      <div className="sidebar">
-        <h2 className="perfil-nombre">Bienvenido {`${usuario.nombre}`}</h2>
+        <div className="sidebar">
+          <h2 className="perfil-nombre">Bienvenido {`${usuario.nombre}`}</h2>
 
-        <div
-              className="contenedorTres"
-              style={{
-                backgroundImage: `url(${EjemploPerfil})`, // Asegúrate de usar la interpolación correcta*/
-                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
-                backgroundPosition: "center", // Centra la imagen
-              }}
-        >
-        </div>
-
-        <br/>
-
-        <ul>
-          <li
-            className={activeSection === "info" ? "active" : ""}
-            onClick={() => setActiveSection("info")}
+          <div
+                className="contenedorTres"
+                style={{
+                  backgroundImage: `url(${EjemploPerfil})`, // Asegúrate de usar la interpolación correcta*/
+                  backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+                  backgroundPosition: "center", // Centra la imagen
+                }}
           >
-            Información personal
-          </li>
-
-          <li
-            className={activeSection === "pref" ? "active" : ""}
-            onClick={() => setActiveSection("pref")}
-          >
-            Preferencias
-          </li>
-
-          <li
-            className={activeSection === "notifications" ? "active" : ""}
-            onClick={() => setActiveSection("notifications")}
-          >
-            Notificaciones
-          </li>
-
-          <li
-            className={activeSection === "planes" ? "active" : ""}
-            onClick={() => setActiveSection("planes")}
-          >
-            Mis planes
-          </li>
-
-          <li
-            className={activeSection === "reseñas" ? "active" : ""}
-            onClick={() => setActiveSection("reseñas")}
-          >
-            Mis reseñas
-          </li>
-
-          <li
-            className={activeSection === "config" ? "active" : ""}
-            onClick={() => setActiveSection("config")}
-          >
-            Configuración avanzada
-          </li>
+          </div>
 
           <br/>
 
-          <button className="botonCerrar"
-            onClick={() => setActiveSection("logout")}>
-            Cerrar Sesión
-          </button>
+          <ul>
+            <li
+              className={activeSection === "info" ? "active" : ""}
+              onClick={() => setActiveSection("info")}
+            >
+              Información personal
+            </li>
 
-        </ul>
+            <li
+              className={activeSection === "pref" ? "active" : ""}
+              onClick={() => setActiveSection("pref")}
+            >
+              Preferencias
+            </li>
+
+            <li
+              className={activeSection === "notifications" ? "active" : ""}
+              onClick={() => setActiveSection("notifications")}
+            >
+              Notificaciones
+            </li>
+
+            <li
+              className={activeSection === "planes" ? "active" : ""}
+              onClick={() => setActiveSection("planes")}
+            >
+              Mis planes
+            </li>
+
+            <li
+              className={activeSection === "config" ? "active" : ""}
+              onClick={() => setActiveSection("config")}
+            >
+              Configuración avanzada
+            </li>
+
+            <br/>
+
+            <button className="botonCerrar"
+              onClick={() => setActiveSection("logout")}>
+              Cerrar Sesión
+            </button>
+
+          </ul>
+        </div>
       </div>
-      <main className="content">{renderContent()}</main>
+
+      <div className="derecha">
+        <main className="content">{renderContent()}</main>
+      </div>
+
+
     </div>
 
 
-    <div className="complemento0"></div>
+    
 
     </>
   );

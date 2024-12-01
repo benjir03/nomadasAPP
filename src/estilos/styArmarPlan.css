@@ -1,17 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"); /* Fuente más elegante */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 @import "./styGeneral.css";
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #f7f7f7;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--letter-color);
 }
 
-/* Contenedor principal */
 .contenedorVistaAP {
-  max-width: 1200px;
+  max-width: 1780px;
   margin: auto;
-  padding: 20px;
+  padding: 0px;
 }
 
 .contenedorUnoAP {
@@ -19,17 +18,17 @@ body {
   background-size: 150%;
   background-position: left;
   position: relative;
-  border-radius: 18px;
+  border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 109, 119, 0.1);
 }
 
 .contenidoImagenPlan {
   background: var(--background-color);
-  max-width: 450px; /* Aumentado el ancho máximo */
-  max-height: 580px; /* Aumentado la altura máxima */
+  max-width: 450px;
+  max-height: 580px;
   border-radius: 15px;
-  padding: 2  0px; /* Aumentado el padding */
+  padding: 2 0px;
   margin-bottom: 15px;
 }
 
@@ -51,13 +50,13 @@ select,
 button {
   margin: auto;
   font-family: Poppins;
-  font-size: 14px; /* Aumentado el tamaño de fuente */
-  padding: 12px; /* Aumentado el padding */
+  font-size: 14px;
+  padding: 12px;
   border-radius: 10px;
   border: 1px solid #ddd;
   background-color: #f2f2f2;
   color: #333;
-  width: 100%; /* Asegura que los inputs y selects ocupen todo el ancho */
+  width: 100%;
 }
 
 label {
@@ -87,40 +86,39 @@ label {
 }
 
 .find-destination {
-  background-color: #ffffff;
-  color: #007bff;
-  border: 1px solid #007bff;
+  background-color: var(--support-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   margin-top: 15px;
 }
 
 .find-destination:hover {
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--background-color);
 }
 
 .search-button {
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--background-color);
   width: 100%;
   margin-top: 15px;
 }
 
 .search-button:hover {
-  background-color: #0056b3;
+  background-color: var(--secondary-color);
 }
 
-/* Estilos de tarjetas */
 .container h2 {
   font-size: 2rem;
   font-weight: 600;
-  color: #333333;
+  color: var(--letter-color);
   text-align: left;
   margin-bottom: 10px;
 }
 
 .container p {
   text-align: left;
-  color: #666;
+  color: var(--letter-color);
   margin-bottom: 30px;
 }
 
@@ -154,16 +152,16 @@ label {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 8px;
-  color: #333333;
+  color: var(--letter-color);
 }
 
 .card-text {
-  color: #777;
+  color: var(--letter-color);
   font-size: 0.9rem;
 }
 
 .text-secondary {
-  color: #bbb;
+  color: var(--secondary-color);
 }
 
 .card-img {
@@ -173,43 +171,141 @@ label {
   border-bottom: 1px solid #eee;
 }
 
-label {
-  justify-content: left;
-  font-weight: 1000;
-  color: #4a4a4a;
-  font-size: 13px;
+.input-container {
+  position: relative;
 }
 
-input, select, button {
+.text-field {
+  width: 100%;
+  padding-right: 30px;
+}
+
+.input-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+.contenidoImagenPlan .button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contenidoImagenPlan .button-field {
+  flex-grow: 1;
+  margin: 0 5px;
+  padding: 15px 30px;
+  text-align: center;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  background-color: var(--support-color);
+  cursor: pointer;
+  font-size: 15px;
+  width: auto;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenidoImagenPlan .button-field.active {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.contenidoImagenPlan .range-field {
   width: 90%;
-  padding: 10px;
-  border: 1px solid #ddd;
+  align-items: left;
+  background-color: var(--support-color);
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
   border-radius: 5px;
-  font-family: Poppins;
-  background-color: #f4f5f7;
+  outline: none;
+  opacity: 0.9;
+  transition: opacity .2s;
 }
 
-button[type="submit"] {
-  background-color: #3b82f6;
-  color: #ffffff;
-  border: none;
+.contenidoImagenPlan .range-field:hover {
+  opacity: 1;
+}
+
+.contenidoImagenPlan .range-field::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--primary-color);
   cursor: pointer;
 }
 
-button[type="submit"]:hover {
-  background-color: #2563eb;
+.contenidoImagenPlan .range-field::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+.contenidoImagenPlan .range-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.contenidoImagenPlan .range-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--background-color);
+  padding: 0 10px;
+}
+
+.contenidoImagenPlan .range-label-left {
+  margin-right: auto;
+}
+
+.contenidoImagenPlan .range-label-right {
+  margin-left: auto;
+}
+
+/* Ajuste para alinear los botones en fila */
+.button-container {
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.botAccion {
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  color: var(--background-color);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 10px;
+  flex: 1;
+  text-align: center;
+  max-width: 150px;
+}
+
+.botAccion:hover {
+  background-color: var(--secondary-color);
+  transition: 0.3s;
 }
 
 /* Añadido: estilo para hacer más legible el contenido dentro del contenedor verde */
 .contenidoImagenPlan {
-  background: rgba(0, 109, 119, 0.8); /* Mantenemos el color verde con cierta opacidad */
+  background: rgba(0, 109, 119, 0.8);
   padding: 30px;
-  max-width: 450px;
+  max-width: 280px;
   margin: 20px;
   bottom: 2rem;
   max-height: 580px;
   border-radius: 20px;
-  color: #ffffff; /* Cambiamos el color del texto a blanco para mejor contraste */
+  color: var(--background-color);
 }
 
 .contenidoImagenPlan h1, 
@@ -217,27 +313,20 @@ button[type="submit"]:hover {
 .contenidoImagenPlan input, 
 .contenidoImagenPlan select, 
 .contenidoImagenPlan button {
-  color: #ffffff;
+  color: var(--background-color);
 }
 
-/* Ajustamos el color del texto en los inputs y selects */
 .contenidoImagenPlan input, 
 .contenidoImagenPlan select {
-  color: #333;
-  background-color: #f2f2f2;
-}
-
-/* Agregamos un borde más visible para los inputs y selects */
-.contenidoImagenPlan input, 
-.contenidoImagenPlan select {
-  border: 1px solid #ddd;
+  color: var(--letter-color);
+  background-color: var(--support-color);
+  border: 1px solid var(--primary-color);
   border-radius: 10px;
 }
 
-/* Mejoramos la apariencia del botón */
 .contenidoImagenPlan button {
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--background-color);
   width: 100%;
   margin-top: 15px;
   padding: 12px;
@@ -246,5 +335,5 @@ button[type="submit"]:hover {
 }
 
 .contenidoImagenPlan button:hover {
-  background-color: #0056b3;
+  background-color: var(--secondary-color);
 }

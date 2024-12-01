@@ -14,9 +14,24 @@
 
 .perfil-centrado {
   text-align: center;
+  /*justify-content: center;*/
+  display: flex;
   padding: 0 3%;
   background-color: var(--background-color);
+  /*background-color: var(--secondary-color);*/
   padding-right: 0px;
+}
+
+.izquierda {
+  /*background-color: lightblue;*/
+  padding-right: 10px;
+}
+
+.derecha {
+  /*background-color: lightpink;*/
+  padding-left: 3px;
+  justify-content: center;
+  width: 1000px;
 }
 
 .complemento0 {
@@ -51,7 +66,8 @@
 }
 
 .sidebar {
-  position: absolute;
+  /*position: absolute;*/
+  /*display: inline-block;*/
   width: 250px;
   background-color: var(--primary-color);
   padding: 20px;
@@ -76,6 +92,7 @@
   list-style: none;
   padding: 0;
   padding-bottom: 15px;
+  text-align: left;
 }
 
 .sidebar li {
@@ -93,8 +110,10 @@
 }
 
 .content {
-  padding: 20px;
-  flex-grow: 1;
+  /*position: absolute;*/
+  /*padding: 20px;*/
+  padding-left: 50px;
+  /*flex-grow: 1;*/
 }
 
 .botonAccion {

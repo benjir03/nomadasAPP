@@ -1,0 +1,23 @@
+.btn-regresar {
+    background-color: transparent; /* Fondo transparente */
+    color: white; /* Color del texto y del ícono */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor a pointer */
+    display: flex; /* Para alinear el ícono y el texto */
+    align-items: center; /* Alinear verticalmente */
+    gap: 8px; /* Espaciado entre ícono y texto */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animación suave */
+  }
+  
+  .btn-regresar:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente al pasar el mouse */
+    transform: scale(1.05); /* Agranda ligeramente el botón */
+  }
+  
+  .btn-regresar-icon {
+    font-size: 18px; /* Tamaño del ícono */
+  }
+  
