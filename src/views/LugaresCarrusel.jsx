@@ -215,7 +215,7 @@ useEffect(() => {
             <div key={pkg.id} className="list-item">
               <img src={pkg.image} alt={pkg.title} className="package-image" />
               <h3>{pkg.title}</h3>
-              <p><strong>Categoría:</strong> {pkg.category}</p>
+             {/* <p><strong>Categoría:</strong> {pkg.category}</p>*/}
               <p><strong>Calificación:</strong> {pkg.rating}</p>
               <p><strong>Ubicación:</strong> {pkg.location}</p>
               <button className="view-more-btn" onClick={() => handleViewMoreClick(pkg)}>Ver más</button>

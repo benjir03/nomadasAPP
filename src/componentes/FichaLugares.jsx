@@ -8,7 +8,7 @@ const FichaLugaresR = ({ titulo, contenido, imagen }) => {
   const navigate = useNavigate();
 
   const handleCategoryClick = () => {
-    navigate("/DescripLugar");
+    navigate("/DetalleLugar");
   };
 
   return (
@@ -26,6 +26,8 @@ const FichaLugaresR = ({ titulo, contenido, imagen }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleCategoryClick} // Navegación al hacer clic
+
     >
       <div
         className="gradienteSuperpuesto"
