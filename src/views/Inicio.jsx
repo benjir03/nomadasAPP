@@ -7,6 +7,7 @@ import CarrouselCategorias from "../componentes/CarrouselCategorias";
 import FichaCategoria from "../componentes/FichaCategoria";
 
 import { Lugar1, Lugar2, Lugar3 } from "../imgs/ArchivoImgs";
+import FichaLugaresR from "../componentes/FichaLugares";
 
 function Inicio() {
   const categorias = [
@@ -96,19 +97,19 @@ function Inicio() {
       <section className="categoriasSec">
         <h2>Lugares Recomendados</h2>
         <div className="categorias">
-          <FichaCategoria
+          <FichaLugaresR
             titulo="Lugar1"
             contenido=""
             imagen={Lugar1}
             categoria={[]}
           />
-          <FichaCategoria
+          <FichaLugaresR
             titulo="Lugar2"
             contenido=""
             imagen={Lugar2}
             categoria={[]}
           />
-          <FichaCategoria
+          <FichaLugaresR
             titulo="Lugar3"
             contenido=""
             imagen={Lugar3}

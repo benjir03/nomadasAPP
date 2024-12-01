@@ -1,7 +1,8 @@
-// ActividadPrincipal.js
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaPlus, FaHeart } from "react-icons/fa"; // Íconos de react-icons
 import "../estilos/styActividad.css";
+import BotonRegresar from "../componentes/BotonRegresar";
 
 function ActividadPrincipal({ 
   titulo, 
@@ -28,11 +29,20 @@ function ActividadPrincipal({
           backgroundPosition: "center",
         }}
       >
+        {/* Botón de regresar en la esquina superior izquierda */}
+        <div style={{ position: "absolute", top: "10px", left: "10px", zIndex: 10 }}>
+          <BotonRegresar />
+        </div>
+
         <div className="contenedorDos">
           <h1>{titulo}</h1>
           <p>{descripcion}</p>
-          <Link className="botonAccion2">Agregar al plan</Link>
-          <Link className="botonAccion2"> Favoritos</Link>
+          <Link className="botonAccionAct">
+            <FaPlus style={{ marginRight: "8px" }} /> Agregar al plan
+          </Link>
+          <Link className="botonAccionAct">
+            <FaHeart style={{ marginRight: "8px" }} /> Favoritos
+          </Link>
         </div>
       </section>
 

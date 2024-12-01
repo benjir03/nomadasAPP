@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../estilos/FichaCategoria.css";
 
-const FichaLugaresR = ({ titulo, contenido, imagen }) => {
+const FichaCategoria = ({titulo, contenido, imagen, categoria}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const navigate = useNavigate();
 
   const handleCategoryClick = () => {
-    navigate("/DetalleLugar");
+    navigate("/vista-lugares", {
+      state: {
+        categoria, // Lista de subcategorías
+        ciudad: "", // Ubicación predeterminada
+      },
+    });
   };
 
   return (
@@ -65,4 +70,4 @@ const FichaLugaresR = ({ titulo, contenido, imagen }) => {
   );
 };
 
-export default FichaLugaresR;
+export default FichaCategoria;

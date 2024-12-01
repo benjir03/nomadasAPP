@@ -32,16 +32,61 @@ exports.registrar = (req, res) => {
 
 
 exports.modificar = (req, res) =>{
+    const userId = req.userId;
+    const { transporte, duracion, compañia, turistico, pets, vegano, pet_friendly, capacidades_diferentes, mayoria_edad, ID_estacion, ID_categoria,
+    } = req.body || {};
+    
+    const query = `
+        UPDATE PREFERENCIAS 
+        SET 
+            transporte = ?, duracion = ?, compañia = ?, turistico = ?, 
+            pets = ?, vegano = ?, capacidades_diferentes = ?, 
+            ID_estacion = ?, ID_categoria = ?
+        WHERE ID_user = ?
+    `;
 
+    const valores = [
+        transporte, duracion, compañia, turistico, pets,
+        vegano, capacidades_diferentes, ID_estacion, ID_categoria, userId
+    ];
+
+    // Actualiza Preferencias en la base de datos
+    pool.query(query, valores,(err, results) => {
+            if (err) {
+                console.error('Error al actualizar el perfil:', err);
+                return res.status(500).json({ error: 'Error al actualizar el perfil' });
+            }
+
+            res.json({ message: 'Perfil actualizado exitosamente' }); // Envía todos los campos de la base de datos
+            console.log(userId, results[0]);
+        }
+    );
+}
+
+exports.eliminar = (req, res) =>{
+    const userId = req.userId;
+    pool.query('DELETE FROM PREFERENCIAS WHERE ID_user = ?', [userId], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error al eliminar Preferencias' });
+        }else{
+            res.clearCookie('sessionToken'); // Elimina la cookie de sesión
+            res.json({ message: 'Preferencias eliminadas exitosamente' });
+        } 
+    });
 }
 
 exports.gustos = (req, res) =>{
     const userId = req.userId;
     // Obtiene todos los campos del usuario
     pool.query('SELECT * FROM PREFERENCIAS as p INNER JOIN CATEGORIAS as c on p.ID_categoria = c.ID_categoria inner join ESTACION as e on p.ID_estacion = e.ID_estacion WHERE p.ID_user = ?', [userId], (err, results) => {
-        if (err || results.length === 0) {
-            return res.status(404).json({ error: 'Preferencias de usuario no encontrado' });
-        }
+        if (err) {
+                console.error('Error al obtener preferencias:', err);
+                return res.status(500).json({ error: 'Error al obtener preferencias' });
+            }
+
+            if (results.length === 0) {
+                return res.status(404).json({ error: 'No se encontraron preferencias para el usuario' });
+            }
         res.json(results[0]); // Envía todos los campos de la base de datos
         console.log(userId, results[0]);
     });

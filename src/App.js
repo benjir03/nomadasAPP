@@ -11,7 +11,9 @@ import ArmarPlan from "./views/ArmarPlan";
 import Actividad from "./views/Actividad";
 import Explora from "./views/Explora";
 import GustosPerfil from "./views/GustosPerfil";
+import ModGustos from "./views/ModGustosPerfil";
 import ListaActividad from "./componentes/listaactividad"; // Importa ListaActividad
+import Categoria from "./componentes/Categoria"; // Importa el componente Categoria
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Verificacion from "./componentes/Verificacion";
 import CompletarPerfil from "./views/CompletarPerfil";
@@ -26,6 +28,8 @@ import VistaLugares from "./views/VistaLugares";
 import Olvido from "./componentes/Olvido";
 import InfoPass from "./componentes/InfoPass";
 import NotFound from "./views/NotFound";
+import DetalleLugarC from "./componentes/DetalleLugarC";
+import DetalleLugar from "./views/DetalleLugar";
 
 function App() {
   return (
@@ -46,12 +50,16 @@ function App() {
           <Route path="/LugaresCarrusel" element={<LugaresCarrusel />} />
           <Route path="/Verificar" element={<Verificar />} />
           <Route path="/GustosPerfil" element={<GustosPerfil />} />
+          <Route path="/ModGustos" element={<ModGustos />} />
           <Route path="/MetaLogin" element={<MetaLogin />} />
           <Route path="/ModPerfil" element={<ModPerfil />} />
-          <Route path="/Actividades" element={<ListaActividad />} /> {/* Nueva ruta para ListaActividad */}
+          <Route path="/Actividades" element={<ListaActividad />} /> {/* Ruta para ListaActividad */}
+          <Route path="/Categoria" element={<Categoria />} /> {/* Ruta para Categoria */}
           <Route path="/vista-lugares" element={<VistaLugares />} />
           <Route path="/Olvido" element={<Olvido />} />
-          <Route path="/InfoPass" element={<InfoPass/>} />
+          <Route path="/InfoPass" element={<InfoPass />} />
+          <Route path="/DetalleLugarC" element={<DetalleLugarC />} />
+          <Route path="/DetalleLugar" element={<DetalleLugar />} />
 
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
