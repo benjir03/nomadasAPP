@@ -1,92 +1,92 @@
-.carrousel-container {
+/* Estilo general del carrusel */
+.carrousel {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centra el carrusel */
   width: 100%;
-  max-width: 1200px; /* Ajusta el ancho máximo */
-  margin: 0 auto; /* Centra el carrusel horizontalmente */
-  padding: 2rem 1rem; /* Más espacio alrededor del carrusel */
-}
-
-.carrousel-slide {
-  display: flex;
-  gap: 2rem; /* Espacio entre las fichas */
-  flex: 1;
-  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
   overflow: hidden;
+  display: flex;
+  flex-direction: column; /* Indicadores debajo del carrusel */
+  align-items: center;
+  margin-bottom: 20px; /* Espacio inferior */
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradiente suave */
+  padding: 20px 0; /* Espaciado interno */
+  border-radius: 15px; /* Bordes redondeados */
 }
 
+/* Contenedor principal del carrusel */
+.carrousel-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Animación suave entre desplazamientos */
+  width: 100%;
+}
+
+/* Cada grupo de fichas */
 .carrousel-item {
   display: flex;
-  align-items: flex-end; /* Alinea el contenido hacia la parte inferior */
-  justify-content: left; /* Alinea el texto a la izquierda */
-  width: 550px; /* Ancho fijo */
-  height: 40vh; /* Altura en porcentaje de la pantalla */
-  background-size: cover; /* Imagen cubre el contenedor */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  justify-content: space-between;
+  gap: 15px; /* Espacio entre fichas */
+  width: 100%; /* Cada grupo ocupa todo el ancho */
+}
+
+/* Estilo de cada ficha en el carrusel */
+.ficha-en-carrousel {
+  flex: 1 1 33.333%; /* Cada ficha ocupa siempre un tercio del espacio disponible */
+  max-width: calc(100% / 3 - 15px); /* Ajusta el ancho máximo de cada ficha */
+  height: 150px; /* Altura fija */
+  background: white;
   border-radius: 10px; /* Bordes redondeados */
-  overflow: hidden; /* Oculta cualquier contenido que sobresalga */
-  position: relative; /* Para posicionar elementos dentro de la ficha */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  overflow: hidden; /* Oculta contenido desbordado */
+  margin: 0; /* Sin márgenes adicionales */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra ligera */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición al pasar el ratón */
 }
 
-.carrousel-item:hover {
-  transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+.ficha-en-carrousel:hover {
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
 }
 
-.carrousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ajusta la imagen para llenar el contenedor sin deformarse */
+/* Indicadores (Círculos debajo del carrusel) */
+.carrousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espacio entre los círculos */
+  margin-top: 15px; /* Espacio con el carrusel */
 }
 
-.carrousel-item h1,
-.carrousel-item p {
-  margin: 0;
-  padding: 0.5rem; /* Espaciado interno del texto */
-  color: white; /* Texto blanco para contraste */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para hacer el texto más legible */
-  z-index: 2; /* Asegura que el texto esté por encima de la imagen */
-}
-
-.carrousel-item h1 {
-  font-size: 1rem; /* Tamaño del título */
-  font-weight: bold;
-}
-
-.carrousel-item p {
-  font-size: 0.875rem; /* Tamaño del texto descriptivo */
-  margin-top: 0.25rem;
-}
-
-.carrousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  width: 3rem; /* Botón ligeramente más grande */
-  height: 3rem;
-  cursor: pointer;
-  z-index: 2;
+.carrousel-indicator {
+  width: 12px; /* Ancho del círculo */
+  height: 12px; /* Alto del círculo */
+  background-color: rgba(0, 0, 0, 0.3); /* Color base */
+  border-radius: 50%; /* Forma circular */
+  cursor: pointer; /* Cambia a cursor interactivo */
   transition: background-color 0.3s ease;
 }
 
-.carrousel-button.left {
-  left: -2rem; /* Ajusta el margen izquierdo */
+.carrousel-indicator.active {
+  background-color: rgba(0, 0, 0, 0.8); /* Color activo */
 }
 
-.carrousel-button.right {
-  right: -2rem; /* Ajusta el margen derecho */
+.carrousel-indicator:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Color al pasar el ratón */
 }
 
-.carrousel-button:hover {
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro al pasar el mouse */
+/* Estilo responsivo */
+@media (max-width: 900px) {
+  .ficha-en-carrousel {
+    flex: 1 1 calc(50% - 15px); /* Cada ficha ocupa la mitad del espacio */
+    max-width: calc(100% / 2 - 15px); /* Ajusta el ancho proporcionalmente */
+  }
+}
+
+@media (max-width: 600px) {
+  .ficha-en-carrousel {
+    flex: 1 1 100%; /* Cada ficha ocupa todo el ancho disponible */
+    max-width: 100%; /* Sin restricciones adicionales */
+  }
+
+  .carrousel-item {
+    justify-content: center; /* Centra las fichas */
+  }
 }
