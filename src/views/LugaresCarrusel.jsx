@@ -418,10 +418,10 @@ useEffect(() => {
             <option value="VidaNocturna">Vida Nocturna</option>
           </select>
         </div>
-        <div>
+       {/*} <div>
           <label htmlFor="keywords">Palabras clave:</label>
           <input type="text" id="keywords" value={keywords} onChange={(e) => setKeywords(e.target.value)} />
-        </div>
+        </div>*/}
         <div>
           <label htmlFor="priceRange">Precio (0-4):</label>
           <select 
@@ -430,10 +430,10 @@ useEffect(() => {
             onChange={e => setPriceRange(e.target.value)}
           >
             <option value="">Todos los rangos</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            <option value="1">$1 - $200</option>
+            <option value="2">$201 - $600</option>
+            <option value="3">$601 - $1200</option>
+            <option value="4">Más de $1201</option>
           </select>
         </div>
 
