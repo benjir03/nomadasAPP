@@ -9,7 +9,7 @@ import { EjemploPerfil } from "../imgs/ArchivoImgs";
 import { AuthContext } from "../context/auth";
 
 const Perfil = () => {
-  const { user, login, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const [activeSection, setActiveSection] = useState("info");
   const [usuario, setUsuario] = useState([]);
   const [pref, setPref] = useState([]);
@@ -155,7 +155,7 @@ const Perfil = () => {
               </p>
 
               <p className="camposPerfil">
-                <strong>Estación favorita:</strong> {`${pref.nombre}`}
+                <strong>Estación favorita:</strong> {`${pref.nombre_estacion}`}
               </p>
 
               <p className="camposPerfil">

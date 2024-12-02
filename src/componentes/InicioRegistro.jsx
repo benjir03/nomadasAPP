@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../estilos/styGeneral.css";
 import "../estilos/styInicioRegistro.css";
 import axios from "axios";
@@ -12,12 +12,14 @@ import {
 } from "../validaciones/validacionesInicioSesion";
 import { gapi } from "gapi-script";
 import MetaLogin from "./MetaLogin";
+import { AuthContext } from "../context/auth";
 
 const clientId =
   "226964234531-b8fnlu7fh96jlikvns9fmd745m6crclh.apps.googleusercontent.com";
 
 const InicioRegistro = ({ accion, boton, mensaje }) => {
   //Constantes de envio de formulario
+const { user, login, logout } = useContext(AuthContext);
   const [correo, setCorreo] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -75,6 +77,7 @@ const InicioRegistro = ({ accion, boton, mensaje }) => {
         { withCredentials: true }
       );
       console.log(response.data.message); // Mensaje de éxito
+      login();
       navigate("/Perfil"); // Redirige a Perfil
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
@@ -104,7 +107,7 @@ const InicioRegistro = ({ accion, boton, mensaje }) => {
         { withCredentials: true }
       );
       console.log(response.data.message);
-      navigate("/Verificar");
+      navigate("/GustosPerfil");
     } catch (error) {
       console.error("Error al registrar usuario:", error);
       alert("Hubo un problema con el registro. Inténtalo de nuevo.");
