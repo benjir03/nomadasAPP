@@ -8,17 +8,17 @@ body {
 }
 
 .contenedorVistaAP {
-  max-width: 1780px;
+  max-width: 1400px;
   margin: auto;
   padding: 0px;
 }
 
 .contenedorUnoAP {
-  height: 680px;
+  height: 760px;
   background-size: 150%;
   background-position: left;
   position: relative;
-  border-radius: 25px;
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 109, 119, 0.1);
 }
@@ -271,10 +271,11 @@ label {
   margin-left: auto;
 }
 
-/* Ajuste para alinear los botones en fila */
+/* Ajuste para centrar los botones debajo del contenedor verde */
 .button-container {
-  justify-content: space-between;
-  margin: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .botAccion {
@@ -286,7 +287,7 @@ label {
   border-radius: 10px;
   font-weight: bold;
   margin: 10px;
-  flex: 1;
+  flex: 0 0 auto;
   text-align: center;
   max-width: 150px;
 }
@@ -301,7 +302,7 @@ label {
   background: rgba(0, 109, 119, 0.8);
   padding: 30px;
   max-width: 280px;
-  margin: 20px;
+  margin: 20px auto;
   bottom: 2rem;
   max-height: 580px;
   border-radius: 20px;
