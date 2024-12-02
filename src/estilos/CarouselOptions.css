@@ -166,3 +166,53 @@ button[type="submit"]:hover {
   border-radius: 5px;
   background: #fff;
 }
+
+/* Contenedor general para el layout */
+.categories-column {
+  grid-template-columns: repeat(2, 1fr); /* Esto crea dos columnas */
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;  /* Ajusta el espacio entre los checkboxes */
+  overflow: hidden;  /* Elimina las barras de desplazamiento */
+  max-width: 100%;  /* Asegura que el contenedor no se desborde */
+  box-sizing: border-box;  /* Incluye padding y border en el tamaño total del elemento */
+}
+
+/* Contenedor de cada checkbox */
+.categories-column input[type="checkbox"] {
+  margin-right: 10px;  /* Ajusta el margen si es necesario */
+  margin-bottom: 10px; /* Ajusta el margen si es necesario */
+}
+
+/* Sección de los checkboxes */
+.categories-column label {
+  display: block;  /* Muestra los labels como bloques para tener control sobre el layout */
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas de tamaño igual */
+  gap: 10px;  /* Espacio entre los checkboxes */
+  overflow: hidden;  /* Elimina las barras de desplazamiento */
+  max-width: 100%;  /* Asegura que el contenedor no se desborde */
+  box-sizing: border-box;  /* Incluye padding y border en el tamaño total del elemento */
+}
+
+/* Contenedor de cada checkbox */
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;  /* Ajusta el margen entre los checkboxes */
+  margin-bottom: 10px; /* Ajusta el margen en la parte inferior si es necesario */
+}
+
+/* Etiquetas de los checkboxes */
+.checkbox-group label {
+  display: block;  /* Muestra los labels como bloques */
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}

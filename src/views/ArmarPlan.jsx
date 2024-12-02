@@ -36,12 +36,13 @@ export default function ArmarPlan() {
   };
 
   const handleExploraActividades = () => {
+    const translatedPresupuesto = translatePriceRange(presupuesto);
     navigate("/LugaresCarrusel", {
       state: {
         ciudad,
         estancia,
         acompanantes,
-        presupuesto,
+        presupuesto: translatedPresupuesto,
         categoria,
         calificacionMinima,
         ambiente,
@@ -180,3 +181,11 @@ export default function ArmarPlan() {
     </div>
   );
 }
+
+const translatePriceRange = (value) => {
+  if (value <= 300) return 1;
+  if (value <= 600) return 2;
+  if (value <= 1500) return 3;
+  if (value <= 2500) return 4;
+  return 0; // Para el valor inicial de 0
+};
