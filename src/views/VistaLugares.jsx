@@ -283,12 +283,12 @@ useEffect(() => {
   }, [searchQuery]); // Cuando 'searchQuery' cambie, vuelve a realizar la búsqueda
   
   return (
-    <div className="carousel-container">
+    <div className="carousel-container1">
       <Categoria />
       <h2>Lugares de interés</h2>
-      <div className="search-and-categories">
+      <div className="search-and-categories1">
         {/* Columna 1: Buscar lugares */}
-        <div className="search-column">
+        <div className="search-column1">
           <h2>Busca lugares</h2>
           <form
             onSubmit={(e) => {
@@ -312,7 +312,7 @@ useEffect(() => {
 
         {/* Columna 2: Selección de categorías */}
         {showCheckboxes && (
-          <div className="categories-column">
+          <div className="categories-column1">
             <h3>Selecciona las categorías:</h3>
             {availableCategories.map((category) => (
               <label key={category}>
@@ -333,13 +333,13 @@ useEffect(() => {
       {loading && <p>Cargando lugares...</p>}
       {error && <p>{error}</p>}
       {lugares.length > 0 ? (
-        <div className="list-container">
+        <div className="list-container1">
           {lugares.map((lugar) => (
-            <div key={lugar.id} className="list-item">
+            <div key={lugar.id} className="list-item1">
               <img
                 src={lugar.image}
                 alt={lugar.title}
-                className="package-image"
+                className="package-image1"
               />
               <h3>{lugar.title}</h3>
               <p>
@@ -352,7 +352,7 @@ useEffect(() => {
                 <strong>Estado:</strong> {lugar.openingTime}
               </p>
               <button
-                className="view-more-btn"
+                className="view-more-btn1"
                 onClick={() => handleViewMoreClick(lugar)}
               >
                 Ver más
