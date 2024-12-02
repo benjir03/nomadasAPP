@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../estilos/detallecategoria.css";
 import Categoria from "../componentes/Categoria"; // Ajusta la ruta según sea necesario
-
+import BotonRegresar from "../componentes/BotonRegresar";
 
 const VistaLugares = () => {
   const location = useLocation();
@@ -281,12 +281,16 @@ useEffect(() => {
   useEffect(() => {
     fetchLugares();
   }, [searchQuery]); // Cuando 'searchQuery' cambie, vuelve a realizar la búsqueda
+
   
   return (
     <div className="carousel-container1">
       <Categoria />
+      <div style={{ position: "absolute", top: "150px", left: "60px", zIndex: 10 }}>
+          <BotonRegresar />
+        </div>
       <h2>Lugares de interés</h2>
-      <div className="search-and-categories1">
+      <div className="search-and-categories">
         {/* Columna 1: Buscar lugares */}
         <div className="search-column1">
           <h2>Busca lugares</h2>
@@ -314,17 +318,19 @@ useEffect(() => {
         {showCheckboxes && (
           <div className="categories-column1">
             <h3>Selecciona las categorías:</h3>
-            {availableCategories.map((category) => (
-              <label key={category}>
-                <input
-                  type="checkbox"
-                  value={category}
-                  onChange={handleCategoryChange}
-                  checked={selectedCategories.includes(category)}
-                />
-                {categoriasTraduccion[category]}
-              </label>
-            ))}
+            <div className="checkbox-group">
+              {availableCategories.map((category) => (
+                <label key={category}>
+                  <input
+                    type="checkbox"
+                    value={category}
+                    onChange={handleCategoryChange}
+                    checked={selectedCategories.includes(category)}
+                  />
+                  {categoriasTraduccion[category]}
+                </label>
+              ))}
+            </div>
           </div>
         )}
       </div>

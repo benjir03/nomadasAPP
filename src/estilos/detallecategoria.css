@@ -3,8 +3,8 @@
 
 .carousel-container1 {
   display: flex;
-  flex-direction: column; /* Alinea elementos verticalmente */
-  gap: 20px; /* Espacio entre elementos */
+  flex-direction: column;
+  gap: 20px;
   padding: 50px;
   background-color: #f9fafb;
   color: #333;
@@ -20,7 +20,7 @@ form {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 280px; /* Ajusta el ancho al 80% del contenedor principal */
+  max-width: 280px;
   min-width: 280px;
 }
 
@@ -31,14 +31,16 @@ form label {
   font-size: 13px;
 }
 
-form input, form select, button {
+form input,
+form select,
+button {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 12px;
   font-family: Poppins;
   background-color: var(--background-color);
-  width: 100%; /* Asegura que todos los campos tengan el mismo ancho */
-  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 button[type="submit"] {
@@ -90,17 +92,18 @@ button[type="submit"]:hover {
 .view-more-btn1:hover {
   background-color: #e19577;
 }
+
 .search-and-categories {
   display: flex;
-  gap: 20px; /* Espacio entre las columnas */
+  gap: 20px;
   justify-content: space-between;
   margin-top: 20px;
 }
 
 .search-column1,
 .categories-column1 {
-  flex: 1; /* Distribuye el espacio equitativamente entre las columnas */
-  max-width: 45%; /* Limita el ancho de cada columna */
+  flex: 1;
+  max-width: 45%;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 12px;
@@ -116,10 +119,20 @@ button[type="submit"]:hover {
 }
 
 .categories-column1 label {
-  display: block;
-  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
   font-size: 14px;
   color: #555;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 10px; /* Espacio entre los checkboxes */
+  margin-top: 10px; /* Espacio arriba */
+  overflow-y: auto; /* Permite desplazamiento si es necesario */
+  max-height: 400px; /* Ajusta esta altura según el espacio disponible */
 }
 
 .categories-column1 input[type="checkbox"] {
