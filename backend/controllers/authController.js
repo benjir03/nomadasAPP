@@ -4,10 +4,10 @@ const pool = require('../db/connection');
 
 // Función para iniciar sesión
 exports.login = (req, res) => {
-    const { correo, contraseña } = req.body;
+    const { correo } = req.body;
 
     // Verifica credenciales en la base de datos
-    pool.query('SELECT * FROM USUARIO WHERE email = ? AND password_user = ? OR email = ?', [correo, contraseña, correo], (err, results) => {
+    pool.query('SELECT * FROM USUARIO WHERE email = ?', [correo], (err, results) => {
         if (err || results.length === 0) {
             return res.status(401).json({ error: 'Credenciales incorrectas' });
         }

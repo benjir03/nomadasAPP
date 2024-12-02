@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../estilos/styPerfil.css";
 import '../estilos/styGeneral.css';
 import axios from "axios";
@@ -6,8 +6,10 @@ import { useNavigate, Link } from "react-router-dom";
 import { BackPerfil, ciudad } from "../imgs/ArchivoImgs";
 import { FaCircle } from "react-icons/fa";
 import { EjemploPerfil } from "../imgs/ArchivoImgs";
+import { AuthContext } from "../context/auth";
 
 const Perfil = () => {
+  const { user, login, logout } = useContext(AuthContext);
   const [activeSection, setActiveSection] = useState("info");
   const [usuario, setUsuario] = useState([]);
   const [pref, setPref] = useState([]);
@@ -47,18 +49,18 @@ const Perfil = () => {
     
     fetchPerfil();
   }, []);
-  const handleLogout = async () => {
-    try {
-      await axios.post(
-        "http://localhost:3001/auth/logout",
-        {},
-        { withCredentials: true }
-      );
-      navigate("/Inicio");
-    } catch (error) {
-      console.error("Error al cerrar sesión:", error);
-    }
-  };
+  
+    // Perfil.jsx o componente con logout
+    const handleLogout = async () => {
+      try {
+        await axios.post("http://localhost:3001/auth/logout", {}, { withCredentials: true });
+        logout(); // Limpia el estado global del usuario
+        navigate('/Inicio');
+      } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+      }
+    };
+
 
   const handleDelete = async () => {
     const confirmDelete = window.confirm(

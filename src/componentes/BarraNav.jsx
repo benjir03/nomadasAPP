@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { logoNomadas } from "../imgs/ArchivoImgs";
 import "../estilos/estiloBarraNav.css";
 import axios from "axios";
+import { AuthContext } from "../context/auth";
 
 const BarraNav = () => {
-  const [nombreUsuario, setNombreUsuario] = useState(null); // Estado para el nombre
+  const { user, login, logout } = useContext(AuthContext);
 
   useEffect(() => {
     const verificarUsuario = async () => {
@@ -13,13 +14,16 @@ const BarraNav = () => {
         const response = await axios.get("http://localhost:3001/auth/perfil", {
           withCredentials: true,
         });
-        setNombreUsuario(response.data.nombre); // Asignar el nombre si está autenticado
+        if (response.data) {
+          login(response.data); // Guardar usuario autenticado
+        }
       } catch (error) {
-        setNombreUsuario(null); // Usuario no autenticado
+        logout(); // Si ocurre un error, se desloguea
       }
     };
     verificarUsuario();
-  }, []);
+  }, [login, logout]);
+  
   return (
     <header className="header">
       <div className="logo">
@@ -50,12 +54,12 @@ const BarraNav = () => {
           </li>
           <li>
             <Link className="botonAccion" to="/InicioSesion">
-              Iniciar sesión
+              {user ? "Cerrar sesión" : "Iniciar sesión"}
             </Link>
           </li>
           <li>
             <Link className="botonAccion" to="/Perfil">
-            {nombreUsuario ? nombreUsuario : "Perfil"}
+              {user ? user.nombre : "Perfil"}
             </Link>
           </li>
         </ul>

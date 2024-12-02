@@ -30,11 +30,13 @@ import InfoPass from "./componentes/InfoPass";
 import NotFound from "./views/NotFound";
 import DetalleLugarC from "./componentes/DetalleLugarC";
 import DetalleLugar from "./views/DetalleLugar";
+import { AuthProvider } from "./context/auth";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <AuthProvider>
         <BarraNav />
         <Routes>
           <Route path="/Inicio" element={<Inicio />} />
@@ -77,6 +79,7 @@ function App() {
           {/* Ruta NotFound */}
           <Route path="*" Component={NotFound} />
         </Routes>
+        </AuthProvider>
       </Router>
       <Footer />
     </div>
