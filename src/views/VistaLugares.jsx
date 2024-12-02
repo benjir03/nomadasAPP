@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../estilos/CarouselOptions.css";
+import "../estilos/detallecategoria.css";
 import Categoria from "../componentes/Categoria"; // Ajusta la ruta según sea necesario
 
 
