@@ -1,169 +1,168 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");  
-@import "./styGeneral.css";  
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import "./styGeneral.css";
 
-.carousel-container {  
-  display: flex;  
-  justify-content: space-between;  
-  align-items: flex-end; /* Alineación hacia abajo mantenida */  
-  padding: 50px;  
-  background-color: #f9fafb;  
-  color: #333;  
-  font-family: Poppins;  
-  gap: 30px; /* Espacio entre los elementos del contenedor */  
-}  
+.carousel-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 50px;
+  background-color: #f9fafb;
+  color: #333;
+  font-family: Poppins;
+  gap: 30px; /* Espacio entre los elementos del contenedor */
+}
 
-form {  
-  text-align: left;  
-  display: flex;  
-  flex-direction: column;  
-  gap: 8px;  
-  background-color: #ffffff;  
-  padding: 20px;  
-  border-radius: 20px;  
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  
-  max-width: 280px; /* Mantiene el tamaño original */  
-  min-width: 280px;  
-}  
+form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 280px; /* Ajusta el ancho al 80% del contenedor principal */
+  min-width: 280px;
+}
 
-form label {  
-  justify-content: center;  
-  font-weight: 1000;  
-  color: #4a4a4a;  
-  font-size: 13px;  
-}  
+form label {
+  justify-content: center;
+  font-weight: 1000;
+  color: #4a4a4a;
+  font-size: 13px;
+}
 
-form input, form select, button {  
-  padding: 10px;  
-  border: 1px solid #ddd;  
-  border-radius: 12px;  
-  font-family: Poppins;  
-  background-color: var(--background-color);  
-  width: 100%; /* Asegura que todos los campos tengan el mismo ancho */  
-  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */  
-}  
+form input, form select, button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-family: Poppins;
+  background-color: var(--background-color);
+  width: 100%; /* Asegura que todos los campos tengan el mismo ancho */
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
 
-button[type="submit"] {  
-  background-color: var(--primary-color);  
-  color: var(--background-color);  
-  border: none;  
-  cursor: pointer;  
-  max-width: 250px;  
-  margin-top: 30px;  
-  border-radius: 12px;  
-}  
+button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  cursor: pointer;
+  max-width: 250px;
+  margin-top: 30px;
+  border-radius: 12px;
+}
 
-button[type="submit"]:hover {  
-  background-color: var(--secondary-color);  
-}  
+button[type="submit"]:hover {
+  background-color: var(--secondary-color);
+}
 
-.carousel-box {  
-  width: 100%;  
-  max-width: 1000px;  
-  background-color: rgba(255, 255, 255, 0.8);  
-  border-radius: 15px;  
-  padding: 30px;  
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);  
-  position: relative;  
-  overflow: hidden;  
-}  
+.carousel-box {
+  width: 100%;
+  max-width: 1000px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
 
-.package-card {  
-  border: 1px solid #ddd;  
-  padding: 20px;  
-  border-radius: 15px;  
-  background-color: #fff;  
-  text-align: center;  
-  display: flex;  
-  flex-direction: column;  
-  justify-content: space-between;  
-  height: 500px;  
-  min-height: 400px; /* Mantiene el tamaño mínimo para todos los contenedores */  
-}  
+.package-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  min-height: 400px; /* Tamaño mínimo para todos los contenedores */
+}
 
-.package-image {  
-  width: 100%;  
-  max-height: 200px; /* Ajustado para mantener un tamaño controlado de las imágenes */  
-  object-fit: cover;  
-  border-radius: 10px;  
-  margin: auto;  
-}  
+.package-image {
+  width: 100%;
+  max-height: 200px; /* Ajusta este valor según tus necesidades */
+  object-fit: cover; /* Recorta la imagen si es más alta */
+  border-radius: 10px;
+  margin: auto;
+}
 
-.view-more-btn {  
-  padding: 10px 15px;  
-  background-color: var(--primary-color);  
-  color: white;  
-  border: none;  
-  border-radius: 4px;  
-  cursor: pointer;  
-  margin-top: 10px;  
-}  
+.view-more-btn {
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
-.slick-prev:before,  
-.slick-next:before {  
-  color: black;  
-  font-size: 24px;  
-}  
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+  font-size: 24px;
+}
 
-.slick-prev {  
-  left: -30px;  
-}  
+.slick-prev {
+  left: -30px;
+}
 
-.slick-next {  
-  right: -30px;  
-}  
+.slick-next {
+  right: -30px;
+}
 
-.modal-overlay {  
-  position: fixed;  
-  top: 0;  
-  left: 0;  
-  width: 100%;  
-  height: 100%;  
-  background-color: rgba(0, 0, 0, 0.5);  
-  display: flex;  
-  align-items: center;  
-  justify-content: center;  
-  z-index: 1000;  
-}  
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
 
-.modal-content {  
-  background-color: #fff;  
-  padding: 20px;  
-  border-radius: 10px;  
-  width: 80%;  
-  max-width: 500px;  
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);  
-}  
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
 
-.modal-content h2 {  
-  margin-top: 0;  
-}  
+.modal-content h2 {
+  margin-top: 0;
+}
 
-.modal-content button {  
-  padding: 10px 20px;  
-  background-color: var(--primary-color);  
-  color: white;  
-  border: none;  
-  border-radius: 4px;  
-  cursor: pointer;  
-  margin-top: 20px;  
-}  
+.modal-content button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
 
-.titulo {  
-  font-size: 32px;  
-  color: #333;  
-  margin-bottom: 40px;  
-}  
+.titulo {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 40px;
+}
 
-.list-container {  
-  display: grid;  
-  grid-template-columns: repeat(3, 1fr);  
-  gap: 20px;  
-  align-items: start; /* Asegúrate de que los elementos se alineen hacia arriba */  
-}  
+.list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
 
-.list-item {  
-  border: 1px solid #ccc;  
-  padding: 15px;  
-  border-radius: 5px;  
-  background: #fff;  
+.list-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  background: #fff;
 }
