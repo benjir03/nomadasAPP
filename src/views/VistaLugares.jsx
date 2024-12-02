@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../estilos/CarouselOptions.css";
+import Categoria from "../componentes/Categoria"; // Ajusta la ruta según sea necesario
+
 
 const VistaLugares = () => {
   const location = useLocation();
@@ -280,45 +282,54 @@ useEffect(() => {
     fetchLugares();
   }, [searchQuery]); // Cuando 'searchQuery' cambie, vuelve a realizar la búsqueda
   
-
   return (
     <div className="carousel-container">
+      <Categoria />
       <h2>Lugares de interés</h2>
-      <h2>Busca lugares</h2>
-      <form onSubmit={(e) => {
-        e.preventDefault(); // Evita el comportamiento por defecto del formulario
-        fetchLugares(); // Llama a la función para realizar la búsqueda
-      }}>
-        <div>
-          <label htmlFor="searchQuery">Buscar lugar:</label>
-          <input
-            type="text"
-            id="searchQuery"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)} // Actualiza el estado con lo que el usuario escribe
-            placeholder="Ingresa un lugar"
-          />
-        </div>
-        <button type="submit">Buscar</button>
-      </form>
-      {showCheckboxes && (
-        <div>
-          <h3>Selecciona las categorías:</h3>
-          {availableCategories.map((category) => (
-            <label key={category}>
+      <div className="search-and-categories">
+        {/* Columna 1: Buscar lugares */}
+        <div className="search-column">
+          <h2>Busca lugares</h2>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              fetchLugares();
+            }}
+          >
+            <div>
+              <label htmlFor="searchQuery">Buscar lugar:</label>
               <input
-                type="checkbox"
-                value={category}
-                onChange={handleCategoryChange}
-                checked={selectedCategories.includes(category)}
+                type="text"
+                id="searchQuery"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Ingresa un lugar"
               />
-              {categoriasTraduccion[category]}
-            </label>
-          ))}
+            </div>
+            <button type="submit">Buscar</button>
+          </form>
         </div>
-      )}
 
+        {/* Columna 2: Selección de categorías */}
+        {showCheckboxes && (
+          <div className="categories-column">
+            <h3>Selecciona las categorías:</h3>
+            {availableCategories.map((category) => (
+              <label key={category}>
+                <input
+                  type="checkbox"
+                  value={category}
+                  onChange={handleCategoryChange}
+                  checked={selectedCategories.includes(category)}
+                />
+                {categoriasTraduccion[category]}
+              </label>
+            ))}
+          </div>
+        )}
+      </div>
 
+      {/* Resto del contenido */}
       {loading && <p>Cargando lugares...</p>}
       {error && <p>{error}</p>}
       {lugares.length > 0 ? (

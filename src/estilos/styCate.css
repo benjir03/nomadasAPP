@@ -1,143 +1,37 @@
-/* Estilos para la sección de la imagen de fondo */
-.contenedorUno {
-    background-image: url("../imgs/cdmx-portada.jpg"); /* Imagen de fondo */
-    height: 88vh; /* Altura relativa a la ventana */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
-    max-width: 1400px; /* Define el ancho máximo del contenedor */
-    border-radius: 15px; /* Opcional: bordes redondeados para un diseño más limpio */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Opcional: sombra para destacarlo */
+:root {
+    --imagen-ancho: 100%;  /* Control del ancho de la imagen */
+    --imagen-alto: 800px;  /* Control del alto de la imagen */
 }
 
-/* Estilos para el botón regresar */
-.botonRegresar {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
-}
-
-/* Estilos para el contenedor principal de texto */
-.contenedorDos {
-    text-align: center;
-    color: white;
-    padding: 20px;
-}
-
-/* Estilos para la sección de la categoría */
-.infoCategoria {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 10;
-}
-
-/* Estilos para la sección de filtrado */
-.filtrarCiudad {
-    padding: 20px;
-    text-align: center;
+/* Contenedor de la imagen centrado */
+.imagenContenedor {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* Estilos para el contenedor del input y el botón */
-.inputCiudad {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 600px; /* Limita el ancho del contenedor */
     width: 100%;
-    gap: 10px; /* Espacio entre el input y el botón */
+    height: var(--imagen-alto); /* Altura controlada por la variable */
+    max-width: 1900px;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    position: relative;
 }
 
-/* Estilos para el campo de texto */
-.inputText {
-    padding: 10px;
-    font-size: 16px;
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 200px;  /* Ajusta el tamaño del input */
+/* Estilos para la imagen */
+.categoriaImagen {
+    width: 100%;  /* La imagen ocupa el 100% del contenedor */
+    height: 100%; /* La imagen ocupará toda la altura del contenedor */
+    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsionarse */
+    border-radius: 40px;
 }
 
-/* Estilos para el botón de filtrar */
-.botonFiltrar {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #006d77; /* Botón de color verde */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    min-width: 120px;  /* Evita que el botón abarque toda la pantalla */
+/* Texto en la parte inferior izquierda de la imagen */
+.imagenContenedor .textoImagen {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white !important;
 }
 
-.botonFiltrar:hover {
-    background-color: #e19577; /* Cambia el color cuando el usuario pasa el ratón por encima */
+.imagenContenedor .textoImagen h2,
+.imagenContenedor .textoImagen p {
+    color: white !important;
 }
-
-/* Estilos para el contenedor de las fichas */
-.fichaContenedor {
-    display: flex;
-    flex-wrap: wrap; /* Permite que las fichas se acomoden en varias filas */
-    justify-content: space-between; /* Distribuye las fichas con espacio entre ellas */
-    gap: 20px; /* Espacio entre las fichas */
-    margin-top: 20px;
-    margin: 0 auto; /* Centrar el contenedor */
-    padding: 20px 20px; /* Padding para evitar que las fichas toquen los bordes */
-   
-}
-
-/* Tamaño de las fichas para asegurar que sean 3 por fila */
-.fichaActividad {
-    
-    background-color: #006d77; /* Color de fondo para distinguir las fichas */
-    border-radius: 10px;
-    height: 10px; /* Altura consistente para las fichas */
-    width: 0px;
-    margin-bottom: 10px; /* Espaciado entre las filas */
-}
-
-/* Responsividad para pantallas medianas: 2 fichas por fila */
-@media (max-width: 768px) {
-    .fichaActividad {
-        width: calc(50% - 10px); /* Dos fichas por fila en pantallas medianas */
-    }
-}
-
-/* Responsividad para pantallas pequeñas: 1 ficha por fila */
-@media (max-width: 480px) {
-    .fichaActividad {
-        width: calc(100% - 20px); /* Una ficha por fila en pantallas muy pequeñas */
-    }
-}
-
-/* Estilos para el texto de "Más actividades" */
-.masActividades {
-    text-align: center; /* Centra el texto */
-    margin-top: 20px; /* Agrega un poco de espacio encima */
-  }
-  
-  .textoMasActividades {
-    font-size: 1.5em; /* Ajusta el tamaño del texto */
-    font-weight: bold; /* Hace el texto más prominente */
-    color: #006d77; /* Color que coincida con el diseño de tu página */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el texto */
-    text-decoration: underline; /* Subraya el texto para darle un estilo de enlace */
-    transition: color 0.3s; /* Agrega una transición suave para el cambio de color */
-  }
-  
-  /* Efecto cuando el mouse pasa sobre el texto */
-  .textoMasActividades:hover {
-    color: #004d40; /* Cambia el color cuando el cursor está sobre el texto */
-  }
-  
