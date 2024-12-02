@@ -286,7 +286,7 @@ useEffect(() => {
   return (
     <div className="carousel-container1">
       <Categoria />
-      <div style={{ position: "absolute", top: "80px", left: "60px", zIndex: 10 }}>
+      <div style={{ position: "absolute", top: "150px", left: "60px", zIndex: 10 }}>
           <BotonRegresar />
         </div>
       <h2>Lugares de interés</h2>

@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import "./styGeneral.css";
+
 .carousel-container1 {
   display: flex;
   flex-direction: column;
@@ -6,17 +9,94 @@
   background-color: #f9fafb;
   color: #333;
   font-family: Poppins, sans-serif;
-  position: relative; /* Importante para el posicionamiento de elementos como el botón de regresar */
 }
 
-h2 {
-  margin-top: 70px; /* Ajusta el margen superior para que no se sobreponga con el botón de regresar */
+form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 280px;
+  min-width: 280px;
+}
+
+form label {
+  justify-content: center;
+  font-weight: 1000;
+  color: #4a4a4a;
+  font-size: 13px;
+}
+
+form input,
+form select,
+button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-family: Poppins;
+  background-color: var(--background-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  cursor: pointer;
+  max-width: 250px;
+  margin-top: 30px;
+  border-radius: 12px;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--secondary-color);
+}
+
+.list-container1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.list-item1 {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  background: #fff;
+  text-align: center;
+}
+
+.package-image1 {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.view-more-btn1 {
+  padding: 10px 15px;
+  background-color: #4a4a4a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.view-more-btn1:hover {
+  background-color: #e19577;
 }
 
 .search-and-categories {
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 20px;
 }
 
@@ -28,36 +108,6 @@ h2 {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.search-column1 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.checkbox-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 checkboxes por fila */
-  gap: 10px;
-  width: 100%;
-  justify-items: center;
-  overflow-wrap: break-word; /* Evita que los elementos se desborden */
-}
-
-.checkbox-group label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  color: #555;
-}
-
-.checkbox-group input {
-  margin-right: 8px;
 }
 
 .search-column1 h2,
@@ -69,19 +119,22 @@ h2 {
 }
 
 .categories-column1 label {
-  display: block;
-  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
   font-size: 14px;
   color: #555;
 }
 
-.categories-column1 input[type="checkbox"] {
-  margin-right: 8px;
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 10px; /* Espacio entre los checkboxes */
+  margin-top: 10px; /* Espacio arriba */
+  overflow-y: auto; /* Permite desplazamiento si es necesario */
+  max-height: 400px; /* Ajusta esta altura según el espacio disponible */
 }
 
-button[type="button"] {
-  position: absolute;
-  top: 250px; /* Ajusta esta posición para que no esté tan arriba */
-  left: 60px;
-  z-index: 10;
+.categories-column1 input[type="checkbox"] {
+  margin-right: 8px;
 }
