@@ -139,6 +139,8 @@
 
 .generalVista {
   background-image: "../imgs/backgroundGustosPerfil.jpg";
+  height: 700px;
+  display: flex;
 }
 
 button {
