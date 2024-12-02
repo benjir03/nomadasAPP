@@ -35,8 +35,8 @@ import { AuthProvider } from "./context/auth";
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <Router>
-        <AuthProvider>
         <BarraNav />
         <Routes>
           <Route path="/Inicio" element={<Inicio />} />
@@ -79,8 +79,8 @@ function App() {
           {/* Ruta NotFound */}
           <Route path="*" Component={NotFound} />
         </Routes>
-        </AuthProvider>
       </Router>
+      </AuthProvider>
       <Footer />
     </div>
   );
