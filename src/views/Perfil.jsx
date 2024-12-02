@@ -143,6 +143,31 @@ const Perfil = () => {
             </div>
           </div>
         );
+
+        case "favoritos":
+          return (
+            <div className="contenedorVista">
+              <div  >
+                <h2 className="login-title">Favoritos</h2>
+                <p className="Parrafo1">
+                  Aquí encontrarás información sobre tus favoritos guardados.
+                </p>
+              </div>
+            </div>
+          );
+
+          case "planes":
+            return (
+              <div className="contenedorVista">
+                <div  >
+                  <h2 className="login-title">Planes</h2>
+                  <p className="Parrafo1">
+                    Aquí chambea Dani.
+                  </p>
+                </div>
+              </div>
+            );
+
         //Prefencias
         case "pref":
           return(
@@ -186,6 +211,7 @@ const Perfil = () => {
             </div>
           </div>
           );
+
       case "security":
         return (
           <div className="contenedorVista">
@@ -262,10 +288,17 @@ const Perfil = () => {
             </li>
 
             <li
-              className={activeSection === "pref" ? "active" : ""}
-              onClick={() => setActiveSection("pref")}
+              className={activeSection === "favoritos" ? "active" : ""}
+              onClick={() => setActiveSection("favoritos")}
             >
-              Preferencias
+              Favoritos
+            </li>
+
+            <li
+              className={activeSection === "planes" ? "active" : ""}
+              onClick={() => setActiveSection("planes")}
+            >
+              Planes
             </li>
 
             <li
@@ -276,10 +309,10 @@ const Perfil = () => {
             </li>
 
             <li
-              className={activeSection === "planes" ? "active" : ""}
-              onClick={() => setActiveSection("planes")}
+              className={activeSection === "pref" ? "active" : ""}
+              onClick={() => setActiveSection("pref")}
             >
-              Mis planes
+              Preferencias
             </li>
 
             <li
