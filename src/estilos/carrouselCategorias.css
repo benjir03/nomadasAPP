@@ -6,18 +6,17 @@
   margin: 0 auto;
   overflow: hidden;
   display: flex;
-  flex-direction: column; /* Indicadores debajo del carrusel */
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 20px; /* Espacio inferior */
-  background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* Gradiente suave */
-  padding: 20px 0; /* Espaciado interno */
-  border-radius: 15px; /* Bordes redondeados */
+  margin-bottom: 20px;
+  padding: 20px 0;
+  border-radius: 15px; 
 }
 
 /* Contenedor principal del carrusel */
 .carrousel-container {
   display: flex;
-  transition: transform 0.5s ease-in-out; /* Animación suave entre desplazamientos */
+  transition: transform 0.5s ease-in-out;
   width: 100%;
 }
 
@@ -25,68 +24,118 @@
 .carrousel-item {
   display: flex;
   justify-content: space-between;
-  gap: 15px; /* Espacio entre fichas */
-  width: 100%; /* Cada grupo ocupa todo el ancho */
+  gap: 15px;
+  width: 100%;
+}
+
+/* Para cuando hay 2 fichas en un grupo: Centra las fichas */
+.carrousel-item.centro {
+  justify-content: center; /* Centra las fichas si hay solo dos */
+  align-items: center; /* Asegura que estén alineadas verticalmente */
 }
 
 /* Estilo de cada ficha en el carrusel */
 .ficha-en-carrousel {
-  flex: 1 1 33.333%; /* Cada ficha ocupa siempre un tercio del espacio disponible */
-  max-width: calc(100% / 3 - 15px); /* Ajusta el ancho máximo de cada ficha */
-  height: 150px; /* Altura fija */
+  flex: 1 1 33.333%;
+  max-width: calc(100% / 3 - 15px);
+  height: 150px;
   background: white;
-  border-radius: 10px; /* Bordes redondeados */
-  overflow: hidden; /* Oculta contenido desbordado */
-  margin: 0; /* Sin márgenes adicionales */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra ligera */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición al pasar el ratón */
+  border-radius: 10px; 
+  overflow: hidden;
+  margin: 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ficha-en-carrousel:hover {
-  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Indicadores (Círculos debajo del carrusel) */
 .carrousel-indicators {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Espacio entre los círculos */
-  margin-top: 15px; /* Espacio con el carrusel */
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .carrousel-indicator {
-  width: 12px; /* Ancho del círculo */
-  height: 12px; /* Alto del círculo */
-  background-color: rgba(0, 0, 0, 0.3); /* Color base */
-  border-radius: 50%; /* Forma circular */
-  cursor: pointer; /* Cambia a cursor interactivo */
+  width: 12px;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .carrousel-indicator.active {
-  background-color: rgba(0, 0, 0, 0.8); /* Color activo */
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .carrousel-indicator:hover {
-  background-color: rgba(0, 0, 0, 0.5); /* Color al pasar el ratón */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Botones de navegación */
+.carrousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #007bff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.carrousel-nav:hover {
+  background-color: #0056b3;
+}
+
+/* Botón izquierdo */
+.carrousel-nav-left {
+  left: -30px;
+}
+
+/* Botón derecho */
+.carrousel-nav-right {
+  right: -30px;
 }
 
 /* Estilo responsivo */
 @media (max-width: 900px) {
   .ficha-en-carrousel {
-    flex: 1 1 calc(50% - 15px); /* Cada ficha ocupa la mitad del espacio */
-    max-width: calc(100% / 2 - 15px); /* Ajusta el ancho proporcionalmente */
+    flex: 1 1 calc(50% - 15px);
+    max-width: calc(100% / 2 - 15px);
+  }
+
+  .carrousel-nav {
+    padding: 8px;
+    width: 35px;
+    height: 35px;
   }
 }
 
 @media (max-width: 600px) {
   .ficha-en-carrousel {
-    flex: 1 1 100%; /* Cada ficha ocupa todo el ancho disponible */
-    max-width: 100%; /* Sin restricciones adicionales */
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 
   .carrousel-item {
-    justify-content: center; /* Centra las fichas */
+    justify-content: center;
+  }
+
+  .carrousel-nav {
+    width: 30px;
+    height: 30px;
   }
 }

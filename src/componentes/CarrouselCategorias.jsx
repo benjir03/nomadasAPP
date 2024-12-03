@@ -40,14 +40,30 @@ const CarrouselCategorias = ({ categorias }) => {
     setCurrentIndex(index);
   };
 
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % groupedCategorias.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + groupedCategorias.length) % groupedCategorias.length);
+  };
+
   return (
     <div className="carrousel">
+      {/* Botón izquierdo */}
+      <button className="carrousel-nav carrousel-nav-left" onClick={handlePrev}>
+        &#8592;
+      </button>
+
       <div
         className="carrousel-container"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {groupedCategorias.map((group, index) => (
-          <div key={index} className="carrousel-item">
+          <div
+            key={index}
+            className={`carrousel-item ${group.length === 2 ? 'centro' : ''}`}
+          >
             {group.map((categoria, idx) => (
               <FichaCategoria
                 key={idx}
@@ -61,6 +77,12 @@ const CarrouselCategorias = ({ categorias }) => {
           </div>
         ))}
       </div>
+
+      {/* Botón derecho */}
+      <button className="carrousel-nav carrousel-nav-right" onClick={handleNext}>
+        &#8594;
+      </button>
+
       <div className="carrousel-indicators">
         {groupedCategorias.map((_, index) => (
           <div
