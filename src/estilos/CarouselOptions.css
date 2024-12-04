@@ -216,3 +216,44 @@ button[type="submit"]:hover {
   font-size: 14px;
   color: #333;
 }
+
+/* Estilos para las estrellas de calificación */
+/* Estilos para las estrellas de calificación */
+.stars {
+  display: flex;
+  justify-content: center;
+}
+
+.star {
+  font-size: 1.2rem;
+  color: gold;
+  margin-right: 5px;
+}
+
+.star.full {
+  color: gold;
+}
+
+.star.half {
+  color: gold;
+  position: relative;
+}
+
+.star.half::after {
+  content: "☆";
+  position: absolute;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+  color: gold;
+}
+
+.star.empty {
+  color: lightgray;
+}
+
+/* Estilos adicionales para el select de calificación mínima */
+#rating option {
+  font-size: 1.2rem;
+  color: gold;
+}
