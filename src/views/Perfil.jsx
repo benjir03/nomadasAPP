@@ -3,7 +3,7 @@ import "../estilos/styPerfil.css";
 import '../estilos/styGeneral.css';
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import { BackPerfil, ciudad } from "../imgs/ArchivoImgs";
+import { BackPerfil, ciudad, Lugar1 } from "../imgs/ArchivoImgs";
 import { FaCircle } from "react-icons/fa";
 import { EjemploPerfil } from "../imgs/ArchivoImgs";
 import { AuthContext } from "../context/auth";
@@ -147,26 +147,104 @@ const Perfil = () => {
         case "favoritos":
           return (
             <div className="contenedorVista">
-              <div  >
+              <div className="planes-container">
                 <h2 className="login-title">Favoritos</h2>
-                <p className="Parrafo1">
-                  Aquí encontrarás información sobre tus favoritos guardados.
-                </p>
+  
+                {/* Carrusel o Lista Horizontal de planes */}
+                <div className="planes-list">
+                  <div className="plan-card">
+                    <img src={Lugar1} alt="Plan 1" className="plan-img" />
+                    <div className="plan-details">
+                      <h3>Act 1</h3>
+                      <p>Descripción de la act</p>
+                      <p>Categoría</p>
+                    </div>
+                    <div className="plan-buttons">
+                      <button className="btn-plan">Ver</button>
+                      <button className="btn-edit">Eliminar</button> {/* Botón "Editar" agregado */}
+                    </div>
+                  </div>
+  
+                  <div className="plan-card">
+                    <img src={Lugar1} alt="Plan 2" className="plan-img" />
+                    <div className="plan-details">
+                      <h3>Act 2</h3>
+                      <p>Descripción de la act</p>
+                      <p>Categoría</p>
+                    </div>
+                    <div className="plan-buttons">
+                      <button className="btn-plan">Ver</button>
+                      <button className="btn-edit">Eliminar</button> {/* Botón "Editar" agregado */}
+                    </div>
+                  </div>
+  
+                  <div className="plan-card">
+                    <img src={Lugar1} alt="Plan 3" className="plan-img" />
+                    <div className="plan-details">
+                      <h3>Act 3</h3>
+                      <p>Descripción de la act</p>
+                      <p>Categoría</p>
+                    </div>
+                    <div className="plan-buttons">
+                      <button className="btn-plan">Ver</button>
+                      <button className="btn-edit">Eliminar</button> {/* Botón "Editar" agregado */}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           );
 
-          case "planes":
-            return (
-              <div className="contenedorVista">
-                <div  >
-                  <h2 className="login-title">Planes</h2>
-                  <p className="Parrafo1">
-                    Aquí chambea Dani.
-                  </p>
+      case "planes":
+        return (
+          <div className="contenedorVista">
+            <div className="planes-container">
+              <h2 className="login-title">Planes</h2>
+
+              {/* Carrusel o Lista Horizontal de planes */}
+              <div className="planes-list">
+                <div className="plan-card">
+                  <img src={Lugar1} alt="Plan 1" className="plan-img" />
+                  <div className="plan-details">
+                    <h3>Plan A</h3>
+                    <p>Descripción del plan A</p>
+                    <p>Fecha de creación</p>
+                  </div>
+                  <div className="plan-buttons">
+                    <button className="btn-plan">Ver</button>
+                    <button className="btn-edit">Editar</button> {/* Botón "Editar" agregado */}
+                  </div>
+                </div>
+
+                <div className="plan-card">
+                  <img src={Lugar1} alt="Plan 2" className="plan-img" />
+                  <div className="plan-details">
+                    <h3>Plan B</h3>
+                    <p>Descripción del plan A</p>
+                    <p>Fecha de creación</p>
+                  </div>
+                  <div className="plan-buttons">
+                    <button className="btn-plan">Ver</button>
+                    <button className="btn-edit">Editar</button> {/* Botón "Editar" agregado */}
+                  </div>
+                </div>
+
+                <div className="plan-card">
+                  <img src={Lugar1} alt="Plan 3" className="plan-img" />
+                  <div className="plan-details">
+                    <h3>Plan C</h3>
+                    <p>Descripción del plan A</p>
+                    <p>Fecha de creación</p>
+                  </div>
+                  <div className="plan-buttons">
+                    <button className="btn-plan">Ver</button>
+                    <button className="btn-edit">Editar</button> {/* Botón "Editar" agregado */}
+                  </div>
                 </div>
               </div>
-            );
+            </div>
+          </div>
+        );
 
         //Prefencias
         case "pref":
