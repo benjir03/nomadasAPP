@@ -10,9 +10,10 @@
     align-items: center;
     width: 100%;
     height: var(--imagen-alto); /* Altura controlada por la variable */
-    max-width: 1900px;
+    max-width: 1800px;
     margin: 0 auto; /* Centra el contenedor horizontalmente */
     position: relative;
+    
 }
 
 /* Estilos para la imagen */
@@ -20,7 +21,7 @@
     width: 100%;  /* La imagen ocupa el 100% del contenedor */
     height: 100%; /* La imagen ocupará toda la altura del contenedor */
     object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsionarse */
-    border-radius: 40px;
+    border-radius: 30px;
 }
 
 /* Texto en la parte inferior izquierda de la imagen */

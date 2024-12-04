@@ -225,7 +225,7 @@
   align-items: center; /* Asegura que los botones estén centrados en el contenedor */
 }
 
-.plan-buttons .btn-plan, .plan-buttons .btn-edit {
+.plan-buttons .btn-plan, .plan-buttons .btn-delete {
   background-color: var(--primary-color);
   color: var(--background-color);
   padding: 8px 20px;
@@ -236,14 +236,14 @@
   align-self: center; /* Asegura que cada botón esté centrado */
 }
 
-.plan-buttons .btn-plan:hover, .plan-buttons .btn-edit:hover {
+.plan-buttons .btn-plan:hover, .plan-buttons .btn-delete:hover {
   background-color: var(--secondary-color);
 }
 
-.plan-buttons .btn-edit {
+.plan-buttons .btn-delete {
   background-color: var(--secondary-color); /* Botón "Editar" con color secundario */
 }
 
-.plan-buttons .btn-edit:hover {
+.plan-buttons .btn-delete:hover {
   background-color: var(--support-color); /* Hover de color de soporte para el botón "Editar" */
 }
