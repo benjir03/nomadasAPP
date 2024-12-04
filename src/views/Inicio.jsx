@@ -95,26 +95,62 @@ function Inicio() {
 
       {/* Sección de lugares recomendados */}
       <section className="categoriasSec">
-        <h2>Lugares Recomendados</h2>
-        <div className="categorias">
+      <h2>Lugares Recomendados</h2>
+      <div className="categorias">
+        <Link to={`/detalle/${"guanajuato"}`}>
           <FichaLugaresR
-            titulo="Lugar1"
-            contenido=""
+            titulo="guanajuato"
+            contenido="Visita la ciudad de Guanajuato"
             imagen={Lugar1}
             categoria={[]}
           />
+        </Link>
+
+        <Link to={`/detalle/${"Guadalajara"}`}>
           <FichaLugaresR
-            titulo="Lugar2"
-            contenido=""
+            titulo="Guadalajara"
+            contenido="Visita la ciudad de Guadalajara"
             imagen={Lugar2}
             categoria={[]}
           />
+        </Link>
+
+        <Link to={`/detalle/${"Cancún"}`}>
           <FichaLugaresR
-            titulo="Lugar3"
-            contenido=""
+            titulo="Cancún"
+            contenido="Visita la ciudad de Cancún"
             imagen={Lugar3}
             categoria={[]}
           />
+        </Link>
+
+        <Link to={`/detalle/${"Madrid"}`}>
+          <FichaLugaresR
+            titulo="Madrid"
+            contenido="Visita la ciudad de Madrid"
+            imagen={Lugar1}
+            categoria={[]}
+          />
+        </Link>
+
+        <Link to={`/detalle/${"Edimburgo"}`}>
+          <FichaLugaresR
+            titulo="Edimburgo"
+            contenido="Visita la ciudad de Edimburgo"
+            imagen={Lugar2}
+            categoria={[]}
+          />
+        </Link>
+
+        <Link to={`/detalle/${"Sydney"}`}>
+          <FichaLugaresR
+            titulo="Sydney"
+            contenido="Visita la ciudad de Sydney"
+            imagen={Lugar3}
+            categoria={[]}
+          />
+        </Link>
+
         </div>
         <Link to="/Lugares" className="more-categories-link">
           Más lugares...

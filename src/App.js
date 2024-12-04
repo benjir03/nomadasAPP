@@ -61,8 +61,7 @@ function App() {
           <Route path="/Olvido" element={<Olvido />} />
           <Route path="/InfoPass" element={<InfoPass />} />
           <Route path="/DetalleLugarC" element={<DetalleLugarC />} />
-          <Route path="/DetalleLugar" element={<DetalleLugar />} />
-
+          <Route path="/detalle/:titulo" element={<DetalleLugar />} />
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
           <Route path="/registro" element={<Registro />} />
