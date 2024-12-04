@@ -8,59 +8,66 @@ import FichaCategoria from "../componentes/FichaCategoria";
 
 import { Lugar1, Lugar2, Lugar3 } from "../imgs/ArchivoImgs";
 import FichaLugaresR from "../componentes/FichaLugares";
+import {
+  cat_art,
+  cat_family,
+  cat_food,
+  cat_history,
+  cat_nature,
+  cat_night,
+  cat_shop,
+  cat_sport,
+} from "../imgs/ArchivoImgs";
 
 function Inicio() {
   const categorias = [
     {
       titulo: "Gastronomía",
       contenido: "Disfruta de una amplia variedad de experiencias culinarias.",
-      imagen: Lugar1,
-      categoria: [
-        "gastronomia",
-
-      ],
+      imagen: cat_food,
+      categoria: ["gastronomia"],
     },
     {
       titulo: "Cultura e Historia",
       contenido: "Descubre sitios históricos y culturales únicos.",
-      imagen: Lugar2,
-      categoria: ["Cultura", ],
+      imagen: cat_history,
+      categoria: ["Cultura"],
     },
     {
       titulo: "Arte",
       contenido: "Vive experiencias de arte únicas.",
-      imagen: Lugar3,
-      categoria: ["ArteEntretenimiento", ],
+      imagen: cat_art,
+      categoria: ["ArteEntretenimiento"],
     },
     {
       titulo: "Naturaleza y Aventura",
       contenido: "Conecta con la naturaleza y vive aventuras inolvidables.",
-      imagen: Lugar1,
-      categoria: ["Naturaleza",],
+      imagen: cat_nature,
+      categoria: ["Naturaleza"],
     },
     {
       titulo: "Vida Nocturna",
       contenido: "Explora los mejores lugares para disfrutar la noche.",
-      imagen: Lugar2,
-      categoria: ["VidaNocturna", ],
+      imagen: cat_night,
+      categoria: ["VidaNocturna"],
     },
     {
       titulo: "Compras",
       contenido: "Descubre los mejores lugares para ir de compras.",
-      imagen: Lugar3,
-      categoria: ["Compras", ],
+      imagen: cat_shop,
+      categoria: ["Compras"],
     },
     {
       titulo: "Familia y Niños",
       contenido: "Actividades ideales para disfrutar en familia.",
-      imagen: Lugar1,
-      categoria: ["FamiliaNinos", ],
+      imagen: cat_family,
+      categoria: ["FamiliaNinos"],
     },
     {
       titulo: "Deportes y Actividades Extremas",
       contenido: "Experimenta la adrenalina con actividades extremas.",
-      imagen: Lugar2,
-      categoria: ["Deportes", ],
+      imagen: cat_sport,
+      categoria: ["Deportes"],
     },
   ];
 
