@@ -7,8 +7,8 @@ const pool = mysql.createPool({
     user: 'root',
     password: '',
     database: 'Nomadland',
-    port: 3308
-    //port: 3306
+    //port: 3308
+    port: 3306
 });
 
 module.exports = pool;  // Exporta la pool de conexión solo una vez
