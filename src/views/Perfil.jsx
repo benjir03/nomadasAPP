@@ -8,7 +8,7 @@ import { FaCircle } from "react-icons/fa";
 import { EjemploPerfil } from "../imgs/ArchivoImgs";
 import { AuthContext } from "../context/auth";
 
-const Perfil = ({imagen}) => {
+const Perfil = () => {
   const { logout } = useContext(AuthContext);
   const [activeSection, setActiveSection] = useState("info");
   const [usuario, setUsuario] = useState([]);
@@ -270,7 +270,7 @@ const Perfil = ({imagen}) => {
           <div
                 className="contenedorTres"
                 style={{
-                  backgroundImage: `url(${usuario.imagen})`, // Asegúrate de usar la interpolación correcta*/
+                  backgroundImage: `url(${EjemploPerfil})`, // Asegúrate de usar la interpolación correcta*/
                   backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
                   backgroundPosition: "center", // Centra la imagen
                 }}
