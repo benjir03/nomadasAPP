@@ -270,7 +270,7 @@ const Perfil = () => {
           <div
                 className="contenedorTres"
                 style={{
-                  backgroundImage: `url(${EjemploPerfil})`, // Asegúrate de usar la interpolación correcta*/
+                  backgroundImage: `url(${usuario.imagen})`, // Asegúrate de usar la interpolación correcta*/
                   backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
                   backgroundPosition: "center", // Centra la imagen
                 }}

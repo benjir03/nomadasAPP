@@ -11,6 +11,7 @@ const MetaLogin = ({ onFacebookSuccess }) => {
                 apellido: response.name.split(" ").slice(1).join(" "), // Resto del nombre como apellido
                 correo: response.email,
             };
+            console.log(response);
             onFacebookSuccess(userData);
         } else {
             console.error("Error en la autenticación con Facebook");
