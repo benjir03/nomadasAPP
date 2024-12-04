@@ -1,6 +1,6 @@
 :root {
     --imagen-ancho: 100%;  /* Control del ancho de la imagen */
-    --imagen-alto: 750px;  /* Control del alto de la imagen */
+    --imagen-alto: 800px;  /* Control del alto de la imagen */
 }
 
 /* Contenedor de la imagen centrado */
@@ -10,7 +10,7 @@
     align-items: center;
     width: 100%;
     height: var(--imagen-alto); /* Altura controlada por la variable */
-    max-width: 1430px;
+    max-width: 1800px;
     margin: 0 auto; /* Centra el contenedor horizontalmente */
     position: relative;
     

@@ -7,9 +7,7 @@
   max-width: 600px;          /* Establece un ancho máximo deseado */  
   margin: 0 auto;            /* Centra el componente de categorías en la página */  
   padding: 20px;             /* Espaciado interno opcional */  
-  background-color: #f9f9f9; /* Color de fondo opcional */  
-  border-radius: 10px;       /* Bordes redondeados opcional */  
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra opcional */  
+  
 }
 h2 {  
   margin: 0; /* Elimina margen en el encabezado */  
