@@ -6,7 +6,7 @@ const CompletarPerfil = () => {
   return (
     <ModPerfil 
     Accion="Completar Perfil"
-    Navegacion="/GustosPerfil"
+    Navegacion="/Perfil"
     />
   );
 };

@@ -46,20 +46,20 @@ const Perfil = () => {
         console.error("Error al obtener el perfil del usuario:", error);
       }
     };
-
+    
     fetchPerfil();
   }, []);
-
-  // Perfil.jsx o componente con logout
-  const handleLogout = async () => {
-    try {
-      await axios.post("http://localhost:3001/auth/logout", {}, { withCredentials: true });
-      logout(); // Limpia el estado global del usuario
-      navigate('/Inicio');
-    } catch (error) {
-      console.error("Error al cerrar sesión:", error);
-    }
-  };
+  
+    // Perfil.jsx o componente con logout
+    const handleLogout = async () => {
+      try {
+        await axios.post("http://localhost:3001/auth/logout", {}, { withCredentials: true });
+        logout(); // Limpia el estado global del usuario
+        navigate('/Inicio');
+      } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+      }
+    };
 
 
   const handleDelete = async () => {
@@ -86,7 +86,7 @@ const Perfil = () => {
           <div className="perfil-centrado">
             <div className="login-container" >
               <h2 className="login-title">Datos generales</h2>
-
+              
               <p className="camposPerfil">
                 <strong>Nombre:</strong> {`${usuario.nombre}`}
               </p>
@@ -101,8 +101,8 @@ const Perfil = () => {
               <p className="camposPerfil">
                 <strong>Género:</strong> {`${usuario.genero}` === 'M' ? 'Masculino' : 'Femenino'}
               </p>
-
-              <br />
+            
+              <br/>
 
               <h2 className="login-title" >Datos de la cuenta</h2>
 
@@ -118,22 +118,22 @@ const Perfil = () => {
                 <strong>Teléfono:</strong> {`${usuario.telefono}`}
               </p>
 
-              <br />
+              <br/>
 
               <Link className="botonAccion" to="/Modificar">
                 Modificar datos
               </Link>
 
-              <br />
-              <br />
+              <br/>
+              <br/>
 
               <button onClick={handleDelete} className="botonAccion">
-                Eliminar cuenta
+                Eliminar cuenta 
               </button>
 
-              <br />
-              <br />
-              <br />
+              <br/>
+              <br/>
+              <br/>
 
               <button className="botonAccion">
                 Editar foto de perfil
@@ -246,13 +246,13 @@ const Perfil = () => {
           </div>
         );
 
-      //Prefencias
-      case "pref":
-        return (
-          <div className="perfil-centrado">
+        //Prefencias
+        case "pref":
+          return(
+            <div className="perfil-centrado">
             <div className="login-container" >
               <h2 className="login-title">Preferencias</h2>
-
+              
               <p className="camposPerfil">
                 <strong>Categoria favorita:</strong> {`${pref.nombre_categoria}`}
               </p>
@@ -262,7 +262,7 @@ const Perfil = () => {
               </p>
 
               <p className="camposPerfil">
-                <strong>Duracion usual de viajes:</strong> {`${pref.duracion}` === 1 ? '1 dia' : '2 dias o mas'}
+                <strong>Duracion usual de viajes:</strong> {`${pref.duracion}`=== 1 ? '1 dia' : '2 dias o mas'}
               </p>
               <p className="camposPerfil">
                 <strong>Viajas solito pibe ?</strong> {`${pref.compañia}` === 'A' ? 'Solo' : 'No, Acompañado'}
@@ -279,16 +279,16 @@ const Perfil = () => {
               <p className="camposPerfil">
                 <strong>Cuentas con capacidades diferestes al resto ?</strong> {`${pref.capacidades_diferentes}` === 'S' ? 'Si' : 'No'}
               </p>
-              <br />
-              <br />
+              <br/>
+              <br/>
 
               <Link className="botonAccion" to="/ModGustos">
                 Modificar gustos y preferencias
               </Link>
-              <br /><br /><br />
+              <br/><br/><br />
             </div>
           </div>
-        );
+          );
 
       case "security":
         return (
@@ -309,19 +309,19 @@ const Perfil = () => {
               <h2 className="login-title">Notificaciones recientes</h2>
               <p className="Parrafo1">
                 Aquí podrás consultar todas las notificaciones que genere nuestro sistema para tu cuenta.
-              </p>
+              </p>              
             </div>
           </div>
         );
 
-      case "config":
+        case "config":
         return (
           <div className="contenedorVista">
             <div  >
               <h2 className="login-title">Configuración Avanzada</h2>
               <p className="Parrafo1">
                 En esta sección puedes configurar los detalles de tu cuenta para tener la mejor experiencia.
-              </p>
+              </p>              
             </div>
           </div>
         );
@@ -338,88 +338,88 @@ const Perfil = () => {
 
   return (
     <>
-      <div className="perfil-centrado">
+    <div className="perfil-centrado">
 
-        <div className="izquierda">
+      <div className="izquierda">
 
-          <div className="sidebar">
-            <h2 className="perfil-nombre">Bienvenido {`${usuario.nombre}`}</h2>
+        <div className="sidebar">
+          <h2 className="perfil-nombre">Bienvenido {`${usuario.nombre}`}</h2>
 
-            <div
-              className="contenedorTres"
-              style={{
-                backgroundImage: `url(${EjemploPerfil})`, // Asegúrate de usar la interpolación correcta*/
-                backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
-                backgroundPosition: "center", // Centra la imagen
-              }}
-            >
-            </div>
-
-            <br />
-
-            <ul>
-              <li
-                className={activeSection === "info" ? "active" : ""}
-                onClick={() => setActiveSection("info")}
-              >
-                Información personal
-              </li>
-
-              <li
-                className={activeSection === "favoritos" ? "active" : ""}
-                onClick={() => setActiveSection("favoritos")}
-              >
-                Favoritos
-              </li>
-
-              <li
-                className={activeSection === "planes" ? "active" : ""}
-                onClick={() => setActiveSection("planes")}
-              >
-                Planes
-              </li>
-
-              <li
-                className={activeSection === "notifications" ? "active" : ""}
-                onClick={() => setActiveSection("notifications")}
-              >
-                Notificaciones
-              </li>
-
-              <li
-                className={activeSection === "pref" ? "active" : ""}
-                onClick={() => setActiveSection("pref")}
-              >
-                Preferencias
-              </li>
-
-              <li
-                className={activeSection === "config" ? "active" : ""}
-                onClick={() => setActiveSection("config")}
-              >
-                Configuración avanzada
-              </li>
-
-              <br />
-
-              <button className="botonCerrar"
-                onClick={() => setActiveSection("logout")}>
-                Cerrar Sesión
-              </button>
-
-            </ul>
+          <div
+                className="contenedorTres"
+                style={{
+                  backgroundImage: `url(${EjemploPerfil})`, // Asegúrate de usar la interpolación correcta*/
+                  backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
+                  backgroundPosition: "center", // Centra la imagen
+                }}
+          >
           </div>
+
+          <br/>
+
+          <ul>
+            <li
+              className={activeSection === "info" ? "active" : ""}
+              onClick={() => setActiveSection("info")}
+            >
+              Información personal
+            </li>
+
+            <li
+              className={activeSection === "favoritos" ? "active" : ""}
+              onClick={() => setActiveSection("favoritos")}
+            >
+              Favoritos
+            </li>
+
+            <li
+              className={activeSection === "planes" ? "active" : ""}
+              onClick={() => setActiveSection("planes")}
+            >
+              Planes
+            </li>
+
+            <li
+              className={activeSection === "notifications" ? "active" : ""}
+              onClick={() => setActiveSection("notifications")}
+            >
+              Notificaciones
+            </li>
+
+            <li
+              className={activeSection === "pref" ? "active" : ""}
+              onClick={() => setActiveSection("pref")}
+            >
+              Preferencias
+            </li>
+
+            <li
+              className={activeSection === "config" ? "active" : ""}
+              onClick={() => setActiveSection("config")}
+            >
+              Configuración avanzada
+            </li>
+
+            <br/>
+
+            <button className="botonCerrar"
+              onClick={() => setActiveSection("logout")}>
+              Cerrar Sesión
+            </button>
+
+          </ul>
         </div>
+      </div>
 
-        <div className="derecha">
-          <main className="content">{renderContent()}</main>
-        </div>
-
-
+      <div className="derecha">
+        <main className="content">{renderContent()}</main>
       </div>
 
 
+    </div>
 
+
+    
 
     </>
   );
