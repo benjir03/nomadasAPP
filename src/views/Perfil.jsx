@@ -161,7 +161,7 @@ const Perfil = () => {
                     </div>
                     <div className="plan-buttons">
                       <button className="btn-plan">Ver</button>
-                      <button className="btn-edit">Eliminar</button> {/* Botón "Editar" agregado */}
+                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                     </div>
                   </div>
   
@@ -174,7 +174,7 @@ const Perfil = () => {
                     </div>
                     <div className="plan-buttons">
                       <button className="btn-plan">Ver</button>
-                      <button className="btn-edit">Eliminar</button> {/* Botón "Editar" agregado */}
+                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                     </div>
                   </div>
   
@@ -187,7 +187,7 @@ const Perfil = () => {
                     </div>
                     <div className="plan-buttons">
                       <button className="btn-plan">Ver</button>
-                      <button className="btn-edit">Eliminar</button> {/* Botón "Editar" agregado */}
+                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                     </div>
                   </div>
                 </div>
@@ -212,7 +212,7 @@ const Perfil = () => {
                   </div>
                   <div className="plan-buttons">
                     <button className="btn-plan">Ver</button>
-                    <button className="btn-edit">Editar</button> {/* Botón "Editar" agregado */}
+                    <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                   </div>
                 </div>
 
@@ -225,7 +225,7 @@ const Perfil = () => {
                   </div>
                   <div className="plan-buttons">
                     <button className="btn-plan">Ver</button>
-                    <button className="btn-edit">Editar</button> {/* Botón "Editar" agregado */}
+                    <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                   </div>
                 </div>
 
@@ -238,7 +238,7 @@ const Perfil = () => {
                   </div>
                   <div className="plan-buttons">
                     <button className="btn-plan">Ver</button>
-                    <button className="btn-edit">Editar</button> {/* Botón "Editar" agregado */}
+                    <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                   </div>
                 </div>
               </div>
