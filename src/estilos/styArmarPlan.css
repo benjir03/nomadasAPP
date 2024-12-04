@@ -292,6 +292,29 @@ label {
   max-width: 150px;
 }
 
+
+
+/* Estilos para las etiquetas de los botones */
+.button-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-label {
+  font-size: 0.6rem;
+  color: var(--background-color);
+}
+
+/* Ajuste adicional para asegurarse de que los botones no se encimen */
+.button-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+
 .botAccion:hover {
   background-color: var(--secondary-color);
   transition: 0.3s;

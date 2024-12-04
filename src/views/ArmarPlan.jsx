@@ -77,47 +77,65 @@ export default function ArmarPlan() {
             <div className="selector-item">
               <label>Tiempo estimado de estancia</label>
               <div className="button-group">
-                <button
-                  className={`button-field ${estancia === "Unas cuantas horas" ? "active" : ""}`}
-                  onClick={() => setEstancia("Unas cuantas horas")}
-                >
-                  <FaClock />
-                </button>
-                <button
-                  className={`button-field ${estancia === "Un día" ? "active" : ""}`}
-                  onClick={() => setEstancia("Un día")}
-                >
-                  <FaCalendar />
-                </button>
-                <button
-                  className={`button-field ${estancia === "Fin de semana" ? "active" : ""}`}
-                  onClick={() => setEstancia("Fin de semana")}
-                >
-                  <FaPlus />
-                </button>
+                <div className="button-item">
+                  <button
+                    className={`button-field ${estancia === "Unas cuantas horas" ? "active" : ""}`}
+                    onClick={() => setEstancia("Unas cuantas horas")}
+                  >
+                    <FaClock />
+                  </button>
+                  <span className="button-label">Horas</span>
+                </div>
+                <div className="button-item">
+                  <button
+                    className={`button-field ${estancia === "Un día" ? "active" : ""}`}
+                    onClick={() => setEstancia("Un día")}
+                  >
+                    <FaCalendar />
+                  </button>
+                  <span className="button-label">Día</span>
+                </div>
+                <div className="button-item">
+                  <button
+                    className={`button-field ${estancia === "Fin de semana" ? "active" : ""}`}
+                    onClick={() => setEstancia("Fin de semana")}
+                  >
+                    <FaPlus />
+                  </button>
+                  <span className="button-label">Más</span>
+                </div>
               </div>
             </div>
             <div className="selector-item">
               <label>Acompañantes</label>
               <div className="button-group">
-                <button
-                  className={`button-field ${acompanantes === "Voy solo" ? "active" : ""}`}
-                  onClick={() => setAcompanantes("Voy solo")}
-                >
-                  <FaUser />
-                </button>
-                <button
-                  className={`button-field ${acompanantes === "Con pareja" ? "active" : ""}`}
-                  onClick={() => setAcompanantes("Con pareja")}
-                >
-                  <FaUserFriends />
-                </button>
-                <button
-                  className={`button-field ${acompanantes === "Familia/Amigos" ? "active" : ""}`}
-                  onClick={() => setAcompanantes("Familia/Amigos")}
-                >
-                  <FaUsers />
-                </button>
+                <div className="button-item">
+                  <button
+                    className={`button-field ${acompanantes === "Voy solo" ? "active" : ""}`}
+                    onClick={() => setAcompanantes("Voy solo")}
+                  >
+                    <FaUser />
+                  </button>
+                  <span className="button-label">Solo</span>
+                </div>
+                <div className="button-item">
+                  <button
+                    className={`button-field ${acompanantes === "Con pareja" ? "active" : ""}`}
+                    onClick={() => setAcompanantes("Con pareja")}
+                  >
+                    <FaUserFriends />
+                  </button>
+                  <span className="button-label">Pareja</span>
+                </div>
+                <div className="button-item">
+                  <button
+                    className={`button-field ${acompanantes === "Familia/Amigos" ? "active" : ""}`}
+                    onClick={() => setAcompanantes("Familia/Amigos")}
+                  >
+                    <FaUsers />
+                  </button>
+                  <span className="button-label">Amigos</span>
+                </div>
               </div>
             </div>
             <div className="selector-item">
