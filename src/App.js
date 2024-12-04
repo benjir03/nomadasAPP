@@ -8,6 +8,8 @@ import InicioSesion from "./views/InicioSesion";
 import Experiencias from "./views/Experiencias";
 import Modificar from "./views/ModificarPerfil";
 import ArmarPlan from "./views/ArmarPlan";
+import VerPlan from "./views/VerPlan";
+/*import VerPlan from "./views/VerPlan";*/
 import Actividad from "./views/Actividad";
 import Explora from "./views/Explora";
 import GustosPerfil from "./views/GustosPerfil";
@@ -62,6 +64,7 @@ function App() {
           <Route path="/InfoPass" element={<InfoPass />} />
           <Route path="/DetalleLugarC" element={<DetalleLugarC />} />
           <Route path="/detalle/:titulo" element={<DetalleLugar />} />
+          <Route path="/VerPlan" element={<VerPlan />} />
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
           <Route path="/registro" element={<Registro />} />

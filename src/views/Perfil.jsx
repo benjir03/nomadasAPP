@@ -111,10 +111,6 @@ const Perfil = () => {
               </p>
 
               <p className="camposPerfil">
-                <strong>Contraseña:</strong> {`${usuario.contraseña}`}
-              </p>
-
-              <p className="camposPerfil">
                 <strong>Teléfono:</strong> {`${usuario.telefono}`}
               </p>
 
