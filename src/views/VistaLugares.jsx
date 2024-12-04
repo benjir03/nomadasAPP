@@ -282,95 +282,89 @@ useEffect(() => {
     fetchLugares();
   }, [searchQuery]); // Cuando 'searchQuery' cambie, vuelve a realizar la búsqueda
 
+  return (  
+    <div className="carousel-container1">   
+      <Categoria />  
+      <div style={{ position: "absolute", top: "100px", left: "60px", zIndex: 10 }}>  
+        <BotonRegresar />  
+      </div>  
+      <h2>Lugares de interés</h2>  
+      <div className="search-and-categories">  
+        <div className="search-column1">  
+          <h2>Busca lugares</h2>  
+          <form onSubmit={(e) => {  
+            e.preventDefault();  
+            fetchLugares();  
+          }}>  
+            <div>  
+              <label htmlFor="searchQuery">Buscar lugar:</label>  
+              <input  
+                type="text"  
+                id="searchQuery"  
+                value={searchQuery}  
+                onChange={(e) => setSearchQuery(e.target.value)}  
+                placeholder="Ingresa un lugar"  
+              />  
+            </div>  
+            <button type="submit">Buscar</button>  
+          </form>  
+        </div>  
   
-  return (
-    <div className="carousel-container1">
-      <Categoria />
-      <div style={{ position: "absolute", top: "150px", left: "60px", zIndex: 10 }}>
-          <BotonRegresar />
-        </div>
-      <h2>Lugares de interés</h2>
-      <div className="search-and-categories">
-        {/* Columna 1: Buscar lugares */}
-        <div className="search-column1">
-          <h2>Busca lugares</h2>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              fetchLugares();
-            }}
-          >
-            <div>
-              <label htmlFor="searchQuery">Buscar lugar:</label>
-              <input
-                type="text"
-                id="searchQuery"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Ingresa un lugar"
-              />
-            </div>
-            <button type="submit">Buscar</button>
-          </form>
-        </div>
-
-        {/* Columna 2: Selección de categorías */}
-        {showCheckboxes && (
-          <div className="categories-column1">
-            <h3>Selecciona las categorías:</h3>
-            <div className="checkbox-group">
-              {availableCategories.map((category) => (
-                <label key={category}>
-                  <input
-                    type="checkbox"
-                    value={category}
-                    onChange={handleCategoryChange}
-                    checked={selectedCategories.includes(category)}
-                  />
-                  {categoriasTraduccion[category]}
-                </label>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Resto del contenido */}
-      {loading && <p>Cargando lugares...</p>}
-      {error && <p>{error}</p>}
-      {lugares.length > 0 ? (
-        <div className="list-container1">
-          {lugares.map((lugar) => (
-            <div key={lugar.id} className="list-item1">
-              <img
-                src={lugar.image}
-                alt={lugar.title}
-                className="package-image1"
-              />
-              <h3>{lugar.title}</h3>
-              <p>
-                <strong>Calificación:</strong> {lugar.rating}
-              </p>
-              <p>
-                <strong>Ubicación:</strong> {lugar.location}
-              </p>
-              <p>
-                <strong>Estado:</strong> {lugar.openingTime}
-              </p>
-              <button
-                className="view-more-btn1"
-                onClick={() => handleViewMoreClick(lugar)}
-              >
-                Ver más
-              </button>
-            </div>
-          ))}
-        </div>
-      ) : (
-        !loading && <p>No se encontraron lugares para esta búsqueda.</p>
-      )}
-    </div>
+        {showCheckboxes && (  
+          <div className="categories-column1">  
+            <h3>Selecciona las categorías:</h3>  
+            <div className="checkbox-group">  
+              {availableCategories.map((category) => (  
+                <label key={category}>  
+                  <input  
+                    type="checkbox"  
+                    value={category}  
+                    onChange={handleCategoryChange}  
+                    checked={selectedCategories.includes(category)}  
+                  />  
+                  {categoriasTraduccion[category]}  
+                </label>  
+              ))}  
+            </div>  
+          </div>  
+        )}  
+      </div>  
+  
+      {loading && <p>Cargando lugares...</p>}  
+      {error && <p>{error}</p>}  
+      {lugares.length > 0 ? (  
+        <div className="list-container1">  
+          {lugares.map((lugar) => (  
+            <div key={lugar.id} className="list-item1">  
+              <img  
+                src={lugar.image}  
+                alt={lugar.title}  
+                className="package-image1"  
+              />  
+              <h3>{lugar.title}</h3>  
+              <p>  
+                <strong>Calificación:</strong> {lugar.rating}  
+              </p>  
+              <p>  
+                <strong>Ubicación:</strong> {lugar.location}  
+              </p>  
+              <p>  
+                <strong>Estado:</strong> {lugar.openingTime}  
+              </p>  
+              <button  
+                className="view-more-btn1"  
+                onClick={() => handleViewMoreClick(lugar)}  
+              >  
+                Ver más  
+              </button>  
+            </div>  
+          ))}  
+        </div>  
+      ) : (  
+        !loading && <p>No se encontraron lugares para esta búsqueda.</p>  
+      )}  
+    </div>  
   );
-};
+};  
 
-export default VistaLugares;
+export default VistaLugares;  

@@ -9,7 +9,7 @@ const Categoria = () => {
         <img src={categoriaImage} alt="Categoría" className="categoriaImagen" />  
         <div className="textoImagen">  
           <h2>Categoría</h2>  
-          <h3>Info Categoría</h3>  
+          <p>Info Categoría</p>  
         </div>  
       </div>  
     </div>  
