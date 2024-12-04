@@ -130,9 +130,9 @@ const { login } = useContext(AuthContext);
     }}
     >
       <div className="login-container">
-        <h1 className="login-title">{mensaje}</h1>
+      <h1 className="login-title">{mensaje}</h1>
         <form
-          className="login-form"
+                    className="login-form"
           a
           onSubmit={accion === "store" ? store : enviar}
         >
