@@ -5,10 +5,10 @@ const { Resend } = require('resend');
 const resend = new Resend('re_A3gYdg1F_AP2LBZ4JiSFU63hc54ssg7x4');
 
 exports.insertarUsuario = (req, res) => {
-    const { nombre, apellido, correo, contraseña, imagen } = req.body;
+    const { nombre, apellido, correo, imagen, genero, fecha_nacimento } = req.body;
     pool.query(
-        'INSERT INTO USUARIO (nombre, apellido, email, password_user, verificado, imagen) VALUES (?, ?, ?, ?, 0, ?)',
-        [nombre, apellido, correo, contraseña, imagen],
+        'INSERT INTO USUARIO (nombre, apellido, fecha_nacimiento, genero, email, verificado, imagen) VALUES (?, ?, ?, ?, ?, 0, ?)',
+        [nombre, apellido, fecha_nacimento, genero, correo, imagen],
         (err, results) => {
             if (err) {
                 console.error('Error en la inserción:', err);
