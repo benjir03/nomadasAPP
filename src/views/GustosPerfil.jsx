@@ -176,7 +176,7 @@ const GustosPerfil = () => {
       );
       console.log(response.data.message); // Mensaje del servidor
       alert("Gustos enviadas exitosamente");
-      navigate("/Perfil");
+      navigate("/Completar");
     } catch (error) {
       console.error("Error al enviar Gustos:", error);
       alert("Hubo un problema al enviar tus Gustos.");

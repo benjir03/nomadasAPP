@@ -11,6 +11,7 @@ const GoogleLoginComponent = ({ onGoogleSuccess }) => {
                 nombre: profileObj.givenName,
                 apellido: profileObj.familyName,
                 correo: profileObj.email,
+                imagen: profileObj.imageUrl,
             };
             onGoogleSuccess(userData);
         } else {
