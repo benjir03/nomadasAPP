@@ -1,13 +1,44 @@
 import React from 'react';
 import ActividadAgregada from '../componentes/ActividadAgregada';
 import "../estilos/RevisarPlan.css";
+import BotonRegresar from "../componentes/BotonRegresar";
 
 const RevisarPlan = () => {
   return (
     <div className="contenedorVista">
+      {/* Contenedor para el botón de regresar alineado a la izquierda */}
+      <div className="contenedorBotonRegresar">
+        <BotonRegresar />
+      </div>
+
       <h1 className="tituloRevisarPlan">Revisar Plan</h1>
+
       <div className="contenedorPrincipal">
         <div className="contenedorActividades">
+          <ActividadAgregada 
+            nombre="Parque Central" 
+            ubicacion="Centro" 
+            horario="8:00 AM - 10:00 PM" 
+            imagen="ruta_a_tu_imagen_parque.jpg" 
+          />
+          <ActividadAgregada 
+            nombre="Museo de Arte" 
+            ubicacion="Avenida Principal" 
+            horario="9:00 AM - 5:00 PM" 
+            imagen="ruta_a_tu_imagen_museo.jpg" 
+          />
+          <ActividadAgregada 
+            nombre="Parque Central" 
+            ubicacion="Centro" 
+            horario="8:00 AM - 10:00 PM" 
+            imagen="ruta_a_tu_imagen_parque.jpg" 
+          />
+          <ActividadAgregada 
+            nombre="Museo de Arte" 
+            ubicacion="Avenida Principal" 
+            horario="9:00 AM - 5:00 PM" 
+            imagen="ruta_a_tu_imagen_museo.jpg" 
+          />
           <ActividadAgregada 
             nombre="Parque Central" 
             ubicacion="Centro" 
@@ -30,6 +61,7 @@ const RevisarPlan = () => {
             </button>
           </div>
         </div>
+
         <div className="contenedorLadoDerecho">
           <div className="nombrePlanContenedor">
             <h3 className="nombrePlan">Nombre del Plan</h3>
@@ -48,7 +80,6 @@ const RevisarPlan = () => {
           <div className="detalleAcompanantes">
             <p><strong>Acompañantes:</strong> 2 personas</p>
           </div>
-          <button className="botonEditarDetalles">Editar Detalles</button>
         </div>
       </div>
     </div>
