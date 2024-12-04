@@ -97,8 +97,9 @@ const { user, login, logout } = useContext(AuthContext);
       const requestData = {
         nombre: userData.nombre, // Usa el valor actual o una cadena vacía
         apellido: userData.apellido,
-        correo: userData.correo || correo,
+        correo: userData.correo,
         contraseña: contraseña,
+        imagen: userData.imagen,
       };
       // Envía los datos al backend
       const response = await axios.post(
