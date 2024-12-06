@@ -24,7 +24,7 @@ function Actividad() {
             imagenFondo={lugar.image}
             infoTitulo={lugar.title}
             infoPrecio={precio} // Usa la variable `precio` con la condición aplicada
-            infoDuracion={lugar.recommendedTime || "No disponible"}
+            infoCalificacion={lugar.rating}
             infoDescripcion={lugar.descripcion || "Descripción no disponible"}
             mapaSrc={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU&q=place_id:${lugar.id}`}
             mapaLink={lugar.website || "#"}

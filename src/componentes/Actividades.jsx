@@ -4,6 +4,25 @@ import { FaPlus, FaHeart } from "react-icons/fa"; // Íconos de react-icons
 import "../estilos/styActividad.css";
 import BotonRegresar from "../componentes/BotonRegresar";
 
+// Función para renderizar las estrellas
+const renderStars = (rating) => {
+  const fullStars = Math.floor(rating);  // Cantidad de estrellas completas
+  const halfStar = rating % 1 !== 0 ? 1 : 0;  // Si tiene decimales, agrega media estrella
+  const emptyStars = 5 - fullStars - halfStar;  // Estrellas vacías
+
+  return (
+    <>
+      {'★'.repeat(fullStars).split('').map((star, index) => (
+        <span key={index} className="star">{star}</span>  // Estrellas completas
+      ))}
+      {halfStar === 1 && <span className="star">☆</span>}  {/* Media estrella si hay decimales */}
+      {'☆'.repeat(emptyStars).split('').map((star, index) => (
+        <span key={index} className="star">{star}</span>  // Estrellas vacías
+      ))}
+    </>
+  );
+};
+
 function ActividadPrincipal({ 
   titulo, 
   descripcion, 
@@ -15,7 +34,8 @@ function ActividadPrincipal({
   mapaSrc, 
   mapaTitulo, 
   mapaUbicacion, 
-  mapaLink 
+  mapaLink,
+  infoCalificacion // Agregar la calificación aquí
 }) {
   return (
     <div>
@@ -51,7 +71,8 @@ function ActividadPrincipal({
         <div className="descripcion">
           <h2>{infoTitulo}</h2>
           <p>Precio: {infoPrecio}</p>
-          <p>Duración: {infoDuracion}</p>
+          {/* Mostrar la calificación en estrellas */}
+          <p><strong>Calificación: </strong>{renderStars(infoCalificacion) || "No disponible"}</p>
           <p>{infoDescripcion}</p>
         </div>
         <div className="mapa">
