@@ -37,6 +37,16 @@ function ActividadPrincipal({
   mapaLink,
   infoCalificacion // Agregar la calificación aquí
 }) {
+  // Función para manejar el click en "Agregar al plan"
+  const handleAddToPlan = () => {
+    alert("¡Actividad agregada al plan correctamente!");
+  };
+
+  // Función para manejar el click en "Favoritos"
+  const handleAddToFavorites = () => {
+    alert("¡Actividad agregada a favoritos!");
+  };
+
   return (
     <div>
       {/* Sección de bienvenida */}
@@ -57,10 +67,16 @@ function ActividadPrincipal({
         <div className="contenedorDos">
           <h1>{titulo}</h1>
           <p>{descripcion}</p>
-          <Link className="botonAccionAct">
+          <Link 
+            className="botonAccionAct" 
+            onClick={handleAddToPlan}  // Agregar acción de click aquí
+          >
             <FaPlus style={{ marginRight: "8px" }} /> Agregar al plan
           </Link>
-          <Link className="botonAccionAct">
+          <Link 
+            className="botonAccionAct" 
+            onClick={handleAddToFavorites}  // Agregar acción de click aquí
+          >
             <FaHeart style={{ marginRight: "8px" }} /> Favoritos
           </Link>
         </div>
@@ -70,7 +86,7 @@ function ActividadPrincipal({
       <section className="actividadInfo">
         <div className="descripcion">
           <h2>{infoTitulo}</h2>
-          <p>Precio: {infoPrecio}</p>
+          <p><strong>Precio: </strong>{infoPrecio}</p>
           {/* Mostrar la calificación en estrellas */}
           <p><strong>Calificación: </strong>{renderStars(infoCalificacion) || "No disponible"}</p>
           <p>{infoDescripcion}</p>
