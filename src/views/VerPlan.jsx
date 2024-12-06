@@ -1,17 +1,16 @@
 import React from 'react';
 import ActividadAgregada from '../componentes/ActividadAgregada';
 import "../estilos/RevisarPlan.css";
-import BotonRegresar from "../componentes/BotonRegresar";
+import BotonRegresar2 from "../componentes/BotonRegresar2";
 
 const RevisarPlan = () => {
   return (
     <div className="contenedorVista">
-      {/* Contenedor para el botón de regresar alineado a la izquierda */}
-      <div className="contenedorBotonRegresar">
-        <BotonRegresar />
+      {/* Contenedor para el botón de regresar y el título */}
+      <div className="contenedorTitulo">
+        <BotonRegresar2 />
+        <h1 className="tituloRevisarPlan">Ver Plan</h1>
       </div>
-
-      <h1 className="tituloRevisarPlan">Ver Plan</h1>
 
       <div className="contenedorPrincipal">
         <div className="contenedorActividades">

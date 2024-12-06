@@ -202,11 +202,14 @@ li {
 /* Estilos para el contenedor del botón de regresar */
 .contenedorBotonRegresar {
   margin-top: 20px; /* Espacio entre el título y el botón */
-  text-align: left; /* Alinea el botón a la izquierda */
+  display: flex; /* Usamos flexbox para alinear el contenido */
+  justify-content: flex-start; /* Alinea el botón a la izquierda */
+  align-items: center; /* Centra el botón verticalmente */
+  width: 100%; /* Asegura que el contenedor ocupe todo el espacio disponible */
 }
 
 /* Estilos para el botón de regresar */
-.botonRegresar {
+.botonRegresar3 {
   background-color: #007BFF; /* Color de fondo */
   color: white; /* Color del texto */
   border: none;
@@ -218,6 +221,21 @@ li {
 }
 
 /* Efecto hover para el botón de regresar */
-.botonRegresar:hover {
+.botonRegresar3:hover {
   background-color: #0056b3;
+}
+
+.contenedorTitulo {
+  display: flex;
+  justify-content: space-between; /* Alinea el botón a la izquierda y el título al centro */
+  align-items: center; /* Centra verticalmente el contenido */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  margin-top: 20px; /* Añade un margen superior */
+  margin-bottom: 50px; /* Añade un margen inferior para separar del contenido siguiente */
+}
+
+.tituloRevisarPlan {
+  text-align: center; /* Alinea el texto del título al centro */
+  flex-grow: 1; /* Hace que el título ocupe el espacio disponible */
+  margin: 0; /* Elimina márgenes adicionales */
 }
