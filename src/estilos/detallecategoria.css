@@ -1,110 +1,185 @@
-/* VistaLugares.css */  
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");  
-@import "./styGeneral.css";  
+/* VistaLugares.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import "./styGeneral.css";
 
-.categories-column1 {  
-  width: 100%;                /* Mantiene el 100% del ancho, se aplicará max-width */  
-  max-width: 600px;          /* Establece un ancho máximo deseado */  
-  margin: 0 auto;            /* Centra el componente de categorías en la página */  
-  padding: 20px;             /* Espaciado interno opcional */  
-  
+/* Contenedor principal */
+.carousel-container1 {
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
 }
-h2 {  
-  margin: 0; /* Elimina margen en el encabezado */  
-}  
 
-.search-and-categories {  
-  display: flex;  
-  gap: 20px;  
-  justify-content: center;  
-  margin-top: 20px; /* Ajusta según sea necesario */  
-}  
-
-.search-column1,  
-.categories-column1 {  
-  flex: 1;  
-  max-width: 45%;  
-  background-color: #ffffff;  
-  padding: 20px;  
-  border-radius: 12px;  
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  
-  display: flex;  
-  flex-direction: column;  
-  align-items: center;  
-}  
-
-.search-column1 form {  
-  display: flex;  
-  flex-direction: column;  
-  align-items: center;  
-}  
-
-.checkbox-group {  
-  display: grid;  
-  grid-template-columns: repeat(3, 1fr); /* 3 checkboxes por fila */  
-  gap: 10px;  
-  width: 100%;  
-  justify-items: center;  
-  overflow-wrap: break-word; /* Evita que los elementos se desborden */  
-}  
-
-.checkbox-group label {  
-  display: flex;  
-  align-items: center;  
-  justify-content: center;  
-  font-size: 14px;  
-  color: #555;  
-}  
-
-.checkbox-group input {  
-  margin-right: 8px;  
-}  
-
-.search-column1 h2,  
-.categories-column1 h3 {  
-  margin-bottom: 10px;  
-  font-size: 18px;  
-  font-weight: 600;  
-  color: #333;  
-}  
-
-.categories-column1 label {  
-  display: block;  
-  margin-bottom: 8px;  
-  font-size: 14px;  
-  color: #555;  
-}  
-
-.categories-column1 input[type="checkbox"] {  
-  margin-right: 8px;  
-}  
-
-button[type="button"] {  
-  position: absolute;  
-  top: 20px; /* Cambia esta posición según sea necesario */  
-  left: 60px;  
-  z-index: 10;  
+/* Contenedor de contenido principal */
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  gap: 20px; /* Espaciado entre columnas */
+  margin-top: 20px;
 }
-.package-image1 {  
-  width: 100%;             /* Ocupará el 100% del ancho del contenedor */  
-  max-width: 1400px;      /* Cambia esto a 1400px si es necesario */  
-  height: auto;           /* Mantiene la proporción de la imagen */  
-  max-height: 200px;      /* Ajusta la altura máxima según sea necesario */  
-  object-fit: cover;      /* Mantiene la proporción sin deformar */  
-  border-radius: 10px;    /* Bordes redondeados */  
-}  
 
-.list-item1 {  
-  max-width: 1000px;      /* Asegúrate de que este valor permita mostrar la imagen completa */  
-  width: 100%;            /* Asegúrate de que ocupe el ancho completo del contenedor */  
-  text-align: center;     /* Mantén el texto centrado */  
-  margin: 0 auto;         /* Centra el contenedor si es necesario */  
-  padding: 10px;          /* Espaciado interno opcional */  
-}  
+/* Columna de filtros */
+.filters-column {
+  flex: 1; /* Toma un ancho proporcional */
+  max-width: 300px; /* Ancho fijo para los filtros */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-.list-container1 {  
-  display: flex;           /* Cambiamos a flexbox para evitar problemas con el grid */  
-  flex-direction: column;  /* Las imágenes se apilan en una columna */  
-  align-items: center;     /* Centra las imágenes */  
-  gap: 20px;               /* Espacio vertical entre elementos */  
+/* Sección de búsqueda */
+.search-column1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+  text-align: center; /* Centra el texto */
+  gap: 10px;
+  padding: 0; /* Quita el fondo */
+}
+
+.search-column1 h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.search-column1 label {
+  font-size: 14px;
+  color: #555;
+}
+
+.search-column1 input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-column1 button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #008080; /* Color original */
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-column1 button:hover {
+  background-color: #005757; /* Efecto hover */
+  transform: scale(1.05); /* Efecto visual adicional */
+}
+
+/* Categorías */
+.categories-column1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  gap: 10px; /* Espacio entre filas y columnas */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  align-items: center; /* Alinea verticalmente */
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  overflow-wrap: break-word; /* Evita desbordamiento de texto */
+}
+
+.checkbox-group input {
+  margin-right: 8px;
+}
+
+/* Lista de lugares */
+.list-container1 {
+  flex: 2; /* Toma más espacio que la columna de filtros */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.list-item1 {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.package-image1 {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.list-item1 h3 {
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.list-item1 p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.list-item1 .view-more-btn1 {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #008080; /* Color original */
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.list-item1 .view-more-btn1:hover {
+  background-color: #005757; /* Efecto hover */
+  transform: scale(1.05);
+}
+
+/* Mensajes */
+p {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .filters-column {
+    max-width: 100%;
+  }
+
+  .list-container1 {
+    grid-template-columns: 1fr;
+  }
 }
