@@ -74,7 +74,7 @@
 }
 
 .search-column1 button:hover {
-  background-color: #005757; /* Efecto hover */
+  background-color:  var(--secondary-color);
   transform: scale(1.05); /* Efecto visual adicional */
 }
 
