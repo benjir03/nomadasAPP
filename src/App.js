@@ -33,6 +33,7 @@ import NotFound from "./views/NotFound";
 import DetalleLugarC from "./componentes/DetalleLugarC";
 import DetalleLugar from "./views/DetalleLugar";
 import { AuthProvider } from "./context/auth";
+import Ruta from "./views/Ruta"
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
           <Route path="/VerPlan" element={<VerPlan />} />
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
+          <Route path="/Ruta" element={<Ruta/>}/>
           <Route path="/registro" element={<Registro />} />
           <Route path="/RevisarPlan" element={<RevisarPlan />} />
 

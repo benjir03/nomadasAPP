@@ -165,6 +165,40 @@ app.get('/place-description', async (req, res) => {
 });
 
 
+app.get('/route-matrix', async (req, res) => {
+    const { origins, destinations } = req.query;
+    const apiKey = 'AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU';
+    const formattedOrigins = `place_id:${origins}`;
+    const formattedDestinations = destinations.split('|').map(id => `place_id:${id}`).join('|');
+    const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${formattedOrigins}&destinations=${formattedDestinations}&key=${apiKey}`;
+    
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data.status !== 'OK') {
+        throw new Error(data.error_message || 'Error fetching data from Google API');
+      }
+  
+      // Obtener direcciones formateadas
+      const placeIds = [origins, ...destinations.split('|')];
+      const placeDetails = await Promise.all(placeIds.map(async (placeId) => {
+        const placeUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${apiKey}`;
+        const placeResponse = await fetch(placeUrl);
+        const placeData = await placeResponse.json();
+        return {
+          name: placeData.result.name,
+          formatted_address: placeData.result.formatted_address
+        };
+      }));
+  
+      res.json({ ...data, placeDetails });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+  
+  
+  
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
