@@ -1,0 +1,121 @@
+.carrousel-lugares {
+  position: relative;
+  width: 100%;
+  max-width: 2200px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  border-radius: 15px;
+}
+
+.carrousel-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.carrousel-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 95px;
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.ficha-en-carrousel {
+  flex: 1 1 25%;
+  max-width: calc(100% / 4);
+  height: 150px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ficha-en-carrousel:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carrousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #007bff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.carrousel-nav-left {
+  left: -30px;
+}
+
+.carrousel-nav-right {
+  right: -30px;
+}
+
+.carrousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.carrousel-indicator {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carrousel-indicator.active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 900px) {
+  .ficha-en-carrousel {
+    flex: 1 1 calc(50% - 15px);
+    max-width: calc(100% / 2 - 15px);
+    height: 140px; /* Ajuste en altura */
+  }
+
+  .carrousel-nav {
+    padding: 8px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ficha-en-carrousel {
+    flex: 1 1 100%;
+    max-width: 100%;
+    height: 130px; /* Ajuste en altura */
+  }
+
+  .carrousel-item {
+    justify-content: center;
+  }
+
+  .carrousel-nav {
+    width: 30px;
+    height: 30px;
+  }
+}
