@@ -2,65 +2,106 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../estilos/estiloInicio.css";
 import "../estilos/carrouselCategorias.css";
+import "../estilos/carrouselLugares.css";
 import fondiInicio from "../imgs/fondoInicio.jpg";
 import CarrouselCategorias from "../componentes/CarrouselCategorias";
-import FichaCategoria from "../componentes/FichaCategoria";
-
-import { Lugar1, Lugar2, Lugar3 } from "../imgs/ArchivoImgs";
-import FichaLugaresR from "../componentes/FichaLugares";
+import CarrouselLugares from "../componentes/CarrouselLugares";
+import {
+  cat_art,
+  cat_family,
+  cat_food,
+  cat_history,
+  cat_nature,
+  cat_night,
+  cat_shop,
+  cat_sport,
+  Lugar1,
+  Lugar2,
+  Lugar3,
+} from "../imgs/ArchivoImgs";
 
 function Inicio() {
   const categorias = [
     {
       titulo: "Gastronomía",
       contenido: "Disfruta de una amplia variedad de experiencias culinarias.",
-      imagen: Lugar1,
-      categoria: [
-        "gastronomia",
-
-      ],
+      imagen: cat_food,
+      categoria: ["gastronomia"],
     },
     {
       titulo: "Cultura e Historia",
       contenido: "Descubre sitios históricos y culturales únicos.",
-      imagen: Lugar2,
-      categoria: ["Cultura", ],
+      imagen: cat_history,
+      categoria: ["Cultura"],
     },
     {
       titulo: "Arte",
       contenido: "Vive experiencias de arte únicas.",
-      imagen: Lugar3,
-      categoria: ["ArteEntretenimiento", ],
+      imagen: cat_art,
+      categoria: ["ArteEntretenimiento"],
     },
     {
       titulo: "Naturaleza y Aventura",
       contenido: "Conecta con la naturaleza y vive aventuras inolvidables.",
-      imagen: Lugar1,
-      categoria: ["Naturaleza",],
+      imagen: cat_nature,
+      categoria: ["Naturaleza"],
     },
     {
       titulo: "Vida Nocturna",
       contenido: "Explora los mejores lugares para disfrutar la noche.",
-      imagen: Lugar2,
-      categoria: ["VidaNocturna", ],
+      imagen: cat_night,
+      categoria: ["VidaNocturna"],
     },
     {
       titulo: "Compras",
       contenido: "Descubre los mejores lugares para ir de compras.",
-      imagen: Lugar3,
-      categoria: ["Compras", ],
+      imagen: cat_shop,
+      categoria: ["Compras"],
     },
     {
       titulo: "Familia y Niños",
       contenido: "Actividades ideales para disfrutar en familia.",
-      imagen: Lugar1,
-      categoria: ["FamiliaNinos", ],
+      imagen: cat_family,
+      categoria: ["FamiliaNinos"],
     },
     {
       titulo: "Deportes y Actividades Extremas",
       contenido: "Experimenta la adrenalina con actividades extremas.",
+      imagen: cat_sport,
+      categoria: ["Deportes"],
+    },
+  ];
+
+  const lugaresRecomendados = [
+    {
+      titulo: "Guanajuato",
+      contenido: "Visita la ciudad de Guanajuato",
+      imagen: Lugar1,
+    },
+    {
+      titulo: "Guadalajara",
+      contenido: "Visita la ciudad de Guadalajara",
       imagen: Lugar2,
-      categoria: ["Deportes", ],
+    },
+    {
+      titulo: "Cancún",
+      contenido: "Visita la ciudad de Cancún",
+      imagen: Lugar3,
+    },
+    {
+      titulo: "Madrid",
+      contenido: "Visita la ciudad de Madrid",
+      imagen: Lugar1,
+    },
+    {
+      titulo: "Edimburgo",
+      contenido: "Visita la ciudad de Edimburgo",
+      imagen: Lugar2,
+    },
+    {
+      titulo: "Sydney",
+      contenido: "Visita la ciudad de Sydney",
+      imagen: Lugar3,
     },
   ];
 
@@ -93,32 +134,10 @@ function Inicio() {
         <CarrouselCategorias categorias={categorias} />
       </section>
 
-      {/* Sección de lugares recomendados */}
+      {/* Carrousel de lugares recomendados */}
       <section className="categoriasSec">
         <h2>Lugares Recomendados</h2>
-        <div className="categorias">
-          <FichaLugaresR
-            titulo="Lugar1"
-            contenido=""
-            imagen={Lugar1}
-            categoria={[]}
-          />
-          <FichaLugaresR
-            titulo="Lugar2"
-            contenido=""
-            imagen={Lugar2}
-            categoria={[]}
-          />
-          <FichaLugaresR
-            titulo="Lugar3"
-            contenido=""
-            imagen={Lugar3}
-            categoria={[]}
-          />
-        </div>
-        <Link to="/Lugares" className="more-categories-link">
-          Más lugares...
-        </Link>
+        <CarrouselLugares lugares={lugaresRecomendados} />
       </section>
     </div>
   );

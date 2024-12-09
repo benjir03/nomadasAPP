@@ -19,10 +19,12 @@ const clientId =
 
 const InicioRegistro = ({ accion, boton, mensaje }) => {
   //Constantes de envio de formulario
-const { user, login, logout } = useContext(AuthContext);
+const { login } = useContext(AuthContext);
   const [correo, setCorreo] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
+  const [genero, setGenero] = useState("");
+  const [birthday, setBirthday] = useState("");
   const [contraseña, setContrasena] = useState("");
   const navigate = useNavigate();
   const [errores, setErrores] = useState({});
@@ -55,6 +57,8 @@ const { user, login, logout } = useContext(AuthContext);
     if (userData.nombre) setNombre(userData.nombre);
     if (userData.apellido) setApellido(userData.apellido);
     if (userData.correo) setCorreo(userData.correo);
+    if (userData.genero) setGenero(userData.genero);
+    if (userData.fecha_nacimiento) setBirthday(userData.fecha_nacimiento);
 
     // Llama a la función store automáticamente para enviar los datos
     accion === "store" ? store(userData) : enviar(userData);
@@ -67,8 +71,7 @@ const { user, login, logout } = useContext(AuthContext);
     }
     const URI = "http://localhost:3001/auth/login";
     const requestData = {
-      correo: userData.correo || correo,
-      contraseña: contraseña,
+      correo: userData.correo
     };
     try {
       const response = await axios.post(
@@ -91,6 +94,8 @@ const { user, login, logout } = useContext(AuthContext);
       if (userData.nombre) setNombre(userData.nombre);
       if (userData.apellido) setApellido(userData.apellido);
       if (userData.correo) setCorreo(userData.correo);
+      if (userData.genero) setGenero(userData.genero);
+      if (userData.fecha_nacimiento) setBirthday(userData.fecha_nacimiento);
     }
     const URI = "http://localhost:3001/usuario/insertar";
     try {
@@ -98,8 +103,9 @@ const { user, login, logout } = useContext(AuthContext);
         nombre: userData.nombre, // Usa el valor actual o una cadena vacía
         apellido: userData.apellido,
         correo: userData.correo,
-        contraseña: contraseña,
         imagen: userData.imagen,
+        genero: userData.genero || '',
+        fecha_nacimiento: userData.fecha_nacimiento || '',
       };
       // Envía los datos al backend
       const response = await axios.post(
@@ -124,9 +130,9 @@ const { user, login, logout } = useContext(AuthContext);
     }}
     >
       <div className="login-container">
-        <h1 className="login-title">{mensaje}</h1>
+      <h1 className="login-title">{mensaje}</h1>
         <form
-          className="login-form"
+                    className="login-form"
           a
           onSubmit={accion === "store" ? store : enviar}
         >

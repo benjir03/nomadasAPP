@@ -8,6 +8,7 @@ const bitacoraRoutes = require('./routes/bitacoraRoutes'); // Rutas de bitacora
 const opinionesRoutes = require('./routes/opinionesRoutes'); // Rutas de opiniones
 const carouselRoutes = require('./routes/carouselRoutes'); // Rutas de autenticación
 const gustosRoutes = require('./routes/gustosRoutes');
+const planRoutes = require('./routes/planRoutes');
 require('dotenv').config();
 
 // Middleware para manejar JSON
@@ -44,6 +45,9 @@ app.use('/carousel', carouselRoutes);
 
 // Rutas que manejan la bitácora de viajes
 app.use('/gustos', gustosRoutes);
+
+// Rutas plan
+app.use('/plan', planRoutes);
 
 // Configuración del puerto
 app.listen(3001, () => {

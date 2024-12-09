@@ -111,10 +111,6 @@ const Perfil = () => {
               </p>
 
               <p className="camposPerfil">
-                <strong>Contraseña:</strong> {`${usuario.contraseña}`}
-              </p>
-
-              <p className="camposPerfil">
                 <strong>Teléfono:</strong> {`${usuario.telefono}`}
               </p>
 
@@ -161,7 +157,7 @@ const Perfil = () => {
                     </div>
                     <div className="plan-buttons">
                       <button className="btn-plan">Ver</button>
-                      <button className="btn-edit">Eliminar</button> {/* Botón "Editar" agregado */}
+                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                     </div>
                   </div>
   
@@ -174,7 +170,7 @@ const Perfil = () => {
                     </div>
                     <div className="plan-buttons">
                       <button className="btn-plan">Ver</button>
-                      <button className="btn-edit">Eliminar</button> {/* Botón "Editar" agregado */}
+                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                     </div>
                   </div>
   
@@ -187,7 +183,7 @@ const Perfil = () => {
                     </div>
                     <div className="plan-buttons">
                       <button className="btn-plan">Ver</button>
-                      <button className="btn-edit">Eliminar</button> {/* Botón "Editar" agregado */}
+                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                     </div>
                   </div>
                 </div>
@@ -212,7 +208,7 @@ const Perfil = () => {
                   </div>
                   <div className="plan-buttons">
                     <button className="btn-plan">Ver</button>
-                    <button className="btn-edit">Editar</button> {/* Botón "Editar" agregado */}
+                    <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                   </div>
                 </div>
 
@@ -225,7 +221,7 @@ const Perfil = () => {
                   </div>
                   <div className="plan-buttons">
                     <button className="btn-plan">Ver</button>
-                    <button className="btn-edit">Editar</button> {/* Botón "Editar" agregado */}
+                    <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                   </div>
                 </div>
 
@@ -238,7 +234,7 @@ const Perfil = () => {
                   </div>
                   <div className="plan-buttons">
                     <button className="btn-plan">Ver</button>
-                    <button className="btn-edit">Editar</button> {/* Botón "Editar" agregado */}
+                    <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                   </div>
                 </div>
               </div>
@@ -348,7 +344,7 @@ const Perfil = () => {
           <div
                 className="contenedorTres"
                 style={{
-                  backgroundImage: `url(${EjemploPerfil})`, // Asegúrate de usar la interpolación correcta*/
+                  backgroundImage: `url(${usuario.imagen})`, // Asegúrate de usar la interpolación correcta*/
                   backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor
                   backgroundPosition: "center", // Centra la imagen
                 }}

@@ -143,7 +143,7 @@ const ModPerfil = ({Accion, Navegacion}) => {
           Guardar cambios
         </button>
         <button
-          type="button"
+          //type="button"
           className="botonAccion3"
           onClick={() => navigate(Navegacion)}
         >

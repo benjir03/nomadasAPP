@@ -8,7 +8,7 @@ const FichaLugaresR = ({ titulo, contenido, imagen }) => {
   const navigate = useNavigate();
 
   const handleCategoryClick = () => {
-    navigate("/DetalleLugar");
+    navigate('/DetalleLugar/${titulo}');
   };
 
   return (

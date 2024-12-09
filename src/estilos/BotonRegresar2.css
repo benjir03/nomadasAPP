@@ -1,0 +1,22 @@
+.btn-regresar2 {
+    background-color: #006d77;
+    color: #edf6f9;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-regresar2:hover {
+    background-color: #e19577;
+    transform: scale(0.8);
+  }
+  
+  .btn-regresar2-icon {
+    font-size: 18px; /* Tamaño del ícono */
+  }

@@ -132,7 +132,7 @@ const handleSubmit = async (e) => {
             checked={gustos.duracion === "1"}
             onChange={handleChange}
           />
-          1 día
+          1 día  <FaClock />
         </label>
         <label className="radio-label">
           <input
@@ -143,7 +143,7 @@ const handleSubmit = async (e) => {
             checked={gustos.duracion === "2"}
             onChange={handleChange}
           />
-          2 días
+          2 días  <FaCalendarAlt />
         </label>
         <label className="radio-label">
           <input
@@ -154,7 +154,7 @@ const handleSubmit = async (e) => {
             checked={gustos.duracion === "M"}
             onChange={handleChange}
           />
-          Más de 3 días
+          Más de 3 días  <FaPlane />
         </label>
         <label>¿Viajas solo o acompañado?</label>
         <label className="radio-label">
@@ -166,7 +166,7 @@ const handleSubmit = async (e) => {
             checked={gustos.compañia === "A"}
             onChange={handleChange}
           />
-          Solo
+          Solo  <FaUser />
         </label>
         <label className="radio-label">
           <input
@@ -177,7 +177,7 @@ const handleSubmit = async (e) => {
             checked={gustos.compañia === "C"}
             onChange={handleChange}
           />
-          Con pareja
+          Con pareja  <FaHeart />
         </label>
         <label className="radio-label">
           <input
@@ -188,7 +188,7 @@ const handleSubmit = async (e) => {
             checked={gustos.compañia === "F"}
             onChange={handleChange}
           />
-          Con familia o amigos
+          Con familia o amigos <FaUsers />
         </label>
         <label>¿Prefieres visitar lugares turísticos o menos conocidos?</label>
         <label className="radio-label">  
@@ -200,7 +200,7 @@ const handleSubmit = async (e) => {
             checked={gustos.turistico === "S"}
             onChange={handleChange}
           />
-          Turísticos
+          Turísticos <FaCamera />
         </label>
         <label className="radio-label">
           <input
@@ -211,7 +211,7 @@ const handleSubmit = async (e) => {
             checked={gustos.turistico === "N"}
             onChange={handleChange}
           />
-          Menos conocidos
+          Menos conocidos <FaMapMarkedAlt />
         </label>
         <label>¿Sueles llevar a tu mascota en los viajes?</label>
         <label className="radio-label">
@@ -223,7 +223,7 @@ const handleSubmit = async (e) => {
             checked={gustos.pets === "S"}
             onChange={handleChange}
           />
-          Sí
+          Sí  <FaPaw />
         </label>
         <label className="radio-label">
           <input
@@ -234,7 +234,7 @@ const handleSubmit = async (e) => {
             checked={gustos.pets === "N"}
             onChange={handleChange}
           />
-          No
+          No  <FaBan />
         </label>
         <label>¿Eres vegano/a o prefieres opciones veganas?</label>
         <label className="radio-label">
@@ -246,7 +246,7 @@ const handleSubmit = async (e) => {
             checked={gustos.vegano === "S"}
             onChange={handleChange}
           />
-          Sí
+          Sí  <FaCheck /> 
         </label>
         <label className="radio-label">
           <input
@@ -257,7 +257,7 @@ const handleSubmit = async (e) => {
             checked={gustos.vegano === "N"}
             onChange={handleChange}
           />
-          No
+          No  <FaBan />
         </label>
         <label>¿Te interesa que el lugar sea pet friendly?</label>
         <label className="radio-label">
@@ -269,7 +269,7 @@ const handleSubmit = async (e) => {
             checked={gustos.pet_friendly === "S"}
             onChange={handleChange}
           />
-          Sí
+          Sí  <FaCheck />
         </label>
         <label className="radio-label">
           <input
@@ -280,7 +280,7 @@ const handleSubmit = async (e) => {
             checked={gustos.pet_friendly === "N"}
             onChange={handleChange}
           />
-          No
+          No  <FaBan />
         </label>
         <label>¿Requieres asistencia para capacidades diferentes?</label>
         <label className="radio-label">
@@ -292,7 +292,7 @@ const handleSubmit = async (e) => {
             checked={gustos.capacidades_diferentes === "S"}
             onChange={handleChange}
           />
-          Sí
+          Sí  <FaCheck />
         </label>
         <label className="radio-label">
           <input
@@ -303,7 +303,7 @@ const handleSubmit = async (e) => {
             checked={gustos.capacidades_diferentes === "N"}
             onChange={handleChange}
           />
-          No
+          No  <FaBan />
         </label>
         <label>¿Eres mayor de edad (18+ años)?</label>
         <label className="radio-label">
@@ -315,7 +315,7 @@ const handleSubmit = async (e) => {
             checked={gustos.mayoria_edad === "S"}
             onChange={handleChange}
           />
-          Sí
+          Sí  <FaCheck />
         </label>
         <label className="radio-label">
           <input
@@ -326,7 +326,7 @@ const handleSubmit = async (e) => {
             checked={gustos.mayoria_edad === "N"}
             onChange={handleChange}
           />
-          No
+          No  <FaBan />
         </label>
         <label>¿En qué estaciones del año te gusta más viajar?</label>
         <label className="radio-label">
@@ -338,7 +338,7 @@ const handleSubmit = async (e) => {
             checked={gustos.ID_estacion === "1"}
             onChange={handleChange}
           />
-          Primavera
+          Primavera   <FaTree />
         </label>
         <label className="radio-label">
           <input
@@ -349,7 +349,7 @@ const handleSubmit = async (e) => {
             checked={gustos.ID_estacion === "2"}
             onChange={handleChange}
           />
-          Verano
+          Verano  <FaSun />
         </label>
         <label className="radio-label">
           <input
@@ -360,7 +360,7 @@ const handleSubmit = async (e) => {
             checked={gustos.ID_estacion === "3"}
             onChange={handleChange}
           />
-          Otoño
+          Otoño  <FaLeaf />
         </label>
         <label className="radio-label">
           <input
@@ -371,7 +371,7 @@ const handleSubmit = async (e) => {
             checked={gustos.ID_estacion === "4"}
             onChange={handleChange}
           />
-          Invierno
+          Invierno <FaSnowflake />
         </label>
         <label>Selecciona categorías de tu preferencia:</label>
         <label /*className="radio-label"*/>

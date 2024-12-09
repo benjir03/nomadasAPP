@@ -8,6 +8,8 @@ import InicioSesion from "./views/InicioSesion";
 import Experiencias from "./views/Experiencias";
 import Modificar from "./views/ModificarPerfil";
 import ArmarPlan from "./views/ArmarPlan";
+import VerPlan from "./views/VerPlan";
+/*import VerPlan from "./views/VerPlan";*/
 import Actividad from "./views/Actividad";
 import Explora from "./views/Explora";
 import GustosPerfil from "./views/GustosPerfil";
@@ -31,6 +33,7 @@ import NotFound from "./views/NotFound";
 import DetalleLugarC from "./componentes/DetalleLugarC";
 import DetalleLugar from "./views/DetalleLugar";
 import { AuthProvider } from "./context/auth";
+import Ruta from "./views/Ruta"
 
 function App() {
   return (
@@ -61,10 +64,11 @@ function App() {
           <Route path="/Olvido" element={<Olvido />} />
           <Route path="/InfoPass" element={<InfoPass />} />
           <Route path="/DetalleLugarC" element={<DetalleLugarC />} />
-          <Route path="/DetalleLugar" element={<DetalleLugar />} />
-
+          <Route path="/detalle/:titulo" element={<DetalleLugar />} />
+          <Route path="/VerPlan" element={<VerPlan />} />
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
+          <Route path="/Ruta" element={<Ruta/>}/>
           <Route path="/registro" element={<Registro />} />
           <Route path="/RevisarPlan" element={<RevisarPlan />} />
 

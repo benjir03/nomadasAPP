@@ -7,6 +7,7 @@ import Lugar1 from "../imgs/explora01.jpg";
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaClock, FaCalendar, FaPlus, FaUser, FaUserFriends, FaUsers } from 'react-icons/fa';
 
+
 export default function ArmarPlan() {
   const navigate = useNavigate();
   const [ciudad, setCiudad] = useState("");
@@ -16,6 +17,7 @@ export default function ArmarPlan() {
   const [categoria, setCategoria] = useState("");
   const [calificacionMinima, setCalificacionMinima] = useState("");
   const [ambiente, setAmbiente] = useState("");
+  const [errorCiudad, setErrorCiudad] = useState(false);
 
   useEffect(() => {
     if (acompanantes === "Voy solo") {
@@ -37,6 +39,11 @@ export default function ArmarPlan() {
 
   const handleExploraActividades = () => {
     const translatedPresupuesto = translatePriceRange(presupuesto);
+    if (!ciudad) {
+      setErrorCiudad(true); // Ciudad vacia
+      alert("Por favor, ingresa una ciudad");
+      return;
+    }
     navigate("/LugaresCarrusel", {
       state: {
         ciudad,
