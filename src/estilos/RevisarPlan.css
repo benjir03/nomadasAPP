@@ -92,6 +92,7 @@
 }
 
 .nombreLugar {
+  text-align: left;
   margin: 5px 0;
   font-size: 16px;
   color: black;
@@ -100,6 +101,7 @@
 
 .ubicacionLugar,
 .horarioLugar {
+  text-align: left;
   margin: 5px 0;
   font-size: 14px;
   color: black;

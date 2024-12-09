@@ -1,6 +1,7 @@
 import React from 'react';  
 import ActividadAgregada from '../componentes/ActividadAgregada';  
 import "../estilos/RevisarPlan.css";  
+import BotonRegresar from "../componentes/BotonRegresar";
 import BotonRegresar2 from "../componentes/BotonRegresar2";  
 import { LuPrinter } from 'react-icons/lu';  
 import { FaRoute } from 'react-icons/fa';  
@@ -8,6 +9,7 @@ import { FaRoute } from 'react-icons/fa';
 const RevisarPlan = () => {  
   return (  
     <div className="contenedorVista">  
+
       <div className="contenedorTitulo">  
         <BotonRegresar2 />  
         <h1 className="tituloRevisarPlan">Ver Plan</h1>  
@@ -64,18 +66,29 @@ const RevisarPlan = () => {
             <h3 className="nombrePlan">Nombre del Plan</h3>  
             <button className="botonEditarNombre">Editar</button>  
           </div>  
-          <div className="detalleActividades">  
-            <p><strong>Actividades:</strong></p>  
-            <ul>  
-              <li>Parque Central: Centro</li>  
-              <li>Museo de Arte: Avenida Principal</li>  
-            </ul>  
-          </div>  
-          <div className="detalleLugar">  
-            <p><strong>Ciudad:</strong> Descripción del lugar</p>  
-          </div>  
-          <div className="detalleAcompanantes">  
-            <p><strong>Acompañantes:</strong> 2 personas</p>  
+
+          {/* Agrupación de actividades */}
+          <div className="detalleActividades">
+            <div className="detalleActividad">
+              <p><strong>Ciudad:</strong> Descripción del lugar</p>
+              <p><strong>Acompañantes:</strong> 2 personas</p>
+              {/*<p><strong>Actividad:</strong> Parque Central: Centro</p>*/}
+            </div>
+
+          {/*<div className="nombrePlanContenedor">  
+            <h3 className="nombrePlan">Fecha</h3>  
+            <button className="botonEditarNombre">Editar</button>  
+          </div>*/}
+
+            <div className="detalleActividad">
+              <p><strong>No. de actividades:</strong> 7 </p>
+              <p><strong>Mascota:</strong> Sí </p>
+              <p><strong>Capacidades diferentes:</strong> Ninguna </p>
+
+              {/*<p><strong>Actividad:</strong> Museo de Arte: Avenida Principal</p>
+              <p><strong>Ciudad:</strong> Descripción del lugar</p>
+              <p><strong>Acompañantes:</strong> 2 personas</p>*/}
+            </div>
           </div>  
         </div>  
       </div>  
