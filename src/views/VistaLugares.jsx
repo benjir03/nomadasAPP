@@ -288,7 +288,7 @@ useEffect(() => {
       <div style={{ position: "absolute", top: "120px", left: "60px", zIndex: 10 }}>
         <BotonRegresar />
       </div>
-      <h2>Lugares de interés</h2>
+      <h2 className="titula">Lugares de interés</h2>
       <div className="content-container">
         {/* Filtros: búsqueda y categorías */}
         <div className="filters-column">

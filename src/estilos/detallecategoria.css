@@ -5,7 +5,10 @@
 /* Contenedor principal */
 .carousel-container1 {
   font-family: 'Poppins', sans-serif;
-  padding: 20px;
+  padding-top: 0px;
+}
+.titula{
+  color: var(--primary-color);
 }
 
 /* Contenedor de contenido principal */
@@ -44,7 +47,7 @@
   margin: 0;
   font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: var(--primary-color);
 }
 
 .search-column1 label {
