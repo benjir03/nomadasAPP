@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../estilos/carrouselCategorias.css";
-import FichaCategoria from "./FichaCategoria";
+import "../estilos/carrouselLugares.css";
+import FichaLugares from "./FichaLugares";
 
-const CarrouselCategorias = ({ categorias }) => {
+const CarrouselLugares = ({ lugares }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fichasPorBloque, setFichasPorBloque] = useState(4); // Predeterminado para pantallas grandes
-  const [groupedCategorias, setGroupedCategorias] = useState([]);
+  const [groupedLugares, setGroupedLugares] = useState([]);
 
   // Actualiza el número de fichas visibles según el ancho de la pantalla
   const updateBloques = () => {
@@ -24,12 +24,12 @@ const CarrouselCategorias = ({ categorias }) => {
 
     setFichasPorBloque(fichasVisibles);
 
-    // Reagrupa las categorías
-    const newGroupedCategorias = [];
-    for (let i = 0; i < categorias.length; i += fichasVisibles) {
-      newGroupedCategorias.push(categorias.slice(i, i + fichasVisibles));
+    // Reagrupa los lugares
+    const newGroupedLugares = [];
+    for (let i = 0; i < lugares.length; i += fichasVisibles) {
+      newGroupedLugares.push(lugares.slice(i, i + fichasVisibles));
     }
-    setGroupedCategorias(newGroupedCategorias);
+    setGroupedLugares(newGroupedLugares);
   };
 
   // Ejecuta la función al montar y cuando cambia el tamaño de la ventana
@@ -37,33 +37,33 @@ const CarrouselCategorias = ({ categorias }) => {
     updateBloques();
     window.addEventListener("resize", updateBloques);
     return () => window.removeEventListener("resize", updateBloques);
-  }, [categorias]);
+  }, [lugares]);
 
   // Cambia automáticamente el índice del carrusel cada 3 segundos
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % groupedCategorias.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % groupedLugares.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [groupedCategorias]);
+  }, [groupedLugares]);
 
   const handleIndicatorClick = (index) => {
     setCurrentIndex(index);
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % groupedCategorias.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % groupedLugares.length);
   };
 
   const handlePrev = () => {
     setCurrentIndex(
       (prevIndex) =>
-        (prevIndex - 1 + groupedCategorias.length) % groupedCategorias.length
+        (prevIndex - 1 + groupedLugares.length) % groupedLugares.length
     );
   };
 
   return (
-    <div className="carrousel">
+    <div className="carrousel-lugares">
       {/* Botón izquierdo */}
       <button className="carrousel-nav carrousel-nav-left" onClick={handlePrev}>
         &#8592;
@@ -73,18 +73,17 @@ const CarrouselCategorias = ({ categorias }) => {
         className="carrousel-container"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {groupedCategorias.map((group, index) => (
+        {groupedLugares.map((group, index) => (
           <div key={index} className="carrousel-group">
             <div
               className={`carrousel-item ${group.length === 2 ? "centro" : ""}`}
             >
-              {group.map((categoria, idx) => (
-                <FichaCategoria
+              {group.map((lugar, idx) => (
+                <FichaLugares
                   key={idx}
-                  titulo={categoria.titulo}
-                  contenido={categoria.contenido}
-                  imagen={categoria.imagen}
-                  categoria={categoria.categoria}
+                  titulo={lugar.titulo}
+                  contenido={lugar.contenido}
+                  imagen={lugar.imagen}
                   className="ficha-en-carrousel"
                 />
               ))}
@@ -100,7 +99,7 @@ const CarrouselCategorias = ({ categorias }) => {
 
       {/* Indicadores */}
       <div className="carrousel-indicators">
-        {groupedCategorias.map((_, index) => (
+        {groupedLugares.map((_, index) => (
           <div
             key={index}
             className={`carrousel-indicator ${
@@ -114,4 +113,4 @@ const CarrouselCategorias = ({ categorias }) => {
   );
 };
 
-export default CarrouselCategorias;
+export default CarrouselLugares;

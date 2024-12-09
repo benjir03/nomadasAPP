@@ -2,12 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../estilos/estiloInicio.css";
 import "../estilos/carrouselCategorias.css";
+import "../estilos/carrouselLugares.css";
 import fondiInicio from "../imgs/fondoInicio.jpg";
 import CarrouselCategorias from "../componentes/CarrouselCategorias";
-import FichaCategoria from "../componentes/FichaCategoria";
-
-import { Lugar1, Lugar2, Lugar3 } from "../imgs/ArchivoImgs";
-import FichaLugaresR from "../componentes/FichaLugares";
+import CarrouselLugares from "../componentes/CarrouselLugares";
 import {
   cat_art,
   cat_family,
@@ -17,6 +15,9 @@ import {
   cat_night,
   cat_shop,
   cat_sport,
+  Lugar1,
+  Lugar2,
+  Lugar3,
 } from "../imgs/ArchivoImgs";
 
 function Inicio() {
@@ -71,6 +72,39 @@ function Inicio() {
     },
   ];
 
+  const lugaresRecomendados = [
+    {
+      titulo: "Guanajuato",
+      contenido: "Visita la ciudad de Guanajuato",
+      imagen: Lugar1,
+    },
+    {
+      titulo: "Guadalajara",
+      contenido: "Visita la ciudad de Guadalajara",
+      imagen: Lugar2,
+    },
+    {
+      titulo: "Cancún",
+      contenido: "Visita la ciudad de Cancún",
+      imagen: Lugar3,
+    },
+    {
+      titulo: "Madrid",
+      contenido: "Visita la ciudad de Madrid",
+      imagen: Lugar1,
+    },
+    {
+      titulo: "Edimburgo",
+      contenido: "Visita la ciudad de Edimburgo",
+      imagen: Lugar2,
+    },
+    {
+      titulo: "Sydney",
+      contenido: "Visita la ciudad de Sydney",
+      imagen: Lugar3,
+    },
+  ];
+
   return (
     <div className="contenedorVista">
       <section
@@ -100,68 +134,10 @@ function Inicio() {
         <CarrouselCategorias categorias={categorias} />
       </section>
 
-      {/* Sección de lugares recomendados */}
+      {/* Carrousel de lugares recomendados */}
       <section className="categoriasSec">
-      <h2>Lugares Recomendados</h2>
-      <div className="categorias">
-        <Link to={`/detalle/${"guanajuato"}`}>
-          <FichaLugaresR
-            titulo="guanajuato"
-            contenido="Visita la ciudad de Guanajuato"
-            imagen={Lugar1}
-            categoria={[]}
-          />
-        </Link>
-
-        <Link to={`/detalle/${"Guadalajara"}`}>
-          <FichaLugaresR
-            titulo="Guadalajara"
-            contenido="Visita la ciudad de Guadalajara"
-            imagen={Lugar2}
-            categoria={[]}
-          />
-        </Link>
-
-        <Link to={`/detalle/${"Cancún"}`}>
-          <FichaLugaresR
-            titulo="Cancún"
-            contenido="Visita la ciudad de Cancún"
-            imagen={Lugar3}
-            categoria={[]}
-          />
-        </Link>
-
-        <Link to={`/detalle/${"Madrid"}`}>
-          <FichaLugaresR
-            titulo="Madrid"
-            contenido="Visita la ciudad de Madrid"
-            imagen={Lugar1}
-            categoria={[]}
-          />
-        </Link>
-
-        <Link to={`/detalle/${"Edimburgo"}`}>
-          <FichaLugaresR
-            titulo="Edimburgo"
-            contenido="Visita la ciudad de Edimburgo"
-            imagen={Lugar2}
-            categoria={[]}
-          />
-        </Link>
-
-        <Link to={`/detalle/${"Sydney"}`}>
-          <FichaLugaresR
-            titulo="Sydney"
-            contenido="Visita la ciudad de Sydney"
-            imagen={Lugar3}
-            categoria={[]}
-          />
-        </Link>
-
-        </div>
-        <Link to="/Lugares" className="more-categories-link">
-          Más lugares...
-        </Link>
+        <h2>Lugares Recomendados</h2>
+        <CarrouselLugares lugares={lugaresRecomendados} />
       </section>
     </div>
   );
