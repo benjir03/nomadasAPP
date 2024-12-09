@@ -1,5 +1,5 @@
 import React from "react";  
-import categoriaImage from "../imgs/cdmx-portada.jpg";  
+import categoriaImage from "../imgs/cat_art.jpg";  
 import '../estilos/styCate.css';  
 
 const Categoria = () => {  
