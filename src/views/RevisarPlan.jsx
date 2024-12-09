@@ -60,11 +60,12 @@ const RevisarPlan = () => {
             <button className="botonEditarNombre">Editar</button>
           </div>
           <div className="detalleActividades">
-            <p><strong>Actividades:</strong></p>
-            <ul>
-              <li>Parque Central: Centro</li>
-              <li>Museo de Arte: Avenida Principal</li>
-            </ul>
+          <p><strong>Actividades:</strong></p>
+            {plan.map((actividad, index) =>(
+                <ul  key={index}>
+                  <li>{actividad.nombre_actividad}</li>
+                </ul>
+            ))}
           </div>
           <div className="detalleLugar">
             <p><strong>Ciudad:</strong> Descripción del lugar</p>
