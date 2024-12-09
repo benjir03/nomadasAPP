@@ -9,10 +9,10 @@ import { chapultepec, biblioteca, bellasartes, monumentorevolucion } from "../im
 
 function Actividad() {
   const location = useLocation();
-  const lugar = location.state;
+  const lugar = location.state || {};
 
   // Verifica si la categoría es "museo" y, en ese caso, establece el precio como "GRATIS"
-  const precio = lugar.category === "museo" ? "GRATIS" : lugar.price || "$$";
+  const precio = lugar?.category === "museo" ? "GRATIS" : lugar?.price || "$$";
 
   return (
     <div className="Actividad">

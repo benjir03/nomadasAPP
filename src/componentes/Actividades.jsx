@@ -1,7 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaPlus, FaHeart } from "react-icons/fa"; // Íconos de react-icons
 import "../estilos/styActividad.css";
+import axios from "axios";
 import BotonRegresar from "../componentes/BotonRegresar";
 
 // Función para renderizar las estrellas
@@ -9,6 +10,7 @@ const renderStars = (rating) => {
   const fullStars = Math.floor(rating);  // Cantidad de estrellas completas
   const halfStar = rating % 1 !== 0 ? 1 : 0;  // Si tiene decimales, agrega media estrella
   const emptyStars = 5 - fullStars - halfStar;  // Estrellas vacías
+
 
   return (
     <>
@@ -37,9 +39,26 @@ function ActividadPrincipal({
   mapaLink,
   infoCalificacion // Agregar la calificación aquí
 }) {
+  const [nombre_actividad, setNombre] = useState("");
+  const navigate = useNavigate();
   // Función para manejar el click en "Agregar al plan"
-  const handleAddToPlan = () => {
+  const handleAddToPlan = async () => {
+    setNombre(titulo);
+    const URI = "http://localhost:3001/plan/insertarLugar";
+    const requestData = {
+      nombre_actividad: titulo,
+    }
+  try{
+    const response = await axios.post(
+      URI, requestData, { withCredentials: true }
+    );
+    console.log(response.data.message);
+    console.log(requestData);
     alert("¡Actividad agregada al plan correctamente!");
+  }catch(error){
+    console.error('Error al agregar al plan:', error);
+    alert("Hubo un problema al agregar la actividad al plan.");
+  }
   };
 
   // Función para manejar el click en "Favoritos"
