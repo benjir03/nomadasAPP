@@ -16,6 +16,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  transition: transform 0.3s ease;  
 }
 
 .carrousel-item {
@@ -26,9 +27,16 @@
   flex: 1 1 auto;
 }
 
+.ficha-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center the item */
+}
+
 .ficha-en-carrousel {
   flex: 1 1 25%;
   max-width: calc(100% / 4);
+  width: calc(100% / 4);
   height: 150px;
   background: white;
   border-radius: 10px;

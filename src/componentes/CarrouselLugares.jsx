@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../estilos/carrouselLugares.css";
 import FichaLugares from "./FichaLugares";
+import { Link } from 'react-router-dom';
 
 const CarrouselLugares = ({ lugares }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,64 +53,66 @@ const CarrouselLugares = ({ lugares }) => {
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % groupedLugares.length);
+    const newIndex = currentIndex + 1;
+    if (newIndex < groupedLugares.length) {
+      setCurrentIndex(newIndex);
+    }
   };
-
+  
   const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + groupedLugares.length) % groupedLugares.length
-    );
+    const newIndex = currentIndex - 1;
+    if (newIndex >= 0) {
+      setCurrentIndex(newIndex);
+    }
   };
 
   return (
     <div className="carrousel-lugares">
-      {/* Botón izquierdo */}
-      <button className="carrousel-nav carrousel-nav-left" onClick={handlePrev}>
-        &#8592;
-      </button>
+    {/* Botón izquierdo */}
+    <button className="carrousel-nav carrousel-nav-left" onClick={handlePrev}>
+      &#8592;
+    </button>
 
-      <div
-        className="carrousel-container"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {groupedLugares.map((group, index) => (
-          <div key={index} className="carrousel-group">
-            <div
-              className={`carrousel-item ${group.length === 2 ? "centro" : ""}`}
-            >
-              {group.map((lugar, idx) => (
+    <div
+      className="carrousel-container"
+      style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+    >
+      {groupedLugares.map((group, index) => (
+        <div key={index} className="carrousel-group">
+          <div
+            className={`carrousel-item ${group.length === 2 ? "centro" : ""}`}
+          >
+            {group.map((lugar, idx) => (
+              <Link to={`/lugares/${lugar.id}`}> {/* Enlace a la página de detalle */}
                 <FichaLugares
-                  key={idx}
                   titulo={lugar.titulo}
                   contenido={lugar.contenido}
                   imagen={lugar.imagen}
-                  className="ficha-en-carrousel"
+                    className="ficha-en-carrousel"
                 />
-              ))}
-            </div>
+              </Link>
+            ))}
           </div>
-        ))}
-      </div>
-
-      {/* Botón derecho */}
-      <button className="carrousel-nav carrousel-nav-right" onClick={handleNext}>
-        &#8594;
-      </button>
-
-      {/* Indicadores */}
-      <div className="carrousel-indicators">
-        {groupedLugares.map((_, index) => (
-          <div
-            key={index}
-            className={`carrousel-indicator ${
-              index === currentIndex ? "active" : ""
-            }`}
-            onClick={() => handleIndicatorClick(index)}
-          ></div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
+
+    {/* Botón derecho */}
+    <button className="carrousel-nav carrousel-nav-right" onClick={handleNext}>
+      &#8594;
+    </button>
+
+    {/* Indicadores */}
+    <div className="carrousel-indicators">
+      {groupedLugares.map((_, index) => (
+        <div
+          key={index}
+          className={`carrousel-indicator ${index === currentIndex ? "active" : ""}`}
+          onClick={() => handleIndicatorClick(index)}
+        ></div>
+      ))}
+    </div>
+  </div>
   );
 };
 

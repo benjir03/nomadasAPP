@@ -33,6 +33,7 @@ import NotFound from "./views/NotFound";
 import DetalleLugarC from "./componentes/DetalleLugarC";
 import DetalleLugar from "./views/DetalleLugar";
 import { AuthProvider } from "./context/auth";
+import CarrouselLugares from "./componentes/CarrouselLugares";
 import Ruta from "./views/Ruta"
 
 function App() {
@@ -64,7 +65,7 @@ function App() {
           <Route path="/Olvido" element={<Olvido />} />
           <Route path="/InfoPass" element={<InfoPass />} />
           <Route path="/DetalleLugarC" element={<DetalleLugarC />} />
-          <Route path="/detalle/:titulo" element={<DetalleLugar />} />
+          <Route path="/lugares/:id" element={<DetalleLugar />} />
           <Route path="/VerPlan" element={<VerPlan />} />
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />

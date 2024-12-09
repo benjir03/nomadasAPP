@@ -6,6 +6,12 @@ import "../estilos/carrouselLugares.css";
 import fondiInicio from "../imgs/fondoInicio.jpg";
 import CarrouselCategorias from "../componentes/CarrouselCategorias";
 import CarrouselLugares from "../componentes/CarrouselLugares";
+import Cancun from "../imgs/citys/Cancun.png"
+import Edimburgo from "../imgs/citys/Edimburgo.jpg"
+import Guadalajara from "../imgs/citys/Guadalajara.png"
+import Guanajuato from "../imgs/citys/Guanajuato.png"
+import Madrid from "../imgs/citys/Madrid.png"
+import Sydney from "../imgs/citys/Sydney.png"
 import {
   cat_art,
   cat_family,
@@ -72,36 +78,42 @@ function Inicio() {
     },
   ];
 
-  const lugaresRecomendados = [
+  const lugares = [
     {
+      id: 1,
       titulo: "Guanajuato",
       contenido: "Visita la ciudad de Guanajuato",
-      imagen: Lugar1,
+      imagen: Guanajuato,
     },
     {
+      id: 2,
       titulo: "Guadalajara",
       contenido: "Visita la ciudad de Guadalajara",
-      imagen: Lugar2,
+      imagen: Guadalajara,
     },
     {
+      id: 3,
       titulo: "Cancún",
       contenido: "Visita la ciudad de Cancún",
-      imagen: Lugar3,
+      imagen: Cancun,
     },
     {
+      id: 4,
       titulo: "Madrid",
       contenido: "Visita la ciudad de Madrid",
-      imagen: Lugar1,
+      imagen: Madrid,
     },
     {
+      id: 5,
       titulo: "Edimburgo",
       contenido: "Visita la ciudad de Edimburgo",
-      imagen: Lugar2,
+      imagen: Edimburgo,
     },
     {
+      id: 6,
       titulo: "Sydney",
       contenido: "Visita la ciudad de Sydney",
-      imagen: Lugar3,
+      imagen: Sydney,
     },
   ];
 
@@ -137,7 +149,7 @@ function Inicio() {
       {/* Carrousel de lugares recomendados */}
       <section className="categoriasSec">
         <h2>Lugares Recomendados</h2>
-        <CarrouselLugares lugares={lugaresRecomendados} />
+        <CarrouselLugares lugares={lugares} />
       </section>
     </div>
   );
