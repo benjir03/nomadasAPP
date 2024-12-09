@@ -42,7 +42,7 @@ exports.getPerfil = (req, res) => {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
         res.json(results[0]); // Envía todos los campos de la base de datos
-        console.log(userId, results[0]);
+        //console.log(userId, results[0]);
     });
 };
 

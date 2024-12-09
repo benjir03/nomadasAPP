@@ -15,12 +15,12 @@ exports.insertarUsuario = (req, res) => {
                 return res.status(500).json({ error: 'Error en la inserción' });
             }else{
               const userId = results.insertId;
-              const token = jwt.sign({ id_usuario: userId }, 'tu_secreto', { expiresIn: '1h' });
+              const token = jwt.sign({ id_usuario: userId }, 'tu_secreto', { expiresIn: '3h' });
               // Envía el token en una cookie y en la respuesta JSON
               res.cookie('sessionToken', token, {
                   httpOnly: true,
                   secure: process.env.NODE_ENV === 'production',
-                  maxAge: 3600000 // 1 hora
+                  maxAge: 10800000 // 3 horas
               });
               const formato_correo = `
             <!DOCTYPE html>
