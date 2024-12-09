@@ -6,6 +6,8 @@
 .carousel-container1 {
   font-family: 'Poppins', sans-serif;
   padding-top: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 .titula{
   color: var(--primary-color);
