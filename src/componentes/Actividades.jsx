@@ -55,6 +55,7 @@ function ActividadPrincipal({
     console.log(response.data.message);
     console.log(requestData);
     alert("¡Actividad agregada al plan correctamente!");
+    navigate('/RevisarPlan')
   }catch(error){
     console.error('Error al agregar al plan:', error);
     alert("Hubo un problema al agregar la actividad al plan.");
