@@ -11,6 +11,7 @@ body {
   max-width: 1400px;
   margin: auto;
   padding: 0px;
+  justify-content: flex-start;
 }
 
 .contenedorUnoAP {
@@ -21,10 +22,11 @@ body {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 109, 119, 0.1);
+  margin-left: 20px;
 }
 
 .contenidoImagenPlan {
-  background: var(--background-color);
+  background: var(--primary-color); 
   max-width: 450px;
   max-height: 580px;
   border-radius: 15px;
@@ -259,7 +261,7 @@ label {
 .contenidoImagenPlan .range-label {
   font-size: 1rem;
   font-weight: 500;
-  color: var(--background-color);
+  color: var(--primary-color);
   padding: 0 10px;
 }
 
@@ -303,7 +305,7 @@ label {
 
 .button-label {
   font-size: 0.6rem;
-  color: var(--background-color);
+  color: var(--primary-color);
 }
 
 /* Ajuste adicional para asegurarse de que los botones no se encimen */
@@ -322,14 +324,14 @@ label {
 
 /* Añadido: estilo para hacer más legible el contenido dentro del contenedor verde */
 .contenidoImagenPlan {
-  background: rgba(0, 109, 119, 0.8);
+  background: rgba(237, 246, 249, 0.9);
   padding: 30px;
   max-width: 280px;
   margin: 20px auto;
   bottom: 2rem;
   max-height: 580px;
   border-radius: 20px;
-  color: var(--background-color);
+  color: var(--primary-color);
 }
 
 .contenidoImagenPlan h1, 
@@ -337,13 +339,13 @@ label {
 .contenidoImagenPlan input, 
 .contenidoImagenPlan select, 
 .contenidoImagenPlan button {
-  color: var(--background-color);
+  color: var(--primary-color);
 }
 
 .contenidoImagenPlan input, 
 .contenidoImagenPlan select {
   color: var(--letter-color);
-  background-color: var(--support-color);
+  background-color: var(--background-color);
   border: 1px solid var(--primary-color);
   border-radius: 10px;
 }

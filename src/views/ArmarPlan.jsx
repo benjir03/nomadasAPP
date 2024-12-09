@@ -27,13 +27,13 @@ export default function ArmarPlan() {
     }
   }, [acompanantes]);
 
-  const handleAgregarCiudad = () => {
+  {/*const handleAgregarCiudad = () => {
     navigate("/AgregarCiudad", {
       state: {
         ciudad,
       },
     });
-  };
+  };*/}
 
   const handleExploraActividades = () => {
     const translatedPresupuesto = translatePriceRange(presupuesto);
@@ -93,7 +93,7 @@ export default function ArmarPlan() {
                   >
                     <FaCalendar />
                   </button>
-                  <span className="button-label">Día</span>
+                  <span className="button-label">Días</span>
                 </div>
                 <div className="button-item">
                   <button
@@ -157,7 +157,7 @@ export default function ArmarPlan() {
               </select>
             </div>
             <div className="selector-item">
-              <label>Presupuesto</label>
+              <label>Presupuesto (por persona)</label>
               <div className="range-container">
                 <span className="range-label range-label-left">$</span>
                 <input
@@ -177,9 +177,9 @@ export default function ArmarPlan() {
             <button className="botAccion" onClick={handleExploraActividades}>
               Explora Actividades
             </button>
-            <button className="botAccion" onClick={handleAgregarCiudad}>
+            {/*<button className="botAccion" onClick={handleAgregarCiudad}>
               Agregar Ciudad
-            </button>
+            </button>*/}
           </div>
         </div>
       </div>

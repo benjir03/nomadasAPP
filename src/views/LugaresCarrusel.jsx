@@ -343,7 +343,7 @@ const LugaresCarrusel = () => {
           </select>
         </div>
         <div>
-          <label htmlFor="priceRange">Precio:</label>
+          <label htmlFor="priceRange">Precio (0-4):</label>
           <select 
             id="priceRange" 
             value={priceRange} 
@@ -370,39 +370,41 @@ const LugaresCarrusel = () => {
             <h3>Selecciona las categorías:</h3>
             <div className="checkbox-group">
               {availableCategories.map((categoria) => (
-                <label key={categoria}>
-                  <input
-                    type="checkbox"
-                    value={categoria}
-                    onChange={handleCategoryChange}
-                    checked={selectedCategories.includes(categoria)}
-                    />
-                    {categoriasTraduccion[categoria]}
-                  </label>
-                ))}
-              </div>
-            </div>
-          )}
-          <button type="submit" disabled={loading}>Buscar</button>
-        </form>
-        {loading && <p>Buscando...</p>}
-        {error && <p>{error}</p>}
-        {packages.length > 0 ? (
-          <div className="list-container">
-            {packages.map(pkg => (
-              <div key={pkg.id} className="list-item">
-                <img src={pkg.image} alt={pkg.title} className="package-image" />
-                <h3>{pkg.title}</h3>
-                <p><strong>Calificación:</strong> {renderStars(pkg.rating)}</p>
-                <p><strong>Ubicación:</strong> {pkg.location}</p>
-                <button className="view-more-btn" onClick={() => handleViewMoreClick(pkg)}>Ver más</button>
-              </div>
-            ))}
-          </div>
-        ) : null}
-        {noResults && <h1>No se encontraron resultados para tu búsqueda :(</h1>}
-      </div>
-    );
-  };
-  
-  export default LugaresCarrusel; 
+                                <label key={categoria}>
+                                <input
+                                  type="checkbox"
+                                  value={categoria}
+                                  onChange={handleCategoryChange}
+                                  checked={selectedCategories.includes(categoria)}
+                                />
+                                {categoriasTraduccion[categoria]}
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      <button type="submit" disabled={loading}>Buscar</button>
+                    </form>
+                    {loading && <p>Buscando...</p>}
+                    {error && <p>{error}</p>}
+                    {packages.length > 0 ? (
+                      <div className="list-container">
+                        {packages.map(pkg => (
+                          <div key={pkg.id} className="list-item">
+                            <img src={pkg.image} alt={pkg.title} className="package-image" />
+                            <div className="package-info">
+                              <h3>{pkg.title}</h3>
+                              <p><strong>Calificación:</strong> {renderStars(pkg.rating)}</p>
+                              <p><strong>Ubicación:</strong> {pkg.location}</p>
+                              <button className="view-more-btn" onClick={() => handleViewMoreClick(pkg)}>Ver más</button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+                    {noResults && <h1>No se encontraron resultados para tu búsqueda :(</h1>}
+                  </div>
+                );
+              };
+              
+              export default LugaresCarrusel;              
