@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaPlus, FaHeart } from "react-icons/fa"; // Íconos de react-icons
+import { FaPlus, FaHeart } from "react-icons/fa";
 import "../estilos/styActividad.css";
 import axios from "axios";
 import BotonRegresar from "../componentes/BotonRegresar";
+import AlertBox from "../componentes/Alerta";
 
-// Función para renderizar las estrellas
 const renderStars = (rating) => {
-  const fullStars = Math.floor(rating);  // Cantidad de estrellas completas
-  const halfStar = rating % 1 !== 0 ? 1 : 0;  // Si tiene decimales, agrega media estrella
-  const emptyStars = 5 - fullStars - halfStar;  // Estrellas vacías
-
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 !== 0 ? 1 : 0;
+  const emptyStars = 5 - fullStars - halfStar;
 
   return (
     <>
-      {'★'.repeat(fullStars).split('').map((star, index) => (
-        <span key={index} className="star">{star}</span>  // Estrellas completas
+      {"★".repeat(fullStars).split("").map((star, index) => (
+        <span key={index} className="star">{star}</span>
       ))}
-      {halfStar === 1 && <span className="star">☆</span>}  {/* Media estrella si hay decimales */}
-      {'☆'.repeat(emptyStars).split('').map((star, index) => (
-        <span key={index} className="star">{star}</span>  // Estrellas vacías
+      {halfStar === 1 && <span className="star">☆</span>}
+      {"☆".repeat(emptyStars).split("").map((star, index) => (
+        <span key={index} className="star">{star}</span>
       ))}
     </>
   );
@@ -38,11 +37,13 @@ function ActividadPrincipal({
   mapaTitulo, 
   mapaUbicacion, 
   mapaLink,
-  infoCalificacion // Agregar la calificación aquí
+  infoCalificacion
 }) {
   const [nombre_actividad, setNombre] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
   const navigate = useNavigate();
-  // Función para manejar el click en "Agregar al plan"
+
   const handleAddToPlan = async () => {
     setNombre(titulo);
     const URI = "http://localhost:3001/plan/insertarLugar";
@@ -50,29 +51,35 @@ function ActividadPrincipal({
       nombre_actividad: titulo,
       imagen_actividad: imagenFondo,
       ID_google: id,
+    };
+    try {
+      const response = await axios.post(URI, requestData, { withCredentials: true });
+      console.log(response.data.message);
+      console.log(requestData);
+      setAlertMessage("¡Actividad agregada al plan!");
+      setShowAlert(true);
+      setTimeout(() => navigate("/RevisarPlan"), 1500);
+    } catch (error) {
+      console.error("Error al agregar al plan:", error);
+      setAlertMessage("Hubo un problema al agregar la actividad al plan.");
+      setShowAlert(true);
     }
-  try{
-    const response = await axios.post(
-      URI, requestData, { withCredentials: true }
-    );
-    console.log(response.data.message);
-    console.log(requestData);
-    alert("¡Actividad agregada al plan correctamente!");
-    navigate('/RevisarPlan')
-  }catch(error){
-    console.error('Error al agregar al plan:', error);
-    alert("Hubo un problema al agregar la actividad al plan.");
-  }
   };
 
-  // Función para manejar el click en "Favoritos"
   const handleAddToFavorites = () => {
-    alert("¡Actividad agregada a favoritos!");
+    setAlertMessage("¡Actividad agregada a favoritos!");
+    setShowAlert(true);
+  };
+
+  const closeAlert = () => {
+    setShowAlert(false);
+    setAlertMessage("");
   };
 
   return (
     <div>
-      {/* Sección de bienvenida */}
+      {showAlert && <AlertBox message={alertMessage} onClose={closeAlert} />}
+
       <section
         className="contenedorUno"
         style={{
@@ -82,7 +89,6 @@ function ActividadPrincipal({
           backgroundPosition: "center",
         }}
       >
-        {/* Botón de regresar en la esquina superior izquierda */}
         <div style={{ position: "absolute", top: "10px", left: "10px", zIndex: 10 }}>
           <BotonRegresar />
         </div>
@@ -90,27 +96,19 @@ function ActividadPrincipal({
         <div className="contenedorDos">
           <h1>{titulo}</h1>
           <p>{descripcion}</p>
-          <Link 
-            className="botonAccionAct" 
-            onClick={handleAddToPlan}  // Agregar acción de click aquí
-          >
+          <Link className="botonAccionAct" onClick={handleAddToPlan}>
             <FaPlus style={{ marginRight: "8px" }} /> Agregar al plan
           </Link>
-          <Link 
-            className="botonAccionAct" 
-            onClick={handleAddToFavorites}  // Agregar acción de click aquí
-          >
+          <Link className="botonAccionAct" onClick={handleAddToFavorites}>
             <FaHeart style={{ marginRight: "8px" }} /> Favoritos
           </Link>
         </div>
       </section>
 
-      {/* Sección de información de la actividad */}
       <section className="actividadInfo">
         <div className="descripcion">
           <h2>{infoTitulo}</h2>
           <p><strong>Precio: </strong>{infoPrecio}</p>
-          {/* Mostrar la calificación en estrellas */}
           <p><strong>Calificación: </strong>{renderStars(infoCalificacion) || "No disponible"}</p>
           <p>{infoDescripcion}</p>
         </div>
