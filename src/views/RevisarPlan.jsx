@@ -5,7 +5,7 @@ import BotonRegresar from "../componentes/BotonRegresar";
 import BotonRegresar2 from "../componentes/BotonRegresar2";
 import axios from 'axios';
 import { LuPrinter } from 'react-icons/lu';
-import { FaEdit, FaRoute, FaTrash } from 'react-icons/fa';
+import { FaCheck, FaEdit, FaRoute, FaTrash } from 'react-icons/fa';
 
 const RevisarPlan = () => {
   const [plan, setPlan] = useState([]);
@@ -48,7 +48,7 @@ const RevisarPlan = () => {
             
             <div className="contenedorBotonesAccion">  
               <button className="botonCompletarPlan">  
-                <FaEdit /> Completar Plan  
+                <FaCheck /> Completar Plan  
               </button>  
               <button className="botonAccion2">
                 <FaTrash /> Limpiar plan  
