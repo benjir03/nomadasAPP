@@ -20,6 +20,7 @@ function Actividad() {
         <>
           <ActividadPrincipal
             titulo={lugar.title}
+            id={lugar.Id}
             descripcion={lugar.descripcion_corta || "No disponible"}
             imagenFondo={lugar.image}
             infoTitulo={lugar.title}

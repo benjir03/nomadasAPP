@@ -26,7 +26,8 @@ const renderStars = (rating) => {
 };
 
 function ActividadPrincipal({ 
-  titulo, 
+  titulo,
+  id, 
   descripcion, 
   imagenFondo, 
   infoTitulo, 
@@ -48,6 +49,7 @@ function ActividadPrincipal({
     const requestData = {
       nombre_actividad: titulo,
       imagen_actividad: imagenFondo,
+      ID_google: id,
     }
   try{
     const response = await axios.post(

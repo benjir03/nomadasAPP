@@ -266,12 +266,14 @@ useEffect(() => {
       const detailedDescResponse = await axios.get(detailedDescUrl);
 
       const placeData = {
+        searchQuery,
         ...lugar,
         ...detailsResponse.data,
         descripcion_corta: shortDescResponse.data.description,
         descripcion: detailedDescResponse.data.description,
       };
-
+      console.log({message: "Placedata ", placeData});
+      console.log({message: "Lugar ", lugar});
       navigate("/actividad", { state: placeData });
     } catch (error) {
       console.error("Error al obtener detalles del lugar:", error);
