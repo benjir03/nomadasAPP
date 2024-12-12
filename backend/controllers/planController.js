@@ -1,7 +1,7 @@
 const pool = require('../db/connection');
 
 exports.insertarLugar = (req, res) => {
-    const { nombre_actividad } = req.body;
+    const { nombre_actividad, imagen_actividad } = req.body;
 
     // Verificar si el registro ya existe
     const checkQuery = `SELECT ID_actividad FROM Actividad WHERE nombre_actividad = ?`;
@@ -20,8 +20,8 @@ exports.insertarLugar = (req, res) => {
         }
 
         // Si no existe, insertar nuevo registro
-        const insertQuery = `INSERT INTO ACTIVIDAD (nombre_actividad) VALUES (?)`;
-        pool.query(insertQuery, [nombre_actividad], (err, results) => {
+        const insertQuery = `INSERT INTO ACTIVIDAD (nombre_actividad, imagen_actividad) VALUES (?, ?)`;
+        pool.query(insertQuery, [nombre_actividad, imagen_actividad], (err, results) => {
             if (err) {
                 console.error('Error en la inserción de actividad:', err);
                 return res.status(500).json({ error: 'Error en la inserción' });

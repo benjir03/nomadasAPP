@@ -47,6 +47,7 @@ function ActividadPrincipal({
     const URI = "http://localhost:3001/plan/insertarLugar";
     const requestData = {
       nombre_actividad: titulo,
+      imagen_actividad: imagenFondo,
     }
   try{
     const response = await axios.post(

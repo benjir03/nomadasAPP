@@ -37,10 +37,10 @@ const RevisarPlan = () => {
           {plan.map((actividad, index) => (
               <ActividadAgregada
               key={index}
+              imagen = {actividad.imagen_actividad}
               nombre={actividad.nombre_actividad}
-              ubicacion="Centro" 
-              horario="8:00 AM - 10:00 PM" 
-              imagen="ruta_a_tu_imagen_parque.jpg" 
+              ubicacion="" 
+              horario=""
             />
           ))}
                       <div className="contenedorBotonesAccion">

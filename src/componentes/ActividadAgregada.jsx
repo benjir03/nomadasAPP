@@ -3,7 +3,7 @@ import "../estilos/RevisarPlan.css";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-const ActividadAgregada = ({ nombre, ubicacion, horario }) => {
+const ActividadAgregada = ({ nombre, ubicacion, horario, imagen}) => {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
@@ -29,7 +29,7 @@ const ActividadAgregada = ({ nombre, ubicacion, horario }) => {
   
   return (
     <div className="contenedorLugar">
-      <img className="imagenLugar" src="ruta_de_tu_imagen.jpg" alt="Lugar" />
+      <img className="imagenLugar" src={imagen} alt="Lugar" />
       <div className="informacionLugar">
         <p className="nombreLugar">{nombre}</p>
         <p className="ubicacionLugar">{ubicacion}</p>
