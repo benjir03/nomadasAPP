@@ -4,7 +4,7 @@ import "../estilos/RevisarPlan.css";
 import BotonRegresar from "../componentes/BotonRegresar";
 import BotonRegresar2 from "../componentes/BotonRegresar2";  
 import { LuPrinter } from 'react-icons/lu';  
-import { FaEdit, FaRoute } from 'react-icons/fa';  
+import { FaEdit, FaRoute, FaTrash } from 'react-icons/fa';  
 
 const RevisarPlan = () => {  
   return (  
@@ -53,7 +53,7 @@ const RevisarPlan = () => {
               <FaEdit /> Editar Plan  
             </button>  
             <button className="botonVerRuta">
-              Eliminar ruta  
+              <FaTrash /> Eliminar plan  
             </button>  
           </div>  
         </div>  
