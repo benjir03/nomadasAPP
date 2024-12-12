@@ -2,9 +2,9 @@ import React from 'react';
 import ActividadAgregada from '../componentes/ActividadAgregada';  
 import "../estilos/RevisarPlan.css";  
 import BotonRegresar from "../componentes/BotonRegresar";
-import BotonRegresar2 from "../componentes/BotonRegresar2";  
-import { LuPrinter } from 'react-icons/lu';  
-import { FaEdit, FaRoute, FaTrash } from 'react-icons/fa';  
+import BotonRegresar2 from "../componentes/BotonRegresar2";
+import { LuPrinter } from 'react-icons/lu';
+import { FaEdit, FaRoute, FaTrash } from 'react-icons/fa';
 
 const RevisarPlan = () => {  
   return (  
@@ -52,10 +52,11 @@ const RevisarPlan = () => {
             <button className="botonCompletarPlan">  
               <FaEdit /> Editar Plan  
             </button>  
-            <button className="botonVerRuta">
+            <button className="botonAccion3">
               <FaTrash /> Eliminar plan  
             </button>  
           </div>  
+          
         </div>  
 
         <div className="contenedorLadoDerecho">  
@@ -63,44 +64,38 @@ const RevisarPlan = () => {
             <h3 className="nombrePlan">Nombre del Plan</h3>  
             <button className="botonEditarNombre">Editar</button>  
           </div>  
+          <br/>
+          <div className="nombrPlanContenedor">
+            <h2 className="nombrePlan">Detalles del plan</h2>
+          </div>
 
           {/* Agrupación de actividades */}
           <div className="detalleActividades">
-            {/*<div className="detalleActividad">*/}
-            <br/>
+            
               <strong>Ciudad:</strong> Descripción del lugar
               <strong>Acompañantes:</strong> 2 personas
-              {/*<p><strong>Actividad:</strong> Parque Central: Centro</p>*/}
-            {/*</div>*/}
 
           {/*<div className="nombrePlanContenedor">  
             <h3 className="nombrePlan">Fecha</h3>  
             <button className="botonEditarNombre">Editar</button>  
           </div>*/}
-
-            {/*<div className="detalleActividad">*/}
+            
               <strong>No. de actividades:</strong> 7 
               <strong>Mascota:</strong> Sí 
               <strong>Capacidades diferentes:</strong> Ninguna 
-
-              {/*<p><strong>Actividad:</strong> Museo de Arte: Avenida Principal</p>
-              <p><strong>Ciudad:</strong> Descripción del lugar</p>
-              <p><strong>Acompañantes:</strong> 2 personas</p>/
-            </div>*/}
           </div>  
 
-          <div className="contenedorBotonesAccion">  
-            <button className="botonCompletarPlan">  
-              <LuPrinter /> Imprimir Plan  
-            </button>  
-            <button  
+          <div className="contenedorBotonesAccion"> 
+          <button  
               className="botonVerRuta"  
               onClick={() => window.open('https://www.google.com/maps/dir/...', '_blank')}  
             >  
               <FaRoute /> Ver ruta  
-            </button>  
+            </button> 
+            <button className="botonCompletarPlan">  
+              <LuPrinter /> Imprimir Plan  
+            </button>   
           </div> 
-
         </div>  
       </div>  
     </div>  
