@@ -4,7 +4,7 @@ import "../estilos/RevisarPlan.css";
 import BotonRegresar from "../componentes/BotonRegresar";
 import BotonRegresar2 from "../componentes/BotonRegresar2";  
 import { LuPrinter } from 'react-icons/lu';  
-import { FaRoute } from 'react-icons/fa';  
+import { FaEdit, FaRoute } from 'react-icons/fa';  
 
 const RevisarPlan = () => {  
   return (  
@@ -50,13 +50,10 @@ const RevisarPlan = () => {
           
           <div className="contenedorBotonesAccion">  
             <button className="botonCompletarPlan">  
-              <LuPrinter /> Imprimir Plan  
+              <FaEdit /> Editar Plan  
             </button>  
-            <button  
-              className="botonVerRuta"  
-              onClick={() => window.open('https://www.google.com/maps/dir/...', '_blank')}  
-            >  
-              <FaRoute /> Ver ruta  
+            <button className="botonVerRuta">
+              Eliminar ruta  
             </button>  
           </div>  
         </div>  
@@ -69,27 +66,41 @@ const RevisarPlan = () => {
 
           {/* Agrupación de actividades */}
           <div className="detalleActividades">
-            <div className="detalleActividad">
-              <p><strong>Ciudad:</strong> Descripción del lugar</p>
-              <p><strong>Acompañantes:</strong> 2 personas</p>
+            {/*<div className="detalleActividad">*/}
+            <br/>
+              <strong>Ciudad:</strong> Descripción del lugar
+              <strong>Acompañantes:</strong> 2 personas
               {/*<p><strong>Actividad:</strong> Parque Central: Centro</p>*/}
-            </div>
+            {/*</div>*/}
 
           {/*<div className="nombrePlanContenedor">  
             <h3 className="nombrePlan">Fecha</h3>  
             <button className="botonEditarNombre">Editar</button>  
           </div>*/}
 
-            <div className="detalleActividad">
-              <p><strong>No. de actividades:</strong> 7 </p>
-              <p><strong>Mascota:</strong> Sí </p>
-              <p><strong>Capacidades diferentes:</strong> Ninguna </p>
+            {/*<div className="detalleActividad">*/}
+              <strong>No. de actividades:</strong> 7 
+              <strong>Mascota:</strong> Sí 
+              <strong>Capacidades diferentes:</strong> Ninguna 
 
               {/*<p><strong>Actividad:</strong> Museo de Arte: Avenida Principal</p>
               <p><strong>Ciudad:</strong> Descripción del lugar</p>
-              <p><strong>Acompañantes:</strong> 2 personas</p>*/}
-            </div>
+              <p><strong>Acompañantes:</strong> 2 personas</p>/
+            </div>*/}
           </div>  
+
+          <div className="contenedorBotonesAccion">  
+            <button className="botonCompletarPlan">  
+              <LuPrinter /> Imprimir Plan  
+            </button>  
+            <button  
+              className="botonVerRuta"  
+              onClick={() => window.open('https://www.google.com/maps/dir/...', '_blank')}  
+            >  
+              <FaRoute /> Ver ruta  
+            </button>  
+          </div> 
+
         </div>  
       </div>  
     </div>  
