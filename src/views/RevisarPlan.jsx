@@ -6,9 +6,16 @@ import BotonRegresar2 from "../componentes/BotonRegresar2";
 import axios from 'axios';
 import { LuPrinter } from 'react-icons/lu';
 import { FaCheck, FaEdit, FaRoute, FaTrash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const RevisarPlan = () => {
   const [plan, setPlan] = useState([]);
+  
+  const Completar = () => {
+    const navigate = useNavigate();
+    alert("Plan completado, felicidades")
+    navigate('/Perfil');
+  }
   
   useEffect(() => {
     const fetchPlan = async () => {
@@ -47,7 +54,7 @@ const RevisarPlan = () => {
           ))}
             
             <div className="contenedorBotonesAccion">  
-              <button className="botonCompletarPlan">  
+              <button className="botonCompletarPlan" onClick={Completar}>  
                 <FaCheck /> Completar Plan  
               </button>  
               <button className="botonAccion2">

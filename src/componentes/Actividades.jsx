@@ -4,7 +4,7 @@ import { FaPlus, FaHeart } from "react-icons/fa";
 import "../estilos/styActividad.css";
 import axios from "axios";
 import BotonRegresar from "../componentes/BotonRegresar";
-import AlertBox from "../componentes/Alerta";
+import Alertas from "../componentes/Alertas";
 
 const renderStars = (rating) => {
   const fullStars = Math.floor(rating);
@@ -43,14 +43,16 @@ function ActividadPrincipal({
   const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const navigate = useNavigate();
-
-  const handleAddToPlan = async () => {
+  const [showDialog, setShowDialog] = useState(false);
+  
+  const handleAddPlan = async () => {
     setNombre(titulo);
     const URI = "http://localhost:3001/plan/insertarLugar";
     const requestData = {
       nombre_actividad: titulo,
       imagen_actividad: imagenFondo,
       ID_google: id,
+      control: 1,
     };
     try {
       const response = await axios.post(URI, requestData, { withCredentials: true });
@@ -65,7 +67,12 @@ function ActividadPrincipal({
       setShowAlert(true);
     }
   };
-
+  
+  const handleNewPlan = () => {
+    setAlertMessage("¡Actividad agregada a favoritos!");
+    setShowAlert(true);
+  };
+  
   const handleAddToFavorites = () => {
     setAlertMessage("¡Actividad agregada a favoritos!");
     setShowAlert(true);
@@ -78,8 +85,6 @@ function ActividadPrincipal({
 
   return (
     <div>
-      {showAlert && <AlertBox message={alertMessage} onClose={closeAlert} />}
-
       <section
         className="contenedorUno"
         style={{
@@ -96,9 +101,29 @@ function ActividadPrincipal({
         <div className="contenedorDos">
           <h1>{titulo}</h1>
           <p>{descripcion}</p>
-          <Link className="botonAccionAct" onClick={handleAddToPlan}>
+          <button
+            className="botonAccionAct"
+            onClick={() => setShowDialog(true)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "inherit",
+            }}
+          >
             <FaPlus style={{ marginRight: "8px" }} /> Agregar al plan
-          </Link>
+          </button>
+          
+          {/* Componente de confirmación */}
+          {showDialog && (
+            <Alertas
+              message="¿Estás seguro de que deseas agregar esto al plan?"
+              onConfirm={handleNewPlan}
+              onCancel={handleAddPlan}
+            />
+          )}
           <Link className="botonAccionAct" onClick={handleAddToFavorites}>
             <FaHeart style={{ marginRight: "8px" }} /> Favoritos
           </Link>

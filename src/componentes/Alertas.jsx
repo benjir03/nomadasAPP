@@ -1,5 +1,5 @@
 import React from "react";
-import "./ConfirmationDialog.css"; // Opcional para estilos personalizados
+import "../estilos/styAlertas.css"; // Opcional para estilos personalizados
 
 const ConfirmationDialog = ({ message, onConfirm, onCancel }) => {
     return (
@@ -7,8 +7,8 @@ const ConfirmationDialog = ({ message, onConfirm, onCancel }) => {
             <div className="dialog-content">
                 <p>{message}</p>
                 <div className="dialog-buttons">
-                    <button onClick={onConfirm}>Confirmar</button>
-                    <button onClick={onCancel}>Cancelar</button>
+                    <button onClick={onConfirm}>Nuevo Plan</button>
+                    <button onClick={onCancel}>Agregar al ultimo plan</button>
                 </div>
             </div>
         </div>    
