@@ -11,13 +11,22 @@ exports.insertarLugar = (req, res) => {
             console.error('Error al verificar existencia:', err);
             return res.status(500).json({ error: 'Error al verificar existencia' });
         }
-
-        if (results.length > 0) {
-            // Si ya existe, llama a nuevoPlan con el ID existente
-            return this.nuevoPlan(
-                { ...req, body: { actividadId: results[0].ID_actividad } },
-                res
-            );
+        if(controlador == 2){
+            if (results.length > 0) {
+                // Si ya existe, llama a nuevoPlan con el ID existente
+                return this.nuevoPlan(
+                    { ...req, body: { actividadId: results[0].ID_actividad } },
+                    res
+                );
+            }
+        }else{
+            if (results.length > 0) {
+                // Si ya existe, llama a nuevoPlan con el ID existente
+                return this.insertarPlan(
+                    { ...req, body: { actividadId: results[0].ID_actividad } },
+                    res
+                );
+            }
         }
 
         // Si no existe, insertar nuevo registro
@@ -27,13 +36,22 @@ exports.insertarLugar = (req, res) => {
                 console.error('Error en la inserción de actividad:', err);
                 return res.status(500).json({ error: 'Error en la inserción' });
             }
-
-            // Llama a nuevoPlan con el ID recién generado
-            const lastInsertedId = results.insertId;
-            this.nuevoPlan(
-                { ...req, body: { actividadId: lastInsertedId } },
-                res
-            );
+            if(controlador == 2){
+                // Llama a nuevoPlan con el ID recién generado
+                const lastInsertedId = results.insertId;
+                this.nuevoPlan(
+                    { ...req, body: { actividadId: lastInsertedId } },
+                    res
+                );
+            }else{
+                if (results.length > 0) {
+                    // Si ya existe, llama a nuevoPlan con el ID existente
+                    return this.insertarPlan(
+                        { ...req, body: { actividadId: results[0].ID_actividad } },
+                        res
+                    );
+                }
+            }
         });
     });
 };

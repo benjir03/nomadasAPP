@@ -46,21 +46,21 @@
   
   /* Botón de confirmar */
   .dialog-buttons button:first-child {
-    background-color: #4caf50; /* Verde */
+    background-color: #006d77; /* Verde */
     color: white;
   }
   
   .dialog-buttons button:first-child:hover {
-    background-color: #45a049;
+    background-color: #e19577;
   }
   
   /* Botón de cancelar */
   .dialog-buttons button:last-child {
-    background-color: #f44336; /* Rojo */
+    background-color: #e19577; /* Rojo */
     color: white;
   }
   
   .dialog-buttons button:last-child:hover {
-    background-color: #d32f2f;
+    background-color: #006d77;
   }
   
