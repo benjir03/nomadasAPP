@@ -52,7 +52,7 @@ function ActividadPrincipal({
       nombre_actividad: titulo,
       imagen_actividad: imagenFondo,
       ID_google: id,
-      control: 1,
+      controlador: 1,
     };
     try {
       const response = await axios.post(URI, requestData, { withCredentials: true });
@@ -75,7 +75,7 @@ function ActividadPrincipal({
       nombre_actividad: titulo,
       imagen_actividad: imagenFondo,
       ID_google: id,
-      control: 2,
+      controlador: 2,
     };
     try {
       const response = await axios.post(URI, requestData, { withCredentials: true });

@@ -10,9 +10,9 @@ import { useNavigate } from 'react-router-dom';
 
 const RevisarPlan = () => {
   const [plan, setPlan] = useState([]);
+  const navigate = useNavigate();
   
   const Completar = () => {
-    const navigate = useNavigate();
     alert("Plan completado, felicidades");
     navigate("/Perfil");
   }

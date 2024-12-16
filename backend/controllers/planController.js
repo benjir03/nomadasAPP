@@ -89,48 +89,49 @@ exports.nuevoPlan = (req, res) => {
     });
 };
 
-exports.insertarPlan = (req, res) =>{
-    const { actividadId } = req.body; // ID de la actividad que viene del cliente o de insertarLugar
+exports.insertarPlan = (req, res) => {
+    const { actividadId } = req.body; // ID de la actividad que viene del cliente
     const userId = req.userId;
 
-    const lastPlanQuery = `SELECT MAX(ID_plan) AS ultimoID FROM PLAN`;
-    pool.query(lastPlanQuery, (err, results) => {
+    // Obtener el último ID del plan
+    const lastPlanQuery = `SELECT MAX(controlador) AS ultimoID FROM PLAN WHERE ID_user = ?`;
+    pool.query(lastPlanQuery, [userId], (err, results) => {
         if (err) {
             console.error('Error al obtener el último ID de PLAN:', err);
             return res.status(500).json({ error: 'Error al obtener el último ID' });
         }
 
-        const ultimoID = results[0].ultimoID; // Último ID en la tabla
+        const ultimoID = results[0]?.ultimoID || 0; // Si no hay resultados, asignar 0 por defecto
         console.log(`El último ID de PLAN es: ${ultimoID}`);
-    });
 
-    // Insertar en PLAN_ACTIVIDADES
-    const planactividadQuery = `INSERT INTO PLAN_ACTIVIDADES (ID_actividad) VALUES (?)`;
-    pool.query(planactividadQuery, [actividadId], (err, planResults) => {
-        if (err) {
-            console.error('Error al insertar en PLAN_ACTIVIDADES:', err);
-            return res.status(500).json({ error: 'Error al insertar en PLAN_ACTIVIDADES' });
-        }
-
-        // Obtener el ID recién generado de PLAN_ACTIVIDADES
-        const planActividadId = planResults.insertId;
-
-        // Insertar en PLAN con el ID del usuario y el ID de PLAN_ACTIVIDADES
-        const planQuery = `INSERT INTO PLAN (ID_user, ID_plan_actividades) VALUES (?, ?)`;
-        pool.query(planQuery, [userId, planActividadId], (err, planres) => {
+        // Insertar en PLAN_ACTIVIDADES
+        const planactividadQuery = `INSERT INTO PLAN_ACTIVIDADES (ID_actividad) VALUES (?)`;
+        pool.query(planactividadQuery, [actividadId], (err, planResults) => {
             if (err) {
-                console.error('Error en la creación de plan:', err);
-                return res.status(500).json({ error: 'Error al insertar en PLAN' });
+                console.error('Error al insertar en PLAN_ACTIVIDADES:', err);
+                return res.status(500).json({ error: 'Error al insertar en PLAN_ACTIVIDADES' });
             }
 
-            // Respuesta final
-            res.json({
-                message: 'Plan creado exitosamente',
-                planId: planres.insertId,
+            const planActividadId = planResults.insertId;
+
+            // Insertar en PLAN con el ID del usuario, el ID de PLAN_ACTIVIDADES y controlador
+            const planQuery = `INSERT INTO PLAN (ID_user, ID_plan_actividades, controlador) VALUES (?, ?, ?)`;
+            pool.query(planQuery, [userId, planActividadId, ultimoID + 1], (err, planres) => {
+                if (err) {
+                    console.error('Error en la creación de plan:', err);
+                    return res.status(500).json({ error: 'Error al insertar en PLAN' });
+                }
+
+                // Respuesta final
+                res.json({
+                    message: 'Plan creado exitosamente',
+                    planId: planres.insertId,
+                });
             });
         });
     });
-}
+};
+
 
 exports.obtenerPlan = (req, res) => {
     const userId = req.userId;
