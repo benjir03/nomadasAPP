@@ -343,7 +343,7 @@ const LugaresCarrusel = () => {
           </select>
         </div>
         <div>
-          <label htmlFor="priceRange">Precio (0-4):</label>
+          <label htmlFor="priceRange">Precio (por persona):</label>
           <select 
             id="priceRange" 
             value={priceRange} 

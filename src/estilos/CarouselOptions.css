@@ -179,6 +179,15 @@ button[type="submit"]:hover {
   margin-top: 10px; /* Añade espacio entre la imagen y la información */
 }
 
+.package-info p{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Centra el contenido a la izquierda */
+  align-items: flex-start; /* Asegura que todo el contenido esté alineado a la izquierda */
+  margin-top: 10px; /* Añade espacio entre la imagen y la información */
+}
+
+
 .package-image {
   width: 100%;
   max-height: 200px; /* Ajusta este valor según tus necesidades */
