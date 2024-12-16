@@ -11,22 +11,24 @@ exports.insertarLugar = (req, res) => {
             console.error('Error al verificar existencia:', err);
             return res.status(500).json({ error: 'Error al verificar existencia' });
         }
-        if(controlador == 2){
-            if (results.length > 0) {
-                // Si ya existe, llama a nuevoPlan con el ID existente
-                return this.nuevoPlan(
-                    { ...req, body: { actividadId: results[0].ID_actividad } },
-                    res
-                );
-            }
-        }else{
-            if (results.length > 0) {
+        switch (controlador){
+            case 1: 
                 // Si ya existe, llama a nuevoPlan con el ID existente
                 return this.insertarPlan(
                     { ...req, body: { actividadId: results[0].ID_actividad } },
                     res
                 );
-            }
+            case 2: 
+                // Si ya existe, llama a nuevoPlan con el ID existente
+                return this.nuevoPlan(
+                    { ...req, body: { actividadId: results[0].ID_actividad } },
+                    res
+                );
+            case 3: 
+            return this.registrar(
+                { ...req, body: { actividadId: results[0].ID_actividad } },
+                res
+            );
         }
 
         // Si no existe, insertar nuevo registro
@@ -36,21 +38,26 @@ exports.insertarLugar = (req, res) => {
                 console.error('Error en la inserción de actividad:', err);
                 return res.status(500).json({ error: 'Error en la inserción' });
             }
-            if(controlador == 2){
-                // Llama a nuevoPlan con el ID recién generado
-                const lastInsertedId = results.insertId;
-                this.nuevoPlan(
-                    { ...req, body: { actividadId: lastInsertedId } },
-                    res
-                );
-            }else{
-                if (results.length > 0) {
+            const lastInsertedId = results.insertId;
+            switch (controlador){
+                case 1: 
                     // Si ya existe, llama a nuevoPlan con el ID existente
                     return this.insertarPlan(
                         { ...req, body: { actividadId: results[0].ID_actividad } },
                         res
                     );
-                }
+                case 2: 
+                    // Llama a nuevoPlan con el ID recién generado
+                    return this.nuevoPlan(
+                        { ...req, body: { actividadId: lastInsertedId } },
+                        res
+                    );
+                case 3: 
+                    // Llama a nuevoPlan con el ID recién generado
+                    return this.registrar(
+                        { ...req, body: { actividadId: results[0].ID_actividad } },
+                        res
+                    );
             }
         });
     });
@@ -160,4 +167,76 @@ exports.deleteActividad = (req, res) => {
         }
         res.json({ message: 'Actividad eliminada exitosamente' })
     });
+
+    exports.registrar = (req, res) => {
+        const { actividadId } = req.body; // Datos del cliente
+        const userId = req.userId; // ID del usuario autenticado
+        console.log("Valores recibidos en el backend:", req.body);
+    
+        // Verificar si el registro ya existe en la tabla FAVORITOS
+        const checkQuery = `SELECT ID_Favoritos FROM FAVORITOS WHERE ID_user = ? AND ID_actividad = ?`;
+        pool.query(checkQuery, [userId, actividadId], (err, results) => {
+            if (err) {
+                console.error('Error al verificar existencia en FAVORITOS:', err);
+                return res.status(500).json({ error: 'Error al verificar existencia en favoritos' });
+            }
+    
+            if (results.length > 0) {
+                // Si ya existe, responde con un mensaje indicando que ya está en favoritos
+                return res.status(200).json({ message: 'La actividad ya está en favoritos' });
+            }
+    
+            // Insertar en la tabla FAVORITOS
+            const insertQuery = `
+                INSERT INTO FAVORITOS (ID_user, ID_actividad)
+                VALUES (?, ?)
+            `;
+            pool.query(insertQuery, [userId, actividadId], (err, results) => {
+                if (err) {
+                    console.error('Error al insertar en FAVORITOS:', err);
+                    return res.status(500).json({ error: 'Error al guardar en favoritos' });
+                }
+    
+                res.json({ message: 'Actividad guardada en favoritos exitosamente' });
+            });
+        });
+    };
+    
+    exports.obtener = (req, res) => {
+        const ID_user = req.userId;
+    
+        const query = `
+            SELECT * FROM FAVORITOS AS f
+            INNER JOIN ACTIVIDAD AS a ON f.ID_actividad = a.ID_actividad
+            WHERE f.ID_user = ?
+        `;
+    
+        pool.query(query, [ID_user], (err, results) => {
+            if (err) {
+                console.error('Error al obtener favoritos:', err);
+                return res.status(500).json({ error: 'Error al obtener favoritos' });
+            }
+    
+            res.json(results);
+        });
+    };
+    
+    exports.eliminar = (req, res) => {
+        const ID_user = req.userId;
+        const { actividadId } = req.body;
+    
+        const query = `
+            DELETE FROM FAVORITOS
+            WHERE ID_user = ? AND ID_actividad = ?
+        `;
+    
+        pool.query(query, [ID_user, actividadId], (err, results) => {
+            if (err) {
+                console.error('Error al eliminar favorito:', err);
+                return res.status(500).json({ error: 'Error al eliminar favorito' });
+            }
+    
+            res.json({ message: 'Favorito eliminado exitosamente' });
+        });
+    };
 };

@@ -180,6 +180,35 @@
   background-color: #e19577; /* Cambia el color de fondo al pasar el mouse */
 }
 
+.botonFav {
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit; /* Mantiene el color del texto definido */
+  display: inline-flex; /* Asegura alineación con íconos */
+  align-items: center; /* Centra verticalmente íconos y texto */
+  padding: 10px 20px; /* Ajusta el espaciado interno */
+  width: auto; 
+  border-radius: 5px; /* Opcional: redondea bordes */
+  background-color: #006d77; /* Color de fondo opcional */
+  transition: background-color 0.3s; /* Efecto suave al pasar el mouse */
+  margin-right: 10px; /* Espaciado horizontal entre botones */
+  margin-bottom: 10px; /* Espaciado vertical entre filas de botones */
+}
+
+.botonFav:last-child {
+  margin-right: 0; /* Elimina el margen derecho en el último botón de la línea */
+}
+
+.botonFav:hover {
+  background-color: #e19577; /* Cambia el color de fondo al pasar el mouse */
+}
+
+.botonFav.favorito {
+  color: red
+}
+.botonFav.nofavorito{
+  color:  inherit;
+}
+
 /* Contenedor para las reseñas */
 .reviews-containerAct {
   padding: 1.5rem;

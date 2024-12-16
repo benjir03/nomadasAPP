@@ -37,8 +37,9 @@ function ActividadPrincipal({
   mapaTitulo, 
   mapaUbicacion, 
   mapaLink,
-  infoCalificacion
+  infoCalificacion,
 }) {
+  const [isFavorite, setIsFavorite] = useState(false);
   const [nombre_actividad, setNombre] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
@@ -91,9 +92,28 @@ function ActividadPrincipal({
     }
   };
   
-  const handleAddToFavorites = () => {
-    setAlertMessage("¡Actividad agregada a favoritos!");
-    setShowAlert(true);
+  const handleFavoriteClick = async () => {
+    setIsFavorite(true); // Marca como favorito en el estado local
+    const URI = "http://localhost:3001/plan/insertarLugar";
+    const requestData = {
+      nombre_actividad: titulo,
+      imagen_actividad: imagenFondo,
+      ID_google: id,
+      controlador: 3,
+    };
+    console.log("ID de la actividad:", id);
+    try {
+      const response = await axios.post(URI, requestData, { withCredentials: true }); // Enviar cookies de autenticación
+      console.log(response.data.message); // Mostrar mensaje en la consola
+      console.log(requestData);
+      setAlertMessage("¡Actividad agregada a favoritos!");
+      setShowAlert(true);
+    } catch (error) {
+      console.error("Error al guardar favorito:", error); // Mostrar el error en la consola
+      console.log("Hubo un problema al guardar la actividad en favoritos."); // Mensaje de error
+      setAlertMessage("Hubo un problema al guardar la actividad en favoritos.");
+      setShowAlert(true);
+    }
   };
 
   const closeAlert = () => {
@@ -142,9 +162,12 @@ function ActividadPrincipal({
               onCancel={handleAddPlan}
             />
           )}
-          <Link className="botonAccionAct" onClick={handleAddToFavorites}>
-            <FaHeart style={{ marginRight: "8px" }} /> Favoritos
-          </Link>
+          <button
+            className={`botonFav ${isFavorite ? "favorito" : "nofavorito"}`}
+            onClick={handleFavoriteClick}
+          >
+            <FaHeart style={{ marginRight: "8px" }} /> Favorito
+          </button>
         </div>
       </section>
 
