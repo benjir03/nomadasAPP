@@ -68,9 +68,27 @@ function ActividadPrincipal({
     }
   };
   
-  const handleNewPlan = () => {
-    setAlertMessage("¡Actividad agregada a favoritos!");
-    setShowAlert(true);
+  const handleNewPlan = async () => {
+    setNombre(titulo);
+    const URI = "http://localhost:3001/plan/insertarLugar";
+    const requestData = {
+      nombre_actividad: titulo,
+      imagen_actividad: imagenFondo,
+      ID_google: id,
+      control: 2,
+    };
+    try {
+      const response = await axios.post(URI, requestData, { withCredentials: true });
+      console.log(response.data.message);
+      console.log(requestData);
+      setAlertMessage("¡Actividad agregada al plan!");
+      setShowAlert(true);
+      setTimeout(() => navigate("/RevisarPlan"), 1500);
+    } catch (error) {
+      console.error("Error al agregar al plan:", error);
+      setAlertMessage("Hubo un problema al agregar la actividad al plan.");
+      setShowAlert(true);
+    }
   };
   
   const handleAddToFavorites = () => {

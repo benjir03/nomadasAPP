@@ -13,8 +13,8 @@ const RevisarPlan = () => {
   
   const Completar = () => {
     const navigate = useNavigate();
-    alert("Plan completado, felicidades")
-    navigate('/Perfil');
+    alert("Plan completado, felicidades");
+    navigate("/Perfil");
   }
   
   useEffect(() => {
@@ -84,8 +84,14 @@ const RevisarPlan = () => {
                     <h3 className="nombrePlan">Fecha</h3>  
                     <button className="botonEditarNombre">Editar</button>  
                   </div>*/}
-                    
-                      <strong>No. de actividades:</strong> 7 
+                      <strong>No. de actividades: {plan.length}</strong>
+                      {plan.map((actividad, index) => (
+                        <div key={index}>
+                          {/* Aquí va el contenido de cada actividad */}
+                          Actividad {index + 1}: {actividad.nombre_actividad}
+                        </div>
+                      ))}
+
                       <strong>Mascota:</strong> Sí 
                       <strong>Capacidades diferentes:</strong> Ninguna 
                   </div>  
