@@ -41,6 +41,7 @@ function ActividadPrincipal({
 }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [nombre_actividad, setNombre] = useState("");
+  const [ID_google, setID_google] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function ActividadPrincipal({
   
   const handleAddPlan = async () => {
     setNombre(titulo);
+    setID_google(id);
     const URI = "http://localhost:3001/plan/insertarLugar";
     const requestData = {
       nombre_actividad: titulo,
@@ -56,9 +58,9 @@ function ActividadPrincipal({
       controlador: 1,
     };
     try {
-      const response = await axios.post(URI, requestData, { withCredentials: true });
       console.log(response.data.message);
       console.log(requestData);
+      const response = await axios.post(URI, requestData, { withCredentials: true });
       setAlertMessage("¡Actividad agregada al plan!");
       setShowAlert(true);
       setTimeout(() => navigate("/RevisarPlan"), 1500);
