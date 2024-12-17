@@ -7,12 +7,14 @@ import { BackPerfil, ciudad, Lugar1 } from "../imgs/ArchivoImgs";
 import { FaCircle } from "react-icons/fa";
 import { EjemploPerfil } from "../imgs/ArchivoImgs";
 import { AuthContext } from "../context/auth";
+import ActividadAgregada from '../componentes/ActividadAgregada';
 
 const Perfil = () => {
   const { logout } = useContext(AuthContext);
   const [activeSection, setActiveSection] = useState("info");
   const [usuario, setUsuario] = useState([]);
   const [pref, setPref] = useState([]);
+  const [plan, setPlan] = useState([]);
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
   //Token perfil
@@ -34,14 +36,19 @@ const Perfil = () => {
         const algo = await axios.get("http://localhost:3001/gustos/gustos", {
           withCredentials: true,
         });
+        const favs = await axios.get("http://localhost:3001/plan/obtenerFavorita", {
+          withCredentials: true,
+        });
         const userData = response.data;
         const userPref = algo.data;
+        const userFav = favs.data;
         // Formatear la fecha de nacimiento al formato YYYY-MM-DD
         const formattedDate = userData.fecha_nacimiento
           ? userData.fecha_nacimiento.split('T')[0]
           : "";
         setUsuario({ ...userData, fecha_nacimiento: formattedDate });
         setPref(userPref);
+        setPlan(userFav);
       } catch (error) {
         console.error("Error al obtener el perfil del usuario:", error);
       }
@@ -61,7 +68,6 @@ const Perfil = () => {
       }
     };
 
-
   const handleDelete = async () => {
     const confirmDelete = window.confirm(
       "¿Estás seguro de que deseas eliminar tu cuenta?"
@@ -77,7 +83,36 @@ const Perfil = () => {
       }
     }
   };
-
+  
+  const deletefav = async (ID_actividad) => {
+    const confirmDelete = window.confirm(
+      "¿Estás seguro de que deseas eliminar la actividad?"
+    );
+    if (confirmDelete) {
+      try {
+        const reqData = {
+          actividadId: ID_actividad,
+        };
+  
+        // Realiza la petición DELETE
+        await axios.delete("http://localhost:3001/plan/eliminarFavorita", {
+          withCredentials: true,
+          data: reqData, // Enviar los datos aquí
+        });
+  
+        console.log("Actividad eliminada con éxito.");
+  
+        // Actualizar el estado local 'plan' filtrando la actividad eliminada
+        setPlan((prevPlan) =>
+          prevPlan.filter((actividad) => actividad.ID_actividad !== ID_actividad)
+        );
+      } catch (error) {
+        console.error("Error al eliminar la actividad de favoritos:", error);
+      }
+    }
+  };
+  
+  
   const renderContent = () => {
     switch (activeSection) {
       //Datos usuarips
@@ -145,49 +180,31 @@ const Perfil = () => {
             <div className="contenedorVista">
               <div className="planes-container">
                 <h2 className="login-title">Favoritos</h2>
-  
-                {/* Carrusel o Lista Horizontal de planes */}
-                <div className="planes-list">
-                  <div className="plan-card">
-                    <img src={Lugar1} alt="Plan 1" className="plan-img" />
-                    <div className="plan-details">
-                      <h3>Act 1</h3>
-                      <p>Descripción de la act</p>
-                      <p>Categoría</p>
-                    </div>
-                    <div className="plan-buttons">
-                      <button className="btn-plan">Ver</button>
-                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
-                    </div>
-                  </div>
-  
-                  <div className="plan-card">
-                    <img src={Lugar1} alt="Plan 2" className="plan-img" />
-                    <div className="plan-details">
-                      <h3>Act 2</h3>
-                      <p>Descripción de la act</p>
-                      <p>Categoría</p>
-                    </div>
-                    <div className="plan-buttons">
-                      <button className="btn-plan">Ver</button>
-                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
-                    </div>
-                  </div>
-  
-                  <div className="plan-card">
-                    <img src={Lugar1} alt="Plan 3" className="plan-img" />
-                    <div className="plan-details">
-                      <h3>Act 3</h3>
-                      <p>Descripción de la act</p>
-                      <p>Categoría</p>
-                    </div>
-                    <div className="plan-buttons">
-                      <button className="btn-plan">Ver</button>
-                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
-                    </div>
-                  </div>
+                    {/* Carrusel o Lista Horizontal de planes */}
+                    {plan.map((actividad, index) => (
+                      <div className="planes-list" key={index}>
+                        <div className="plan-card">
+                          <img
+                            src={actividad.imagen_actividad}
+                            alt="Plan 1"
+                            className="plan-img"
+                          />
+                          <div className="plan-details">
+                            <h3>{actividad.nombre_actividad}</h3>
+                          </div>
+                          <div className="plan-buttons">
+                            <button className="btn-plan">Ver</button>
+                            <button
+                              className="btn-delete"
+                              onClick={() => deletefav(actividad.ID_actividad)} // Pasar ID_actividad
+                            >
+                              Eliminar
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                 </div>
-              </div>
             </div>
           );
 

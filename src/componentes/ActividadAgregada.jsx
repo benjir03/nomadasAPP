@@ -3,7 +3,7 @@ import "../estilos/RevisarPlan.css";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-const ActividadAgregada = ({ nombre, ubicacion, horario, imagen}) => {
+const ActividadAgregada = ({ nombre, ubicacion, horario, imagen, onDelete}) => {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
@@ -20,7 +20,7 @@ const ActividadAgregada = ({ nombre, ubicacion, horario, imagen}) => {
           withCredentials: true, // Si necesitas enviar cookies o credenciales
         });
         console.log("Datos enviados:", requestData);
-        navigate("/RevisarPlan"); // Redirige después de eliminar
+        onDelete(nombre);
       } catch (error) {
         console.error("Error al eliminar la actividad:", error);
       }
@@ -36,7 +36,9 @@ const ActividadAgregada = ({ nombre, ubicacion, horario, imagen}) => {
         <p className="horarioLugar">{horario}</p>
       </div>
       <div className="botonesAccion">
-        <button className="botonAccion2">Ver</button>
+        {/*
+        <button className="botonAccion2">Ver</button> 
+        */}
         <button className="botonAccion3" onClick={handleDelete}>Eliminar</button>
       </div>
     </div>

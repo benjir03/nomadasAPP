@@ -254,7 +254,7 @@ useEffect(() => {
     try {
       const detailsUrl = `http://localhost:3002/place-details?place_id=${lugar.id}`;
       const detailsResponse = await axios.get(detailsUrl);
-
+      const lugar_id = lugar.id;
       const shortDescUrl = `http://localhost:3002/place-description?place_name=${encodeURIComponent(
         lugar.title
       )}&exchars=100`;

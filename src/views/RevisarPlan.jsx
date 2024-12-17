@@ -33,7 +33,17 @@ const RevisarPlan = () => {
     
     fetchPlan();
   }, []);
-  return (
+
+    // Función para eliminar la actividad del estado local
+    const handleDeleteActivity = (nombreActividad) => {
+      setPlan((prevPlan) =>
+        prevPlan.filter((actividad) => actividad.nombre_actividad !== nombreActividad)
+      );
+    };
+    const Limpiar = async () =>{
+      
+    }
+    return (
     <div className="contenedorVista">  
 
       <div className="contenedorTitulo">  
@@ -50,6 +60,7 @@ const RevisarPlan = () => {
               nombre={actividad.nombre_actividad}
               ubicacion="" 
               horario=""
+              onDelete={handleDeleteActivity}
             />
           ))}
             
@@ -57,7 +68,7 @@ const RevisarPlan = () => {
               <button className="botonCompletarPlan" onClick={Completar}>  
                 <FaCheck /> Completar Plan  
               </button>  
-              <button className="botonAccion2">
+              <button className="botonAccion2" onClick={Limpiar}>
                 <FaTrash /> Limpiar plan  
               </button>  
             </div> 

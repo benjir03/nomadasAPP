@@ -14,12 +14,12 @@ exports.login = (req, res) => {
         // Obtiene el userId del resultado de la consulta
         const userId = results[0].ID_user; // Ajusta esto al nombre correcto del campo de tu base de datos
         // Genera el token de sesión
-        const token = jwt.sign({ id_usuario: userId }, 'tu_secreto', { expiresIn: '1h' });
+        const token = jwt.sign({ id_usuario: userId }, 'tu_secreto', { expiresIn: '3h' });
         // Establece la cookie con el token
         res.cookie('sessionToken', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            maxAge: 3600000 // 1 hora
+            maxAge: 10800000 // 1 hora
         });
         res.json({ message: 'Inicio de sesión exitoso' });
         console.log({ id: userId, token });
