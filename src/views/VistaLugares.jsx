@@ -270,6 +270,7 @@ useEffect(() => {
         searchQuery,
         ...lugar,
         ...detailsResponse.data,
+        id: lugar.id,
         descripcion_corta: shortDescResponse.data.description,
         descripcion: detailedDescResponse.data.description,
       };
