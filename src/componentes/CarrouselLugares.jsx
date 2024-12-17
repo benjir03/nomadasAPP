@@ -83,14 +83,15 @@ const CarrouselLugares = ({ lugares }) => {
             className={`carrousel-item ${group.length === 2 ? "centro" : ""}`}
           >
             {group.map((lugar, idx) => (
-              <Link to={`/lugares/${lugar.id}`}> {/* Enlace a la página de detalle */}
+            
                 <FichaLugares
                   titulo={lugar.titulo}
                   contenido={lugar.contenido}
+                  descripcion={lugar.descripcion}
                   imagen={lugar.imagen}
                     className="ficha-en-carrousel"
                 />
-              </Link>
+                
             ))}
           </div>
         </div>

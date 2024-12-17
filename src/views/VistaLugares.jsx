@@ -11,8 +11,9 @@ const VistaLugares = () => {
   const [lugares, setLugares] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('CDMX'); // Valor por defecto "CDMX"
+  const [searchQuery, setSearchQuery] = useState('Ciudad de México'); // Valor por defecto "CDMX"
   const { categoria, ciudad } = location.state;
+  const { titulo, contenido, imagen } = location.state || {};
 
 
   const categorias = {
@@ -55,7 +56,7 @@ const VistaLugares = () => {
   ],
   
   VidaNocturna : [
-    "karaoke", "night_club", "bar", "liquor_store", "cafe", "cafeteria", "diner", "wine_bar"
+    "karaoke", "night_club", "bar", "liquor_store", "wine_bar"
   ],
   
   Compras : [
@@ -68,19 +69,23 @@ const VistaLugares = () => {
   
   FamiliaNinos : [
     "childrens_camp", "movie_theater", "tourist_attraction", "water_park", "wildlife_park", "wildlife_refuge", 
-    "zoo", "shopping_mall", "store", "cycling_park", "park", "planetarium", "plaza", "roller_coaster", "beach"
+    "zoo", "shopping_mall", "cycling_park", "park", "planetarium", "plaza", "roller_coaster", "beach"
   ],
   
   Deportes : [
     "adventure_sports_", "adventure_sports_center", "aquarium", "bowling_alley", "casino", "comedy_club", 
-    "ferris_wheel", "observation_deck", "off_roading_area", "skateboard_park", "tourist_attraction", "water_park", 
-    "video_arcade", "yoga_studio", "sauna", "cycling_park", "dance_hall", "park", "picnic_ground", "planetarium", 
-    "plaza", "roller_coaster", "swimming_pool", "sports_activity_location", "sports_club", "playground"
+    "ferris_wheel", "off_roading_area", "skateboard_park", "tourist_attraction", "water_park", 
+    "video_arcade",  "cycling_park", "dance_hall", "park", "planetarium"
   ], };
 
   
   // Mapeo de las categorías en inglés a español para la visualización
   const categoriasTraduccion = {
+
+    "bowling_alley": "Boliche",
+    "casino": "casino",
+    "comedy_club": "Club de comedia",
+    "video_arcade": "Juegos de arcade",
     "restaurant": "Restaurantes",
     "pizza_restaurant": "Restaurantes de Pizza",
     "mexican_restaurant": "Restaurantes Mexicanos",
@@ -148,10 +153,12 @@ const VistaLugares = () => {
     "night_club": "Discoteca",
     "liquor_store": "Tienda de Licores",
     "wine_bar": "Bar de Vinos",
+   
 
     // Compras
     "acai_shop": "Tienda de Acai",
     "bagel_shop": "Tienda de Bagels",
+    "bakery": "Panaderia",
     "candy_store": "Tienda de Golosinas",
     "chocolate_factory": "Fábrica de Chocolate",
     "chocolate_shop": "Tienda de Chocolate",
@@ -164,11 +171,22 @@ const VistaLugares = () => {
     "juice_shop": "Tienda de Jugos",
     "sandwich_shop": "Tienda de Sándwiches",
     "florist": "Florería",
+    "food_delivery": "Comida para llevar",
+    "asian_grocery_store": "Tienda asiatica",
     "book_store": "Librería",
     "clothing_store": "Tienda de Ropa",
+    "convenience store": "Tienda de conveniencia",
     "department_store": "Tienda Departamental",
+    "discount_store": "Tienda de descuento",
+    "food_store": "Tienda de comida",
+    "jewelry_store": "Joyeria",
+    "market": "Mercado",
+    "shopping_mall": "Centro comercial",
     "supermarket": "Supermercado",
-    "shopping_mall": "Centro Comercial"
+    "plaza": "Plaza",
+    "wine_bar": "Tienda de vinos",
+
+    "childrens_camp": "Campamento de niños",
   
   };
   
@@ -287,7 +305,7 @@ useEffect(() => {
 
   return (
     <div className="carousel-container1">
-      <Categoria />
+       <Categoria titulo={titulo} contenido={contenido} imagen ={imagen} />
       <div style={{ position: "absolute", top: "100px", left: "60px", zIndex: 10 }}>
         <BotonRegresar />
       </div>

@@ -84,36 +84,54 @@ function Inicio() {
       titulo: "Guanajuato",
       contenido: "Visita la ciudad de Guanajuato",
       imagen: Guanajuato,
+      descripcion:
+      "Guanajuato, Ciudad Patrimonio de la Humanidad, es un destino mágico conocido por sus pintorescas callejuelas, coloridas fachadas y su rica historia minera. Entre sus atractivos destacan el Callejón del Beso, el Teatro Juárez, el Museo de las Momias, y la majestuosa Alhóndiga de Granaditas.",
+    
     },
     {
       id: 2,
       titulo: "Guadalajara",
       contenido: "Visita la ciudad de Guadalajara",
       imagen: Guadalajara,
+      descripcion:
+      "Guadalajara, la Perla Tapatía, es una ciudad vibrante y moderna con profundas raíces culturales. Es el hogar del mariachi y el tequila, símbolos icónicos de México. Entre sus principales atracciones destacan la imponente Catedral de Guadalajara, el histórico Teatro Degollado, y el dinámico Mercado San Juan de Dios.",
+    
     },
     {
       id: 3,
       titulo: "Cancún",
       contenido: "Visita la ciudad de Cancún",
       imagen: Cancun,
+      descripcion:
+      "Cancún, el paraíso del Caribe mexicano, es conocido por sus playas de arena blanca, aguas turquesa y vibrante vida nocturna. Este destino ofrece actividades para todos, desde explorar sitios arqueológicos mayas como El Rey y Tulum hasta disfrutar de resorts de clase mundial y emocionantes deportes acuáticos.",
+    
     },
     {
       id: 4,
       titulo: "Madrid",
       contenido: "Visita la ciudad de Madrid",
       imagen: Madrid,
+      escripcion:
+      "Madrid, el corazón vibrante de España, combina historia, cultura y modernidad en un solo lugar. La capital española es famosa por sus monumentos icónicos como el Palacio Real, la Puerta del Sol y la majestuosa Plaza Mayor. Sus museos de renombre mundial, como el Prado y el Reina Sofía, albergan obras maestras del arte.",
+    
     },
     {
       id: 5,
       titulo: "Edimburgo",
       contenido: "Visita la ciudad de Edimburgo",
       imagen: Edimburgo,
+      descripcion:
+      "la joya histórica de Escocia, es una ciudad de contrastes donde la majestuosidad medieval se encuentra con la elegancia georgiana. Dominada por el imponente Castillo de Edimburgo, la ciudad ofrece encantadores paseos por la Royal Mile y las misteriosas callejuelas del casco antiguo. Su vibrante vida cultural se destaca en festivales como el Edinburgh Festival Fringe. Con paisajes escénicos como el Arthur’s Seat y una rica herencia literaria, Edimburgo es un destino fascinante lleno de historia, arte y naturaleza.",
+    
     },
     {
       id: 6,
       titulo: "Sydney",
       contenido: "Visita la ciudad de Sydney",
       imagen: Sydney,
+      descripcion:
+      "la joya costera de Australia, es una ciudad icónica conocida por su deslumbrante puerto, hogar de la emblemática Ópera de Sídney y el majestuoso Puente del Puerto. Sus playas doradas, como Bondi y Manly, son perfectas para disfrutar del sol y el surf. Sídney combina modernidad y naturaleza con atracciones como los Jardines Botánicos Reales y la vasta Bahía de Sídney. Vibrante y multicultural, ofrece una rica gastronomía, vida nocturna y una experiencia urbana inolvidable en medio de paisajes espectaculares.",
+    
     },
   ];
 

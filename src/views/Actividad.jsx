@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../estilos/styActividad.css";
 import ActividadPrincipal from "../componentes/Actividades";
@@ -10,6 +10,7 @@ import { chapultepec, biblioteca, bellasartes, monumentorevolucion } from "../im
 function Actividad() {
   const location = useLocation();
   const lugar = location.state || {};
+  const { place_id } = useParams();
 
   // Verifica si la categoría es "museo" y, en ese caso, establece el precio como "GRATIS"
   const precio = lugar?.category === "museo" ? "GRATIS" : lugar?.price || "$$";
@@ -20,7 +21,7 @@ function Actividad() {
         <>
           <ActividadPrincipal
             titulo={lugar.title}
-            id={lugar.Id}
+            id={place_id}
             descripcion={lugar.descripcion_corta || "No disponible"}
             imagenFondo={lugar.image}
             infoTitulo={lugar.title}
