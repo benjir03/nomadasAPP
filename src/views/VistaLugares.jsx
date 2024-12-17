@@ -13,6 +13,7 @@ const VistaLugares = () => {
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('CDMX'); // Valor por defecto "CDMX"
   const { categoria, ciudad } = location.state;
+  const { titulo, contenido, imagen } = location.state || {};
 
 
   const categorias = {
@@ -286,7 +287,7 @@ useEffect(() => {
 
   return (
     <div className="carousel-container1">
-      <Categoria />
+       <Categoria titulo={titulo} contenido={contenido} imagen ={imagen} />
       <div style={{ position: "absolute", top: "100px", left: "60px", zIndex: 10 }}>
         <BotonRegresar />
       </div>

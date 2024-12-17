@@ -25,42 +25,42 @@ import {
 const lugares = [
   {
     id: 1,
-    nombre: "Guanajuato",
+    titulo: "Guanajuato",
     descripcion:
       "Guanajuato, Ciudad Patrimonio de la Humanidad, es un destino mágico conocido por sus pintorescas callejuelas, coloridas fachadas y su rica historia minera. Entre sus atractivos destacan el Callejón del Beso, el Teatro Juárez, el Museo de las Momias, y la majestuosa Alhóndiga de Granaditas.",
     imagen: Guanajuato,
   },
   {
     id: 2,
-    nombre: "Guadalajara",
+    titulo: "Guadalajara",
     descripcion:
       "Guadalajara, la Perla Tapatía, es una ciudad vibrante y moderna con profundas raíces culturales. Es el hogar del mariachi y el tequila, símbolos icónicos de México. Entre sus principales atracciones destacan la imponente Catedral de Guadalajara, el histórico Teatro Degollado, y el dinámico Mercado San Juan de Dios.",
     imagen: Guadalajara,
   },
   {
     id: 3,
-    nombre: "Cancún",
+    titulo: "Cancún",
     descripcion:
       "Cancún, el paraíso del Caribe mexicano, es conocido por sus playas de arena blanca, aguas turquesa y vibrante vida nocturna. Este destino ofrece actividades para todos, desde explorar sitios arqueológicos mayas como El Rey y Tulum hasta disfrutar de resorts de clase mundial y emocionantes deportes acuáticos.",
     imagen: Cancun,
   },
   {
     id: 4,
-    nombre: "Madrid",
+    titulo: "Madrid",
     descripcion:
       "Madrid, el corazón vibrante de España, combina historia, cultura y modernidad en un solo lugar. La capital española es famosa por sus monumentos icónicos como el Palacio Real, la Puerta del Sol y la majestuosa Plaza Mayor. Sus museos de renombre mundial, como el Prado y el Reina Sofía, albergan obras maestras del arte.",
     imagen: Madrid,
   },
   {
     id: 5,
-    nombre: "Edimburgo",
+    titulo: "Edimburgo",
     descripcion:
       "la joya histórica de Escocia, es una ciudad de contrastes donde la majestuosidad medieval se encuentra con la elegancia georgiana. Dominada por el imponente Castillo de Edimburgo, la ciudad ofrece encantadores paseos por la Royal Mile y las misteriosas callejuelas del casco antiguo. Su vibrante vida cultural se destaca en festivales como el Edinburgh Festival Fringe. Con paisajes escénicos como el Arthur’s Seat y una rica herencia literaria, Edimburgo es un destino fascinante lleno de historia, arte y naturaleza.",
     imagen: Edimburgo,
   },
   {
     id: 6,
-    nombre: "Sydney",
+    titulo: "Sydney",
     descripcion:
       "la joya costera de Australia, es una ciudad icónica conocida por su deslumbrante puerto, hogar de la emblemática Ópera de Sídney y el majestuoso Puente del Puerto. Sus playas doradas, como Bondi y Manly, son perfectas para disfrutar del sol y el surf. Sídney combina modernidad y naturaleza con atracciones como los Jardines Botánicos Reales y la vasta Bahía de Sídney. Vibrante y multicultural, ofrece una rica gastronomía, vida nocturna y una experiencia urbana inolvidable en medio de paisajes espectaculares.",
     imagen: Sydney,
@@ -69,12 +69,14 @@ const lugares = [
 
 const DetalleLugar = () => {
   const { id } = useParams(); // Ahora obtenemos el `id` desde la URL
-  const lugar = lugares.find((lugar) => lugar.id === parseInt(id)); // Buscar por `id`
+  
 
 
 
   const location = useLocation();
   const navigate = useNavigate();
+  const { titulo, descripcion, imagen } = location.state || {};
+
 
   const categorias = {
     gastronomia: [
@@ -280,7 +282,7 @@ const DetalleLugar = () => {
 
     try {
       const categoriasParaBusqueda = selectedCategories.length > 0 ? selectedCategories : [categoria];
-      let url = `http://localhost:3002/search?city=${lugar.nombre}&category=${categoriasParaBusqueda.join(",")}&radius=${radius}&keywords=${keywords}`;
+      let url = `http://localhost:3002/search?city=${titulo}&category=${categoriasParaBusqueda.join(",")}&radius=${radius}&keywords=${keywords}`;
 
       if (categoria !== 'museum' && priceRange && priceRange !== '4') {
         url += `&priceRange=${priceRange}`;
@@ -369,7 +371,7 @@ const DetalleLugar = () => {
         category: pkg.category
       };
 
-      navigate('/actividad', { state: placeData });
+      navigate('/actividad/${pkg.id}', { state: placeData });
     } catch (error) {
       console.error('Error al obtener detalles del lugar:', error);
     }
@@ -395,7 +397,7 @@ const DetalleLugar = () => {
       <section
         className="contenedorUno"
         style={{
-          backgroundImage: `url(${lugar.imagen})`,
+          backgroundImage: `url(${imagen})`,
           height: `90vh`,
           backgroundSize: "cover",
           backgroundPosition: "center top",
@@ -405,8 +407,8 @@ const DetalleLugar = () => {
           <BotonRegresar />
         </div>
         <div className="contenedorDos">
-          <h1>{lugar.nombre}</h1>
-          <p>{lugar.descripcion}</p>
+          <h1>{titulo}</h1>
+          <p>{descripcion}</p>
         </div>
       </section>
 
@@ -415,7 +417,7 @@ const DetalleLugar = () => {
         <h2>Actividades</h2>
         <div className="carousel-container">
       <form onSubmit={handleSubmit}>
-        <h2>Busca tu lugar favorito en {lugar.nombre}</h2>
+        <h2>Busca tu lugar favorito en {titulo}</h2>
        <p>Selecciona una categoria y un rango de precios</p>
         <div>
           <label htmlFor="categoria">Categoría:</label>

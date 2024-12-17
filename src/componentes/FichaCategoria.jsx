@@ -8,10 +8,13 @@ const FichaCategoria = ({titulo, contenido, imagen, categoria}) => {
   const navigate = useNavigate();
 
   const handleCategoryClick = () => {
-    navigate("/vista-lugares", {
+    navigate(`/vista-lugares/${categoria}`, {
       state: {
         categoria, // Lista de subcategorías
         ciudad: "", // Ubicación predeterminada
+        titulo,
+        contenido,
+        imagen,
       },
     });
   };

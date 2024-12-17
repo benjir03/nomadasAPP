@@ -2,10 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../estilos/FichaCategoria.css";
 
-const FichaLugaresR = ({ titulo, contenido, imagen }) => {
+const FichaLugaresR = ({ titulo, descripcion, imagen, contenido }) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const navigate = useNavigate();
 
+
+  const handleCategoryClick = () => {
+    navigate(`/lugares/${titulo}`, {
+      state: {
+        titulo,
+        descripcion,
+        imagen,
+      },
+    });
+  };
 
 
   return (
@@ -23,6 +34,8 @@ const FichaLugaresR = ({ titulo, contenido, imagen }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleCategoryClick} // Navegación al hacer clic
+
 
     >
       <div

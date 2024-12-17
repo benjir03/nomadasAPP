@@ -47,7 +47,7 @@ function App() {
           <Route path="/Registro" element={<Registro />} />
           <Route path="/InicioSesion" element={<InicioSesion />} />
           <Route path="/ArmarPlan" element={<ArmarPlan />} />
-          <Route path="/Actividad" element={<Actividad />} />
+          <Route path="/Actividad/:place_id" element={<Actividad />} />
           <Route path="/Experiencias" element={<Experiencias />} />
           <Route path="/Perfil" element={<Perfil />} />
           <Route path="/Completar" element={<CompletarPerfil />} />
@@ -61,11 +61,11 @@ function App() {
           <Route path="/ModPerfil" element={<ModPerfil />} />
           <Route path="/Actividades" element={<ListaActividad />} /> {/* Ruta para ListaActividad */}
           <Route path="/Categoria" element={<Categoria />} /> {/* Ruta para Categoria */}
-          <Route path="/vista-lugares" element={<VistaLugares />} />
+          <Route path="/vista-lugares/:categoria" element={<VistaLugares />} />
           <Route path="/Olvido" element={<Olvido />} />
           <Route path="/InfoPass" element={<InfoPass />} />
           <Route path="/DetalleLugarC" element={<DetalleLugarC />} />
-          <Route path="/lugares/:id" element={<DetalleLugar />} />
+          <Route path="/lugares/:titulo" element={<DetalleLugar />} />
           <Route path="/VerPlan" element={<VerPlan />} />
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
