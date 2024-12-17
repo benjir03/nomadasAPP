@@ -15,6 +15,7 @@ const Perfil = () => {
   const [usuario, setUsuario] = useState([]);
   const [pref, setPref] = useState([]);
   const [plan, setPlan] = useState([]);
+  const [verplan, setVerPlan] = useState([]);
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
   //Token perfil
@@ -39,9 +40,13 @@ const Perfil = () => {
         const favs = await axios.get("http://localhost:3001/plan/obtenerFavorita", {
           withCredentials: true,
         });
+        const verplan = await axios.get("http://localhost:3001/plan/verPlanes", {
+          withCredentials: true,
+        });
         const userData = response.data;
         const userPref = algo.data;
         const userFav = favs.data;
+        const userPlan = verplan.data;
         // Formatear la fecha de nacimiento al formato YYYY-MM-DD
         const formattedDate = userData.fecha_nacimiento
           ? userData.fecha_nacimiento.split('T')[0]
@@ -49,6 +54,7 @@ const Perfil = () => {
         setUsuario({ ...userData, fecha_nacimiento: formattedDate });
         setPref(userPref);
         setPlan(userFav);
+        setVerPlan(userPlan);
       } catch (error) {
         console.error("Error al obtener el perfil del usuario:", error);
       }
@@ -181,6 +187,7 @@ const Perfil = () => {
               <div className="planes-container">
                 <h2 className="login-title">Favoritos</h2>
                     {/* Carrusel o Lista Horizontal de planes */}
+                    
                     {plan.map((actividad, index) => (
                       <div className="planes-list" key={index}>
                         <div className="plan-card">
@@ -204,6 +211,7 @@ const Perfil = () => {
                         </div>
                       </div>
                     ))}
+
                 </div>
             </div>
           );
@@ -215,46 +223,20 @@ const Perfil = () => {
               <h2 className="login-title">Planes</h2>
 
               {/* Carrusel o Lista Horizontal de planes */}
-              <div className="planes-list">
+              {verplan.map ((plan, index) =>(
+                <div className="planes-list" key={index}>
                 <div className="plan-card">
-                  <img src={Lugar1} alt="Plan 1" className="plan-img" />
-                  <div className="plan-details">
-                    <h3>Plan A</h3>
-                    <p>Descripción del plan A</p>
-                    <p>Fecha de creación</p>
-                  </div>
+                  <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OSJ3JTFR7RCIJPWRCJT74LTXXA.jpg" alt="Plan 1" className="plan-img" />
+                    <div className="plan-details">
+                      <h3>{plan.nombre_itinerario}</h3>
+                    </div>
                   <div className="plan-buttons">
-                    <button className="btn-plan">Ver</button>
-                    <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
+                      <button className="btn-plan">Ver</button>
+                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
                   </div>
                 </div>
-
-                <div className="plan-card">
-                  <img src={Lugar1} alt="Plan 2" className="plan-img" />
-                  <div className="plan-details">
-                    <h3>Plan B</h3>
-                    <p>Descripción del plan A</p>
-                    <p>Fecha de creación</p>
-                  </div>
-                  <div className="plan-buttons">
-                    <button className="btn-plan">Ver</button>
-                    <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
-                  </div>
                 </div>
-
-                <div className="plan-card">
-                  <img src={Lugar1} alt="Plan 3" className="plan-img" />
-                  <div className="plan-details">
-                    <h3>Plan C</h3>
-                    <p>Descripción del plan A</p>
-                    <p>Fecha de creación</p>
-                  </div>
-                  <div className="plan-buttons">
-                    <button className="btn-plan">Ver</button>
-                    <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         );

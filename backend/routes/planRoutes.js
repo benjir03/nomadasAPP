@@ -6,6 +6,7 @@ const { verifyToken } = require('../middlewares/authMiddleware');
 
 router.post('/insertarLugar', verifyToken,planController.insertarLugar);
 router.get('/obtenerPlan', verifyToken, planController.obtenerPlan);
+router.get('/verPlanes', verifyToken, planController.verPlanes);
 router.get('/obtenerFavorita', verifyToken, planController.obtenerFavorita)
 router.delete('/deleteActividad', verifyToken, planController.deleteActividad);
 router.delete('/eliminarFavorita', verifyToken, planController.eliminarFavorita);

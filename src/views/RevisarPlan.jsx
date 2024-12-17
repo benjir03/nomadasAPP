@@ -61,6 +61,7 @@ const RevisarPlan = () => {
               ubicacion="" 
               horario=""
               onDelete={handleDeleteActivity}
+              ID_actividad={actividad.ID_actividad}
             />
           ))}
             

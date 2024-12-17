@@ -3,7 +3,7 @@ import "../estilos/RevisarPlan.css";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-const ActividadAgregada = ({ nombre, ubicacion, horario, imagen, onDelete}) => {
+const ActividadAgregada = ({ nombre, ubicacion, horario, imagen, onDelete, ID_actividad}) => {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
@@ -13,13 +13,13 @@ const ActividadAgregada = ({ nombre, ubicacion, horario, imagen, onDelete}) => {
     if (confirmDelete) {
       try {
         const requestData = {
-          nombre_actividad: nombre,
+          ID_actividad: ID_actividad,
         };
+        console.log("Datos enviados:", requestData);
         await axios.delete("http://localhost:3001/plan/deleteActividad", {
           data: requestData, // Pasa los datos aquí
           withCredentials: true, // Si necesitas enviar cookies o credenciales
         });
-        console.log("Datos enviados:", requestData);
         onDelete(nombre);
       } catch (error) {
         console.error("Error al eliminar la actividad:", error);
