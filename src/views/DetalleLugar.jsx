@@ -371,7 +371,7 @@ const DetalleLugar = () => {
         category: pkg.category
       };
 
-      navigate('/actividad/${pkg.id}', { state: placeData });
+      navigate("/actividad", { state: placeData });
     } catch (error) {
       console.error('Error al obtener detalles del lugar:', error);
     }

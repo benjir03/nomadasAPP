@@ -47,7 +47,7 @@ function App() {
           <Route path="/Registro" element={<Registro />} />
           <Route path="/InicioSesion" element={<InicioSesion />} />
           <Route path="/ArmarPlan" element={<ArmarPlan />} />
-          <Route path="/Actividad/:place_id" element={<Actividad />} />
+          <Route path="/Actividad/" element={<Actividad />} />
           <Route path="/Experiencias" element={<Experiencias />} />
           <Route path="/Perfil" element={<Perfil />} />
           <Route path="/Completar" element={<CompletarPerfil />} />
