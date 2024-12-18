@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const Ruta = () => {
     const [placeIds, setPlaceIds] = useState(['', '', '', '', '']);
     const [matrixResponse, setMatrixResponse] = useState(null);
+    const [plan, setPlan] = useState([]);
     const [optimizedRoute, setOptimizedRoute] = useState([]);
     const [mapsLink, setMapsLink] = useState('');
     const [travelMode, setTravelMode] = useState('driving');
@@ -16,13 +18,34 @@ const Ruta = () => {
     const handleModeChange = (event) => {
       setTravelMode(event.target.value);
     };
-  
+    
+    useEffect(() => {
+      const fetchPlan = async () => {
+        try {
+          const response = await axios.get('http://localhost:3001/plan/obtenerPlan', {
+            withCredentials: true,
+          });
+          console.log(response);
+          const planData = response.data;
+          setPlan(planData);
+          const initialPlaceIds = planData.map((item) => item.ID_google || ""); // Ajusta según tus datos
+          setPlaceIds(initialPlaceIds);
+        } catch (error) {
+          console.error("Error al obtener el plan del usuario:", error);
+        }
+      };
+      
+      fetchPlan();
+    }, []);
+
     const handleSubmit = async (event) => {
       event.preventDefault();
+      console.log(placeIds);
       const origins = placeIds[0];
       const destinations = placeIds.slice(1).join('|');
       const response = await fetch(`http://localhost:3002/route-matrix?origins=${origins}&destinations=${destinations}`);
       const data = await response.json();
+      console.log(data);
       setMatrixResponse(data);
       if (data.rows && data.rows[0] && data.rows[0].elements) {
         const route = optimizeRoute(data.rows[0].elements);
@@ -68,11 +91,11 @@ const Ruta = () => {
 
         <div>
           <form onSubmit={handleSubmit}>
-            {placeIds.map((placeId, index) => (
+            {plan.map((placeId, index) => (
               <div key={index}>
                 <label>
-                  Place ID {index === 0 ? 'Origen' : `Destino ${index}`}:
-                  <input type="text" value={placeId} onChange={(e) => handleChange(index, e)} />
+                  {index === 0 ? `Origen ${placeId.nombre_actividad}` : `Destino ${placeId.nombre_actividad}`}:
+                  <input type="text" value={placeId.ID_google} onChange={(event) => handleChange(index, event)}/>
                 </label>
               </div>
             ))}
@@ -87,22 +110,35 @@ const Ruta = () => {
             </label>
             <button type="submit">Calcular Ruta</button>
           </form>
-          {matrixResponse && matrixResponse.rows && matrixResponse.rows[0] && matrixResponse.rows[0].elements && (
-            <div>
-              <h3>Ruta Optimizada:</h3>
-              {optimizedRoute.map((index, i) => (
-                <p key={i}>
-                  {i === 0 ? 'Origen' : `Destino ${i}`} ({matrixResponse.placeDetails[index].name}): {matrixResponse.rows[0].elements[index].duration.text} ({matrixResponse.rows[0].elements[index].distance.text})
-                </p>
-              ))}
-              {mapsLink && (
-                <div>
-                  <h3>Enlace a Google Maps:</h3>
-                  <a href={mapsLink} target="_blank" rel="noopener noreferrer">Ver Ruta en Google Maps</a>
-                </div>
-              )}
-            </div>
-          )}
+          {matrixResponse && matrixResponse.rows && matrixResponse.rows[0] && matrixResponse.rows[0].elements ? (
+  <div>
+    <h3>Ruta Optimizada:</h3>
+    {optimizedRoute.map((index, i) => {
+      const element = matrixResponse.rows[0].elements[index];
+      const placeDetail = matrixResponse.placeDetails?.[index];
+      
+      // Validamos que element y sus propiedades existan
+      if (element && element.duration && element.distance) {
+        return (
+          <p key={i}>
+            {i === 0 ? 'Origen' : `Destino ${i}`} ({placeDetail?.name || 'Lugar desconocido'}): 
+            {element.duration.text} ({element.distance.text})
+          </p>
+        );
+      }
+      return <p key={i}>Información no disponible para el lugar {i}</p>;
+    })}
+    {mapsLink && (
+      <div>
+        <h3>Enlace a Google Maps:</h3>
+        <a href={mapsLink} target="_blank" rel="noopener noreferrer">Ver Ruta en Google Maps</a>
+      </div>
+    )}
+  </div>
+) : (
+  <p>No hay datos disponibles para calcular la ruta.</p>
+)}
+
         </div>
 
     );

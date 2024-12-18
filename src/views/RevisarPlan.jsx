@@ -111,7 +111,7 @@ const RevisarPlan = () => {
                   <div className="contenedorBotonesAccion"> 
                   <button  
                       className="botonVerRuta"  
-                      onClick={() => window.open('https://www.google.com/maps/dir/...', '_blank')}  
+                      onClick={() => window.open('/Ruta', '_blank')}  
                     >  
                       <FaRoute /> Ver ruta  
                     </button>    
