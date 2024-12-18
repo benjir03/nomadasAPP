@@ -19,85 +19,7 @@ const PerfilPlan = () => {
   const {
     ID = ID_plan,
   } = ID_plan
-  // Función para calcular la ruta óptima y devolver el enlace de Google Maps
-  const calcularRuta = async (placeIds, travelMode = 'driving') => {
-    if (!placeIds.length) return null;
-    const origins = placeIds[0];
-    const destinations = placeIds.slice(1).join('|');
-    try {
-      const response = await axios.get(`http://localhost:3002/route-matrix?origins=${origins}&destinations=${destinations}`);
-      const data = response.data;
-      console.log('datos ', placeIds);
-      
-      if (data.rows && data.rows[0] && data.rows[0].elements) {
-        const route = optimizeRoute(data.rows[0].elements);
-        console.log('PlaceDetails ', data.placeDetails );
-        return generateMapsLink(route, data.placeDetails, travelMode);
-      }
-      
-      return null;
-    } catch (error) {
-      console.error("Error al obtener la matriz de rutas:", error);
-      return null;
-    }
-  };
-
-  const optimizeRoute = (elements) => {
-    console.log("Elementos recibidos:", elements);
   
-    const route = [];
-    elements.forEach((element, index) => {
-      if (element.status === "OK") {
-        route.push({ index, duration: element.duration.value });
-      }
-    });
-  
-    // Ordenar destinos por duración mínima
-    route.sort((a, b) => a.duration - b.duration);
-  
-    const optimizedRoute = route.map(item => item.index); // Extraer índices de la ruta optimizada
-    console.log("Ruta optimizada:", optimizedRoute);
-    return optimizedRoute;
-  };
-  
-  const generateMapsLink = (route, placeDetails, travelMode) => {
-    if (!placeDetails || route.length === 0) {
-      console.error("Error: No se pudo generar el enlace debido a datos incompletos.");
-      return null;
-    }
-  
-    const origin = encodeURIComponent(placeDetails[route[0]].formatted_address);
-    const destination = encodeURIComponent(placeDetails[route[route.length - 1]].formatted_address);
-    const waypoints = route
-      .slice(1, -1)
-      .map(index => encodeURIComponent(placeDetails[index].formatted_address))
-      .join('|');
-  
-    const link = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${waypoints}&travelmode=${travelMode}`;
-    console.log("Enlace generado:", link);
-    return link;
-  };
-  
-  const handleVerRuta = async () => {
-    if (plan.length > 0) {
-      const placeIds = plan.map(actividad => actividad.ID_google);
-      console.log("IDs de lugares:", placeIds);
-  
-      try {
-        const link = await calcularRuta(placeIds, 'driving');
-        if (link) {
-          setMapsLink(link);
-        } else {
-          console.error("No se pudo generar el enlace.");
-        }
-      } catch (error) {
-        console.error("Error al calcular la ruta:", error);
-      }
-    }
-  };
-  
-  
-
   const Completar = () => {
     alert("Plan completado, felicidades");
     navigate("/Perfil");
@@ -162,21 +84,8 @@ const PerfilPlan = () => {
                 <FaTrash /> Limpiar plan
               </button>
               */}
-              <button className="botonVerRuta" onClick={handleVerRuta}>
-                <FaRoute /> Ver ruta
-              </button>
             </div>
-            {mapsLink && (
-              <div>
-                {/*
-                
-                */}<a href={mapsLink} target="_blank" rel="noopener noreferrer">Link</a>
-              </div>
-            )}
-
-
         </div>
-
         <div className="contenedorLadoDerecho">  
                   <div className="nombrePlanContenedor">
                     {/*
