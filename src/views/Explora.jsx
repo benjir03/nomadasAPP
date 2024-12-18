@@ -15,6 +15,7 @@ import Guadalajara from "../imgs/citys/Guadalajara.png"
 import Guanajuato from "../imgs/citys/Guanajuato.png"
 import Madrid from "../imgs/citys/Madrid.png"
 import Sydney from "../imgs/citys/Sydney.png"
+import BusquedaLugares from "../componentes/BusquedaLugares";
 import {
   cat_art,
   cat_family,
@@ -178,26 +179,7 @@ function Explora() {
       {/* Sección de actividades */}
       <section className="categoriasSec">
         <h2>Actividades</h2>
-        <div className="categorias">
-          <FichaActividad
-            titulo="Actividad1"
-            contenido=""
-            imagen={BackInicio}
-          />
-          <FichaActividad
-            titulo="Actividad2"
-            contenido=""
-            imagen={BackInicio}
-          />
-          <FichaActividad
-            titulo="Actividad3"
-            contenido=""
-            imagen={BackInicio}
-          />
-        </div>
-        <Link to="/Lugares" className="more-categories-link">
-          Más actividades...
-        </Link>
+        <BusquedaLugares ciudad="Ciudad de México" keywords="restaurant| pmuseo" />
       </section>
 
 
