@@ -72,7 +72,7 @@ button[type="submit"]:hover {
   padding: 20px;
   border-radius: 15px;
   background-color: #fff;
-  text-align: center;
+  text-align: left; /* Alineación a la izquierda */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -85,7 +85,7 @@ button[type="submit"]:hover {
   max-height: 200px; /* Ajusta este valor según tus necesidades */
   object-fit: cover; /* Recorta la imagen si es más alta */
   border-radius: 10px;
-  margin: auto;
+  margin-bottom: 15px; /* Añade espacio entre la imagen y el texto */
 }
 
 .view-more-btn {
@@ -175,18 +175,13 @@ button[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Centra el contenido a la izquierda */
-  align-items: flex-start; /* Asegura que todo el contenido esté alineado a la izquierda */
+  align-items: flex-start !important; /* Asegura que todo el contenido esté alineado a la izquierda con prioridad */
   margin-top: 10px; /* Añade espacio entre la imagen y la información */
 }
 
-.package-info p{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Centra el contenido a la izquierda */
-  align-items: flex-start; /* Asegura que todo el contenido esté alineado a la izquierda */
-  margin-top: 10px; /* Añade espacio entre la imagen y la información */
+.package-info p, .package-info h3, .package-info strong {
+  text-align: left !important; /* Alinea el texto a la izquierda con prioridad */
 }
-
 
 .package-image {
   width: 100%;
@@ -211,6 +206,7 @@ button[type="submit"]:hover {
   font-size: 1.2rem;
   color: gold;
 }
+
 .stars { 
   display: flex; 
   justify-content: flex-start; /* Centra las estrellas a la izquierda */ 
@@ -240,6 +236,6 @@ button[type="submit"]:hover {
   color: gold; 
 } 
   
-  .star.empty { 
-    color: lightgray; 
-  }
+.star.empty { 
+  color: lightgray; 
+}
