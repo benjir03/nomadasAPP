@@ -5,6 +5,7 @@ import "../estilos/styActividad.css";
 import ActividadPrincipal from "../componentes/Actividades";
 import FichaActividad from "../componentes/FichaActividad";
 import { chapultepec, biblioteca, bellasartes, monumentorevolucion } from "../imgs/ArchivoImgs";
+import BusquedaLugares from "../componentes/BusquedaLugares";
 
 
 function Actividad() {
@@ -74,26 +75,7 @@ function Actividad() {
       {/* Sección de actividades */}
       <section className="categoriasSec">
         <h2>Actividades relacionadas</h2>
-        <div className="categorias">
-          <FichaActividad
-            titulo="Actividad1"
-            contenido=""
-            imagen={biblioteca}
-          />
-          <FichaActividad
-            titulo="Actividad2"
-            contenido=""
-            imagen={bellasartes}
-          />
-          <FichaActividad
-            titulo="Actividad3"
-            contenido=""
-            imagen={monumentorevolucion}
-          />
-        </div>
-        <Link to="/Lugares" className="more-categories-link">
-          Más actividades...
-        </Link>
+        <BusquedaLugares ciudad="Ciudad de México" keywords={lugar.category} />
       </section>
       
     </div>

@@ -192,17 +192,9 @@ export default function ArmarPlan() {
         </div>
       </div>
 
-      
-      <BusquedaLugares ciudad="CDMX" keywords=""></BusquedaLugares>
-        <h2>Lugares Recomendados</h2>
-        <div className="categorias">
-          <FichaLugares titulo="Lugar1" contenido="" imagen={Lugar1} />
-          <FichaLugares titulo="Lugar2" contenido="" imagen={Lugar1} />
-          <FichaLugares titulo="Lugar3" contenido="" imagen={Lugar1} />
-        </div>
-        <Link to="/Lugares" className="more-categories-link">
-          Más lugares...
-        </Link>
+      <h2>Lugares Recomendados</h2>
+      <BusquedaLugares ciudad="Ciudad de México" keywords="restaurant| parque |plaza" />
+        
     </div>
   );
 }

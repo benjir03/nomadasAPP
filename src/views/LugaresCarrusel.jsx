@@ -8,63 +8,75 @@ const LugaresCarrusel = () => {
   const navigate = useNavigate();
 
   const categorias = {
-    gastronomia: [
-      "restaurant",
-      "pizza_restaurant",
-      "mexican_restaurant",
-      "italian_restaurant",
-      "chinese_restaurant",
-      "indian_restaurant",
-      "fast_food_restaurant",
-      "vegan_restaurant",
-      "vegetarian_restaurant",
-      "seafood_restaurant",
-      "hamburger_restaurant",
-      "sushi_restaurant",
-      "brunch_restaurant",
-      "coffee_shop",
-      "ice_cream_shop",
-      "bakery",
-      "bar",
-      "wine_bar"
-    ],
-    Cultura: [
-      "art_gallery", "art_studio", "auditorium", "cultural_landmark", "historical_place", "monument", 
-      "museum", "sculpture", "historical_landmark", "library"
-    ],
-    ArteEntretenimiento: [
-      "art_gallery", "art_studio", "auditorium", "cultural_landmark", "museum", "performing_arts_theater", 
-      "sculpture", "library", "karaoke", "movie_theater", "opera_house", "philharmonic_hall", "planetarium"
-    ],
-    Naturaleza: [
-      "adventure_sports_", "adventure_sports_center", "aquarium", "botanical_garden", "cycling_park", 
-      "dance_hall", "dog_park", "ferris_wheel", "garden", "hiking_area", "historical_landmark", "national_park", 
-      "off_roading_area", "skateboard_park", "state_park", "tourist_attraction", "water_park", "wildlife_park", 
-      "wildlife_refuge", "zoo", "park", "roller_coaster", "beach"
-    ],
-    VidaNocturna: [
-      "karaoke", "night_club", "bar", "liquor_store", "cafe", "cafeteria", "diner", "wine_bar"
-    ],
-    Compras: [
-      "acai_shop", "bagel_shop", "bakery", "candy_store", "chocolate_factory", "chocolate_shop", "coffee_shop", 
-      "confectionery", "dessert_shop", "donut_shop", "food_court", "ice_cream_shop", "juice_shop", "sandwich_shop", 
-      "florist", "food_delivery", "asian_grocery_store", "book_store", "clothing_store", "convenience store", 
-      "department_store", "discount_store", "food_store", "jewelry_store", "market", "shopping_mall", "supermarket", 
-      "plaza", "wine_bar"
-    ],
-    FamiliaNinos: [
-      "childrens_camp", "movie_theater", "tourist_attraction", "water_park", "wildlife_park", "wildlife_refuge", 
-      "zoo", "shopping_mall", "store", "cycling_park", "park", "planetarium", "plaza", "roller_coaster", "beach"
-    ],
-    Deportes: [
-      "adventure_sports_", "adventure_sports_center", "aquarium", "bowling_alley", "casino", "comedy_club", 
-      "ferris_wheel", "observation_deck", "off_roading_area", "skateboard_park", "tourist_attraction", "water_park", 
-      "video_arcade", "yoga_studio", "sauna", "cycling_park", "dance_hall", "park", "picnic_ground", "planetarium", 
-      "plaza", "roller_coaster", "swimming_pool", "sports_activity_location", "sports_club", "playground"
-    ]
-  };
 
+    gastronomia :[
+    "restaurant",
+    "pizza_restaurant",
+    "mexican_restaurant",
+    "italian_restaurant",
+    "chinese_restaurant",
+    "indian_restaurant",
+    "fast_food_restaurant",
+    "vegan_restaurant",
+    "vegetarian_restaurant",
+    "seafood_restaurant",
+    "hamburger_restaurant",
+    "sushi_restaurant",
+    "brunch_restaurant",
+    "coffee_shop",
+    "ice_cream_shop",
+    "bakery",
+    "bar",
+    "wine_bar"],
+
+  Cultura : [
+    "art_gallery", "art_studio", "auditorium", "cultural_landmark", "historical_place", "monument", 
+    "museum", "sculpture", "historical_landmark", "library"
+  ],
+  
+  ArteEntretenimiento : [
+    "art_gallery", "art_studio", "auditorium", "cultural_landmark", "museum", "performing_arts_theater", 
+    "sculpture", "library", "karaoke", "movie_theater", "opera_house", "philharmonic_hall", "planetarium"
+  ],
+  
+  Naturaleza: [
+    "adventure_sports_", "adventure_sports_center", "aquarium", "botanical_garden", "cycling_park", 
+    "dance_hall", "dog_park", "ferris_wheel", "garden", "hiking_area", "historical_landmark", "national_park", 
+    "off_roading_area", "skateboard_park", "state_park", "tourist_attraction", "water_park", "wildlife_park", 
+    "wildlife_refuge", "zoo", "park", "roller_coaster", "beach"
+  ],
+  
+  VidaNocturna : [
+    "karaoke", "night_club", "bar", "liquor_store", "wine_bar"
+  ],
+  
+  Compras : [
+    "acai_shop", "bagel_shop", "bakery", "candy_store", "chocolate_factory", "chocolate_shop", "coffee_shop", 
+    "confectionery", "dessert_shop", "donut_shop", "food_court", "ice_cream_shop", "juice_shop", "sandwich_shop", 
+    "florist", "food_delivery", "asian_grocery_store", "book_store", "clothing_store", "convenience store", 
+    "department_store", "discount_store", "food_store", "jewelry_store", "market", "shopping_mall", "supermarket", 
+    "plaza", "wine_bar"
+  ],
+  
+  FamiliaNinos : [
+    "childrens_camp", "movie_theater", "tourist_attraction", "water_park", "wildlife_park", "wildlife_refuge", 
+    "zoo", "shopping_mall", "cycling_park", "park", "planetarium", "plaza", "roller_coaster", "beach"
+  ],
+  
+  Deportes : [
+    "adventure_sports_", "adventure_sports_center", "aquarium", "bowling_alley", "casino", "comedy_club", 
+    "ferris_wheel", "off_roading_area", "skateboard_park", "tourist_attraction", "water_park", 
+    "video_arcade",  "cycling_park", "dance_hall", "park", "planetarium"
+  ], };
+
+  
+  // Mapeo de las categorías en inglés a español para la visualización
   const categoriasTraduccion = {
+
+    "bowling_alley": "Boliche",
+    "casino": "casino",
+    "comedy_club": "Club de comedia",
+    "video_arcade": "Juegos de arcade",
     "restaurant": "Restaurantes",
     "pizza_restaurant": "Restaurantes de Pizza",
     "mexican_restaurant": "Restaurantes Mexicanos",
@@ -83,6 +95,7 @@ const LugaresCarrusel = () => {
     "bakery": "Panaderías",
     "bar": "Bares",
     "wine_bar": "Bares de Vino",
+     // Cultura e Historia
     "art_gallery": "Galería de Arte",
     "art_studio": "Estudio de Arte",
     "auditorium": "Auditorio",
@@ -93,11 +106,15 @@ const LugaresCarrusel = () => {
     "sculpture": "Escultura",
     "historical_landmark": "historical_landmark",
     "library": "Biblioteca",
+
+    // Arte y Entretenimiento
     "performing_arts_theater": "Teatro de Artes Escénicas",
     "movie_theater": "Cine",
     "opera_house": "Teatro de Ópera",
     "philharmonic_hall": "Sala Sinfónica",
     "planetarium": "Planetario",
+    
+    // Naturaleza y Aventura
     "adventure_sports_": "Deportes de Aventura",
     "adventure_sports_center": "Centro de Deportes de Aventura",
     "aquarium": "Acuario",
@@ -108,6 +125,7 @@ const LugaresCarrusel = () => {
     "ferris_wheel": "Rueda de la Fortuna",
     "garden": "Jardín",
     "hiking_area": "Zona de Senderismo",
+    "historical_landmark": "Monumento Histórico",
     "national_park": "Parque Nacional",
     "off_roading_area": "Zona de Off-Roading",
     "skateboard_park": "Parque de Skateboard",
@@ -120,48 +138,47 @@ const LugaresCarrusel = () => {
     "park": "Parque",
     "roller_coaster": "Montaña Rusa",
     "beach": "Playa",
-    "karaoke": "karaoke",
+
+    // Vida Nocturna
+    "karaoke" : "karaoke",
     "night_club": "Discoteca",
     "liquor_store": "Tienda de Licores",
+    "wine_bar": "Bar de Vinos",
+   
+
+    // Compras
     "acai_shop": "Tienda de Acai",
     "bagel_shop": "Tienda de Bagels",
+    "bakery": "Panaderia",
     "candy_store": "Tienda de Golosinas",
     "chocolate_factory": "Fábrica de Chocolate",
     "chocolate_shop": "Tienda de Chocolate",
+    "coffee_shop": "Tienda de Café",
     "confectionery": "Confitería",
     "dessert_shop": "Tienda de Postres",
-    "donut_shop": "Tienda de Donas",
-    "food_court": "Comedor de Comida Rápida",
+    "donut_shop": "Tienda de Donuts",
+    "food_court": "Comedor",
+    "ice_cream_shop": "Tienda de Helados",
     "juice_shop": "Tienda de Jugos",
-    "sandwich_shop": "Tienda de Sandwiches",
-    "florist": "Floristería",
-    "food_delivery": "Servicio de Comida a Domicilio",
-    "asian_grocery_store": "Tienda de Comestibles Asiáticos",
+    "sandwich_shop": "Tienda de Sándwiches",
+    "florist": "Florería",
+    "food_delivery": "Comida para llevar",
+    "asian_grocery_store": "Tienda asiatica",
     "book_store": "Librería",
     "clothing_store": "Tienda de Ropa",
-    "convenience_store": "Tienda de Conveniencia",
+    "convenience store": "Tienda de conveniencia",
     "department_store": "Tienda Departamental",
-    "discount_store": "Tienda de Descuentos",
-    "food_store": "Tienda de Alimentos",
-    "jewelry_store": "Joyería",
+    "discount_store": "Tienda de descuento",
+    "food_store": "Tienda de comida",
+    "jewelry_store": "Joyeria",
     "market": "Mercado",
-    "shopping_mall": "Centro Comercial",
+    "shopping_mall": "Centro comercial",
     "supermarket": "Supermercado",
-    "plaza": "Plaza Comercial",
-    "bowling_alley": "Bolera",
-    "casino": "Casino",
-    "comedy_club": "Club de Comedia",
-    "observation_deck": "Plataforma de Observación",
-    "off_roading_area": "Zona de Off-Roading",
-    "tourist_attraction": "Atracción Turística",
-    "video_arcade": "Arcade de Video",
-    "yoga_studio": "Estudio de Yoga",
-    "sauna": "Sauna",
-    "picnic_ground": "Zona de Picnic",
-    "swimming_pool": "Piscina",
-    "sports_activity_location": "Ubicación de Actividades Deportivas",
-    "sports_club": "Club Deportivo",
-    "playground": "Parque Infantil"
+    "plaza": "Plaza",
+    "wine_bar": "Tienda de vinos",
+
+    "childrens_camp": "Campamento de niños",
+  
   };
 
   // Estado para manejar las categorías seleccionadas
@@ -233,7 +250,7 @@ const LugaresCarrusel = () => {
         category: categoria,
         recommendedTime: "Tiempo recomendado no disponible",
         openingTime: result.opening_hours ? (result.opening_hours.open_now ? "Abierto ahora" : "Cerrado") : "Horario no disponible",
-        price: result.price_level !== undefined ? `Precio: ${result.price_level}` : "Precio no disponible",
+        price: result.price_level !== undefined ? mapPriceLevel(result.price_level) : "Precio no disponible",
         location: result.formatted_address || result.vicinity,
         image: getPhotoUrl(result.photo_reference),
         rating: result.rating || "Sin calificación",
@@ -264,6 +281,20 @@ const LugaresCarrusel = () => {
     }
   };
 
+  const mapPriceLevel = (priceLevel) => {
+    switch (priceLevel) {
+      case 1:
+        return '$';
+      case 2:
+        return '$$';
+      case 3:
+        return '$$$';
+      case 4:
+        return '$$$$';
+      default:
+        return 'Precio no disponible';
+    }
+  };
   useEffect(() => {
     handleSubmit();
   }, [selectedCategories]);
@@ -307,14 +338,18 @@ const LugaresCarrusel = () => {
   };
 
   const renderStars = (rating) => {
+    if (typeof rating !== 'number' || rating < 0 || rating > 5) {
+      return <div className="stars">Calificación no disponible</div>;
+    }
+  
     const fullStars = Math.floor(rating);
-    const halfStars = rating % 1 !== 0;
-    const emptyStars = 5 - fullStars - (halfStars ? 1 : 0);
-
+    const halfStars = rating % 1 !== 0 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStars;
+  
     return (
       <div className="stars">
         {[...Array(fullStars)].map((_, index) => <span key={index} className="star full">★</span>)}
-        {halfStars && <span className="star half">★</span>}
+        {halfStars === 1 && <span className="star half">★</span>}
         {[...Array(emptyStars)].map((_, index) => <span key={index} className="star empty">☆</span>)}
       </div>
     );
