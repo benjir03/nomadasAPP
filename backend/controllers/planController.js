@@ -170,11 +170,11 @@ exports.obtenerPlan = (req, res) => {
 exports.verPlanes = (req, res) => {
     const userId = req.userId;
     const lastPlanQuery = `
-        SELECT p.nombre_itinerario, a.nombre_actividad
+        SELECT p.nombre_itinerario, a.nombre_actividad, p.ID_plan
         FROM PLAN_ACTIVIDADES AS pa
         INNER JOIN PLAN AS p ON pa.ID_plan = p.ID_plan
         INNER JOIN ACTIVIDAD AS a ON a.ID_actividad = pa.ID_actividad
-        WHERE p.ID_user = ?`;
+        WHERE p.ID_user =  ?`;
     
     pool.query(lastPlanQuery, [userId], (err, results) => {
     if (err) {
@@ -189,12 +189,13 @@ exports.verPlanes = (req, res) => {
         } else {
             acc.push({
                 nombre_itinerario: curr.nombre_itinerario,
+                ID_plan: curr.ID_plan,
                 plan: [{ nombre_actividad: curr.nombre_actividad }],
             });
         }
             return acc;
         }, []);
-      res.json(groupedData); // Enviar datos agrupados
+        res.json(groupedData); // Enviar datos agrupados
     });
 };
 
@@ -228,6 +229,21 @@ exports.obtenerActividades = (req, res) => {
         if (err) {
             console.error('Error al obtener el último ID de PLAN:', err);
             return res.status(500).json({ error: 'Error al obtener el último ID' });
+        }
+        res.json(results); // Envía todos los campos de la base de datos
+    });
+};
+
+exports.planPerfil = (req, res) => {
+    const userId = req.userId;
+    const {ID_plan} = req.body;
+            // Obtiene todos los campos del usuario
+    pool.query(`SELECT * FROM PLAN as p INNER JOIN 
+        PLAN_ACTIVIDADES as pa on p.ID_plan = pa.ID_plan 
+        INNER JOIN ACTIVIDAD as a on pa.ID_actividad = a.ID_actividad 
+        WHERE p.ID_user = ? and p.ID_plan = ?`, [userId, ID_plan], (err, results) => {
+        if (err || results.length === 0) {
+            return res.status(404).json({ error: 'Plan para usuario no encontrado' });
         }
         res.json(results); // Envía todos los campos de la base de datos
     });

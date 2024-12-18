@@ -54,7 +54,7 @@ const BarraNav = () => {
           </li>
           <li>
             <Link className="botonAccion" to="/InicioSesion">
-              {user ? "Cerrar sesión" : "Iniciar sesión"}
+              {user ? "Hola, bom dias" : "Iniciar sesión"}
             </Link>
           </li>
           <li>
