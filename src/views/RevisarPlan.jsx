@@ -38,43 +38,45 @@ const RevisarPlan = () => {
   };
 
   const optimizeRoute = (elements) => {
-    console.log("Matriz de elementos:", elements);
+    console.log("Elementos recibidos:", elements);
   
-    const validElements = elements.map((e, index) => ({
-      ...e,
-      index,
-    })).filter(e => e.status === "OK");
+    const route = [];
+    elements.forEach((element, index) => {
+      if (element.status === "OK") {
+        route.push({ index, duration: element.duration.value });
+      }
+    });
   
-    validElements.sort((a, b) => a.duration.value - b.duration.value);
+    // Ordenar destinos por duración mínima
+    route.sort((a, b) => a.duration - b.duration);
   
-    const route = validElements.map(e => e.index); // Ordenar según duración mínima
-    console.log('Ruta optimizada:', route);
-    return route;
+    const optimizedRoute = route.map(item => item.index); // Extraer índices de la ruta optimizada
+    console.log("Ruta optimizada:", optimizedRoute);
+    return optimizedRoute;
   };
   
   const generateMapsLink = (route, placeDetails, travelMode) => {
-    if (!placeDetails || placeDetails.length === 0) {
-      console.error("Error: placeDetails no está disponible o está vacío.");
+    if (!placeDetails || route.length === 0) {
+      console.error("Error: No se pudo generar el enlace debido a datos incompletos.");
       return null;
     }
   
     const origin = encodeURIComponent(placeDetails[route[0]].formatted_address);
     const destination = encodeURIComponent(placeDetails[route[route.length - 1]].formatted_address);
-    const waypoints = route.slice(1, -1)
-      .map(index => encodeURIComponent(placeDetails[index]?.formatted_address || ""))
-      .filter(Boolean) // Remover waypoints inválidos
+    const waypoints = route
+      .slice(1, -1)
+      .map(index => encodeURIComponent(placeDetails[index].formatted_address))
       .join('|');
   
     const link = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${waypoints}&travelmode=${travelMode}`;
-    console.log('Link de Google Maps:', link);
+    console.log("Enlace generado:", link);
     return link;
   };
   
-  // Manejar errores en handleVerRuta
   const handleVerRuta = async () => {
     if (plan.length > 0) {
       const placeIds = plan.map(actividad => actividad.ID_google);
-      console.log('placeIds:', placeIds);
+      console.log("IDs de lugares:", placeIds);
   
       try {
         const link = await calcularRuta(placeIds, 'driving');
@@ -88,6 +90,7 @@ const RevisarPlan = () => {
       }
     }
   };
+  
   
 
   const Completar = () => {
