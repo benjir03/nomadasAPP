@@ -91,7 +91,9 @@ const RevisarPlan = () => {
     }
   };
   
-  
+  const handlePrint = () => {
+    navigate('/VerPlan', { state: { plan } }); // Pasar datos del plan al componente VerPlan
+  };  
 
   const Completar = () => {
     alert("Plan completado, felicidades");
@@ -120,7 +122,8 @@ const RevisarPlan = () => {
     );
   };
     const Limpiar = async () =>{
-      
+  
+  
     }
     return (
     <div className="contenedorVista">  
@@ -155,6 +158,9 @@ const RevisarPlan = () => {
               */}
               <button className="botonVerRuta" onClick={handleVerRuta}>
                 <FaRoute /> Ver ruta
+              </button>
+              <button className="botonVerRuta" onClick={handlePrint}>
+                <LuPrinter /> Ver PDF
               </button>
             </div>
             {mapsLink && (
