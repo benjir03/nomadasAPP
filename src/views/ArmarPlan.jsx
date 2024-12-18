@@ -4,6 +4,7 @@ import fondiArmarPlan from "../imgs/piramid.jpg";
 import "../estilos/styArmarPlan.css";
 import FichaLugares from "../componentes/FichaLugares";
 import Lugar1 from "../imgs/explora01.jpg";
+import BusquedaLugares from "../componentes/BusquedaLugares";
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaClock, FaCalendar, FaPlus, FaUser, FaUserFriends, FaUsers } from 'react-icons/fa';
 
@@ -191,8 +192,8 @@ export default function ArmarPlan() {
         </div>
       </div>
 
-      {/* Sección de lugares recomendados */}
-      <section className="categoriasSec">
+      
+      <BusquedaLugares ciudad="CDMX" keywords=""></BusquedaLugares>
         <h2>Lugares Recomendados</h2>
         <div className="categorias">
           <FichaLugares titulo="Lugar1" contenido="" imagen={Lugar1} />
@@ -202,7 +203,6 @@ export default function ArmarPlan() {
         <Link to="/Lugares" className="more-categories-link">
           Más lugares...
         </Link>
-      </section>
     </div>
   );
 }

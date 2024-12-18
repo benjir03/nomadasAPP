@@ -7,10 +7,20 @@ import axios from 'axios';
 import { LuPrinter } from 'react-icons/lu';
 import { FaCheck, FaEdit, FaRoute, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { calcularRuta } from '../componentes/calcularRuta';
 
 const RevisarPlan = () => {
   const [plan, setPlan] = useState([]);
   const navigate = useNavigate();
+  const [mapsLink, setMapsLink] = useState('');
+
+  const handleVerRuta = async () => {
+    if (plan.length > 0) {
+      const placeIds = plan.map(actividad => actividad.ID_actividad); // Asumiendo que cada actividad tiene un ID_actividad
+      const link = await calcularRuta(placeIds, 'driving'); // Puedes cambiar el modo según se requiera
+      setMapsLink(link);
+    }
+  };
   
   const Completar = () => {
     alert("Plan completado, felicidades");
@@ -65,14 +75,23 @@ const RevisarPlan = () => {
             />
           ))}
             
-            <div className="contenedorBotonesAccion">  
-              <button className="botonCompletarPlan" onClick={Completar}>  
-                <FaCheck /> Completar Plan  
-              </button>  
+            <div className="contenedorBotonesAccion">
+              <button className="botonCompletarPlan" onClick={Completar}>
+                <FaCheck /> Completar Plan
+              </button>
               <button className="botonAccion2" onClick={Limpiar}>
-                <FaTrash /> Limpiar plan  
-              </button>  
-            </div> 
+                <FaTrash /> Limpiar plan
+              </button>
+              <button className="botonVerRuta" onClick={handleVerRuta}>
+                <FaRoute /> Ver ruta
+              </button>
+            </div>
+            {mapsLink && (
+              <div>
+                <a href={mapsLink} target="_blank" rel="noopener noreferrer">Ver Ruta en Google Maps</a>
+              </div>
+            )}
+
 
         </div>
 

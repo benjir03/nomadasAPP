@@ -35,6 +35,8 @@ import DetalleLugar from "./views/DetalleLugar";
 import { AuthProvider } from "./context/auth";
 import CarrouselLugares from "./componentes/CarrouselLugares";
 import Ruta from "./views/Ruta"
+import Busqueda from "./componentes/BusquedaLugares"
+import CalcularRuta from "./componentes/calcularRuta"
 
 function App() {
   return (
@@ -67,6 +69,9 @@ function App() {
           <Route path="/DetalleLugarC" element={<DetalleLugarC />} />
           <Route path="/lugares/:titulo" element={<DetalleLugar />} />
           <Route path="/VerPlan" element={<VerPlan />} />
+          <Route path="/Busqueda" element={<Busqueda />} />
+          <Route path="/Ruta" element={<calcularRuta />} />
+
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
           <Route path="/Ruta" element={<Ruta/>}/>
