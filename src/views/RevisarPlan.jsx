@@ -148,9 +148,11 @@ const RevisarPlan = () => {
               <button className="botonCompletarPlan" onClick={Completar}>
                 <FaCheck /> Completar Plan
               </button>
+              {/*
               <button className="botonAccion2" onClick={Limpiar}>
                 <FaTrash /> Limpiar plan
               </button>
+              */}
               <button className="botonVerRuta" onClick={handleVerRuta}>
                 <FaRoute /> Ver ruta
               </button>
@@ -168,12 +170,14 @@ const RevisarPlan = () => {
 
         <div className="contenedorLadoDerecho">  
                   <div className="nombrePlanContenedor">
-                    {plan.map((actividad, index) =>(
+                    {/*
+                                        {plan.map((actividad, index) =>(
                       <div key={index}>
                         <h3 className="nombrePlan">{actividad.nombre_itinerario}</h3>
                       </div>
                     ))}
                     <button className="botonEditarNombre">Editar</button>  
+                    */}
                   </div>  
                   <br/>
                   <div className="nombrPlanContenedor">
@@ -182,9 +186,10 @@ const RevisarPlan = () => {
         
                   {/* Agrupación de actividades */}
                   <div className="detalleActividades">
-                    
-                      <strong>Ciudad:</strong> Descripción del lugar
+                    {/*
+                    <strong>Ciudad:</strong> Descripción del lugar
                       <strong>Acompañantes:</strong> 2 personas
+                    */}
         
                   {/*<div className="nombrePlanContenedor">  
                     <h3 className="nombrePlan">Fecha</h3>  
@@ -201,15 +206,6 @@ const RevisarPlan = () => {
                       <strong>Mascota:</strong> Sí 
                       <strong>Capacidades diferentes:</strong> Ninguna 
                   </div>  
-        
-                  <div className="contenedorBotonesAccion"> 
-                  <button  
-                      className="botonVerRuta"  
-                      onClick={() => window.open('/Ruta', '_blank')}  
-                    >  
-                      <FaRoute /> Ver ruta  
-                    </button>    
-                  </div> 
                 </div>  
       </div>
     </div>

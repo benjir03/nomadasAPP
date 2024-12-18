@@ -178,9 +178,14 @@ const Perfil = () => {
               <br/>
               <br/>
 
-              <button className="botonAccion">
+              
+              {
+                /*
+                <button className="botonAccion">
                 Editar foto de perfil
-              </button>
+                </button>
+                */
+              }
 
 
             </div>
