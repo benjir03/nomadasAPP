@@ -157,7 +157,6 @@ exports.obtenerPlan = (req, res) => {
         }
 
         const ultimoID = results[0]?.ultimoID || 0; // Si no hay resultados, asignar 0 por defecto
-        console.log(`El último ID de PLAN es: ${ultimoID}`);
             // Obtiene todos los campos del usuario
     pool.query('SELECT * FROM PLAN as p INNER JOIN PLAN_ACTIVIDADES as pa on p.ID_plan = pa.ID_plan INNER JOIN ACTIVIDAD as a on pa.ID_actividad = a.ID_actividad WHERE p.ID_user = ? and p.ID_plan = ?', [userId, ultimoID], (err, results) => {
         if (err || results.length === 0) {
@@ -170,13 +169,32 @@ exports.obtenerPlan = (req, res) => {
 
 exports.verPlanes = (req, res) => {
     const userId = req.userId;
-    const lastPlanQuery = `SELECT *  FROM PLAN WHERE ID_user = ?`;
+    const lastPlanQuery = `
+        SELECT p.nombre_itinerario, a.nombre_actividad
+        FROM PLAN_ACTIVIDADES AS pa
+        INNER JOIN PLAN AS p ON pa.ID_plan = p.ID_plan
+        INNER JOIN ACTIVIDAD AS a ON a.ID_actividad = pa.ID_actividad
+        WHERE p.ID_user = ?`;
+    
     pool.query(lastPlanQuery, [userId], (err, results) => {
-        if (err) {
-            console.error('Error al obtener el último ID de PLAN:', err);
-            return res.status(500).json({ error: 'Error al obtener el último ID' });
+    if (err) {
+        console.error('Error al obtener los planes:', err);
+        return res.status(500).json({ error: 'Error al obtener los planes' });
+    }
+      // Agrupar los datos por nombre_itinerario
+        const groupedData = results.reduce((acc, curr) => {
+        const plan = acc.find(p => p.nombre_itinerario === curr.nombre_itinerario);
+        if (plan) {
+            plan.plan.push({ nombre_actividad: curr.nombre_actividad });
+        } else {
+            acc.push({
+                nombre_itinerario: curr.nombre_itinerario,
+                plan: [{ nombre_actividad: curr.nombre_actividad }],
+            });
         }
-        res.json(results); // Envía todos los campos de la base de datos
+            return acc;
+        }, []);
+      res.json(groupedData); // Enviar datos agrupados
     });
 };
 
@@ -187,7 +205,7 @@ exports.deleteActividad = (req, res) => {
     console.log('datos recibidos al back ', req.body);
     
     pool.query(`
-            DELETE pa, p
+            DELETE pa
             FROM PLAN_ACTIVIDADES AS pa
             INNER JOIN PLAN AS p ON pa.ID_plan = p.ID_plan
             INNER JOIN ACTIVIDAD AS a ON a.ID_actividad = pa.ID_actividad
@@ -197,6 +215,21 @@ exports.deleteActividad = (req, res) => {
             return res.status(500).json({ error: 'Plan para usuario no encontrado' });
         }
         res.json({ message: 'Actividad eliminada exitosamente' })
+    });
+};
+
+exports.obtenerActividades = (req, res) => {
+    const userId = req.userId;
+    const lastPlanQuery = `SELECT * FROM PLAN_ACTIVIDADES AS pa
+            INNER JOIN PLAN AS p ON pa.ID_plan = p.ID_plan
+            INNER JOIN ACTIVIDAD AS a ON a.ID_actividad = pa.ID_actividad
+            WHERE p.ID_user = ?`;
+    pool.query(lastPlanQuery, [userId], (err, results) => {
+        if (err) {
+            console.error('Error al obtener el último ID de PLAN:', err);
+            return res.status(500).json({ error: 'Error al obtener el último ID' });
+        }
+        res.json(results); // Envía todos los campos de la base de datos
     });
 };
 

@@ -15,6 +15,7 @@ const Perfil = () => {
   const [usuario, setUsuario] = useState([]);
   const [pref, setPref] = useState([]);
   const [plan, setPlan] = useState([]);
+  const [actividades, setActividades] = useState([]);
   const [verplan, setVerPlan] = useState([]);
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
@@ -43,10 +44,14 @@ const Perfil = () => {
         const verplan = await axios.get("http://localhost:3001/plan/verPlanes", {
           withCredentials: true,
         });
+        const veracti = await axios.get("http://localhost:3001/plan/obtenerActividades", {
+          withCredentials: true,
+        });
         const userData = response.data;
         const userPref = algo.data;
         const userFav = favs.data;
         const userPlan = verplan.data;
+        const planAct = veracti.data;
         // Formatear la fecha de nacimiento al formato YYYY-MM-DD
         const formattedDate = userData.fecha_nacimiento
           ? userData.fecha_nacimiento.split('T')[0]
@@ -55,6 +60,7 @@ const Perfil = () => {
         setPref(userPref);
         setPlan(userFav);
         setVerPlan(userPlan);
+        setActividades(planAct);
       } catch (error) {
         console.error("Error al obtener el perfil del usuario:", error);
       }
@@ -172,9 +178,14 @@ const Perfil = () => {
               <br/>
               <br/>
 
-              <button className="botonAccion">
+              
+              {
+                /*
+                <button className="botonAccion">
                 Editar foto de perfil
-              </button>
+                </button>
+                */
+              }
 
 
             </div>
@@ -200,7 +211,9 @@ const Perfil = () => {
                             <h3>{actividad.nombre_actividad}</h3>
                           </div>
                           <div className="plan-buttons">
-                            <button className="btn-plan">Ver</button>
+                            {/*
+                              <button className="btn-plan">Ver</button>
+                            */}
                             <button
                               className="btn-delete"
                               onClick={() => deletefav(actividad.ID_actividad)} // Pasar ID_actividad
@@ -209,6 +222,7 @@ const Perfil = () => {
                             </button>
                           </div>
                         </div>
+                        <br />
                       </div>
                     ))}
 
@@ -229,12 +243,22 @@ const Perfil = () => {
                   <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OSJ3JTFR7RCIJPWRCJT74LTXXA.jpg" alt="Plan 1" className="plan-img" />
                     <div className="plan-details">
                       <h3>{plan.nombre_itinerario}</h3>
+                      <p>Actividades del plan: </p>
+                      {plan.plan.map((actividad, subindex) =>(
+                        <div key={subindex}>
+                          <p>{actividad.nombre_actividad}</p>
+                        </div>
+                      ))}
+                    
                     </div>
-                  <div className="plan-buttons">
-                      <button className="btn-plan">Ver</button>
-                      <button className="btn-delete">Eliminar</button> {/* Botón "Editar" agregado */}
-                  </div>
+                    {/*
+                      <div className="plan-buttons">
+                        <button className="btn-plan">Ver</button>
+                        <button className="btn-delete">Eliminar</button>
+                      </div>
+                    */}
                 </div>
+                <br />
                 </div>
               ))}
             </div>
