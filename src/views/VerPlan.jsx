@@ -11,73 +11,122 @@ const VerPlan = () => {
   useEffect(() => {
     const generatePDF = async () => {
       const doc = new jsPDF();
-      doc.setFontSize(18);
-      doc.text('Detalles del Plan', 14, 22);
 
-      // Detalles generales del plan (lado derecho)
-      const detallesX = 120; // Posición horizontal de los detalles
-      let detallesY = 30; // Posición vertical inicial de los detalles
-      doc.setFontSize(12);
-      doc.text('Ciudad: Descripción del lugar', detallesX, detallesY);
-      detallesY += 10;
-      doc.text('Acompañantes: 2 personas', detallesX, detallesY);
-      detallesY += 10;
-      doc.text(`No. de actividades: ${plan.length}`, detallesX, detallesY);
-      detallesY += 10;
-      doc.text('Mascota: Sí', detallesX, detallesY);
-      detallesY += 10;
-      doc.text('Capacidades diferentes: Ninguna', detallesX, detallesY);
+      // Colores personalizados
+      const colors = {
+        backgroundColor: '#edf6f9', // Fondo
+        primaryColor: '#006d77', // Color primario
+        secondaryColor: '#e19577', // Color secundario
+        supportColor: '#83c5be', // Color de soporte
+        letterColor: '#4a4a4a', // Color del texto
+      };
 
-      // Agregar actividades con fotos y nombres
-      let y = 30; // Posición vertical inicial
-      for (const actividad of plan) {
-        // Imagen
-        if (actividad.imagen_actividad) {
-          try {
-            const imgData = await fetch(actividad.imagen_actividad)
-              .then((res) => res.blob())
-              .then((blob) => URL.createObjectURL(blob));
-            doc.addImage(imgData, 'JPEG', 14, y, 40, 40); // Ajusta tamaño y posición de la imagen
-          } catch (error) {
-            console.error('Error al cargar imagen:', error);
+      // Función para cargar imágenes como base64
+      const loadImageAsBase64 = async (url) => {
+        const response = await fetch(url);
+        const blob = await response.blob();
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+      };
+
+      try {
+        // Cargar logo
+        const logoBase64 = await loadImageAsBase64('/imgs/LogoNoP.jpeg'); // Ruta desde public
+
+        // Encabezado: fondo de soporteColor y logo
+        doc.setFillColor(colors.supportColor);
+        doc.rect(0, 0, 210, 30, 'F'); // Fondo superior
+        doc.addImage(logoBase64, 'JPEG', 10, 5, 20, 20); // Logo en la esquina superior izquierda
+
+        // Título principal: "Detalles del Plan"
+        doc.setFontSize(18);
+        doc.setTextColor(colors.primaryColor);
+        doc.text('NomadasAPP Plan', 40, 20);
+
+        // Línea separadora entre encabezado y contenido
+        doc.setDrawColor(colors.primaryColor);
+        doc.setLineWidth(1);
+        doc.line(10, 35, 200, 35); // Línea horizontal
+
+        // Detalles generales del plan
+        const detallesX = 120;
+        let detallesY = 50;
+        doc.setFontSize(12);
+        doc.setTextColor(colors.primaryColor);
+        doc.text('Detalles del Plan', detallesX, detallesY);
+        doc.setTextColor(colors.letterColor);
+        detallesY += 10;
+        doc.text('Acompañantes: 2 personas', detallesX, detallesY);
+        detallesY += 10;
+        doc.text(`No. de actividades: ${plan.length}`, detallesX, detallesY);
+        detallesY += 10;
+        doc.text('Mascota: Sí', detallesX, detallesY);
+        detallesY += 10;
+        doc.text('Capacidades diferentes: Ninguna', detallesX, detallesY);
+
+        // Lista de actividades con imágenes
+        let y = 50; // Posición vertical inicial
+        for (const actividad of plan) {
+          // Imagen de la actividad
+          if (actividad.imagen_actividad) {
+            const imgBase64 = await loadImageAsBase64(actividad.imagen_actividad);
+            doc.addImage(imgBase64, 'JPEG', 14, y, 40, 40);
+          }
+
+          // Nombre de la actividad
+          doc.setTextColor(colors.primaryColor);
+          doc.text(60, y + 10, actividad.nombre_actividad || 'Nombre no disponible');
+          doc.setFontSize(10);
+          doc.setTextColor(colors.letterColor);
+          doc.text(60, y + 20, actividad.descripcion || 'Sin descripción');
+
+          y += 50; // Incrementar la posición vertical para la siguiente actividad
+
+          // Salto de página si es necesario
+          if (y > 270) {
+            doc.addPage();
+            y = 30;
           }
         }
 
-        // Nombre del lugar
-        doc.text(60, y + 10, actividad.nombre_actividad || 'Nombre no disponible');
+        // Segunda línea separadora
+        doc.setDrawColor(colors.primaryColor);
+        doc.line(10, y, 200, y); // Línea al final de las actividades
 
-        y += 50; // Incrementar la posición vertical para la siguiente actividad
-
-        // Salto de página si es necesario
-        if (y > 270) {
-          doc.addPage();
-          y = 30;
-        }
+        // Convertir PDF a Blob y mostrar
+        const pdfBlob = doc.output('blob');
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        setPdfUrl(pdfUrl); // Guardar la URL del PDF
+      } catch (error) {
+        console.error('Error al generar el PDF:', error);
       }
-
-      // Convertir PDF en un Blob
-      const pdfBlob = doc.output('blob');
-      const pdfUrl = URL.createObjectURL(pdfBlob);
-      setPdfUrl(pdfUrl); // Guardar la URL en el estado
     };
 
     generatePDF();
   }, [plan]);
 
   return (
-    <div className="contenedorVista">
-      <h1 className="tituloRevisarPlan">Ver Plan</h1>
-      {pdfUrl ? (
-        <iframe
-          src={pdfUrl}
-          width="100%"
-          height="600px"
-          title="Vista previa del plan"
-          style={{ border: 'none' }}
-        ></iframe>
-      ) : (
-        <p>Generando PDF...</p>
-      )}
+    <div className="contenedorVista"> 
+      <div className="contenedorVista">
+        <h1 className="tituloRevisarPlan">Ver Plan</h1>
+      </div>
+      <div className="contenedorPrincipal">
+        {pdfUrl ? (
+          <iframe
+            src={pdfUrl}
+            width="100%"
+            height="600px"
+            title="Vista previa del plan"
+            style={{ border: 'none' }}
+          ></iframe>
+        ) : (
+          <p>Generando PDF...</p>
+        )}
+      </div>
     </div>
   );
 };
