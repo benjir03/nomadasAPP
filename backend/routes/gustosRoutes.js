@@ -7,5 +7,7 @@ const { verifyToken } = require('../middlewares/authMiddleware');
 router.post('/registrar', verifyToken, gustosController.registrar);
 router.put('/modificar', verifyToken, gustosController.modificar);
 router.get('/gustos', verifyToken, gustosController.gustos);
+// Ruta para obtener información del perfil (protegida)
+router.get('/ModGustos', verifyToken, gustosController.getGustos);
 
 module.exports = router;

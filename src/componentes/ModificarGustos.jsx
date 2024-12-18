@@ -5,8 +5,8 @@ import "../estilos/styInicioRegistro.css";
 import '../estilos/styGeneral.css';
 import axios from "axios";
 
-const ModGustos = ({Accion, Navegacion}) => {
-    const [gustos, setGustos] = useState({
+const ModGustos = ({Accion, Navegacion}) => {  
+  const [gustos, setGustos] = useState({
         transporte: "",
         duracion: "",
         compañia: "",
@@ -17,6 +17,7 @@ const ModGustos = ({Accion, Navegacion}) => {
         ID_estacion: "",
         ID_categoria: [],
     });
+  
 
 const categoriasDisponibles = [
     { texto: "Gastronomía", icono: <FaLandmark />, valor: 1 },
@@ -34,12 +35,17 @@ const navigate = useNavigate();
   useEffect(() => {
     const fetchGustos = async () => {
         try {
-            const response = await axios.get("http://localhost:3001/auth/gustos/gustos", {
+            const response = await axios.get("http://localhost:3001/gustos/gustos", {
                 withCredentials: true,
             });
             const gustosData = response.data;
+              // Asegurar que ID_categoria sea siempre un array
+              const categorias = Array.isArray(gustosData.ID_categoria)
+                    ? gustosData.ID_categoria
+                    : gustosData.ID_categoria ? [gustosData.ID_categoria] : [];
+
+            setGustos({ ...gustosData, ID_categoria: categorias });
             console.log("Datos de gustos obtenidos:", gustosData);
-            setGustos(gustosData); // Prellenar formulario
         } catch (error) {
             console.error('Error al obtener preferencias:', error);
         }
@@ -54,21 +60,11 @@ const handleChange = (e) => {
     setGustos({ ...gustos, [name]: value });
   };
 
-  const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target;
-    setGustos((prevState) => {
-      const selectedCategories = prevState.ID_categoria;
-      if (checked) {
-        return { ...prevState, ID_categoria: [...selectedCategories, parseInt(value)] };
-      } else {
-        return {
-          ...prevState,
-          ID_categoria: selectedCategories.filter((item) => item !== parseInt(value)),
-        };
-      }
-    });
-  };
-
+ // Manejar selección de categoría única
+ const handleCategoryChange = (e) => {
+  const { value } = e.target;
+  setGustos({ ...gustos, ID_categoria: [parseInt(value)] }); // Mantener como array
+};
 // Enviar actualización de gustos
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -88,7 +84,7 @@ const handleSubmit = async (e) => {
     <div className="login-container">
         <h1 className="login-title">Modificar Preferencias</h1>
         <form className="login-form" onSubmit={handleSubmit}>
-        <label>¿Qué medios de transporte prefieres usar?</label>
+       {/* <label>¿Qué medios de transporte prefieres usar?</label>
         <label className="radio-label">
           <input
             type="radio"
@@ -121,7 +117,7 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
           />
           Bicicleta  <FaBicycle />
-        </label>
+        </label>*/}
         <label>¿Regularmente cuanto duran tus viajes?</label>
         <label className="radio-label">
           <input
@@ -259,7 +255,7 @@ const handleSubmit = async (e) => {
           />
           No  <FaBan />
         </label>
-        <label>¿Te interesa que el lugar sea pet friendly?</label>
+        {/*<label>¿Te interesa que el lugar sea pet friendly?</label>
         <label className="radio-label">
           <input
             type="radio"
@@ -281,7 +277,7 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
           />
           No  <FaBan />
-        </label>
+        </label>*/}
         <label>¿Requieres asistencia para capacidades diferentes?</label>
         <label className="radio-label">
           <input
@@ -305,7 +301,7 @@ const handleSubmit = async (e) => {
           />
           No  <FaBan />
         </label>
-        <label>¿Eres mayor de edad (18+ años)?</label>
+        {/*<label>¿Eres mayor de edad (18+ años)?</label>
         <label className="radio-label">
           <input
             type="radio"
@@ -372,17 +368,17 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
           />
           Invierno <FaSnowflake />
-        </label>
+        </label>*/}
         <label>Selecciona categorías de tu preferencia:</label>
         <label /*className="radio-label"*/>
           {categoriasDisponibles.map((categoria) => (
             <div key={categoria.valor}>
               <input
-                type="checkbox"
+                type="radio"
                 value={categoria.valor}
-                className="checkbox-input"
                 checked={gustos.ID_categoria.includes(categoria.valor)}
-                onChange={handleCheckboxChange}
+                onChange={handleCategoryChange} // Nuevo handler para categorías
+                className="radio-input"
               />
               {categoria.icono}  {categoria.texto}
             </div>

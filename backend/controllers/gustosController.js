@@ -1,6 +1,19 @@
 const jwt = require('jsonwebtoken');
 const pool = require('../db/connection');
 
+// Función para obtener el perfil de usuario completo
+exports.getGustos = (req, res) => {
+    const userId = req.userId;
+    // Obtiene todos los campos del usuario
+    pool.query('SELECT * FROM PREFERENCIAS WHERE ID_user = ?', [userId], (err, results) => {
+        if (err || results.length === 0) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+        res.json(results[0]); // Envía todos los campos de la base de datos
+        //console.log(userId, results[0]);
+    });
+};
+
 exports.registrar = (req, res) => {
     const ID_user = req.userId; // ID del usuario autenticado, extraído del token
     const { transporte, duracion, compañia, turistico, pets, vegano, pet_friendly, capacidades_diferentes, mayoria_edad, ID_estacion, ID_categoria,
@@ -31,37 +44,46 @@ exports.registrar = (req, res) => {
 };
 
 
-exports.modificar = (req, res) =>{
+exports.modificar = (req, res) => {
     const userId = req.userId;
-    const { transporte, duracion, compañia, turistico, pets, vegano, pet_friendly, capacidades_diferentes, mayoria_edad, ID_estacion, ID_categoria,
-    } = req.body || {};
-    
+    const { 
+        ID_categoria, ID_estacion, duracion, compañia, turistico, 
+        pets, vegano, capacidades_diferentes, valor_de_preferencia 
+    } = req.body;
+
     const query = `
         UPDATE PREFERENCIAS 
         SET 
-            transporte = ?, duracion = ?, compañia = ?, turistico = ?, 
-            pets = ?, vegano = ?, capacidades_diferentes = ?, 
-            ID_estacion = ?, ID_categoria = ?
-        WHERE ID_user = ?
+            ID_categoria = ?, 
+            ID_estacion = ?, 
+            duracion = ?, 
+            compañia = ?, 
+            turistico = ?, 
+            pets = ?, 
+            vegano = ?, 
+            capacidades_diferentes = ?, 
+            valor_de_preferencia = ?
+        WHERE 
+            ID_user = ?
     `;
 
     const valores = [
-        transporte, duracion, compañia, turistico, pets,
-        vegano, capacidades_diferentes, ID_estacion, ID_categoria, userId
+        Array.isArray(ID_categoria) ? ID_categoria[0] : ID_categoria, // Asegurar que sea un único valor
+        ID_estacion, duracion, compañia, turistico,
+        pets, vegano, capacidades_diferentes, valor_de_preferencia,
+        userId
     ];
 
-    // Actualiza Preferencias en la base de datos
-    pool.query(query, valores,(err, results) => {
-            if (err) {
-                console.error('Error al actualizar el perfil:', err);
-                return res.status(500).json({ error: 'Error al actualizar el perfil' });
-            }
-
-            res.json({ message: 'Perfil actualizado exitosamente' }); // Envía todos los campos de la base de datos
-            console.log(userId, results[0]);
+    pool.query(query, valores, (err, results) => {
+        if (err) {
+            console.error('Error al modificar preferencias:', err);
+            return res.status(500).json({ error: 'Error al modificar preferencias' });
         }
-    );
-}
+
+        res.json({ message: 'Preferencias actualizadas exitosamente' });
+    });
+};
+
 
 exports.eliminar = (req, res) =>{
     const userId = req.userId;
@@ -75,19 +97,42 @@ exports.eliminar = (req, res) =>{
     });
 }
 
-exports.gustos = (req, res) =>{
+exports.gustos = (req, res) => {
     const userId = req.userId;
-    // Obtiene todos los campos del usuario
-    pool.query('SELECT * FROM PREFERENCIAS as p INNER JOIN CATEGORIAS as c on p.ID_categoria = c.ID_categoria inner join ESTACION as e on p.ID_estacion = e.ID_estacion WHERE p.ID_user = ?', [userId], (err, results) => {
-        if (err) {
-                console.error('Error al obtener preferencias:', err);
-                return res.status(500).json({ error: 'Error al obtener preferencias' });
-            }
 
-            if (results.length === 0) {
-                return res.status(404).json({ error: 'No se encontraron preferencias para el usuario' });
-            }
-        res.json(results[0]); // Envía todos los campos de la base de datos
-        //console.log(userId, results[0]);
+    const query = `
+        SELECT 
+            ID_preferencia,
+            ID_user,
+            ID_categoria,
+            ID_estacion,
+            duracion,
+            compañia,
+            turistico,
+            pets,
+            vegano,
+            capacidades_diferentes,
+            valor_de_preferencia
+        FROM 
+            PREFERENCIAS
+        WHERE 
+            ID_user = ?
+    `;
+
+    pool.query(query, [userId], (err, results) => {
+        if (err) {
+            console.error('Error al obtener preferencias:', err);
+            return res.status(500).json({ error: 'Error al obtener preferencias' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'No se encontraron preferencias para el usuario' });
+        }
+
+        const preferencias = results[0];
+        res.json({
+            ...preferencias,
+            ID_categoria: preferencias.ID_categoria ? [preferencias.ID_categoria] : [] // Convertir a array si es necesario
+        });
     });
-}
+};
