@@ -75,26 +75,7 @@ function ActividadPrincipal({
   };
   
   const handleNewPlan = async () => {
-    setNombre(titulo);
-    const URI = "http://localhost:3001/plan/insertarLugar";
-    const requestData = {
-      nombre_actividad: titulo,
-      imagen_actividad: imagenFondo,
-      ID_google: id,
-      controlador: 2,
-    };
-    try {
-      const response = await axios.post(URI, requestData, { withCredentials: true });
-      console.log(response.data.message);
-      console.log(requestData);
-      setAlertMessage("¡Actividad agregada al plan!");
-      setShowAlert(true);
-      setTimeout(() => navigate("/RevisarPlan"));
-    } catch (error) {
-      console.error("Error al agregar al plan:", error);
-      setAlertMessage("Hubo un problema al agregar la actividad al plan.");
-      setShowAlert(true);
-    }
+    setShowDialog(false);
   };
   
   const handleFavoriteClick = async () => {

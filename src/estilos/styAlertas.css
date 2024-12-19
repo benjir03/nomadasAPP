@@ -30,19 +30,20 @@
   }
   
   /* Estilo de los botones */
-  .dialog-buttons {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .dialog-buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+/* Separar los botones */
+.dialog-buttons {
+  display: flex;
+  justify-content: space-between; /* Cambiado para mayor separación */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+/* Opcional: Alinear los botones con un margen */
+.dialog-buttons button {
+  flex: 1; /* Distribuye el espacio equitativamente */
+  margin: 0 5px; /* Opcional: espacio adicional en los márgenes */
+  text-align: center; /* Asegura que el texto esté centrado */
+}
+
   
   /* Botón de confirmar */
   .dialog-buttons button:first-child {

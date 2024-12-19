@@ -193,7 +193,7 @@ const PerfilPlan = () => {
       try {
         // Enviar los cambios al backend
         const response = await axios.put(
-          `http://localhost:3001/plan/nombrePlan`, // Ajusta la URL según tu backend
+          `http://localhost:3001/plan/nombrePlanPerfil`, // Ajusta la URL según tu backend
           {
             ID_plan: plan_id,
             PlanNombre: nuevoNombreActividad,
