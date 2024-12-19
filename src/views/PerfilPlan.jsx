@@ -110,6 +110,7 @@ const PerfilPlan = () => {
           withCredentials: true,
         });
         const planData = response.data;
+        console.log(planData);
         setPlan(planData);
       } catch (error) {
         console.error("Error al obtener el plan del usuario:", error);
@@ -142,6 +143,7 @@ const PerfilPlan = () => {
               horario=""
               onDelete={handleDeleteActivity}
               ID_actividad={actividad.ID_actividad}
+              ID_google={actividad.ID_google}
             />
           ))}
             

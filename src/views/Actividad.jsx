@@ -12,10 +12,12 @@ function Actividad() {
   const location = useLocation();
   const lugar = location.state || {};
   const { place_id } = useParams();
-
+  const id = location.state || {}; // Asegura que no sea undefined
+  const imagen = location.state || {};
+  
   // Verifica si la categoría es "museo" y, en ese caso, establece el precio como "GRATIS"
   const precio = lugar?.category === "museo" ? "GRATIS" : lugar?.price || "$$";
-
+  const actluID = lugar?.id || id?.id;
   return (
     <div className="Actividad">
       {lugar ? (
@@ -24,12 +26,12 @@ function Actividad() {
             titulo={lugar.title}
             id={place_id}
             descripcion={lugar.descripcion_corta || "No disponible"}
-            imagenFondo={lugar.image}
+            imagenFondo={lugar.image || imagen.imagen}
             infoTitulo={lugar.title}
             infoPrecio={precio} // Usa la variable `precio` con la condición aplicada
             infoCalificacion={lugar.rating}
             infoDescripcion={lugar.descripcion || "Descripción no disponible"}
-            mapaSrc={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU&q=place_id:${lugar.id}`}
+            mapaSrc={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU&q=place_id:${actluID}`}
             mapaLink={lugar.website || "#"}
           />
           

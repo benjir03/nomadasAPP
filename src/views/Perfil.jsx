@@ -243,7 +243,7 @@ const Perfil = () => {
               {verplan.map ((plan, index) =>(
                 <div className="planes-list" key={index}>
                 <div className="plan-card">
-                  <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/OSJ3JTFR7RCIJPWRCJT74LTXXA.jpg" alt="Plan 1" className="plan-img" />
+                  <img src={plan.actividad_imagen} alt="Plan 1" className="plan-img" />
                     <div className="plan-details">
                       <h3>{plan.nombre_itinerario}</h3>
                       <p>Actividades del plan: </p>

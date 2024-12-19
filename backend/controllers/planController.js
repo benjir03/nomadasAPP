@@ -157,7 +157,7 @@ exports.obtenerPlan = (req, res) => {
 exports.verPlanes = (req, res) => {
     const userId = req.userId;
     const lastPlanQuery = `
-        SELECT p.nombre_itinerario, a.nombre_actividad, p.ID_plan
+        SELECT p.nombre_itinerario, a.nombre_actividad, p.ID_plan, a.imagen_actividad
         FROM PLAN_ACTIVIDADES AS pa
         INNER JOIN PLAN AS p ON pa.ID_plan = p.ID_plan
         INNER JOIN ACTIVIDAD AS a ON a.ID_actividad = pa.ID_actividad
@@ -177,6 +177,7 @@ exports.verPlanes = (req, res) => {
             acc.push({
                 nombre_itinerario: curr.nombre_itinerario,
                 ID_plan: curr.ID_plan,
+                actividad_imagen: curr.imagen_actividad,
                 plan: [{ nombre_actividad: curr.nombre_actividad }],
             });
         }

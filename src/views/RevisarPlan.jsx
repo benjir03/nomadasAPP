@@ -153,6 +153,7 @@ const RevisarPlan = () => {
               horario=""
               onDelete={handleDeleteActivity}
               ID_actividad={actividad.ID_actividad}
+              ID_google={actividad.ID_google}
             />
           ))}
             
