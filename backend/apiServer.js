@@ -10,7 +10,7 @@ app.use(cors());
 // Ruta para búsqueda de lugares
 app.get('/search', async (req, res) => {
     const { city, radius, category, priceRange, rating, keywords, lessKnown, nonTourist } = req.query;
-    const apiKey = 'AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU';  // Cambia esto con tu propia API key
+    const apiKey = 'AIzaSyDHXFKn_4RXx7aajRVb0lqr5SDXuLFp8SU';  // Cambia esto con tu propia API key
 
     try {
         // Construir el término de búsqueda para la API

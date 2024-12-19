@@ -27,7 +27,10 @@ const Perfil = () => {
     }
   }, [token, navigate]);
   */}
-
+  const VerPlan = async (ID_plan) => {
+    navigate('/PerfilPlan', {state: ID_plan});
+    console.log('ID del plan ', ID_plan);
+  }
   //Datos del perfil
   useEffect(() => {
     const fetchPerfil = async () => {
@@ -251,12 +254,13 @@ const Perfil = () => {
                       ))}
                     
                     </div>
-                    {/*
-                      <div className="plan-buttons">
-                        <button className="btn-plan">Ver</button>
-                        <button className="btn-delete">Eliminar</button>
+                    <div className="plan-buttons">
+                        <button className="btn-plan" key={index} onClick={() => {
+                          console.log('plan ', plan);
+                          VerPlan(plan.ID_plan)
+                        }} >Ver</button>
+                          <button className="btn-delete">Eliminar</button>
                       </div>
-                    */}
                 </div>
                 <br />
                 </div>

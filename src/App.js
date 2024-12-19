@@ -37,6 +37,7 @@ import CarrouselLugares from "./componentes/CarrouselLugares";
 import Ruta from "./views/Ruta"
 import Busqueda from "./componentes/BusquedaLugares"
 import CalcularRuta from "./componentes/calcularRuta"
+import PerfilPlan from "./views/PerfilPlan";
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
           <Route path="/VerPlan" element={<VerPlan />} />
           <Route path="/Busqueda" element={<Busqueda />} />
           <Route path="/Ruta" element={<calcularRuta />} />
+          <Route path="/PerfilPlan" element={<PerfilPlan />} />
 
           {/* Rutas protegidas para verificacion */}
           <Route path="/login" element={<InicioSesion />} />
