@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 const RevisarPlan = () => {
   const [plan, setPlan] = useState([]);
+  const [edicionIndex, setEdicionIndex] = useState(null);
+  const [nuevoNombre, setNuevoNombre] = useState('');
   const navigate = useNavigate();
   const [mapsLink, setMapsLink] = useState('');
 
@@ -141,15 +143,21 @@ const RevisarPlan = () => {
       }
     }
   };
-
+  // Función para imprimir
   const handlePrint = () => {
     navigate('/VerPlan', { state: { plan } }); // Pasar datos del plan al componente VerPlan
   };
 
-  const Completar = () => {
-    alert("Plan completado, felicidades");
-    navigate("/Perfil");
-  }
+  const Completar = async () => {
+    try{
+      const response = await axios.post('http://localhost:3001/plan/nuevoPlan', {}, {withCredentials: true})
+      alert("Plan completado, felicidades");
+      console.log(response.data.message);
+      navigate("/Perfil");
+    }catch(error){
+
+    }
+  };
 
   useEffect(() => {
     const fetchPlan = async () => {
@@ -172,7 +180,44 @@ const RevisarPlan = () => {
       prevPlan.filter(actividad => actividad.nombre_actividad !== nombreActividad)
     );
   };
+  
+  const iniciarEdicion = (index, nombreActual) => {
+    setEdicionIndex(index);
+    setNuevoNombre(nombreActual || '');
+  };
 
+  const guardarNombre = async (index) => {
+    const nuevoNombreActividad = nuevoNombre || 'Nombre no disponible';
+    const actividadId = plan[index].ID_actividad; // Ajusta al campo que identifica la actividad
+  
+    try {
+      // Enviar los cambios al backend
+      const response = await axios.put(
+        `http://localhost:3001/plan/nombrePlan`, // Ajusta la URL según tu backend
+        {
+          PlanNombre: nuevoNombreActividad,
+        },
+        { withCredentials: true } // Si usas cookies para autenticación
+      );
+  
+      // Confirmar éxito y actualizar el estado del front-end
+      if (response.status === 200) {
+        const nuevoPlan = [...plan];
+        nuevoPlan[index].nombre_itinerario = nuevoNombreActividad;
+        setPlan(nuevoPlan);
+        alert("Nombre actualizado correctamente");
+      } else {
+        alert("No se pudo actualizar el nombre. Intenta nuevamente.");
+      }
+    } catch (error) {
+      console.error("Error al actualizar el nombre:", error);
+      alert("Ocurrió un error al guardar el nombre.");
+    }
+  
+    setEdicionIndex(null);
+    setNuevoNombre('');
+  };
+  
   return (
     <div className="contenedorVista">  
       <div className="contenedorTitulo">  
@@ -214,7 +259,31 @@ const RevisarPlan = () => {
 
         <div className="contenedorLadoDerecho">  
           <div className="nombrePlanContenedor">
-            <h2 className="nombrePlan">Detalles del plan</h2>
+            {plan.map((actividad, index) => (
+              <div key={index}>
+                {edicionIndex === index ? (
+                  <>
+                    <input
+                      type="text"
+                      value={nuevoNombre}
+                      onChange={(e) => setNuevoNombre(e.target.value)}
+                      placeholder="Ingresa un nuevo nombre"
+                    />
+                    <button onClick={() => guardarNombre(index)}>Guardar</button>
+                    <button onClick={() => setEdicionIndex(null)}>Cancelar</button>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="nombrePlan">
+                      {actividad.nombre_itinerario || 'Nombre no disponible'}
+                    </h3>
+                    <button onClick={() => iniciarEdicion(index, actividad.nombre_itinerario)}>
+                      Editar
+                    </button>
+                  </>
+                )}
+              </div>
+            ))}
           </div>
           <div className="detalleActividades">
             <strong>No. de actividades: {plan.length}</strong>

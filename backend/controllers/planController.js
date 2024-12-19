@@ -240,6 +240,40 @@ exports.planPerfil = (req, res) => {
     });
 };
 
+// Función para agregar nombre del plan
+exports.nombrePlan = (req, res) => {
+    const userId = req.userId;
+    const {PlanNombre} = req.body;
+    // Obtener el último ID del plan para el usuario
+    const lastPlanQuery = `SELECT MAX(ID_plan) AS ultimoID FROM PLAN WHERE ID_user = ?`;
+    pool.query(lastPlanQuery, [userId], (err, results) => {
+        if (err) {
+            console.error('Error al obtener el último ID de PLAN:', err);
+            return res.status(500).json({ error: 'Error al obtener el último ID' });
+        }
+
+        const ultimoID = results[0]?.ultimoID;
+        if (!ultimoID) {
+            return res.status(400).json({ error: 'No se encontró ningún plan para este usuario' });
+        }
+
+        // Insertar en PLAN_ACTIVIDADES
+        const planactividadQuery = `UPDATE PLAN SET nombre_itinerario = ? where ID_plan = ?`;
+        pool.query(planactividadQuery, [PlanNombre, ultimoID], (err) => {
+            if (err) {
+                console.error('Error al insertar el nombre del plan:', err);
+                return res.status(500).json({ error: 'Error al insertar en PLAN' });
+            }
+
+            res.json({
+                message: 'Nombre agregado exitosamente',
+                planId: ultimoID,
+                PlanName: PlanNombre,
+            });
+        });
+    });
+}
+
 //Funcion para agregar favortitos
 exports.registrarFavorita = (req, res) => {
     const { actividadId } = req.body; // Datos del cliente
