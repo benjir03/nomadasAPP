@@ -224,6 +224,27 @@ exports.obtenerActividades = (req, res) => {
     });
 };
 
+// Función eliminar planes
+exports.eliminarPlan = (req, res) => {
+    const userId = req.userId;
+    const { ID_plan } = req.body;
+    // Obtiene todos los campos del usuario
+    console.log('datos recibidos al back ', req.body);
+    
+    pool.query(`
+            DELETE pa
+            FROM PLAN_ACTIVIDADES AS pa
+            INNER JOIN PLAN AS p ON pa.ID_plan = p.ID_plan
+            INNER JOIN ACTIVIDAD AS a ON a.ID_actividad = pa.ID_actividad
+            WHERE p.ID_user = ? AND p.ID_plan = ?`, 
+            [userId, ID_plan], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Plan para usuario no encontrado' });
+        }
+        res.json({ message: 'Actividad eliminada exitosamente' })
+    });
+};
+
 // Funcipon para planPerfil
 exports.planPerfil = (req, res) => {
     const userId = req.userId;
@@ -286,7 +307,7 @@ exports.nombrePlanPerfil = (req, res) => {
         }
         res.json({
             message: 'Nombre agregado exitosamente',
-            planId: ultimoID,
+            planId: ID_plan,
             PlanName: PlanNombre,
         });
     });

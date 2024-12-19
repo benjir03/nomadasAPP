@@ -27,6 +27,26 @@ const Perfil = () => {
     }
   }, [token, navigate]);
   */}
+  const eliminarPlan = async(ID_plan) => {
+    const confirmDelete = window.confirm(
+      "¿Estás seguro de que deseas eliminar esta actividad de tu plan?"
+    );
+    if (confirmDelete) {
+      try {
+        const requestData = {
+          ID_plan: ID_plan,
+        };
+        console.log("Datos enviados:", requestData);
+        await axios.delete("http://localhost:3001/plan/eliminarPlan", {
+          data: requestData, // Pasa los datos aquí
+          withCredentials: true, // Si necesitas enviar cookies o credenciales
+        });
+      } catch (error) {
+        console.error("Error al eliminar la actividad:", error);
+      }
+    }
+  };
+  
   const VerPlan = async (ID_plan) => {
     navigate('/PerfilPlan', {state: ID_plan});
     console.log('ID del plan ', ID_plan);
@@ -259,7 +279,10 @@ const Perfil = () => {
                           console.log('plan ', plan);
                           VerPlan(plan.ID_plan)
                         }} >Ver</button>
-                          <button className="btn-delete">Eliminar</button>
+                          <button className="btn-delete" key={index} onClick={() => {
+                            console.log('plan ', plan);
+                            eliminarPlan(plan.ID_plan)
+                          }}>Eliminar</button>
                       </div>
                 </div>
                 <br />
