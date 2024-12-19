@@ -21,41 +21,74 @@ const PerfilPlan = () => {
   // Función para calcular la ruta óptima y devolver el enlace de Google Maps
   const calcularRuta = async (placeIds, travelMode = 'driving') => {
     if (!placeIds.length) return null;
-    const origins = placeIds[0];
-    const destinations = placeIds.slice(1).join('|');
+    let currentPlace = placeIds[0];
+    const route = [currentPlace];
+    const visited = new Set([currentPlace]);
+
+    while (visited.size < placeIds.length) {
+      const nextPlace = await findNextPlace(currentPlace, placeIds, visited);
+      if (!nextPlace) break;
+      route.push(nextPlace);
+      visited.add(nextPlace);
+      currentPlace = nextPlace;
+    }
+
+    const placeDetails = await fetchPlaceDetails(route);
+    console.log("Ruta optimizada:", route);
+    console.log("Detalles de los lugares:", placeDetails);
+    return generateMapsLink(route, placeDetails, travelMode);
+  };
+  
+  const findNextPlace = async (currentPlace, placeIds, visited) => {
+    const destinations = placeIds.filter(place => !visited.has(place)).join('|');
+    if (!destinations) return null;
+
     try {
-      const response = await axios.get(`http://localhost:3002/route-matrix?origins=${origins}&destinations=${destinations}`);
+      const response = await axios.get(`http://localhost:3002/route-matrix?origins=${currentPlace}&destinations=${destinations}`);
       const data = response.data;
-      console.log('datos ', placeIds);
-      
+
+      console.log("Datos de la API:", data);
+
       if (data.rows && data.rows[0] && data.rows[0].elements) {
-        const route = optimizeRoute(data.rows[0].elements);
-        console.log('PlaceDetails ', data.placeDetails );
-        return generateMapsLink(route, data.placeDetails, travelMode);
+        let minDuration = Infinity;
+        let nextPlace = null;
+
+        data.rows[0].elements.forEach((element, index) => {
+          if (element.status === "OK" && element.duration.value < minDuration) {
+            minDuration = element.duration.value;
+            nextPlace = placeIds.filter(place => !visited.has(place))[index];
+          }
+        });
+
+        console.log("Siguiente lugar más cercano:", nextPlace);
+        return nextPlace;
       }
-      
+
       return null;
     } catch (error) {
       console.error("Error al obtener la matriz de rutas:", error);
       return null;
     }
   };
-  const optimizeRoute = (elements) => {
-    console.log("Elementos recibidos:", elements);
   
-    const route = [];
-    elements.forEach((element, index) => {
-      if (element.status === "OK") {
-        route.push({ index, duration: element.duration.value });
+  const fetchPlaceDetails = async (route) => {
+    const placeDetails = [];
+
+    for (const place_id of route) {
+      try {
+        const response = await axios.get(`http://localhost:3002/place-directions?place_id=${place_id}`);
+        if (response.data) {
+          placeDetails.push(response.data);
+          console.log(`Place ID: ${place_id}, Dirección: ${response.data.formatted_address}`);
+        } else {
+          console.error(`Error: No se encontraron detalles para el lugar con ID ${place_id} Respuesta:`, response.data);
+        }
+      } catch (error) {
+        console.error(`Error al obtener detalles del lugar con ID ${place_id}:`, error);
       }
-    });
-  
-    // Ordenar destinos por duración mínima
-    route.sort((a, b) => a.duration - b.duration);
-  
-    const optimizedRoute = route.map(item => item.index); // Extraer índices de la ruta optimizada
-    console.log("Ruta optimizada:", optimizedRoute);
-    return optimizedRoute;
+    }
+
+    return placeDetails;
   };
   
   const generateMapsLink = (route, placeDetails, travelMode) => {
@@ -64,12 +97,31 @@ const PerfilPlan = () => {
       return null;
     }
   
-    const origin = encodeURIComponent(placeDetails[route[0]].formatted_address);
-    const destination = encodeURIComponent(placeDetails[route[route.length - 1]].formatted_address);
-    const waypoints = route
-      .slice(1, -1)
-      .map(index => encodeURIComponent(placeDetails[index].formatted_address))
-      .join('|');
+    console.log("Detalles de los lugares para el enlace:");
+    placeDetails.forEach((place, index) => {
+      if (place && place.formatted_address) {
+        console.log(`Place ID: ${route[index]}, Dirección: ${place.formatted_address}`);
+      } else {
+        console.error(`Error: Dirección no encontrada para el lugar con ID ${route[index]}`);
+      }
+    });
+  
+    const origin = placeDetails[0]?.formatted_address ? encodeURIComponent(placeDetails[0].formatted_address) : '';
+    const destination = placeDetails[placeDetails.length - 1]?.formatted_address ? encodeURIComponent(placeDetails[placeDetails.length - 1].formatted_address) : '';
+  
+    const waypoints = route.length > 2
+      ? route.slice(1, -1).map((_, index) => placeDetails[index + 1]?.formatted_address ? encodeURIComponent(placeDetails[index + 1].formatted_address) : '').join('|')
+      : '';
+  
+    // Imprime los valores de origen, destino y waypoints
+    console.log("Origen:", decodeURIComponent(origin));
+    console.log("Destino:", decodeURIComponent(destination));
+    console.log("Waypoints:", waypoints ? decodeURIComponent(waypoints.replace(/\|/g, ', ')) : 'Ninguno');
+  
+    if (!origin || !destination) {
+      console.error("Error: No se pudo generar el enlace debido a direcciones incompletas.");
+      return null;
+    }
   
     const link = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${waypoints}&travelmode=${travelMode}`;
     console.log("Enlace generado:", link);
@@ -80,7 +132,7 @@ const PerfilPlan = () => {
     if (plan.length > 0) {
       const placeIds = plan.map(actividad => actividad.ID_google);
       console.log("IDs de lugares:", placeIds);
-  
+
       try {
         const link = await calcularRuta(placeIds, 'driving');
         if (link) {
@@ -93,7 +145,6 @@ const PerfilPlan = () => {
       }
     }
   };
-  
   
   const Completar = () => {
     alert("Plan completado, felicidades");
@@ -130,7 +181,7 @@ const PerfilPlan = () => {
     <div className="contenedorVista">  
       <div className="contenedorTitulo">  
         <BotonRegresar2 />  
-        <h1 className="tituloRevisarPlan">Revisar Plan</h1>  
+        <h1 className="tituloRevisarPlan">Actividades del Plan</h1>  
       </div>  
       <div className="contenedorPrincipal">
       <div className="contenedorActividades">

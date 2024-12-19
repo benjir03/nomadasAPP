@@ -10,7 +10,7 @@ app.use(cors());
 // Ruta para búsqueda de lugares
 app.get('/search', async (req, res) => {
     const { city, radius, category, priceRange, rating, keywords, lessKnown, nonTourist } = req.query;
-    const apiKey = 'AIzaSyDHXFKn_4RXx7aajRVb0lqr5SDXuLFp8SU';  // Cambia esto con tu propia API key
+    const apiKey = 'AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU';  // Cambia esto con tu propia API key
 
     try {
         // Construir el término de búsqueda para la API
@@ -78,6 +78,21 @@ app.get('/place-details', async (req, res) => {
         res.status(500).send('Error al obtener detalles del lugar');
     }
 });
+app.get('/place-directions', async (req, res) => {
+    const { place_id } = req.query;
+    const apiKey = 'AIzaSyCEj5HsivhghX7r_o31Z9FKo7HaQblM6WU';
+
+    try {
+        const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=formatted_address&key=${apiKey}`;
+        const response = await axios.get(url);
+
+        res.json(response.data.result);
+    } catch (error) {
+        console.error('Error al obtener detalles del lugar:', error);
+        res.status(500).send('Error al obtener detalles del lugar');
+    }
+});
+
 
 // Ruta para obtener una imagen de un lugar
 // server.js - Endpoint para obtener la foto del lugar
