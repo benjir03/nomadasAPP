@@ -84,36 +84,21 @@ exports.insertarLugar = (req, res) => {
 
 // Función para crear un nuevo plan
 exports.nuevoPlan = (req, res) => {
-    const { actividadId } = req.body; // ID de la actividad
     const userId = req.userId;
-
-    // Insertar en la tabla PLAN
     const planQuery = `INSERT INTO PLAN (ID_user) VALUES (?)`;
+
     pool.query(planQuery, [userId], (err, planResult) => {
         if (err) {
             console.error('Error al insertar en PLAN:', err);
             return res.status(500).json({ error: 'Error al insertar en PLAN' });
         }
-
-        const planId = planResult.insertId; // ID del plan recién creado
+        const planId = planResult.insertId;
         console.log(`Nuevo ID de PLAN: ${planId}`);
-
-        // Insertar en la tabla PLAN_ACTIVIDADES
-        const planactividadQuery = `INSERT INTO PLAN_ACTIVIDADES (ID_actividad, ID_plan) VALUES (?, ?)`;
-        pool.query(planactividadQuery, [actividadId, planId], (err) => {
-            if (err) {
-                console.error('Error al insertar en PLAN_ACTIVIDADES:', err);
-                return res.status(500).json({ error: 'Error al insertar en PLAN_ACTIVIDADES' });
-            }
-
-            res.json({
-                message: 'Plan creado exitosamente',
-                planId: planId,
-            });
-        });
+        res.status(200).json({ message: 'Plan creado exitosamente', planId });
     });
 };
 
+// Función para insertar en un plan
 exports.insertarPlan = (req, res) => {
     const { actividadId } = req.body;
     const userId = req.userId;
@@ -147,6 +132,7 @@ exports.insertarPlan = (req, res) => {
     });
 };
 
+// Función para obtener revisar plan
 exports.obtenerPlan = (req, res) => {
     const userId = req.userId;
     const lastPlanQuery = `SELECT MAX(ID_plan) AS ultimoID FROM PLAN WHERE ID_user = ?`;
@@ -167,6 +153,7 @@ exports.obtenerPlan = (req, res) => {
     });
 };
 
+// Función para obtener los planes generales
 exports.verPlanes = (req, res) => {
     const userId = req.userId;
     const lastPlanQuery = `
@@ -199,6 +186,7 @@ exports.verPlanes = (req, res) => {
     });
 };
 
+// Función para eliminar actividades
 exports.deleteActividad = (req, res) => {
     const userId = req.userId;
     const { ID_actividad } = req.body;
@@ -219,6 +207,7 @@ exports.deleteActividad = (req, res) => {
     });
 };
 
+//Funcion para obtener actividades perfil
 exports.obtenerActividades = (req, res) => {
     const userId = req.userId;
     const lastPlanQuery = `SELECT * FROM PLAN_ACTIVIDADES AS pa
@@ -234,6 +223,7 @@ exports.obtenerActividades = (req, res) => {
     });
 };
 
+// Funcipon para planPerfil
 exports.planPerfil = (req, res) => {
     const userId = req.userId;
     const {ID_plan} = req.body;
@@ -249,7 +239,7 @@ exports.planPerfil = (req, res) => {
     });
 };
 
-
+//Funcion para agregar favortitos
 exports.registrarFavorita = (req, res) => {
     const { actividadId } = req.body; // Datos del cliente
     const userId = req.userId; // ID del usuario autenticado
@@ -284,6 +274,7 @@ exports.registrarFavorita = (req, res) => {
     });
 };
 
+//Funcion para obtener favortitos
 exports.obtenerFavorita = (req, res) => {
     const ID_user = req.userId;
 
@@ -303,6 +294,7 @@ exports.obtenerFavorita = (req, res) => {
     });
 };
 
+//Funcion para eliminar favortitos
 exports.eliminarFavorita = (req, res) => {
     const ID_user = req.userId;
     const { actividadId } = req.body;

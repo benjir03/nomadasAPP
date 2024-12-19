@@ -13,6 +13,8 @@ const RevisarPlan = () => {
   const [plan, setPlan] = useState([]);
   const navigate = useNavigate();
   const [mapsLink, setMapsLink] = useState('');
+    const [alertMessage, setAlertMessage] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
 
   // Función para calcular la ruta óptima y devolver el enlace de Google Maps
   const calcularRuta = async (placeIds, travelMode = 'driving') => {
@@ -92,11 +94,21 @@ const RevisarPlan = () => {
   };
   
   
-
-  const Completar = () => {
-    alert("Plan completado, felicidades");
-    navigate("/Perfil");
-  }
+  // Función completar plan - genera uno nuevo
+  const Completar = async () => {
+    const URI = "http://localhost:3001/plan/nuevoPlan";
+    try {
+      const response = await axios.post(URI, {},{ withCredentials: true });
+      console.log(response.data.message);
+      setAlertMessage("¡Plan completado, felicidades!");
+      setShowAlert(true);
+      setTimeout(() => navigate("/Perfil"), 2000);
+    } catch (error) {
+      console.error("Error al completar plan:", error);
+      setAlertMessage("Hubo un problema al completar el plan.");
+      setShowAlert(true);
+    }
+  };
 
   useEffect(() => {
     const fetchPlan = async () => {

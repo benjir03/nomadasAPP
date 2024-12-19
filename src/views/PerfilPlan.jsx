@@ -146,14 +146,6 @@ const PerfilPlan = () => {
           ))}
             
             <div className="contenedorBotonesAccion">
-              <button className="botonCompletarPlan" onClick={Completar}>
-                <FaCheck /> Completar Plan
-              </button>
-              {/*
-              <button className="botonAccion2" onClick={Limpiar}>
-                <FaTrash /> Limpiar plan
-              </button>
-              */}
               <button className="botonVerRuta" onClick={handleVerRuta}>
                 <FaRoute /> Ver ruta
               </button>
