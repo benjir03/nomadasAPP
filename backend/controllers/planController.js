@@ -272,7 +272,25 @@ exports.nombrePlan = (req, res) => {
             });
         });
     });
-}
+};
+
+exports.nombrePlanPerfil = (req, res) => {
+    const userId = req.userId;
+    const {ID_plan, PlanNombre} = req.body;
+    // Insertar en PLAN_ACTIVIDADES
+    const planactividadQuery = `UPDATE PLAN SET nombre_itinerario = ? where ID_plan = ?`;
+    pool.query(planactividadQuery, [PlanNombre, ID_plan], (err) => {
+        if (err) {
+            console.error('Error al insertar el nombre del plan:', err);
+            return res.status(500).json({ error: 'Error al insertar en PLAN' });
+        }
+        res.json({
+            message: 'Nombre agregado exitosamente',
+            planId: ultimoID,
+            PlanName: PlanNombre,
+        });
+    });
+};
 
 //Funcion para agregar favortitos
 exports.registrarFavorita = (req, res) => {

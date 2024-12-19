@@ -13,6 +13,9 @@ const PerfilPlan = () => {
     const location = useLocation();
   const [plan, setPlan] = useState([]);
   const navigate = useNavigate();
+    const [edicionIndex, setEdicionIndex] = useState(null);
+    const [nuevoNombre, setNuevoNombre] = useState('');
+    const [idplan, setIdplan] = useState('');
   const [mapsLink, setMapsLink] = useState('');
   const ID_plan = location.state || {}; // Asegura que no sea undefined
   const {
@@ -177,6 +180,45 @@ const PerfilPlan = () => {
     const Limpiar = async () =>{
       
     }
+    const iniciarEdicion = (index, nombreActual, id_plan) => {
+      setEdicionIndex(index);
+      setNuevoNombre(nombreActual || '');
+      setIdplan(id_plan)
+    };
+    const guardarNombre = async (index) => {
+      const nuevoNombreActividad = nuevoNombre || 'Nombre no disponible';
+      const plan_id = idplan;
+      const actividadId = plan[index].ID_actividad; // Ajusta al campo que identifica la actividad
+    
+      try {
+        // Enviar los cambios al backend
+        const response = await axios.put(
+          `http://localhost:3001/plan/nombrePlan`, // Ajusta la URL según tu backend
+          {
+            ID_plan: plan_id,
+            PlanNombre: nuevoNombreActividad,
+          },
+          { withCredentials: true } // Si usas cookies para autenticación
+        );
+    
+        // Confirmar éxito y actualizar el estado del front-end
+        if (response.status === 200) {
+          const nuevoPlan = [...plan];
+          nuevoPlan[index].nombre_itinerario = nuevoNombreActividad;
+          setPlan(nuevoPlan);
+          alert("Nombre actualizado correctamente");
+        } else {
+          alert("No se pudo actualizar el nombre. Intenta nuevamente.");
+        }
+      } catch (error) {
+        console.error("Error al actualizar el nombre:", error);
+        alert("Ocurrió un error al guardar el nombre.");
+      }
+    
+      setEdicionIndex(null);
+      setNuevoNombre('');
+    };
+
     return (
     <div className="contenedorVista">  
       <div className="contenedorTitulo">  
@@ -212,43 +254,54 @@ const PerfilPlan = () => {
             )}
         </div>
         <div className="contenedorLadoDerecho">  
-                  <div className="nombrePlanContenedor">
-                    {/*
-                                        {plan.map((actividad, index) =>(
-                      <div key={index}>
-                        <h3 className="nombrePlan">{actividad.nombre_itinerario}</h3>
-                      </div>
-                    ))}
-                    <button className="botonEditarNombre">Editar</button>  
-                    */}
-                  </div>  
-                  <br/>
-                  <div className="nombrPlanContenedor">
-                    <h2 className="nombrePlan">Detalles del plan</h2>
-                  </div>
+        <div className="nombrePlanContenedor">
+            {plan.map((actividad, index) => (
+              <div key={index}>
+                {edicionIndex === index ? (
+                  <>
+                    <input
+                      type="text"
+                      value={nuevoNombre}
+                      onChange={(e) => setNuevoNombre(e.target.value)}
+                      placeholder="Ingresa un nuevo nombre"
+                    />
+                    <button onClick={() => guardarNombre(index)}>Guardar</button>
+                    <button onClick={() => setEdicionIndex(null)}>Cancelar</button>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="nombrePlan">
+                      {actividad.nombre_itinerario || 'Nombre no disponible'}
+                    </h3>
+                    <button onClick={() => iniciarEdicion(index, actividad.nombre_itinerario, actividad.ID_plan)}>
+                      Editar
+                    </button>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="detalleActividades">
+            {/*
+            <strong>Ciudad:</strong> Descripción del lugar
+              <strong>Acompañantes:</strong> 2 personas
+            */}
         
-                  {/* Agrupación de actividades */}
-                  <div className="detalleActividades">
-                    {/*
-                    <strong>Ciudad:</strong> Descripción del lugar
-                      <strong>Acompañantes:</strong> 2 personas
-                    */}
-        
-                  {/*<div className="nombrePlanContenedor">  
-                    <h3 className="nombrePlan">Fecha</h3>  
-                    <button className="botonEditarNombre">Editar</button>  
-                  </div>*/}
-                      <strong>No. de actividades: {plan.length}</strong>
-                      {plan.map((actividad, index) => (
-                        <div key={index}>
-                          {/* Aquí va el contenido de cada actividad */}
-                          Actividad {index + 1}: {actividad.nombre_actividad}
-                        </div>
-                      ))}
-                      <strong>Mascota:</strong> Sí 
-                      <strong>Capacidades diferentes:</strong> Ninguna 
-                  </div>  
-                </div>  
+          {/*<div className="nombrePlanContenedor">  
+            <h3 className="nombrePlan">Fecha</h3>  
+            <button className="botonEditarNombre">Editar</button>  
+          </div>*/}
+              <strong>No. de actividades: {plan.length}</strong>
+              {plan.map((actividad, index) => (
+                <div key={index}>
+                  {/* Aquí va el contenido de cada actividad */}
+                  Actividad {index + 1}: {actividad.nombre_actividad}
+                </div>
+              ))}
+              <strong>Mascota:</strong> Sí 
+              <strong>Capacidades diferentes:</strong> Ninguna 
+          </div>  
+        </div>  
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ const { verifyToken } = require('../middlewares/authMiddleware');
 
 router.post('/insertarLugar', verifyToken,planController.insertarLugar);
 router.post('/nuevoPlan', verifyToken,planController.nuevoPlan);
+router.put('/nombrePlanPerfil', verifyToken,planController.nombrePlanPerfil);
 router.put('/nombrePlan', verifyToken,planController.nombrePlan);
 router.get('/obtenerPlan', verifyToken, planController.obtenerPlan);
 router.get('/verPlanes', verifyToken, planController.verPlanes);
